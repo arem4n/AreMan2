@@ -1,11 +1,11 @@
-import LogoCodexClient from '@/components/logocodex/LogoCodexClient';
+import LogoCodex from '../../components/LogoCodex';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Metodología LogoCodex™ | AREM4N',
-    description: 'Descubre LogoCodex™, la metodología para transformar logotipos en códigos visuales vivos con múltiples capas de significado. Construye símbolos que activan significados profundos.',
+  title: 'Metodología LogoCodex™ | El Libro de los Símbolos',
+  description: 'LogoCodex™ es el protocolo que garantiza que tu marca no se pierda en el ruido digital, construyendo un símbolo vivo que conecta con la memoria cultural y la narrativa.',
 };
 
 export default function LogoCodexPage() {
-    return <LogoCodexClient />;
+  return <LogoCodex />;
 }

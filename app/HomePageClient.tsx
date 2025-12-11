@@ -1,22 +1,22 @@
 "use client";
 
 import { useState, useCallback } from 'react';
-import Header from '@/components/Header';
-import ElegantMenu from '@/components/ElegantMenu';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Services from '@/components/Services';
-import ROI from '@/components/ROI';
-import LogoCodexCTA from '@/components/LogoCodexCTA';
-import Portfolio from '@/components/Portfolio';
-import WhyChooseMe from '@/components/WhyChooseMe';
-import Process from '@/components/Process';
-import Deliverables from '@/components/Deliverables';
-import FAQ from '@/components/FAQ';
-import Contact from '@/components/Contact';
-import Newsletter from '@/components/Newsletter';
-import Footer from '@/components/Footer';
-import AnimatedSectionWrapper from '@/components/AnimatedSectionWrapper';
+import Header from '../components/Header';
+import ElegantMenu from '../components/ElegantMenu';
+import Hero from '../components/Hero';
+import About from '../components/About';
+import Services from '../components/Services';
+import ROI from '../components/ROI';
+import LogoCodexCTA from '../components/LogoCodexCTA';
+import Portfolio from '../components/Portfolio';
+import WhyChooseMe from '../components/WhyChooseMe';
+import Process from '../components/Process';
+import Deliverables from '../components/Deliverables';
+import FAQ from '../components/FAQ';
+import Contact from '../components/Contact';
+import Newsletter from '../components/Newsletter';
+import Footer from '../components/Footer';
+import AnimatedSectionWrapper from '../components/AnimatedSectionWrapper';
 
 export default function HomePageClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
