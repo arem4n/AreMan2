@@ -32,11 +32,25 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
 
   return {
     title: `Caso de Estudio: ${project.title} | AREM4N`,
-    description: project.description,
+    description: project.description || `Un análisis detallado del proyecto ${project.title}.`,
   };
 }
 
 const renderCaseStudy = (slug: string) => {
+    const isGeneric = ![
+        'areman-escudo-heraldico',
+        'arem4n-professional-brand',
+        'osttech-cybersecurity',
+        'albornoz-propiedades',
+        'southsoft-development',
+        'bm3-constructora',
+        'tommybox-training'
+    ].includes(slug);
+
+    if (isGeneric) {
+        return <GenericCaseStudy slug={slug} />;
+    }
+
     const CaseStudyComponent = (() => {
         switch (slug) {
             case 'areman-escudo-heraldico':
@@ -54,7 +68,7 @@ const renderCaseStudy = (slug: string) => {
             case 'tommybox-training':
                 return TommyBoxCaseStudy;
             default:
-                return GenericCaseStudy;
+                return () => null; // Should not happen
         }
     })();
 
@@ -64,16 +78,7 @@ const renderCaseStudy = (slug: string) => {
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-symbolic-600"></div>
             </div>
         }>
-            {slug === 'areman-escudo-heraldico' ||
-             slug === 'arem4n-professional-brand' ||
-             slug === 'osttech-cybersecurity' ||
-             slug === 'albornoz-propiedades' ||
-             slug === 'southsoft-development' ||
-             slug === 'bm3-constructora' ||
-             slug === 'tommybox-training'
-                ? <CaseStudyComponent />
-                : <GenericCaseStudy slug={slug} />
-            }
+            <CaseStudyComponent />
         </Suspense>
     );
 };

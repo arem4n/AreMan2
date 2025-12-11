@@ -236,7 +236,7 @@ const TransmediaCarousel: React.FC = () => {
                 <div 
                   className="absolute w-full h-full"
                   style={{
-                    transformStyle: 'preserve-d',
+                    transformStyle: 'preserve-3d',
                     transition: 'transform 0.6s cubic-bezier(0.77, 0, 0.175, 1)',
                     transform: `rotateY(-${currentIndex * angle}deg)`
                   }}

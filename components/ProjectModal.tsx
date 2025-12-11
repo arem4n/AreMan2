@@ -5,17 +5,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { trackEvent } from '../analytics';
 import { CloseIcon, ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 import type { PortfolioProject } from '../types';
+import { useRouter } from 'next/navigation';
 
 interface ProjectModalProps {
     project: PortfolioProject;
     onClose: () => void;
-    navigateTo: (path: string) => void;
     onNext: () => void;
     onPrev: () => void;
     onRequestProject?: (projectName: string) => void;
 }
 
-const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateTo, onNext, onPrev, onRequestProject }) => {
+const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, onPrev, onRequestProject }) => {
+    const router = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const touchStart = useRef<number | null>(null);
@@ -34,10 +35,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateT
     const handleAnalysisClick = (e: React.MouseEvent) => {
         e.preventDefault();
         trackEvent('view_case_study', { project_slug: project.slug, from: 'portfolio_modal' });
-        setTimeout(() => {
-            navigateTo(`#logocodex/${project.slug}`);
-        }, 150);
         onClose();
+        setTimeout(() => {
+            router.push(`/logocodex/${project.slug}`);
+        }, 300);
     };
 
     const handleRequestClick = () => {
@@ -206,7 +207,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateT
                                 Quiero algo así
                             </button>
                             <a 
-                                href={`#logocodex/${project.slug}`}
+                                href={`/logocodex/${project.slug}`}
                                 onClick={handleAnalysisClick}
                                 className="flex-1 lg:flex-none text-center px-5 py-2.5 rounded-full bg-symbolic-600 hover:bg-symbolic-700 text-white font-bold text-sm transition shadow-lg shadow-symbolic-600/30 whitespace-nowrap"
                             >

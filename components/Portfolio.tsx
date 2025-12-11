@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { portfolioProjects } from '../constants';
@@ -6,11 +8,10 @@ import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 import ProjectModal from './ProjectModal';
 
 interface PortfolioProps {
-    navigateTo: (path: string) => void;
     onRequestProject?: (projectName: string) => void;
 }
 
-const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) => {
+const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
     const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -252,7 +253,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                     <ProjectModal 
                         project={selectedProject} 
                         onClose={closeModal} 
-                        navigateTo={navigateTo}
                         onNext={() => navigateModalProject('next')}
                         onPrev={() => navigateModalProject('prev')}
                         onRequestProject={onRequestProject}

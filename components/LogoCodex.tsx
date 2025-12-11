@@ -1,7 +1,9 @@
+"use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SemioticsIcon, LayersIcon, ArchetypeIcon, BookIcon, GridIcon, HomeIcon, BackArrowIcon } from './icons/CodexIcons';
+import { SemioticsIcon, ArchetypeIcon, BookIcon, HomeIcon } from './icons/CodexIcons';
 import { portfolioProjects } from '../constants';
 import { trackEvent } from '../analytics';
 import Arem4nCaseStudy from './casestudies/Arem4nCaseStudy';
@@ -13,9 +15,6 @@ import SouthSoftCaseStudy from './casestudies/SouthSoftCaseStudy';
 import Bm3CaseStudy from './casestudies/Bm3CaseStudy';
 import TommyBoxCaseStudy from './casestudies/TommyBoxCaseStudy';
 
-interface LogoCodexProps {
-    navigateTo: (hash: string) => void;
-}
 
 const renderCaseStudy = (slug: string) => {
     switch (slug) {
@@ -38,28 +37,20 @@ const renderCaseStudy = (slug: string) => {
     }
 };
 
-
-const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo }) => {
+const LogoCodex: React.FC = () => {
     const [selectedSlug, setSelectedSlug] = useState('areman-escudo-heraldico');
-    
-    const handleCaseStudyNav = (e: React.MouseEvent, slug: string) => {
-        e.preventDefault();
-        trackEvent('view_case_study', { project_slug: slug, from: 'logocodex_main' });
-        navigateTo(`#logocodex/${slug}`);
-    };
     
     return (
         <div className="bg-deep-50 min-h-screen font-body relative">
-             {/* Floating Home Button */}
-             <button
-                onClick={() => navigateTo('#inicio')}
+             <Link
+                href="/"
                 className="fixed bottom-6 left-6 z-[99] flex items-center justify-center bg-gradient-to-r from-symbolic-600 to-deep-700 text-white font-semibold py-3 px-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out animate-fade-in-up"
                 style={{ animationDelay: '200ms' }}
                 aria-label="Volver al Inicio"
             >
                 <HomeIcon className="w-5 h-5" />
                 <span className="hidden sm:inline ml-2">Volver a Inicio</span>
-            </button>
+            </Link>
 
             <main>
                 <header id="inicio" className="text-center pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-deep-800 to-deep-900 text-white relative overflow-hidden">
@@ -76,8 +67,6 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo }) => {
                         </div>
                     </div>
                 </header>
-
-                {/* SECCIÓN NUEVA: TRADUCCIÓN DE VALOR (THE BUSINESS BRIDGE) */}
                 <section className="py-12 bg-creative-50 border-b border-creative-100">
                     <div className="max-w-4xl mx-auto px-4 text-center">
                         <span className="inline-block py-1 px-3 rounded-full bg-creative-200 text-creative-800 text-xs font-bold tracking-widest uppercase mb-4">
@@ -192,10 +181,10 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo }) => {
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-8 text-left max-w-2xl mx-auto">
                             <p className="text-deep-100 mb-4">Cada entrada en nuestro sistema contiene:</p>
                             <ul className="space-y-3 text-sm md:text-base font-mono text-creative-300">
-                                <li>> Origen Histórico (Mitos, religiones, arte)</li>
-                                <li>> Connotaciones Positivas (Transformación, poder)</li>
-                                <li>> Connotaciones Negativas (Riesgos culturales)</li>
-                                <li>> Arquetipo Asociado (¿Quién usa este símbolo?)</li>
+                                <li>&gt; Origen Histórico (Mitos, religiones, arte)</li>
+                                <li>&gt; Connotaciones Positivas (Transformación, poder)</li>
+                                <li>&gt; Connotaciones Negativas (Riesgos culturales)</li>
+                                <li>&gt; Arquetipo Asociado (¿Quién usa este símbolo?)</li>
                             </ul>
                         </div>
                     </div>
@@ -238,35 +227,18 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo }) => {
                             Selecciona un proyecto para ver una disección completa bajo la lente del Manual LogoCodeX™.
                         </p>
                         
-                        <div className="flex flex-wrap justify-center gap-3 mb-12">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {portfolioProjects.map(project => (
-                                <button
+                                <Link
                                     key={project.slug}
-                                    onClick={() => setSelectedSlug(project.slug)}
-                                    className={`px-5 py-2.5 font-semibold rounded-full text-sm transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-symbolic-500
-                                        ${selectedSlug === project.slug 
-                                            ? 'bg-symbolic-600 text-white shadow-md' 
-                                            : 'bg-white text-deep-600 hover:bg-deep-100 shadow-sm border border-deep-200'
-                                        }`
-                                    }
+                                    href={`/logocodex/${project.slug}`}
+                                    className="block p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
                                 >
-                                    {project.title}
-                                </button>
+                                    <img src={project.imageUrl} alt={project.title} className="w-full h-auto rounded-md mb-2" />
+                                    <h3 className="font-bold text-deep-800">{project.title}</h3>
+                                    <p className="text-sm text-deep-600">{project.category}</p>
+                                </Link>
                             ))}
-                        </div>
-                        
-                        <div className="max-w-4xl mx-auto">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={selectedSlug}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{ duration: 0.35, ease: 'easeInOut' }}
-                                >
-                                    {renderCaseStudy(selectedSlug)}
-                                </motion.div>
-                            </AnimatePresence>
                         </div>
                     </div>
                 </section>
@@ -279,15 +251,15 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo }) => {
                         <p className="text-lg text-deep-700 leading-relaxed mb-8 max-w-2xl mx-auto">
                             El Manual LogoCodeX™ es la herramienta práctica para evitar la irrelevancia. Juntos, podemos desvelar tu historia única y traducirla en un símbolo que nadie más podría reclamar.
                         </p>
-                        <button
+                        <Link
+                            href="/#contacto"
                             onClick={() => {
                                 trackEvent('navigate_to_contact', { from: 'logocodex_cta' });
-                                navigateTo('#contacto');
                             }}
                             className="inline-block bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
                         >
                             Solicitar Auditoría de Identidad
-                        </button>
+                        </Link>
                     </div>
                 </section>
             </main>

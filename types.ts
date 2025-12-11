@@ -35,4 +35,7 @@ export interface PortfolioProject {
     galleryImages: { src: string; alt: string }[];
     slug: string;
     caseStudy: CaseStudyData;
+    description?: string;
+    category?: string;
+    imageUrl?: string;
 }
