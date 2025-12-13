@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
@@ -6,34 +7,28 @@ import { portfolioProjects } from '../constants';
 import { trackEvent } from '../analytics';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 import ProjectModal from './ProjectModal';
+import Link from 'next/link';
 
-interface PortfolioProps {
-    onRequestProject?: (projectName: string) => void;
-}
-
-const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
+const Portfolio: React.FC = () => {
     const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const autoplayRef = useRef<number | null>(null);
 
-    // Touch handling for Swipe
     const touchStartX = useRef<number | null>(null);
     const touchEndX = useRef<number | null>(null);
 
-    // --- NAVIGATION LOGIC (Infinite Loop / Moebius) ---
     const navigate = useCallback((direction: 'next' | 'prev') => {
         setActiveIndex(prev => {
             const total = portfolioProjects.length;
             if (direction === 'next') {
-                return (prev + 1) % total; // Loop: Last -> First
+                return (prev + 1) % total;
             } else {
-                return (prev - 1 + total) % total; // Loop: First -> Last
+                return (prev - 1 + total) % total;
             }
         });
     }, []);
 
-    // --- AUTOPLAY ---
     useEffect(() => {
         if (!isPaused && !selectedProjectSlug) {
             autoplayRef.current = window.setInterval(() => {
@@ -45,7 +40,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
         };
     }, [isPaused, selectedProjectSlug, navigate]);
 
-    // --- TOUCH HANDLERS ---
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.targetTouches[0].clientX;
         setIsPaused(true);
@@ -66,19 +60,17 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
 
         if (Math.abs(distance) > minSwipeDistance) {
             if (distance > 0) {
-                navigate('next'); // Swiped Left -> Go Next
+                navigate('next');
             } else {
-                navigate('prev'); // Swiped Right -> Go Prev
+                navigate('prev');
             }
         }
         
-        // Reset
         touchStartX.current = null;
         touchEndX.current = null;
         setIsPaused(false);
     };
 
-    // --- MODAL HANDLERS ---
     const handleProjectClick = (slug: string) => {
         trackEvent('open_project_modal', { project_slug: slug });
         setSelectedProjectSlug(slug);
@@ -97,7 +89,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
         let newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
         const total = portfolioProjects.length;
         
-        // Infinite loop in modal too
         if (newIndex >= total) newIndex = 0;
         if (newIndex < 0) newIndex = total - 1;
         
@@ -113,7 +104,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
                     Portafolio
                 </h2>
                 
-                {/* --- CAROUSEL CONTAINER (Desktop 3D + Mobile 2D Unified) --- */}
                 <div 
                     className="relative h-[650px] md:h-[700px] w-full perspective-1000 overflow-visible"
                     onMouseEnter={() => setIsPaused(true)}
@@ -122,7 +112,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
                     onTouchMove={handleTouchMove}
                     onTouchEnd={handleTouchEnd}
                 >
-                    {/* Navigation Buttons */}
                     <button 
                         onClick={() => navigate('prev')} 
                         className="absolute left-4 lg:left-10 top-[40%] -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl hover:scale-110 transition-all backdrop-blur-sm border border-deep-100"
@@ -138,19 +127,16 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
                         <ChevronRightIcon />
                     </button>
 
-                    {/* Stage */}
                     <div className="w-full h-full relative flex justify-center items-center transform-style-3d">
                         {portfolioProjects.map((project, index) => {
                             const total = portfolioProjects.length;
                             
-                            // CALCULATE CIRCULAR OFFSET (The "Moebius" Logic)
                             let offset = index - activeIndex;
                             if (offset > total / 2) offset -= total;
                             if (offset < -total / 2) offset += total;
 
                             const isActive = offset === 0;
                             
-                            // --- STYLES ---
                             let transform = '';
                             let zIndex = 0;
                             let opacity = 0;
@@ -164,7 +150,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
                                 blur = '0px';
                                 pointerEvents = 'auto';
                             } else if (offset === -1) {
-                                // Left Item
                                 transform = 'translateX(-120%) translateY(-60%) translateZ(-150px) scale(0.85)';
                                 if (typeof window !== 'undefined' && window.innerWidth < 1024) {
                                      transform = 'translateX(-130%) translateY(-60%) scale(0.8)';
@@ -175,7 +160,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
                                 opacity = 0.5;
                                 blur = '2px';
                             } else if (offset === 1) {
-                                // Right Item
                                 transform = 'translateX(20%) translateY(-60%) translateZ(-150px) scale(0.85)';
                                 if (typeof window !== 'undefined' && window.innerWidth < 1024) {
                                      transform = 'translateX(30%) translateY(-60%) scale(0.8)';
@@ -186,7 +170,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
                                 opacity = 0.5;
                                 blur = '2px';
                             } else {
-                                // Hidden items
                                 transform = 'translateX(-50%) translateY(-60%) translateZ(-600px) scale(0)';
                                 zIndex = 0;
                                 opacity = 0;
@@ -206,30 +189,29 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
                                         pointerEvents: pointerEvents as any 
                                     }}
                                 >
-                                    {/* Card Content */}
                                     <div 
                                         onClick={() => isActive && handleProjectClick(project.slug)}
                                         className={`relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 aspect-[16/9] flex items-center justify-center cursor-pointer group ${isHeroLogo ? 'p-3' : 'p-0'}`}
                                     >
-                                        <img 
-                                            src={project.mainImg} 
-                                            alt={project.altText} 
-                                            className={`w-full h-full object-contain transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${!isHeroLogo ? 'object-cover' : ''}`}
-                                        />
-                                        {isActive && (
-                                            <div className="absolute inset-0 bg-gradient-to-t from-deep-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pb-10 items-center">
-                                                <span className="text-white text-xl lg:text-2xl font-display font-bold mb-2">{project.title}</span>
-                                                <span className="px-6 py-2 bg-symbolic-600 text-white text-sm font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Ver Proyecto</span>
-                                            </div>
-                                        )}
+                                        <Link href={`/logocodex/${project.slug}`}>
+                                            <img
+                                                src={project.mainImg}
+                                                alt={project.altText}
+                                                className={`w-full h-full object-contain transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${!isHeroLogo ? 'object-cover' : ''}`}
+                                            />
+                                            {isActive && (
+                                                <div className="absolute inset-0 bg-gradient-to-t from-deep-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pb-10 items-center">
+                                                    <span className="text-white text-xl lg:text-2xl font-display font-bold mb-2">{project.title}</span>
+                                                    <span className="px-6 py-2 bg-symbolic-600 text-white text-sm font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Ver Proyecto</span>
+                                                </div>
+                                            )}
+                                        </Link>
                                     </div>
                                     
-                                    {/* Info below card (With Ascending/Descending Animation) */}
                                     <div className={`mt-4 lg:mt-6 px-4 text-center transition-all duration-700 ease-out transform ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                                         <h3 className="text-2xl lg:text-3xl font-display font-bold text-deep-800 mb-2">{project.title}</h3>
                                         <p className="text-creative-600 font-semibold tracking-widest uppercase text-xs lg:text-sm mb-3">{project.clientRole}</p>
                                         
-                                        {/* Testimonial - Visible on ALL screens now */}
                                         <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-deep-100/50 shadow-sm">
                                             <p className="text-deep-600 italic max-w-2xl mx-auto text-base lg:text-lg leading-relaxed">
                                                 "{project.testimonial}"
@@ -242,7 +224,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
                     </div>
                 </div>
                 
-                {/* Mobile Hint */}
                 <div className="text-center text-deep-400 text-sm mt-2 lg:hidden animate-pulse">
                     Desliza o usa las flechas para girar
                 </div>
@@ -255,7 +236,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ onRequestProject }) => {
                         onClose={closeModal} 
                         onNext={() => navigateModalProject('next')}
                         onPrev={() => navigateModalProject('prev')}
-                        onRequestProject={onRequestProject}
                     />
                 )}
             </AnimatePresence>
