@@ -31,26 +31,18 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
 
     useEffect(() => {
         if (selectedPackage) {
-            // 1. Set the message based on the package
             if (messageRef.current) {
                 const newMessage = `Hola Sergio, quiero auditar mi marca con el paquete '${selectedPackage}'. ¿Cómo funciona el proceso LogoCodex?`;
                 setFormData(prev => ({ ...prev, message: newMessage }));
             }
 
-            // 2. Scroll Logic
-            // We set a delay to ensure this executes AFTER the main navigation/hash scroll
             const timer = setTimeout(() => {
                 if (sectionRef.current) {
-                    // Scroll the SECTION into view, not just the title. 
-                    // This ensures the blue background fills the viewport from the start, 
-                    // preventing the "white section" above from bleeding in.
                     sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     
                     if (titleRef.current) {
-                        // Visual "Pop" Animation to indicate location
                         titleRef.current.classList.add('scale-110', 'text-creative-400');
                         
-                        // 3. Cleanup animation
                         setTimeout(() => {
                             if (titleRef.current) {
                                 titleRef.current.classList.remove('scale-110', 'text-creative-400');
@@ -70,7 +62,7 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!formData.name || !formData.email || !formData.message) {
             setFormState({ submitting: false, success: false, error: 'Por favor, completa todos los campos.' });
@@ -80,14 +72,28 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
 
         trackEvent('submit_contact_form', { fromPackage: selectedPackage || 'N/A' });
 
-        // SIMULACIÓN: Reemplazar con un servicio real como EmailJS
-        console.log('Enviando formulario:', formData);
-        setTimeout(() => {
-            setFormState({ submitting: false, success: true, error: '' });
-            setFormData({ name: '', email: '', message: '' });
-            // Ocultar mensaje de éxito después de 5 segundos
-            setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
-        }, 2000);
+        try {
+            const response = await fetch('/api/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setFormState({ submitting: false, success: true, error: '' });
+                setFormData({ name: '', email: '', message: '' });
+                setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
+            } else {
+                const errorData = await response.json();
+                setFormState({ submitting: false, success: false, error: 'Hubo un error al enviar el mensaje.' });
+                console.error('Error sending email:', errorData);
+            }
+        } catch (error) {
+            setFormState({ submitting: false, success: false, error: 'Hubo un error al enviar el mensaje.' });
+            console.error('Error sending email:', error);
+        }
     };
 
     return (
@@ -159,8 +165,8 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
                     </form>
 
                     <div className="space-y-6 text-white">
-                        <ContactInfoItem icon={<EmailIcon />} title="Email Directo" value="contacto@arem4n.com" href="mailto:contacto@arem4n.com" />
-                        <ContactInfoItem icon={<WhatsAppIcon />} title="WhatsApp (Urgencias)" value="+56 9 3497 3287" href="https://wa.me/56934973287" />
+                        <ContactInfoItem icon={<EmailIcon />} title="Email Directo" value="Sergio.areman@gmail.com" href="mailto:Sergio.areman@gmail.com" />
+                        <ContactInfoItem icon={<WhatsAppIcon />} title="WhatsApp" value="+56 9 3497 3287" href="https://wa.me/56934973287" />
                         <ContactInfoItem icon={<InstagramIcon />} title="Instagram" value="@arem4n" href="https://www.instagram.com/arem4n" />
                         <ContactInfoItem icon={<BehanceIcon />} title="Portafolio Extendido" value="behance.net/arem4n" href="https://www.behance.net/arem4n" />
                     </div>

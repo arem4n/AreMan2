@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import HomePageClient from './HomePageClient';
+import HomePageClient from '../components/HomePageClient';
 
 export const metadata: Metadata = {
   title: 'AREM4N | Soberanía Visual & Branding Estratégico',
