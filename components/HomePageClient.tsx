@@ -17,13 +17,20 @@ import ROI from './ROI';
 import Deliverables from './Deliverables';
 import FAQ from './FAQ';
 import Newsletter from './Newsletter';
+import ElegantMenu from './ElegantMenu';
 
 const HomePageClient: React.FC = () => {
     const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
     const handlePackageSelect = (packageName: string) => {
         setSelectedPackage(packageName);
-        // The smooth scroll will be handled by the Contact component's useEffect
+        const contactElement = document.getElementById('contacto');
+        if (contactElement) {
+            contactElement.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     const clearSelectedPackage = () => {
@@ -33,6 +40,7 @@ const HomePageClient: React.FC = () => {
     return (
         <>
             <Header />
+            <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
             <main>
                 <AnimatedSectionWrapper>
                     <Hero onPackageSelect={handlePackageSelect} />

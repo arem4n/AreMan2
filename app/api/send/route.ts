@@ -1,17 +1,16 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Inicializamos Resend con la clave segura
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { email, message, name } = body; // Asegúrate que tu formulario envíe estos datos
+    const { email, message, name } = body;
 
     const data = await resend.emails.send({
-      from: 'AreMan <onboarding@resend.dev>', // Si ya verificaste tu dominio, usa contacto@tudominio.com
-      to: ['Sergio.areman@gmail.com'], // A dónde quieres que te lleguen los avisos
+      from: 'AreMan <onboarding@resend.dev>',
+      to: ['Sergio.areman@gmail.com'],
       subject: `Nuevo contacto de: ${name}`,
       html: `
         <h1>Nuevo mensaje de la web</h1>

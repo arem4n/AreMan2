@@ -1,5 +1,8 @@
+
+'use client';
+
 import React, { useState, useCallback, useRef } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
+import { ChevronLeftIcon, ChevronRightIcon } from '@/components/icons/Icons';
 
 // Helpers for consistent styling within the case study
 const SectionTitle: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => (
@@ -180,12 +183,11 @@ const TransmediaCarousel: React.FC = () => {
     const totalItems = items.length;
     const angle = 360 / totalItems;
     
-    // Calculate radius to position items in a circle
-    const slideWidth = 280; // Corresponds to w-72
+    const slideWidth = 280;
     const radius = (slideWidth / 2) / Math.tan(Math.PI / totalItems);
 
     const nextSlide = useCallback(() => {
-        setCurrentIndex((prevIndex) => prevIndex + 1); // We don't use modulo here to allow continuous rotation
+        setCurrentIndex((prevIndex) => prevIndex + 1);
     }, []);
 
     const prevSlide = useCallback(() => {
@@ -193,7 +195,6 @@ const TransmediaCarousel: React.FC = () => {
     }, []);
 
     const goToSlide = (index: number) => {
-        // This needs to handle the continuous rotation index
         setCurrentIndex(currentIndex - (currentIndex % totalItems) + index);
     };
 

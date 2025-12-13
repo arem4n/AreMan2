@@ -1,11 +1,11 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { trackEvent } from '../analytics';
+import Link from 'next/link';
 
 interface ElegantMenuProps {
     isOpen: boolean;
     toggleMenu: () => void;
-    navigateTo: (hash: string) => void;
 }
 
 const navLinks = [
@@ -14,11 +14,11 @@ const navLinks = [
     { href: "#servicios", label: "Servicios" },
     { href: "#portafolio", label: "Portafolio" },
     { href: "#proceso", label: "Proceso" },
-    { href: "#logocodex", label: "LogoCodex" },
+    { href: "/logocodex", label: "LogoCodex" },
     { href: "#contacto", label: "Contacto" },
 ];
 
-const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateTo }) => {
+const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu }) => {
     const [isVisible, setIsVisible] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
 
@@ -60,7 +60,6 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
         const currentMenuRef = menuRef.current;
         currentMenuRef.addEventListener('keydown', handleKeyDown);
 
-        // Focus the first element when menu opens
         firstElement?.focus();
 
         return () => {
@@ -69,13 +68,11 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
     }, [isOpen, isVisible]);
 
 
-    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-        e.preventDefault();
-        
-        if (href === '#logocodex') {
+    const handleLinkClick = (href: string) => {
+        if (href.startsWith('/')) {
             trackEvent('navigate_to_logocodex', { from: 'elegant_menu' });
         }
-        navigateTo(href);
+        toggleMenu();
     };
 
     if (!isVisible) return null;
@@ -100,13 +97,13 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
                                  className={`transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'}`}
                                  style={{ transitionDelay: `${isOpen ? index * 50 + 100 : 0}ms` }}
                              >
-                                <a 
+                                <Link
                                     href={link.href} 
-                                    onClick={(e) => handleLinkClick(e, link.href)}
+                                    onClick={() => handleLinkClick(link.href)}
                                     className="block p-4 text-white text-lg font-medium rounded-xl bg-white/10 border border-white/20 backdrop-blur-lg relative overflow-hidden transition-all duration-300 ease-in-out hover:bg-symbolic-600/50 hover:border-symbolic-500 hover:-translate-y-0.5"
                                 >
                                     {link.label}
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
@@ -117,7 +114,7 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
                 >
                     <p className="text-white/80 text-sm mb-2">¿Listo para transformar tu identidad visual?</p>
                     <p className="mb-1"><a href="https://wa.me/56934973287" target="_blank" rel="noopener noreferrer" className="text-creative-300 hover:text-creative-400 transition-colors">WhatsApp: +56 9 3497 3287</a></p>
-                    <p><a href="mailto:contacto@arem4n.com" className="text-creative-300 hover:text-creative-400 transition-colors">contacto@arem4n.com</a></p>
+                    <p><a href="mailto:Sergio.areman@gmail.com" className="text-creative-300 hover:text-creative-400 transition-colors">Sergio.areman@gmail.com</a></p>
                 </div>
             </div>
         </div>

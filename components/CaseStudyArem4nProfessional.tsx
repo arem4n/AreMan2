@@ -1,3 +1,6 @@
+
+'use client';
+
 import React from 'react';
 
 // Helpers for consistent styling within the case study

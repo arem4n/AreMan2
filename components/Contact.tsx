@@ -1,7 +1,9 @@
 
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { trackEvent } from '../analytics';
-import { EmailIcon, WhatsAppIcon, InstagramIcon, BehanceIcon } from './icons/SocialIcons';
+import { trackEvent } from '@/analytics';
+import { EmailIcon, WhatsAppIcon, InstagramIcon, BehanceIcon } from '@/components/icons/SocialIcons';
 
 const ContactInfoItem = ({ icon, title, value, href, linkClass }: { icon: React.ReactNode, title: string, value: string, href: string, linkClass?: string }) => (
     <div className="flex items-center space-x-4">

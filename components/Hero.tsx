@@ -1,23 +1,25 @@
 
+'use client';
+
 import React from 'react';
 import { whiteLogoUrl } from '../constants';
+import Link from 'next/link';
 
 interface HeroProps {
-    navigateTo: (hash: string) => void;
+    onPackageSelect: (packageName: string) => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
+const Hero: React.FC<HeroProps> = ({ onPackageSelect }) => {
 
     const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
-        navigateTo('#contacto');
+        onPackageSelect('Auditoría de Identidad');
     };
 
     return (
         <section id="inicio" className="bg-gradient-to-br from-deep-800 via-deep-600 to-symbolic-600 py-20 lg:py-32 relative overflow-hidden">
             <div className="absolute inset-0 bg-black/30"></div>
             <div className="relative max-w-6xl mx-auto px-4 text-center text-white">
-                {/* Performance Optimization: Added fetchpriority and decoding sync for LCP */}
                 <img 
                     src={whiteLogoUrl} 
                     alt="Logotipo AREM4N" 
@@ -45,13 +47,12 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                     >
                         Solicitar Auditoría de Identidad
                     </a>
-                    <a 
-                        href="#logocodex" 
-                        onClick={(e) => { e.preventDefault(); navigateTo('#logocodex'); }}
+                    <Link
+                        href="/logocodex"
                         className="inline-block bg-transparent hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 border border-white/30 hover:border-white"
                     >
                         Descubrir LogoCodex™
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>
