@@ -39,7 +39,7 @@ const HomePageClient: React.FC = () => {
 
     return (
         <>
-            <Header />
+            <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
             <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
             <main>
                 <AnimatedSectionWrapper>

@@ -1,10 +1,15 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { trackEvent } from '../analytics';
 import Link from 'next/link';
+
+interface HeaderProps {
+    isMenuOpen: boolean;
+    toggleMenu: () => void;
+}
 
 const navLinks = [
     { href: "#inicio", label: "Inicio" },
@@ -16,19 +21,11 @@ const navLinks = [
     { href: "#contacto", label: "Contacto" },
 ];
 
-const Header: React.FC = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
 
     const handleNavClick = (href: string) => {
         if (href.startsWith('/')) {
             trackEvent('navigate_to_logocodex', { from: 'header_nav' });
-        }
-        if (isMenuOpen) {
-            toggleMenu();
         }
     };
 
