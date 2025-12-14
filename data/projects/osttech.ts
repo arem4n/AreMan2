@@ -3,7 +3,7 @@ import { PortfolioProject } from '../../types';
 
 export const ostTechProject: PortfolioProject = {
     mainImg: "https://i.postimg.cc/bNztNtcG/20251103_133803_0000.png",
-    altText: "Logo OstTech",
+    altText: "Logo OstTech Cybersecurity - Isotipo de zorro y escudo para software industrial",
     title: "OST TECH",
     slug: "osttech-cybersecurity",
     testimonial: "Fusión perfecta de industria y naturaleza.",
@@ -11,9 +11,9 @@ export const ostTechProject: PortfolioProject = {
     clientRole: "CEO",
     link: "javascript:void(0);",
     galleryImages: [
-            { src: "https://i.postimg.cc/bNztNtcG/20251103_133803_0000.png", alt: "Logo OstTech - Isotipo Principal" },
-            { src: "https://i.postimg.cc/8c5Fzwm7/1764185186746.png", alt: "Interfaz Móvil: App de Mantenimiento" },
-            { src: "https://i.postimg.cc/vmrxq4mf/1764185474043.png", alt: "Interfaz de Escritorio: Dashboard de Control" }
+            { src: "https://i.postimg.cc/bNztNtcG/20251103_133803_0000.png", alt: "Isotipo principal del logo de OstTech" },
+            { src: "https://i.postimg.cc/8c5Fzwm7/1764185186746.png", alt: "Interfaz de la aplicación móvil de mantenimiento de OstTech" },
+            { src: "https://i.postimg.cc/vmrxq4mf/1764185474043.png", alt: "Dashboard de control en la interfaz de escritorio de OstTech" }
     ],
     caseStudy: {
         client: "Ost Tech",

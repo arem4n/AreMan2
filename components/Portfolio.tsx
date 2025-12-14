@@ -10,7 +10,6 @@ import ProjectModal from './ProjectModal';
 import Link from 'next/link';
 
 const Portfolio: React.FC = () => {
-    const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const autoplayRef = useRef<number | null>(null);
@@ -30,7 +29,7 @@ const Portfolio: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        if (!isPaused && !selectedProjectSlug) {
+        if (!isPaused) {
             autoplayRef.current = window.setInterval(() => {
                 navigate('next');
             }, 5000);
@@ -38,7 +37,7 @@ const Portfolio: React.FC = () => {
         return () => {
             if (autoplayRef.current) window.clearInterval(autoplayRef.current);
         };
-    }, [isPaused, selectedProjectSlug, navigate]);
+    }, [isPaused, navigate]);
 
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.targetTouches[0].clientX;
@@ -70,32 +69,6 @@ const Portfolio: React.FC = () => {
         touchEndX.current = null;
         setIsPaused(false);
     };
-
-    const handleProjectClick = (slug: string) => {
-        trackEvent('open_project_modal', { project_slug: slug });
-        setSelectedProjectSlug(slug);
-        setIsPaused(true); 
-    };
-
-    const closeModal = () => {
-        setSelectedProjectSlug(null);
-        setIsPaused(false); 
-    };
-
-    const navigateModalProject = (direction: 'next' | 'prev') => {
-        const currentIndex = portfolioProjects.findIndex(p => p.slug === selectedProjectSlug);
-        if (currentIndex === -1) return;
-        
-        let newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
-        const total = portfolioProjects.length;
-        
-        if (newIndex >= total) newIndex = 0;
-        if (newIndex < 0) newIndex = total - 1;
-        
-        setSelectedProjectSlug(portfolioProjects[newIndex].slug);
-    };
-
-    const selectedProject = portfolioProjects.find(p => p.slug === selectedProjectSlug);
 
     return (
         <section id="portafolio" className="py-6 lg:py-8 bg-gradient-to-br from-deep-50 to-white overflow-hidden relative z-10">
@@ -190,14 +163,14 @@ const Portfolio: React.FC = () => {
                                     }}
                                 >
                                     <div 
-                                        onClick={() => isActive && handleProjectClick(project.slug)}
                                         className={`relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 aspect-[16/9] flex items-center justify-center cursor-pointer group ${isHeroLogo ? 'p-3' : 'p-0'}`}
                                     >
-                                        <Link href={`/logocodex/${project.slug}`}>
+                                        <Link href={`/logocodex/${project.slug}`} className="w-full h-full">
                                             <img
                                                 src={project.mainImg}
                                                 alt={project.altText}
-                                                className={`w-full h-full object-contain transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${!isHeroLogo ? 'object-cover' : ''}`}
+                                                loading="lazy"
+                                                className={`w-full h-full transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${isHeroLogo ? 'object-contain' : 'object-cover'}`}
                                             />
                                             {isActive && (
                                                 <div className="absolute inset-0 bg-gradient-to-t from-deep-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pb-10 items-center">
@@ -228,17 +201,6 @@ const Portfolio: React.FC = () => {
                     Desliza o usa las flechas para girar
                 </div>
             </div>
-
-            <AnimatePresence>
-                {selectedProject && (
-                    <ProjectModal 
-                        project={selectedProject} 
-                        onClose={closeModal} 
-                        onNext={() => navigateModalProject('next')}
-                        onPrev={() => navigateModalProject('prev')}
-                    />
-                )}
-            </AnimatePresence>
         </section>
     );
 };

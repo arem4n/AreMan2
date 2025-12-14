@@ -232,11 +232,17 @@ const LogoCodex: React.FC = () => {
                                 <Link
                                     key={project.slug}
                                     href={`/logocodex/${project.slug}`}
-                                    className="block p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                                    className="block p-4 bg-white rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
                                 >
-                                    <img src={project.imageUrl} alt={project.title} className="w-full h-auto rounded-md mb-2" />
-                                    <h3 className="font-bold text-deep-800">{project.title}</h3>
-                                    <p className="text-sm text-deep-600">{project.category}</p>
+                                    <div className="aspect-video bg-gray-100 rounded-md mb-3 flex items-center justify-center overflow-hidden">
+                                        <img
+                                            src={project.mainImg}
+                                            alt={`Logo de ${project.title}`}
+                                            className="w-full h-full object-contain p-2"
+                                        />
+                                    </div>
+                                    <h3 className="font-bold text-deep-800 truncate">{project.title}</h3>
+                                    <p className="text-sm text-deep-600">{project.clientRole}</p>
                                 </Link>
                             ))}
                         </div>

@@ -64,15 +64,16 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
 
                     <nav className="flex items-center gap-1 pr-2">
                         {navLinks.map(link => (
-                            <Link
-                                key={link.href} 
-                                href={link.href} 
-                                onClick={() => handleNavClick(link.href)}
-                                className="relative px-4 py-2 rounded-full text-sm font-medium text-deep-600 transition-colors hover:text-deep-900 group"
-                            >
-                                <span className="relative z-10">{link.label}</span>
-                                <span className="absolute inset-0 bg-deep-100/50 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 ease-out origin-center -z-0"></span>
-                            </Link>
+                            <motion.div key={link.href} whileHover={{ y: -2 }}>
+                                <Link
+                                    href={link.href}
+                                    onClick={() => handleNavClick(link.href)}
+                                    className="relative block px-4 py-2 rounded-full text-sm font-medium text-deep-600 transition-colors hover:text-deep-900 group"
+                                >
+                                    <span className="relative z-10">{link.label}</span>
+                                    <span className="absolute inset-0 bg-deep-100/50 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 ease-out origin-center -z-0"></span>
+                                </Link>
+                            </motion.div>
                         ))}
                         
                         <Link

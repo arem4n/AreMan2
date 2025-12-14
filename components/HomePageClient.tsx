@@ -41,7 +41,7 @@ const HomePageClient: React.FC = () => {
         <>
             <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
             <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
-            <main>
+            <main className="flex-grow">
                 <AnimatedSectionWrapper>
                     <Hero onPackageSelect={handlePackageSelect} />
                 </AnimatedSectionWrapper>

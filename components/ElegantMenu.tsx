@@ -82,15 +82,16 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu }) => {
     return (
         <div 
             ref={menuRef}
-            className={`fixed inset-0 z-[1010] flex items-center justify-center transition-all duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] 
+            className={`fixed inset-0 z-[1010] block transition-all duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
             bg-gradient-to-br from-[rgba(30,41,59,0.95)] via-[rgba(71,85,105,0.9)] to-[rgba(219,39,119,0.85)] backdrop-blur-2xl
+            overflow-y-auto py-8
             ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
             onClick={(e) => { if (e.target === e.currentTarget) toggleMenu(); }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="menu-title"
         >
-            <div className="text-center max-w-[600px] px-8 py-12">
+            <div className="text-center max-w-[600px] mx-auto px-8 mt-12">
                 <h2 id="menu-title" className={`menu-title text-gradient text-4xl md:text-5xl font-display font-bold mb-12 transition-all duration-600 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}>Navegación</h2>
                 <nav>
                     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

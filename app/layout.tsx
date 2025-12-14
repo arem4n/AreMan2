@@ -1,37 +1,47 @@
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { PageTransitionWrapper } from '@/components/PageTransitionWrapper';
 import './globals.css';
-import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'AREM4N | Soberanía Visual & Branding Estratégico',
-  description: 'Consultora de estrategia de marca y diseño visual dirigida por Sergio (AreMan). Especialistas en identidad corporativa para startups mediante la metodología LogoCodex™ y desarrollo web en Next.js. Desde Puerto Montt para el mundo.',
+  title: 'LogoCodeX™: Branding Estratégico para Startups | AREM4N',
+  description: 'LogoCodeX™: Metodología de branding que integra semiótica, arquetipos junguianos y narrativa estratégica. Creamos símbolos vivos para startups, no plantillas vacías. Puerto Montt, Chile.',
   keywords: [
-    'AREM4N',
+    'branding estratégico',
+    'diseño de logos',
     'LogoCodeX',
-    'Soberanía Visual',
-    'Branding Estratégico',
-    'Diseño de Identidad Corporativa',
-    'Consultoría de Marca Chile',
-    'Desarrollo Web Next.js',
-    'Vibe Coding',
-    'Semiótica de Marca',
-    'Arquetipos Junguianos'
+    'semiótica visual',
+    'arquetipos de marca',
+    'identidad visual',
+    'Puerto Montt',
+    'Chile',
+    'diseño heráldico',
+    'símbolos corporativos'
   ],
+  metadataBase: new URL('https://areman.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
+  other: {
+    'geo.region': 'CL-LL',
+    'geo.placename': 'Puerto Montt',
+    'geo.position': '-41.4693;-72.9424',
+    'ICBM': '-41.4693, -72.9424',
+  },
   openGraph: {
-    title: 'AREM4N | Soberanía Visual',
-    description: 'Tu Startup merece más que una plantilla vacía. Descubre la metodología LogoCodeX™.',
-    url: 'https://arem4n.com',
-    siteName: 'AREM4N Consultoría',
+    title: 'AREM4N | Soberanía Visual & Branding Estratégico',
+    description: 'LogoCodeX™: Metodología de branding que integra semiótica, arquetipos junguianos y narrativa estratégica.',
+    url: 'https://areman.vercel.app',
+    siteName: 'AREM4N',
     images: [
       {
-        url: 'https://arem4n.vercel.app/tu-imagen-og.jpg',
+        url: 'https://i.postimg.cc/d3wtGXNk/IMG_20250728_180701_596.webp',
         width: 1200,
         height: 630,
-        alt: 'AREM4N - Estrategia y Diseño',
+        alt: 'Metodología LogoCodeX de AREM4N',
       },
     ],
     locale: 'es_CL',
@@ -39,10 +49,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AREM4N | Soberanía Visual',
-    description: 'Ingeniería de diseño y estrategia de marca para fundadores.',
+    title: 'AREM4N | Soberanía Visual & Branding Estratégico',
+    description: 'LogoCodeX™: Metodología de branding que integra semiótica, arquetipos junguianos y narrativa estratégica.',
     creator: '@arem4n',
-    images: ['https://arem4n.vercel.app/tu-imagen-og.jpg'],
+    images: ['https://i.postimg.cc/d3wtGXNk/IMG_20250728_180701_596.webp'],
   },
 };
 
@@ -52,52 +62,84 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
-        <Script id="json-ld-arem4n" type="application/ld+json">
+    <html lang="es">
+      <head>
+        <link rel="preconnect" href="https://i.postimg.cc" />
+        <link rel="dns-prefetch" href="https://i.postimg.cc" />
+      </head>
+      <body className={`${inter.className} min-h-screen flex flex-col`}>
+        <PageTransitionWrapper>
+          {children}
+        </PageTransitionWrapper>
+        <script type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
-              "@graph": [
+              "@type": "ProfessionalService",
+              "name": "AREM4N",
+              "description": "Diseño de identidad visual estratégica con metodología LogoCodex™",
+              "url": "https://areman.vercel.app",
+              "logo": "https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png",
+              "image": "https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Sergio Arellano Manque",
+                "jobTitle": "Diseñador Audiovisual & Estratega de Marca"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Puerto Montt",
+                "addressRegion": "Los Lagos",
+                "addressCountry": "CL"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Chile"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "contacto@arem4n.com",
+                "contactType": "Customer Service"
+              }
+            }
+          `}
+        </script>
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "serviceType": "Branding Estratégico",
+              "provider": {
+                "@type": "ProfessionalService",
+                "name": "AREM4N"
+              },
+              "offers": [
                 {
-                  "@type": "Person",
-                  "@id": "https://arem4n.com/#sergio",
-                  "name": "Sergio Arellano",
-                  "alternateName": "AreMan",
-                  "jobTitle": "Design Engineer & Brand Strategist",
-                  "url": "https://arem4n.com",
-                  "sameAs": [
-                    "https://www.instagram.com/arem4n",
-                    "https://www.behance.net/arem4n",
-                    "https://github.com/arem4n"
-                  ],
-                  "knowsAbout": ["Branding", "Semiótica", "Next.js", "LogoCodeX", "Jungian Archetypes"]
+                  "@type": "Offer",
+                  "name": "Diagnóstico Semiótico",
+                  "description": "Análisis arquetípico y simbólico de identidad de marca",
+                  "priceCurrency": "USD",
+                  "price": "150-250"
                 },
                 {
-                  "@type": "ProfessionalService",
-                  "@id": "https://arem4n.com/#organization",
-                  "name": "AREM4N",
-                  "description": "Consultora de Soberanía Visual y Branding Estratégico.",
-                  "founder": { "@id": "https://arem4n.com/#sergio" },
-                  "areaServed": "Global",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Puerto Montt",
-                    "addressRegion": "Los Lagos",
-                    "addressCountry": "CL"
-                  },
-                  "brand": {
-                    "@type": "Brand",
-                    "name": "LogoCodeX™",
-                    "description": "Metodología propietaria de construcción de identidad basada en semiótica y arquetipos."
-                  },
-                  "priceRange": "$$$"
+                  "@type": "Offer",
+                  "name": "Arquitectura de Marca",
+                  "description": "Sistema visual completo con motion graphics",
+                  "priceCurrency": "USD",
+                  "price": "400-600"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Soberanía Visual",
+                  "description": "Identidad transmedia con video corporativo y manual exhaustivo",
+                  "priceCurrency": "USD",
+                  "price": "900-1500"
                 }
               ]
             }
           `}
-        </Script>
+        </script>
       </body>
     </html>
   );

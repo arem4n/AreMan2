@@ -3,7 +3,7 @@ import { PortfolioProject } from '../../types';
 
 export const bm3Project: PortfolioProject = {
     mainImg: "https://i.postimg.cc/44vcg1Mv/20251103_133804_0003.png",
-    altText: "Logo BM3",
+    altText: "Logo para BM3 Constructora - Símbolo de ingeniería y construcción en Puerto Montt",
     title: "BM3",
     slug: "bm3-constructora",
     testimonial: "Ingeniería y familia unidas.",
@@ -11,7 +11,7 @@ export const bm3Project: PortfolioProject = {
     clientRole: "Fundador",
     link: "javascript:void(0);",
     galleryImages: [
-            { src: "https://i.postimg.cc/44vcg1Mv/20251103_133804_0003.png", alt: "Logo BM3" }
+            { src: "https://i.postimg.cc/44vcg1Mv/20251103_133804_0003.png", alt: "Logo principal de BM3 Servicios de Ingeniería y Construcción" }
     ],
     caseStudy: {
         client: "BM3 Servicios",

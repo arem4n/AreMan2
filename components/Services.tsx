@@ -25,7 +25,7 @@ const renderSafeText = (text: string) => {
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, price, description, recommended = false, gradientText = false, onButtonClick }) => (
     <div className={`relative card-hover rounded-2xl p-6 lg:p-8 shadow-lg flex flex-col h-full transition-all duration-300 ease-in-out ${recommended ? 'bg-gradient-to-r from-symbolic-600 to-deep-700 text-white shadow-xl' : 'bg-white border border-deep-100'}`}>
         {recommended && <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-creative-400 text-deep-900 px-3 py-1 rounded-full text-sm font-semibold z-10">RECOMENDADO</div>}
-        <h4 className={`text-2xl font-display font-bold mb-4 mt-4 ${recommended ? 'text-white' : 'text-deep-800'}`}>{title}</h4>
+        <h3 className={`text-2xl font-display font-bold mb-4 mt-4 ${recommended ? 'text-white' : 'text-deep-800'}`}>{title}</h3>
         <div className={`text-base mb-6 flex-grow ${recommended ? 'text-symbolic-200' : 'text-deep-800'}`}>
             {description.map((line, index) => (
                 <p key={index} className="mb-2 last:mb-0">

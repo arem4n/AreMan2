@@ -31,7 +31,7 @@ const ProcessStep = ({ number, title, description }: { number: number, title: st
             <span className="relative z-10">{number}</span>
             <div className="absolute inset-0 rounded-full bg-symbolic-400 opacity-0 group-hover:opacity-20 group-hover:animate-ping transition-opacity duration-300"></div>
         </div>
-        <h4 className="font-semibold text-deep-800 text-base mb-2 break-words">{title}</h4>
+        <h3 className="font-semibold text-deep-800 text-base mb-2 break-words">{title}</h3>
         <p className="text-sm text-deep-600">{description}</p>
     </motion.div>
 );
