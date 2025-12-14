@@ -2,11 +2,9 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { AnimatePresence } from 'framer-motion';
 import { portfolioProjects } from '../constants';
 import { trackEvent } from '../analytics';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
-import ProjectModal from './ProjectModal';
 import Link from 'next/link';
 
 const Portfolio: React.FC = () => {
