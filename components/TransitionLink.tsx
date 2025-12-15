@@ -6,11 +6,14 @@ import { useRouter } from 'next/navigation';
 import { useTransitionContext } from '@/context/TransitionContext';
 import React, { ReactNode } from 'react';
 
+import { CSSProperties } from 'react';
+
 interface TransitionLinkProps {
     href: string;
     children: ReactNode;
     className?: string;
     onClick?: () => void;
+    style?: CSSProperties;
 }
 
 const TransitionLink: React.FC<TransitionLinkProps> = ({ href, children, className, onClick }) => {
