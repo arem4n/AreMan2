@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import TransitionLink from './TransitionLink';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SemioticsIcon, ArchetypeIcon, BookIcon, HomeIcon } from './icons/CodexIcons';
