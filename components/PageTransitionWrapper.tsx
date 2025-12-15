@@ -17,7 +17,7 @@ export function PageTransitionWrapper({ children }: { children: React.ReactNode 
       const timer = setTimeout(() => {
         previousPathname.current = pathname;
         setIsTransitioning(false);
-      }, 700); // Animation duration
+      }, 800); // Animation duration increased to 800ms
 
       return () => clearTimeout(timer);
     }

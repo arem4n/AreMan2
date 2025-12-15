@@ -2,12 +2,16 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { portfolioProjects } from '../constants';
 import { trackEvent } from '../analytics';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
+import { EyeIcon } from './icons/EyeIcon';
+import ProjectModal from './ProjectModal';
 import Link from 'next/link';
 
 const Portfolio: React.FC = () => {
+    const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const autoplayRef = useRef<number | null>(null);
@@ -67,6 +71,32 @@ const Portfolio: React.FC = () => {
         touchEndX.current = null;
         setIsPaused(false);
     };
+
+    const handleProjectClick = (slug: string) => {
+        trackEvent('open_project_modal', { project_slug: slug });
+        setSelectedProjectSlug(slug);
+        setIsPaused(true);
+    };
+
+    const closeModal = () => {
+        setSelectedProjectSlug(null);
+        setIsPaused(false);
+    };
+
+    const navigateModalProject = (direction: 'next' | 'prev') => {
+        const currentIndex = portfolioProjects.findIndex(p => p.slug === selectedProjectSlug);
+        if (currentIndex === -1) return;
+
+        let newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
+        const total = portfolioProjects.length;
+
+        if (newIndex >= total) newIndex = 0;
+        if (newIndex < 0) newIndex = total - 1;
+
+        setSelectedProjectSlug(portfolioProjects[newIndex].slug);
+    };
+
+    const selectedProject = portfolioProjects.find(p => p.slug === selectedProjectSlug);
 
     return (
         <section id="portafolio" className="py-6 lg:py-8 bg-gradient-to-br from-deep-50 to-white overflow-hidden relative z-10">
@@ -163,7 +193,7 @@ const Portfolio: React.FC = () => {
                                     <div 
                                         className={`relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 aspect-[16/9] flex items-center justify-center cursor-pointer group ${isHeroLogo ? 'p-3' : 'p-0'}`}
                                     >
-                                        <Link href={`/logocodex/${project.slug}`} className="w-full h-full">
+                                        <Link href={`/logocodex/${project.slug}`} className="w-full h-full block">
                                             <img
                                                 src={project.mainImg}
                                                 alt={project.altText}
@@ -173,10 +203,19 @@ const Portfolio: React.FC = () => {
                                             {isActive && (
                                                 <div className="absolute inset-0 bg-gradient-to-t from-deep-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pb-10 items-center">
                                                     <span className="text-white text-xl lg:text-2xl font-display font-bold mb-2">{project.title}</span>
-                                                    <span className="px-6 py-2 bg-symbolic-600 text-white text-sm font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Ver Proyecto</span>
+                                                    <span className="px-6 py-2 bg-symbolic-600 text-white text-sm font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Ver Caso de Estudio</span>
                                                 </div>
                                             )}
                                         </Link>
+                                        {isActive && (
+                                            <button
+                                                onClick={() => handleProjectClick(project.slug)}
+                                                className="absolute top-4 right-4 z-10 bg-white/80 text-deep-800 p-3 rounded-full shadow-lg hover:scale-110 transition-all backdrop-blur-sm border border-deep-100 opacity-0 group-hover:opacity-100"
+                                                aria-label="Vista Rápida"
+                                            >
+                                                <EyeIcon />
+                                            </button>
+                                        )}
                                     </div>
                                     
                                     <div className={`mt-4 lg:mt-6 px-4 text-center transition-all duration-700 ease-out transform ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -199,6 +238,17 @@ const Portfolio: React.FC = () => {
                     Desliza o usa las flechas para girar
                 </div>
             </div>
+
+            <AnimatePresence>
+                {selectedProject && (
+                    <ProjectModal
+                        project={selectedProject}
+                        onClose={closeModal}
+                        onNext={() => navigateModalProject('next')}
+                        onPrev={() => navigateModalProject('prev')}
+                    />
+                )}
+            </AnimatePresence>
         </section>
     );
 };
