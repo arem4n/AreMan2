@@ -8,7 +8,7 @@ import { trackEvent } from '../analytics';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 import { EyeIcon } from './icons/EyeIcon';
 import ProjectModal from './ProjectModal';
-import Link from 'next/link';
+import TransitionLink from './TransitionLink';
 
 const Portfolio: React.FC = () => {
     const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
@@ -193,7 +193,7 @@ const Portfolio: React.FC = () => {
                                     <div 
                                         className={`relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 aspect-[16/9] flex items-center justify-center cursor-pointer group ${isHeroLogo ? 'p-3' : 'p-0'}`}
                                     >
-                                        <Link href={`/logocodex/${project.slug}`} className="w-full h-full block">
+                                        <TransitionLink href={`/logocodex/${project.slug}`} className="w-full h-full block">
                                             <img
                                                 src={project.mainImg}
                                                 alt={project.altText}
@@ -206,7 +206,7 @@ const Portfolio: React.FC = () => {
                                                     <span className="px-6 py-2 bg-symbolic-600 text-white text-sm font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Ver Caso de Estudio</span>
                                                 </div>
                                             )}
-                                        </Link>
+                                        </TransitionLink>
                                         {isActive && (
                                             <button
                                                 onClick={() => handleProjectClick(project.slug)}

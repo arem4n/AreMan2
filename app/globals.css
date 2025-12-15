@@ -20,7 +20,7 @@
     position: fixed;
     top: 0.75rem;
     right: 1.5rem;
-    z-index: 1000;
+    z-index: 1020;
     width: 48px;
     height: 48px;
     background: linear-gradient(135deg, #db2777 0%, #475569 100%);

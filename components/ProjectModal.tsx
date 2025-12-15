@@ -176,7 +176,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, o
                         <h3 className="text-2xl font-display font-bold mb-1 truncate">{project.title}</h3>
                         <p className="text-white/60 text-sm">{project.clientName} - {project.clientRole}</p>
                         <div className="mt-2 text-white/80 text-sm italic hidden lg:block max-w-xl">
-                           <p dangerouslySetInnerHTML={{ __html: project.testimonial.substring(0, 120) + (project.testimonial.length > 120 ? "..." : "") }}></p>
+                           <p dangerouslySetInnerHTML={{ __html: project.testimonial }}></p>
                         </div>
                     </div>
 

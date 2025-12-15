@@ -4,7 +4,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { trackEvent } from '../analytics';
-import Link from 'next/link';
+import TransitionLink from './TransitionLink';
 
 interface HeaderProps {
     isMenuOpen: boolean;
@@ -47,7 +47,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
                 className="hidden md:flex fixed top-6 left-0 right-0 z-50 justify-center pointer-events-none"
             >
                 <div className="pointer-events-auto bg-white/80 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/5 rounded-full px-2 py-2 flex items-center gap-6 transition-all duration-300 hover:bg-white/90 hover:shadow-xl">
-                    <Link
+                    <TransitionLink
                         href="#inicio" 
                         onClick={() => handleNavClick('#inicio')}
                         className="flex items-center cursor-pointer pl-4 pr-2 group"
@@ -60,29 +60,29 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
                             className="h-10 w-auto" 
                         />
                         <span className="sr-only">AREM4N</span>
-                    </Link>
+                    </TransitionLink>
 
                     <nav className="flex items-center gap-1 pr-2">
                         {navLinks.map(link => (
                             <motion.div key={link.href} whileHover={{ y: -2 }}>
-                                <Link
+                                <TransitionLink
                                     href={link.href}
                                     onClick={() => handleNavClick(link.href)}
                                     className="relative block px-4 py-2 rounded-full text-sm font-medium text-deep-600 transition-colors hover:text-deep-900 group"
                                 >
                                     <span className="relative z-10">{link.label}</span>
                                     <span className="absolute inset-0 bg-deep-100/50 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 ease-out origin-center -z-0"></span>
-                                </Link>
+                                </TransitionLink>
                             </motion.div>
                         ))}
                         
-                        <Link
+                        <TransitionLink
                             href="#contacto"
                             onClick={() => handleNavClick('#contacto')}
                             className="ml-2 px-5 py-2 rounded-full bg-symbolic-600 text-white text-sm font-bold shadow-md hover:bg-symbolic-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                         >
                             Auditar
-                        </Link>
+                        </TransitionLink>
                     </nav>
                 </div>
             </motion.header>

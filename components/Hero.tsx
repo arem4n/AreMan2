@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { whiteLogoUrl } from '../constants';
-import Link from 'next/link';
+import TransitionLink from './TransitionLink';
 
 interface HeroProps {
     onPackageSelect: (packageName: string) => void;
@@ -47,12 +47,12 @@ const Hero: React.FC<HeroProps> = ({ onPackageSelect }) => {
                     >
                         Solicitar Auditoría de Identidad
                     </a>
-                    <Link
+                    <TransitionLink
                         href="/logocodex"
                         className="inline-block bg-transparent hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 border border-white/30 hover:border-white"
                     >
                         Descubrir LogoCodex™
-                    </Link>
+                    </TransitionLink>
                 </div>
             </div>
         </section>

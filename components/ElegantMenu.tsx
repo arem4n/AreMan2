@@ -91,10 +91,10 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu }) => {
             aria-modal="true"
             aria-labelledby="menu-title"
         >
-            <div className="text-center max-w-[600px] mx-auto px-8 mt-12">
-                <h2 id="menu-title" className={`menu-title text-gradient text-4xl md:text-5xl font-display font-bold mb-12 transition-all duration-600 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}>Navegación</h2>
+            <div className="text-center max-w-[600px] mx-auto px-6 mt-8">
+                <h2 id="menu-title" className={`menu-title text-gradient text-3xl font-display font-bold mb-8 transition-all duration-600 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}>Navegación</h2>
                 <nav>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                    <ul className="grid grid-cols-2 gap-3">
                         {navLinks.map((link, index) => (
                              <li key={link.href} 
                                  className={`transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'}`}
@@ -103,7 +103,7 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu }) => {
                                 <Link
                                     href={link.href} 
                                     onClick={() => handleLinkClick(link.href)}
-                                    className="block p-4 text-white text-lg font-medium rounded-xl bg-white/10 border border-white/20 backdrop-blur-lg relative overflow-hidden transition-all duration-300 ease-in-out hover:bg-symbolic-600/50 hover:border-symbolic-500 hover:-translate-y-0.5"
+                                    className="block py-3 px-2 text-white text-base font-medium rounded-lg bg-white/10 border border-white/20 backdrop-blur-lg transition-all duration-300 hover:bg-symbolic-600/50"
                                 >
                                     {link.label}
                                 </Link>
@@ -112,7 +112,7 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu }) => {
                     </ul>
                 </nav>
                 <div 
-                    className={`mt-12 pt-8 border-t border-white/20 transition-all duration-600 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'}`}
+                    className={`mt-8 pt-6 border-t border-white/20 transition-all duration-600 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'}`}
                     style={{ transitionDelay: `${isOpen ? 600 : 0}ms` }}
                 >
                     <p className="text-white/80 text-sm mb-2">¿Listo para transformar tu identidad visual?</p>

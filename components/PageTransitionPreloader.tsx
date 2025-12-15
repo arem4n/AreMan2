@@ -2,12 +2,15 @@
 'use client';
 
 import React from 'react';
+import { useTransitionContext } from '@/context/TransitionContext';
 
-export const PageTransitionPreloader: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
+export const PageTransitionPreloader: React.FC = () => {
+    const { isTransitioning } = useTransitionContext();
+
     return (
         <div
             id="preloader"
-            className={`preloader-transition ${isVisible ? 'visible' : 'hidden'}`}
+            className={`preloader-transition ${isTransitioning ? 'visible' : 'hidden'}`}
         >
             <div className="preloader-container">
                 <div className="preloader-spinner"></div>

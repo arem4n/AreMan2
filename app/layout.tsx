@@ -1,7 +1,7 @@
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { PageTransitionWrapper } from '@/components/PageTransitionWrapper';
+import ClientWrapper from '@/components/ClientWrapper';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -68,16 +68,14 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://i.postimg.cc" />
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
-        <PageTransitionWrapper>
-          {children}
-        </PageTransitionWrapper>
+        <ClientWrapper>{children}</ClientWrapper>
         <script type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "name": "AREM4N",
-              "description": "Diseño de identidad visual estratégica con metodología LogoCodex™",
+              "description": "Diseño de identidad visual estratégica con metodología LogoCodeX™",
               "url": "https://areman.vercel.app",
               "logo": "https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png",
               "image": "https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png",

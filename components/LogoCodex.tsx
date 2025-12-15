@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import TransitionLink from './TransitionLink';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SemioticsIcon, ArchetypeIcon, BookIcon, HomeIcon } from './icons/CodexIcons';
 import { portfolioProjects } from '../constants';
@@ -42,7 +42,7 @@ const LogoCodex: React.FC = () => {
     
     return (
         <div className="bg-deep-50 min-h-screen font-body relative">
-             <Link
+             <TransitionLink
                 href="/"
                 className="fixed bottom-6 left-6 z-[99] flex items-center justify-center bg-gradient-to-r from-symbolic-600 to-deep-700 text-white font-semibold py-3 px-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out animate-fade-in-up"
                 style={{ animationDelay: '200ms' }}
@@ -50,7 +50,7 @@ const LogoCodex: React.FC = () => {
             >
                 <HomeIcon className="w-5 h-5" />
                 <span className="hidden sm:inline ml-2">Volver a Inicio</span>
-            </Link>
+            </TransitionLink>
 
             <main>
                 <header id="inicio" className="text-center pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-deep-800 to-deep-900 text-white relative overflow-hidden">
