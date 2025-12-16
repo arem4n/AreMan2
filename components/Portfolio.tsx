@@ -6,7 +6,6 @@ import { AnimatePresence } from 'framer-motion';
 import { portfolioProjects } from '../constants';
 import { trackEvent } from '../analytics';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
-import { EyeIcon } from './icons/EyeIcon';
 import ProjectModal from './ProjectModal';
 import TransitionLink from './TransitionLink';
 
@@ -191,30 +190,25 @@ const Portfolio: React.FC = () => {
                                     }}
                                 >
                                     <div 
+                                        onClick={() => isActive && handleProjectClick(project.slug)}
                                         className={`relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 aspect-[16/9] flex items-center justify-center cursor-pointer group ${isHeroLogo ? 'p-3' : 'p-0'}`}
                                     >
-                                        <TransitionLink href={`/logocodex/${project.slug}`} className="w-full h-full block">
-                                            <img
-                                                src={project.mainImg}
-                                                alt={project.altText}
-                                                loading="lazy"
-                                                className={`w-full h-full transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${isHeroLogo ? 'object-contain' : 'object-cover'}`}
-                                            />
-                                            {isActive && (
-                                                <div className="absolute inset-0 bg-gradient-to-t from-deep-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pb-10 items-center">
-                                                    <span className="text-white text-xl lg:text-2xl font-display font-bold mb-2">{project.title}</span>
-                                                    <span className="px-6 py-2 bg-symbolic-600 text-white text-sm font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Ver Caso de Estudio</span>
-                                                </div>
-                                            )}
-                                        </TransitionLink>
+                                        <img
+                                            src={project.mainImg}
+                                            alt={project.altText}
+                                            loading="lazy"
+                                            className={`w-full h-full transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${isHeroLogo ? 'object-contain' : 'object-cover'}`}
+                                        />
                                         {isActive && (
-                                            <button
-                                                onClick={() => handleProjectClick(project.slug)}
-                                                className="absolute top-4 right-4 z-10 bg-white/80 text-deep-800 p-3 rounded-full shadow-lg hover:scale-110 transition-all backdrop-blur-sm border border-deep-100 opacity-0 group-hover:opacity-100"
-                                                aria-label="Vista Rápida"
-                                            >
-                                                <EyeIcon />
-                                            </button>
+                                            <div className="absolute inset-0 bg-gradient-to-t from-deep-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pb-10 items-center">
+                                                <span className="text-white text-xl lg:text-2xl font-display font-bold mb-2">{project.title}</span>
+                                                <TransitionLink
+                                                    href={`/logocodex/${project.slug}`}
+                                                    className="px-6 py-2 bg-symbolic-600 text-white text-sm font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 relative z-10"
+                                                >
+                                                    Ver Caso de Estudio
+                                                </TransitionLink>
+                                            </div>
                                         )}
                                     </div>
                                     
