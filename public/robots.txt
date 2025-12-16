@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Bloquear archivos sensibles
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap
 Sitemap: https://areman.vercel.app/sitemap.xml
