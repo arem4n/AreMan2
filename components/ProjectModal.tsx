@@ -6,6 +6,7 @@ import { trackEvent } from '../analytics';
 import { CloseIcon, ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 import type { PortfolioProject } from '../types';
 import { useRouter } from 'next/navigation';
+import { useTransitionContext } from '@/context/TransitionContext';
 
 interface ProjectModalProps {
     project: PortfolioProject;
@@ -17,6 +18,7 @@ interface ProjectModalProps {
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, onPrev, onRequestProject }) => {
     const router = useRouter();
+    const { handleTransition } = useTransitionContext();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const touchStart = useRef<number | null>(null);
@@ -32,13 +34,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, o
         setCurrentImageIndex(0);
     }, [project]);
 
-    const handleAnalysisClick = (e: React.MouseEvent) => {
-        e.preventDefault();
+    const handleAnalysisClick = () => {
+        const href = `/logocodex/${project.slug}`;
         trackEvent('view_case_study', { project_slug: project.slug, from: 'portfolio_modal' });
+
+        handleTransition(href);
+
+        // Close the modal and then navigate after a delay
         onClose();
         setTimeout(() => {
-            router.push(`/logocodex/${project.slug}`);
-        }, 300);
+            router.push(href);
+        }, 500); // Delay should match TransitionLink
     };
 
     const handleRequestClick = () => {
@@ -197,13 +203,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, o
                             >
                                 Quiero algo así
                             </button>
-                            <a
-                                href={`/logocodex/${project.slug}`}
+                            <button
                                 onClick={handleAnalysisClick}
                                 className="flex-1 lg:flex-none text-center px-5 py-2.5 rounded-full bg-symbolic-600 hover:bg-symbolic-700 text-white font-bold text-sm transition shadow-lg shadow-symbolic-600/30 whitespace-nowrap"
                             >
                                 Ver Caso de Estudio
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>

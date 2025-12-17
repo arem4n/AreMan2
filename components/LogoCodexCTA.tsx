@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { trackEvent } from '../analytics';
-import Link from 'next/link';
+import TransitionLink from './TransitionLink';
 
 const LogoCodexCTA: React.FC = () => {
     return (
@@ -13,7 +13,7 @@ const LogoCodexCTA: React.FC = () => {
                 <p className="text-lg text-deep-200 leading-relaxed mb-8 max-w-2xl mx-auto">
                     La diferencia entre un "diseño bonito" y una marca inolvidable es el sistema que la construye. <strong>LogoCodex™</strong> no es solo teoría; es el protocolo que garantiza que tu marca no se pierda en el ruido digital.
                 </p>
-                <Link
+                <TransitionLink
                     href="/logocodex"
                     onClick={() => {
                         trackEvent('navigate_to_logocodex', { from: 'cta_section' });
@@ -21,7 +21,7 @@ const LogoCodexCTA: React.FC = () => {
                     className="inline-block bg-creative-500 hover:bg-creative-600 text-deep-900 font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
                 >
                     Conocer la Metodología LogoCodex™
-                </Link>
+                </TransitionLink>
             </div>
         </section>
     );

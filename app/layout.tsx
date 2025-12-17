@@ -40,6 +40,12 @@ export const metadata: Metadata = {
     description: 'LogoCodex™: Símbolos vivos para startups. Semiótica + Arquetipos + Narrativa. Puerto Montt, Chile.',
     images: ['https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png'],
   },
+  icons: [
+    { rel: 'icon', type: 'image/png', sizes: '32x32', url: '/favicon-32x32.png' },
+    { rel: 'icon', type: 'image/png', sizes: '16x16', url: '/favicon-16x16.png' },
+    { rel: 'apple-touch-icon', sizes: '180x180', url: '/apple-touch-icon.png' },
+  ],
+  manifest: '/site.webmanifest',
   other: {
     'geo.region': 'CL-LL',
     'geo.placename': 'Puerto Montt',
@@ -58,10 +64,6 @@ export default function RootLayout({
     <html lang="es-CL">
       <head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
         <link rel="preconnect" href="https://i.postimg.cc" />
         <link rel="dns-prefetch" href="https://i.postimg.cc" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

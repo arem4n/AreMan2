@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { TransitionProvider } from '@/context/TransitionContext';
 import { usePathname } from 'next/navigation';
 import PageTransitionPreloader from './PageTransitionPreloader';
+import InitialPreloader from './InitialPreloader';
 
 import Script from 'next/script';
 
@@ -16,6 +17,7 @@ export default function ClientWrapper({ children }: { children: ReactNode }) {
 
     return (
         <TransitionProvider>
+            <InitialPreloader />
             <PageTransitionPreloader />
             {children}
             <Script id="schema-professional-service" type="application/ld+json">
