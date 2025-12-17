@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { portfolioProjects } from '../../../constants';
+import { CaseStudyNav } from '../../../components/casestudies/CaseStudyNav';
 
 // Lazy load Case Studies to improve initial load performance (Code Splitting)
 const Arem4nCaseStudy = React.lazy(() => import('../../../components/casestudies/Arem4nCaseStudy'));
@@ -89,32 +90,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
 
   return (
     <div className="bg-deep-50 min-h-screen font-body pb-20 md:pb-0">
-         <Link
-            href="/logocodex"
-            className="hidden md:flex fixed bottom-6 right-6 z-[1020] items-center justify-center bg-gradient-to-r from-symbolic-600 to-deep-700 text-white font-semibold py-3 px-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out animate-fade-in-up"
-            style={{ animationDelay: '900ms' }}
-            aria-label="Volver a LogoCodex"
-        >
-            <BackArrowIcon className="w-5 h-5" />
-            <span className="ml-2">Volver a LogoCodex</span>
-        </Link>
-
-        <div className="md:hidden fixed bottom-0 left-0 w-full z-[1020] bg-white/95 backdrop-blur-md border-t border-deep-200 p-4 shadow-2xl flex justify-between items-center animate-fade-in-up">
-            <Link
-                href="/logocodex"
-                className="text-deep-600 hover:text-deep-800 p-2"
-                aria-label="Volver"
-            >
-                <BackArrowIcon className="w-6 h-6" />
-            </Link>
-            <Link
-                href="/#contacto"
-                className="bg-symbolic-600 text-white font-bold text-sm py-2.5 px-6 rounded-full shadow-lg active:scale-95 transition-transform"
-            >
-                Quiero un resultado así
-            </Link>
-        </div>
-
+        <CaseStudyNav />
         <main className="max-w-4xl mx-auto px-4 py-16 lg:py-24">
             {renderCaseStudy(slug)}
              <section className="text-center bg-gradient-to-r from-symbolic-600 to-deep-700 text-white p-10 rounded-2xl shadow-xl animate-fade-in-up mt-16" style={{ animationDelay: '400ms' }}>

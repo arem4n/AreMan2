@@ -175,6 +175,18 @@ html.modal-open {
     align-items: center;
     justify-content: center;
 }
+
+@media (min-width: 768px) {
+    .preloader-container {
+        width: 340px;
+        height: 340px;
+    }
+    #preloader .preloader-logo {
+        width: 220px;
+        height: 220px;
+    }
+}
+
 .preloader-spinner {
     position: absolute;
     width: 100%;
