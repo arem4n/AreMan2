@@ -1,51 +1,27 @@
 
 'use client';
 
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useTransitionContext } from '@/context/TransitionContext';
-import React, { ReactNode } from 'react';
+import Link from 'next/link';
+import { useTransitionContext } from '../context/TransitionContext';
+import React, { MouseEvent, ComponentProps } from 'react';
 
-import { CSSProperties } from 'react';
+type TransitionLinkProps = ComponentProps<typeof Link>;
 
-interface TransitionLinkProps {
-    href: string;
-    children: ReactNode;
-    className?: string;
-    onClick?: () => void;
-    style?: CSSProperties;
-}
-
-const TransitionLink: React.FC<TransitionLinkProps> = ({ href, children, className, onClick }) => {
+const TransitionLink: React.FC<TransitionLinkProps> = ({ children, href, ...props }) => {
     const router = useRouter();
     const { handleTransition } = useTransitionContext();
 
-    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        if (href.startsWith('#')) {
-            // This is an anchor link, let default behavior handle it for smooth scrolling.
-            if (onClick) onClick();
-            return;
-        }
-
-        if (onClick) {
-            onClick();
-        }
-
-        // Don't intercept ctrl/cmd+click or right-click
-        if (e.ctrlKey || e.metaKey || e.button === 1) {
-            return;
-        }
-
+    const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
-        handleTransition(href);
-
+        handleTransition(href.toString());
         setTimeout(() => {
-            router.push(href);
-        }, 400); // Half the preloader duration
+            router.push(href.toString());
+        }, 800);
     };
 
     return (
-        <Link href={href} onClick={handleClick} className={className}>
+        <Link href={href} {...props} onClick={handleClick}>
             {children}
         </Link>
     );

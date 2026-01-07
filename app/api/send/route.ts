@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { email, message, name } = body;
     const data = await resend.emails.send({
-      from: 'AreMan <onboarding@resend.dev>',
+      from: 'AreMan <noreply@arem4n.com>',
       to: ['Sergio.areman@gmail.com'],
       subject: `Nuevo contacto de: ${name}`,
       html: `
@@ -20,6 +20,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(data);
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ error }, { status: 500 });
   }
 }
