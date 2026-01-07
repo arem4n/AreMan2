@@ -105,7 +105,7 @@ const Portfolio: React.FC = () => {
                 </h2>
                 
                 <div 
-                    className="relative h-[650px] md:h-[700px] w-full perspective-1000 overflow-visible"
+                    className="relative h-auto min-h-[700px] w-full perspective-1000 overflow-visible"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                     onTouchStart={handleTouchStart}
@@ -180,7 +180,7 @@ const Portfolio: React.FC = () => {
                             return (
                                 <div 
                                     key={project.slug}
-                                    className="carousel-card-wrapper absolute top-1/2 left-1/2 w-[85vw] md:w-[60vw] max-w-[900px] transition-all duration-700 ease-out"
+                                    className="carousel-card-wrapper absolute top-1/2 left-1/2 w-[85vw] md:w-[60vw] max-w-full transition-all duration-700 ease-out"
                                     style={{ 
                                         transform, 
                                         zIndex, 

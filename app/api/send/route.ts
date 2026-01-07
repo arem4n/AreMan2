@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await request.json();
     const { email, message, name } = body;
-
+    console.log('Received contact form submission:', { name, email });
     const data = await resend.emails.send({
       from: 'AreMan <onboarding@resend.dev>',
       to: ['Sergio.areman@gmail.com'],

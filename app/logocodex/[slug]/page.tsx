@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import Link from 'next/link';
+import TransitionLink from '../../../components/TransitionLink';
 import type { Metadata } from 'next';
 import { portfolioProjects } from '../../../constants';
 import { CaseStudyNav } from '../../../components/casestudies/CaseStudyNav';
@@ -98,12 +98,12 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
                 <p className="text-lg text-symbolic-100 max-w-3xl mx-auto leading-relaxed">
                     Si esta forma de abordar el branding resuena contigo, conversemos sobre cómo podemos aplicar la metodología LogoCodex™ para construir el alma de tu marca y evitar la irrelevancia.
                 </p>
-                 <Link
+                 <TransitionLink
                     href="/#contacto"
                     className="mt-8 inline-block bg-creative-500 hover:bg-creative-600 text-deep-900 font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
                 >
                     Inicia tu Proyecto Simbólico
-                </Link>
+                </TransitionLink>
             </section>
         </main>
     </div>

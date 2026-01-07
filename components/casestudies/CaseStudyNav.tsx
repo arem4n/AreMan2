@@ -3,7 +3,6 @@
 
 import React from 'react';
 import TransitionLink from '../TransitionLink';
-import Link from 'next/link';
 import { BackArrowIcon } from '../icons/CodexIcons';
 
 export const CaseStudyNav: React.FC = () => {
@@ -27,12 +26,12 @@ export const CaseStudyNav: React.FC = () => {
                 >
                     <BackArrowIcon className="w-6 h-6" />
                 </TransitionLink>
-                <Link
+                <TransitionLink
                     href="/#contacto"
                     className="bg-symbolic-600 text-white font-bold text-sm py-2.5 px-6 rounded-full shadow-lg active:scale-95 transition-transform"
                 >
                     Quiero un resultado así
-                </Link>
+                </TransitionLink>
             </div>
         </>
     );
