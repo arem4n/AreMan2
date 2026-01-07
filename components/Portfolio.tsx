@@ -191,33 +191,22 @@ const Portfolio: React.FC = () => {
                                 >
                                     <div 
                                         onClick={() => isActive && handleProjectClick(project.slug)}
-                                        className={`relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 aspect-[16/9] flex items-center justify-center cursor-pointer group ${isHeroLogo ? 'p-3' : 'p-0'}`}
+                                        className="relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 cursor-pointer group flex flex-col"
                                     >
-                                        <img
-                                            src={project.mainImg}
-                                            alt={project.altText}
-                                            loading="lazy"
-                                            className={`w-full h-full transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${isHeroLogo ? 'object-contain' : 'object-cover'}`}
-                                        />
-                                        {isActive && (
-                                            <div className="absolute inset-0 bg-gradient-to-t from-deep-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pb-10 items-center">
-                                                <span className="text-white text-xl lg:text-2xl font-display font-bold mb-2">{project.title}</span>
-                                                <TransitionLink
-                                                    href={`/logocodex/${project.slug}`}
-                                                    className="px-6 py-2 bg-symbolic-600 text-white text-sm font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 relative z-10"
-                                                >
-                                                    Ver Caso de Estudio
-                                                </TransitionLink>
-                                            </div>
-                                        )}
-                                    </div>
-                                    
-                                    <div className={`mt-4 lg:mt-6 px-4 text-center transition-all duration-700 ease-out transform ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                                        <h3 className="text-2xl lg:text-3xl font-display font-bold text-deep-800 mb-2">{project.title}</h3>
-                                        <p className="text-creative-600 font-semibold tracking-widest uppercase text-xs lg:text-sm mb-3">{project.clientRole}</p>
+                                        <div className={`relative w-full aspect-[16/9] flex items-center justify-center overflow-hidden ${isHeroLogo ? 'p-3' : 'p-0'}`}>
+                                            <img
+                                                src={project.mainImg}
+                                                alt={project.altText}
+                                                loading="lazy"
+                                                className={`absolute w-full h-full transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${isHeroLogo ? 'object-contain' : 'object-cover'}`}
+                                            />
+                                        </div>
                                         
-                                        <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-deep-100/50 shadow-sm">
-                                            <p className="text-deep-600 italic max-w-2xl mx-auto text-base lg:text-lg leading-relaxed">
+                                        <div className={`p-4 text-center transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+                                            <h3 className="text-xl font-display font-bold text-deep-800 mb-1 truncate">{project.title}</h3>
+                                            <p className="text-creative-600 font-semibold tracking-widest uppercase text-xs mb-2">{project.clientRole}</p>
+
+                                            <p className="text-deep-600 italic text-sm leading-relaxed line-clamp-3">
                                                 "{project.testimonial}"
                                             </p>
                                         </div>
