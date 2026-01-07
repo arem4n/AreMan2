@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { whiteLogoUrl } from '../constants';
-import TransitionLink from './TransitionLink';
+import Link from 'next/link';
 
 interface HeroProps {
     onPackageSelect: (packageName: string) => void;
@@ -40,19 +40,19 @@ const Hero: React.FC<HeroProps> = ({ onPackageSelect }) => {
                     </p>
                 </div>
                 <div className="flex flex-col md:flex-row gap-4 justify-center">
-                    <a 
+                    <Link
                         href="#contacto" 
                         onClick={handleContactClick}
                         className="inline-block bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 border border-symbolic-400"
                     >
                         Solicitar Auditoría de Identidad
-                    </a>
-                    <TransitionLink
+                    </Link>
+                    <Link
                         href="/logocodex"
                         className="inline-block bg-transparent hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 border border-white/30 hover:border-white"
                     >
                         Descubrir LogoCodex™
-                    </TransitionLink>
+                    </Link>
                 </div>
             </div>
         </section>

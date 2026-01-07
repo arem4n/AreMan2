@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { trackEvent } from '../analytics';
-import TransitionLink from './TransitionLink';
+import Link from 'next/link';
 
 interface ElegantMenuProps {
     isOpen: boolean;
@@ -98,13 +98,13 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu }) => {
                                  className={`transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'}`}
                                  style={{ transitionDelay: `${isOpen ? index * 50 + 100 : 0}ms` }}
                              >
-                                <TransitionLink
+                                <Link
                                     href={link.href} 
                                     onClick={() => handleLinkClick(link.href)}
                                     className="block py-3 px-2 text-white text-base font-medium rounded-lg bg-white/10 border border-white/20 backdrop-blur-lg transition-all duration-300 hover:bg-symbolic-600/50"
                                 >
                                     {link.label}
-                                </TransitionLink>
+                                </Link>
                             </li>
                         ))}
                     </ul>

@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import TransitionLink from './TransitionLink';
+import SmartLink from './SmartLink';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SemioticsIcon, ArchetypeIcon, BookIcon, HomeIcon } from './icons/CodexIcons';
 import { portfolioProjects } from '../constants';
@@ -43,7 +42,7 @@ const LogoCodex: React.FC = () => {
     
     return (
         <div className="bg-deep-50 min-h-screen font-body relative">
-             <TransitionLink
+             <SmartLink
                 href="/"
                 className="fixed bottom-6 left-6 z-[99] flex items-center justify-center bg-gradient-to-r from-symbolic-600 to-deep-700 text-white font-semibold py-3 px-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out animate-fade-in-up"
                 style={{ animationDelay: '200ms' }}
@@ -51,7 +50,7 @@ const LogoCodex: React.FC = () => {
             >
                 <HomeIcon className="w-5 h-5" />
                 <span className="hidden sm:inline ml-2">Volver a Inicio</span>
-            </TransitionLink>
+            </SmartLink>
 
             <main>
                 <header id="inicio" className="text-center pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-deep-800 to-deep-900 text-white relative overflow-hidden">
@@ -230,7 +229,7 @@ const LogoCodex: React.FC = () => {
                         
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {portfolioProjects.map(project => (
-                                <Link
+                                <SmartLink
                                     key={project.slug}
                                     href={`/logocodex/${project.slug}`}
                                     className="block p-4 bg-white rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
@@ -244,7 +243,7 @@ const LogoCodex: React.FC = () => {
                                     </div>
                                     <h3 className="font-bold text-deep-800 truncate">{project.title}</h3>
                                     <p className="text-sm text-deep-600">{project.clientRole}</p>
-                                </Link>
+                                </SmartLink>
                             ))}
                         </div>
                     </div>
@@ -258,7 +257,7 @@ const LogoCodex: React.FC = () => {
                         <p className="text-lg text-deep-700 leading-relaxed mb-8 max-w-2xl mx-auto">
                             El Manual LogoCodeX™ es la herramienta práctica para evitar la irrelevancia. Juntos, podemos desvelar tu historia única y traducirla en un símbolo que nadie más podría reclamar.
                         </p>
-                        <Link
+                        <TransitionLink
                             href="/#contacto"
                             onClick={() => {
                                 trackEvent('navigate_to_contact', { from: 'logocodex_cta' });
@@ -266,7 +265,7 @@ const LogoCodex: React.FC = () => {
                             className="inline-block bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
                         >
                             Solicitar Auditoría de Identidad
-                        </Link>
+                        </TransitionLink>
                     </div>
                 </section>
             </main>

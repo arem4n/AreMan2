@@ -7,7 +7,7 @@ import { portfolioProjects } from '../constants';
 import { trackEvent } from '../analytics';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 import ProjectModal from './ProjectModal';
-import TransitionLink from './TransitionLink';
+import { SmartLink } from './SmartLink';
 
 const Portfolio: React.FC = () => {
     const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
@@ -202,12 +202,12 @@ const Portfolio: React.FC = () => {
                                         {isActive && (
                                             <div className="absolute inset-0 bg-gradient-to-t from-deep-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pb-10 items-center">
                                                 <span className="text-white text-xl lg:text-2xl font-display font-bold mb-2">{project.title}</span>
-                                                <TransitionLink
+                                                <SmartLink
                                                     href={`/logocodex/${project.slug}`}
                                                     className="px-6 py-2 bg-symbolic-600 text-white text-sm font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 relative z-10"
                                                 >
                                                     Ver Caso de Estudio
-                                                </TransitionLink>
+                                                </SmartLink>
                                             </div>
                                         )}
                                     </div>

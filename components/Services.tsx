@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { trackEvent } from '../analytics';
+import { SmartLink } from './SmartLink';
 
 interface ServiceCardProps {
     title: string;
@@ -37,7 +38,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, price, description, re
             <div className={`text-3xl font-bold ${gradientText ? 'text-gradient' : recommended ? 'text-creative-300' : 'text-symbolic-600'}`}>{price}</div>
             <div className={`text-sm ${recommended ? 'text-symbolic-200' : 'text-deep-500'}`}>Inversión estimada</div>
         </div>
-        <a 
+        <SmartLink
             href="#contacto" 
             onClick={(e) => {
                 e.preventDefault();
@@ -47,7 +48,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, price, description, re
             className={`mt-6 self-center w-max inline-block text-center font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${recommended ? 'bg-creative-500 hover:bg-creative-600 text-deep-900' : 'bg-symbolic-600 hover:bg-symbolic-700 text-white'}`}
         >
             Auditar con este Pack
-        </a>
+        </SmartLink>
     </div>
 );
 
