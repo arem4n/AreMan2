@@ -98,7 +98,7 @@ const Portfolio: React.FC = () => {
     const selectedProject = portfolioProjects.find(p => p.slug === selectedProjectSlug);
 
     return (
-        <section id="portafolio" className="py-6 lg:py-8 bg-gradient-to-br from-deep-50 to-white overflow-hidden relative z-10">
+        <section id="portafolio" className="pt-16 lg:pt-24 pb-6 lg:pb-8 bg-gradient-to-br from-deep-50 to-white overflow-hidden relative z-10">
             <div className="max-w-[1920px] mx-auto px-4 lg:px-12">
                 <h2 className="text-3xl lg:text-5xl font-display font-bold text-center mb-4 lg:mb-6 text-deep-800">
                     Portafolio
@@ -114,14 +114,14 @@ const Portfolio: React.FC = () => {
                 >
                     <button 
                         onClick={() => navigate('prev')} 
-                        className="absolute left-4 lg:left-10 top-[40%] -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl hover:scale-110 transition-all backdrop-blur-sm border border-deep-100"
+                        className="absolute left-4 lg:left-10 top-1/2 -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl hover:scale-110 transition-all backdrop-blur-sm border border-deep-100"
                         aria-label="Anterior"
                     >
                         <ChevronLeftIcon />
                     </button>
                     <button 
                         onClick={() => navigate('next')} 
-                        className="absolute right-4 lg:right-10 top-[40%] -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl hover:scale-110 transition-all backdrop-blur-sm border border-deep-100"
+                        className="absolute right-4 lg:right-10 top-1/2 -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl hover:scale-110 transition-all backdrop-blur-sm border border-deep-100"
                         aria-label="Siguiente"
                     >
                         <ChevronRightIcon />
