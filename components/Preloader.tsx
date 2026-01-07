@@ -1,31 +1,19 @@
+import React from 'react';
 
-'use client';
+interface PreloaderProps {
+    isHiding: boolean;
+}
 
-import React, { useState, useEffect } from 'react';
-import { useTransitionContext } from '@/context/TransitionContext';
-
-const Preloader: React.FC = () => {
-    const { isTransitioning } = useTransitionContext();
-    const [isInitialLoading, setIsInitialLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsInitialLoading(false);
-        }, 1200); // Duration of the initial preloader
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    const isVisible = isInitialLoading || isTransitioning;
-
+const Preloader: React.FC<PreloaderProps> = ({ isHiding }) => {
     return (
-        <div
-            id="preloader"
-            className={`preloader-transition ${isVisible ? 'visible' : 'hidden'}`}
-        >
+        <div id="preloader" className={isHiding ? 'preloader-hiding' : ''}>
             <div className="preloader-container">
                 <div className="preloader-spinner"></div>
-                <div className="preloader-logo"></div>
+                <div
+                    className="preloader-logo"
+                    role="img"
+                    aria-label="Logotipo de AREM4N"
+                ></div>
             </div>
         </div>
     );

@@ -1,7 +1,31 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { trackEvent } from '../analytics';
 
 const Newsletter: React.FC = () => {
+    const [email, setEmail] = useState('');
+    const [formState, setFormState] = useState({ submitting: false, success: false, error: '' });
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+            setFormState({ submitting: false, success: false, error: 'Por favor, ingresa un email válido.' });
+            return;
+        }
+        setFormState({ submitting: true, success: false, error: '' });
+
+        trackEvent('submit_newsletter_form', { offer: 'Creatividad Expandida Book' });
+
+        // SIMULACIÓN: Reemplazar con un servicio real como Mailchimp
+        console.log('Suscribiendo email:', email);
+        setTimeout(() => {
+            setFormState({ submitting: false, success: true, error: '' });
+            setEmail('');
+            // Ocultar mensaje de éxito después de 5 segundos
+            setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
+        }, 2000);
+    };
+
     return (
         <section className="py-16 bg-deep-900 text-white text-center relative overflow-hidden">
             {/* Background element for texture */}
@@ -19,26 +43,25 @@ const Newsletter: React.FC = () => {
                     <br/><br/>
                     Descarga <em>"Creatividad Expandida"</em>: No es una guía de prompts. Es un mapa de tus propias grietas para crear con IA sin perder tu alma.
                 </p>
-
-                <div className="text-center max-w-lg mx-auto p-4 mb-4 bg-creative-900/20 border border-creative-400/30 rounded-lg">
-                    <p className="font-bold text-creative-400 animate-pulse">Próximamente...</p>
-                    <p className="text-sm text-deep-300">El newsletter todavía no está en funcionamiento, ¡pero estará disponible muy pronto!</p>
-                </div>
-
-                <div className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-lg mx-auto opacity-50">
+                <form onSubmit={handleSubmit} noValidate className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-lg mx-auto">
                     <label htmlFor="newsletter-email" className="sr-only">Tu Email</label>
                     <input 
                         type="email" 
                         id="newsletter-email" 
                         placeholder="tu@email.com" 
-                        className="w-full md:w-2/3 px-4 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none backdrop-blur-sm cursor-not-allowed"
-                        disabled
+                        className="w-full md:w-2/3 px-4 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-creative-400 backdrop-blur-sm transition-all"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
-                    <button type="submit" disabled className="w-full md:w-auto whitespace-nowrap bg-deep-700 text-deep-400 font-bold py-4 px-8 rounded-full cursor-not-allowed">
-                        Obtener el Libro
+                    <button type="submit" disabled={formState.submitting} className="w-full md:w-auto whitespace-nowrap bg-creative-500 hover:bg-creative-600 text-deep-900 font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-creative-500/20 disabled:bg-deep-700 disabled:opacity-75 disabled:cursor-not-allowed">
+                        {formState.submitting ? 'Enviando...' : 'Obtener el Libro'}
                     </button>
+                </form>
+                <div className="h-6 mt-4">
+                    {formState.success && <p className="text-sm text-creative-300 font-medium">¡Enviado! Revisa tu bandeja de entrada (o spam).</p>}
+                    {formState.error && <p className="text-sm text-symbolic-400">{formState.error}</p>}
                 </div>
-                <div className="h-6 mt-4" />
                 <p className="text-xs text-deep-500 mt-8 font-mono">
                     * Al suscribirte, aceptas recibir correos sobre soberanía creativa. Cero spam.
                 </p>

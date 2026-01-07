@@ -3,14 +3,22 @@
 
 import { ReactNode } from 'react';
 import { TransitionProvider } from '@/context/TransitionContext';
-import Preloader from './Preloader'; // Import the new unified preloader
+import { usePathname } from 'next/navigation';
+import PageTransitionPreloader from './PageTransitionPreloader';
+import InitialPreloader from './InitialPreloader';
 
 import Script from 'next/script';
 
 export default function ClientWrapper({ children }: { children: ReactNode }) {
+    const pathname = usePathname(); // Using a client hook makes this a client component
+
+    // The actual state logic for the preloader is now inside TransitionProvider,
+    // but we can add any other client-side logic here if needed.
+
     return (
         <TransitionProvider>
-            <Preloader /> {/* Use the single Preloader component */}
+            <InitialPreloader />
+            <PageTransitionPreloader />
             {children}
             <Script id="schema-professional-service" type="application/ld+json">
                 {`

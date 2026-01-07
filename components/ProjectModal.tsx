@@ -170,7 +170,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, o
 
                 <button
                     onClick={nextImage}
-                    className="absolute right-2 md:right-6 z-40 p-4 rounded-full bg-black/40 hover:bg-black/60 text-white transition hidden md:block hover:scale-110"
+                    className="absolute right-2 md:right-6 z-40 p-4 rounded-full bg-black/40 hover:bg-black/60 text-white transition hidden md:.block hover:scale-110"
                 >
                     <ChevronRightIcon className="w-10 h-10" />
                 </button>
@@ -181,7 +181,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, o
                     <div className="flex-1 min-w-0">
                         <h3 className="text-2xl font-display font-bold mb-1 truncate">{project.title}</h3>
                         <p className="text-white/60 text-sm">{project.clientName} - {project.clientRole}</p>
-                        <div className="mt-2 text-white/80 text-sm italic block max-w-xl">
+                        <div className="mt-2 text-white/80 text-sm italic hidden lg:block max-w-xl">
                            <p dangerouslySetInnerHTML={{ __html: project.testimonial }}></p>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import TransitionLink from './TransitionLink';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SemioticsIcon, ArchetypeIcon, BookIcon, HomeIcon } from './icons/CodexIcons';
@@ -229,7 +230,7 @@ const LogoCodex: React.FC = () => {
                         
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {portfolioProjects.map(project => (
-                                <TransitionLink
+                                <Link
                                     key={project.slug}
                                     href={`/logocodex/${project.slug}`}
                                     className="block p-4 bg-white rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
@@ -243,7 +244,7 @@ const LogoCodex: React.FC = () => {
                                     </div>
                                     <h3 className="font-bold text-deep-800 truncate">{project.title}</h3>
                                     <p className="text-sm text-deep-600">{project.clientRole}</p>
-                                </TransitionLink>
+                                </Link>
                             ))}
                         </div>
                     </div>
@@ -257,7 +258,7 @@ const LogoCodex: React.FC = () => {
                         <p className="text-lg text-deep-700 leading-relaxed mb-8 max-w-2xl mx-auto">
                             El Manual LogoCodeX™ es la herramienta práctica para evitar la irrelevancia. Juntos, podemos desvelar tu historia única y traducirla en un símbolo que nadie más podría reclamar.
                         </p>
-                        <TransitionLink
+                        <Link
                             href="/#contacto"
                             onClick={() => {
                                 trackEvent('navigate_to_contact', { from: 'logocodex_cta' });
@@ -265,7 +266,7 @@ const LogoCodex: React.FC = () => {
                             className="inline-block bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
                         >
                             Solicitar Auditoría de Identidad
-                        </TransitionLink>
+                        </Link>
                     </div>
                 </section>
             </main>

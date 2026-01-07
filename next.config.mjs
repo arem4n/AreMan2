@@ -10,15 +10,6 @@ const nextConfig = {
             },
         ],
     },
-    async redirects() {
-        return [
-            {
-                source: '/logocodex/osttech-cybersecurity',
-                destination: '/logocodex/osttech-software-mantenimiento',
-                permanent: true,
-            },
-        ]
-    },
 };
 
 export default nextConfig;

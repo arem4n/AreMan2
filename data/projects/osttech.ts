@@ -3,9 +3,9 @@ import { PortfolioProject } from '../../types';
 
 export const ostTechProject: PortfolioProject = {
     mainImg: "https://i.postimg.cc/bNztNtcG/20251103_133803_0000.png",
-    altText: "Logo OstTech - Isotipo de zorro y escudo para software de mantenimiento industrial",
+    altText: "Logo OstTech Cybersecurity - Isotipo de zorro y escudo para software industrial",
     title: "OST TECH",
-    slug: "osttech-software-mantenimiento",
+    slug: "osttech-cybersecurity",
     testimonial: "Fusión perfecta de industria y naturaleza.",
     clientName: "Omar Stormasen",
     clientRole: "CEO",
@@ -17,7 +17,7 @@ export const ostTechProject: PortfolioProject = {
     ],
     caseStudy: {
         client: "Ost Tech",
-        description: "Desarrollo de Software para el sector salmonero. El alma en la máquina.",
+        description: "Software Industrial. El alma en la máquina.",
         title: "OST TECH",
         subtitle: "Software de Mantenimiento",
         sections: []

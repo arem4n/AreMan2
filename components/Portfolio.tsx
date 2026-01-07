@@ -98,14 +98,14 @@ const Portfolio: React.FC = () => {
     const selectedProject = portfolioProjects.find(p => p.slug === selectedProjectSlug);
 
     return (
-        <section id="portafolio" className="pt-16 lg:pt-24 pb-6 lg:pb-8 bg-gradient-to-br from-deep-50 to-white overflow-hidden relative z-10">
-            <div className="max-w-[1920px] mx-auto px-4 lg:px-12">
-                <h2 className="text-3xl lg:text-5xl font-display font-bold text-center mb-4 lg:mb-6 text-deep-800">
+        <section id="portafolio" className="pt-24 lg:pt-32 pb-12 bg-gradient-to-br from-deep-50 to-white overflow-hidden relative z-10">
+            <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl lg:text-5xl font-display font-bold text-center mb-12 lg:mb-16 text-deep-800">
                     Portafolio
                 </h2>
                 
                 <div 
-                    className="relative h-auto min-h-[700px] w-full perspective-1000 overflow-visible"
+                    className="relative h-auto min-h-[550px] sm:min-h-[600px] md:min-h-[700px] w-full perspective-1000"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                     onTouchStart={handleTouchStart}
@@ -114,65 +114,50 @@ const Portfolio: React.FC = () => {
                 >
                     <button 
                         onClick={() => navigate('prev')} 
-                        className="absolute left-4 lg:left-10 top-1/2 -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl hover:scale-110 transition-all backdrop-blur-sm border border-deep-100"
+                        className="absolute left-0 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 bg-white/70 text-deep-800 p-2 sm:p-3 lg:p-4 rounded-full shadow-lg hover:scale-110 transition-transform backdrop-blur-sm border border-deep-100/50"
                         aria-label="Anterior"
                     >
                         <ChevronLeftIcon />
                     </button>
                     <button 
                         onClick={() => navigate('next')} 
-                        className="absolute right-4 lg:right-10 top-1/2 -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl hover:scale-110 transition-all backdrop-blur-sm border border-deep-100"
+                        className="absolute right-0 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 bg-white/70 text-deep-800 p-2 sm:p-3 lg:p-4 rounded-full shadow-lg hover:scale-110 transition-transform backdrop-blur-sm border border-deep-100/50"
                         aria-label="Siguiente"
                     >
                         <ChevronRightIcon />
                     </button>
 
-                    <div className="w-full h-full relative flex justify-center items-center transform-style-3d">
+                    <div className="w-full h-full absolute top-0 left-0 transform-style-3d">
                         {portfolioProjects.map((project, index) => {
                             const total = portfolioProjects.length;
-                            
                             let offset = index - activeIndex;
                             if (offset > total / 2) offset -= total;
                             if (offset < -total / 2) offset += total;
 
                             const isActive = offset === 0;
                             
-                            let transform = '';
-                            let zIndex = 0;
-                            let opacity = 0;
-                            let blur = '0px';
-                            let pointerEvents = 'none';
+                            let transform, zIndex, opacity, blur, pointerEvents;
 
                             if (isActive) {
-                                transform = 'translateX(-50%) translateY(-50%) translateZ(0px) scale(1)';
+                                transform = 'translateX(-50%) translateY(-50%) translateZ(0) scale(1)';
                                 zIndex = 20;
                                 opacity = 1;
                                 blur = '0px';
                                 pointerEvents = 'auto';
-                            } else if (offset === -1) {
-                                transform = 'translateX(-120%) translateY(-50%) translateZ(-150px) scale(0.85)';
-                                if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                                     transform = 'translateX(-130%) translateY(-50%) scale(0.8)';
-                                } else {
-                                     transform += ' rotateY(25deg)';
-                                }
-                                zIndex = 10;
-                                opacity = 0.5;
-                                blur = '2px';
-                            } else if (offset === 1) {
-                                transform = 'translateX(20%) translateY(-50%) translateZ(-150px) scale(0.85)';
-                                if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                                     transform = 'translateX(30%) translateY(-50%) scale(0.8)';
-                                } else {
-                                     transform += ' rotateY(-25deg)';
-                                }
-                                zIndex = 10;
-                                opacity = 0.5;
-                                blur = '2px';
                             } else {
-                                transform = 'translateX(-50%) translateY(-50%) translateZ(-600px) scale(0)';
-                                zIndex = 0;
-                                opacity = 0;
+                                const sign = Math.sign(offset);
+                                const absOffset = Math.abs(offset);
+
+                                const xTranslate = -50 + sign * (40 + absOffset * 10);
+                                const zTranslate = -200 - absOffset * 100;
+                                const rotateY = -sign * 20;
+                                const scale = 0.8;
+
+                                transform = `translateX(${xTranslate}%) translateY(-50%) translateZ(${zTranslate}px) scale(${scale}) rotateY(${rotateY}deg)`;
+                                zIndex = 10 - absOffset;
+                                opacity = 0.4;
+                                blur = '3px';
+                                pointerEvents = 'none';
                             }
 
                             const isHeroLogo = project.slug === 'areman-escudo-heraldico' || project.slug === 'arem4n-professional-brand';
@@ -180,33 +165,32 @@ const Portfolio: React.FC = () => {
                             return (
                                 <div 
                                     key={project.slug}
-                                    className="carousel-card-wrapper absolute top-1/2 left-1/2 w-[85vw] md:w-[60vw] max-w-full transition-all duration-700 ease-out"
+                                    className="carousel-card-wrapper absolute top-1/2 left-1/2 w-[90vw] sm:w-[70vw] md:w-[60vw] max-w-[800px] transition-all duration-500 ease-out"
                                     style={{ 
                                         transform, 
                                         zIndex, 
                                         opacity, 
                                         filter: `blur(${blur})`,
-                                        pointerEvents: pointerEvents as any 
+                                        pointerEvents: pointerEvents as any
                                     }}
                                 >
                                     <div 
                                         onClick={() => isActive && handleProjectClick(project.slug)}
-                                        className="relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 cursor-pointer group flex flex-col"
+                                        className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl bg-white border border-deep-100 cursor-pointer group flex flex-col"
                                     >
-                                        <div className={`relative w-full aspect-[16/9] flex items-center justify-center overflow-hidden ${isHeroLogo ? 'p-3' : 'p-0'}`}>
+                                        <div className={`relative w-full aspect-[16/9] flex items-center justify-center overflow-hidden ${isHeroLogo ? 'p-3' : ''}`}>
                                             <img
                                                 src={project.mainImg}
                                                 alt={project.altText}
-                                                loading="lazy"
-                                                className={`absolute w-full h-full transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${isHeroLogo ? 'object-contain' : 'object-cover'}`}
+                                                loading={isActive ? "eager" : "lazy"}
+                                                decoding={isActive ? "sync" : "async"}
+                                                className={`absolute w-full h-full transition-transform duration-500 ${isActive ? 'group-hover:scale-105' : ''} ${isHeroLogo ? 'object-contain' : 'object-cover'}`}
                                             />
                                         </div>
-                                        
-                                        <div className={`p-4 text-center transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
-                                            <h3 className="text-xl font-display font-bold text-deep-800 mb-1 truncate">{project.title}</h3>
-                                            <p className="text-creative-600 font-semibold tracking-widest uppercase text-xs mb-2">{project.clientRole}</p>
-
-                                            <p className="text-deep-600 italic text-sm leading-relaxed">
+                                        <div className={`p-4 sm:p-5 text-center transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+                                            <h3 className="text-lg sm:text-xl font-display font-bold text-deep-800 mb-1 truncate">{project.title}</h3>
+                                            <p className="text-creative-600 font-semibold tracking-wider uppercase text-xs sm:text-sm mb-2">{project.clientRole}</p>
+                                            <p className="text-deep-600 italic text-sm sm:text-base leading-relaxed">
                                                 "{project.testimonial}"
                                             </p>
                                         </div>
@@ -217,7 +201,7 @@ const Portfolio: React.FC = () => {
                     </div>
                 </div>
                 
-                <div className="text-center text-deep-400 text-sm mt-2 lg:hidden animate-pulse">
+                <div className="text-center text-deep-400 text-sm mt-8 lg:hidden animate-pulse">
                     Desliza o usa las flechas para girar
                 </div>
             </div>
