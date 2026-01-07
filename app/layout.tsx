@@ -40,11 +40,7 @@ export const metadata: Metadata = {
     description: 'LogoCodex™: Símbolos vivos para startups. Semiótica + Arquetipos + Narrativa. Puerto Montt, Chile.',
     images: ['https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png'],
   },
-  icons: [
-    { rel: 'icon', type: 'image/png', sizes: '32x32', url: '/favicon-32x32.png' },
-    { rel: 'icon', type: 'image/png', sizes: '16x16', url: '/favicon-16x16.png' },
-    { rel: 'apple-touch-icon', sizes: '180x180', url: '/apple-touch-icon.png' },
-  ],
+  icons: 'https://i.postimg.cc/MK2vnGTk/icon.png',
   manifest: '/site.webmanifest',
   other: {
     'geo.region': 'CL-LL',

@@ -144,15 +144,15 @@ const Portfolio: React.FC = () => {
                             let pointerEvents = 'none';
 
                             if (isActive) {
-                                transform = 'translateX(-50%) translateY(-60%) translateZ(0px) scale(1)';
+                                transform = 'translateX(-50%) translateY(-50%) translateZ(0px) scale(1)';
                                 zIndex = 20;
                                 opacity = 1;
                                 blur = '0px';
                                 pointerEvents = 'auto';
                             } else if (offset === -1) {
-                                transform = 'translateX(-120%) translateY(-60%) translateZ(-150px) scale(0.85)';
+                                transform = 'translateX(-120%) translateY(-50%) translateZ(-150px) scale(0.85)';
                                 if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                                     transform = 'translateX(-130%) translateY(-60%) scale(0.8)';
+                                     transform = 'translateX(-130%) translateY(-50%) scale(0.8)';
                                 } else {
                                      transform += ' rotateY(25deg)';
                                 }
@@ -160,9 +160,9 @@ const Portfolio: React.FC = () => {
                                 opacity = 0.5;
                                 blur = '2px';
                             } else if (offset === 1) {
-                                transform = 'translateX(20%) translateY(-60%) translateZ(-150px) scale(0.85)';
+                                transform = 'translateX(20%) translateY(-50%) translateZ(-150px) scale(0.85)';
                                 if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                                     transform = 'translateX(30%) translateY(-60%) scale(0.8)';
+                                     transform = 'translateX(30%) translateY(-50%) scale(0.8)';
                                 } else {
                                      transform += ' rotateY(-25deg)';
                                 }
@@ -170,7 +170,7 @@ const Portfolio: React.FC = () => {
                                 opacity = 0.5;
                                 blur = '2px';
                             } else {
-                                transform = 'translateX(-50%) translateY(-60%) translateZ(-600px) scale(0)';
+                                transform = 'translateX(-50%) translateY(-50%) translateZ(-600px) scale(0)';
                                 zIndex = 0;
                                 opacity = 0;
                             }
@@ -206,7 +206,7 @@ const Portfolio: React.FC = () => {
                                             <h3 className="text-xl font-display font-bold text-deep-800 mb-1 truncate">{project.title}</h3>
                                             <p className="text-creative-600 font-semibold tracking-widest uppercase text-xs mb-2">{project.clientRole}</p>
 
-                                            <p className="text-deep-600 italic text-sm leading-relaxed line-clamp-3">
+                                            <p className="text-deep-600 italic text-sm leading-relaxed">
                                                 "{project.testimonial}"
                                             </p>
                                         </div>

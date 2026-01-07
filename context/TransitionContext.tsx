@@ -1,7 +1,8 @@
 
 'use client';
 
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface TransitionContextType {
     isTransitioning: boolean;
@@ -18,15 +19,18 @@ export const useTransitionContext = () => {
     return context;
 };
 
-import { usePathname } from 'next/navigation';
-
 export const TransitionProvider = ({ children }: { children: ReactNode }) => {
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [initialLoadComplete, setInitialLoadComplete] = useState(false);
     const pathname = usePathname();
-    const previousPathname = React.useRef(pathname);
+    const previousPathname = useRef(pathname);
 
-    React.useEffect(() => {
-        if (previousPathname.current !== pathname) {
+    useEffect(() => {
+        setInitialLoadComplete(true);
+    }, []);
+
+    useEffect(() => {
+        if (initialLoadComplete && previousPathname.current !== pathname) {
             setIsTransitioning(true);
             const timer = setTimeout(() => {
                 previousPathname.current = pathname;
@@ -35,7 +39,7 @@ export const TransitionProvider = ({ children }: { children: ReactNode }) => {
 
             return () => clearTimeout(timer);
         }
-    }, [pathname]);
+    }, [pathname, initialLoadComplete]);
 
     const handleTransition = (href: string) => {
         if (pathname !== href) {
