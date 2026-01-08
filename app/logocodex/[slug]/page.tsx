@@ -8,10 +8,10 @@ import { CaseStudyNav } from '../../../components/casestudies/CaseStudyNav';
 const Arem4nCaseStudy = React.lazy(() => import('../../../components/casestudies/Arem4nCaseStudy'));
 const Arem4nProfessionalCaseStudy = React.lazy(() => import('../../../components/casestudies/Arem4nProfessionalCaseStudy'));
 const GenericCaseStudy = React.lazy(() => import('../../../components/casestudies/GenericCaseStudy'));
-const OstTechCaseStudy = React.lazy(() => import('../../../components/casestudies/OstTechCaseStudy'));
+const OstTechSoftwareSalmoneraCaseStudy = React.lazy(() => import('../../../components/casestudies/OstTechSoftwareSalmoneraCaseStudy'));
 const AlbornozCaseStudy = React.lazy(() => import('../../../components/casestudies/AlbornozCaseStudy'));
-const SouthSoftCaseStudy = React.lazy(() => import('../../../components/casestudies/SouthSoftCaseStudy'));
-const Bm3CaseStudy = React.lazy(() => import('../../../components/casestudies/Bm3CaseStudy'));
+const SouthSoftDevelopmentCaseStudy = React.lazy(() => import('../../../components/casestudies/SouthSoftDevelopmentCaseStudy'));
+const Bm3ConsultoriaCaseStudy = React.lazy(() => import('../../../components/casestudies/Bm3ConsultoriaCaseStudy'));
 const TommyBoxCaseStudy = React.lazy(() => import('../../../components/casestudies/TommyBoxCaseStudy'));
 import { BackArrowIcon } from '../../../components/icons/CodexIcons';
 
@@ -41,10 +41,10 @@ const renderCaseStudy = (slug: string) => {
     const isGeneric = ![
         'areman-escudo-heraldico',
         'arem4n-professional-brand',
-        'osttech-cybersecurity',
+        'osttech-software-salmonera',
         'albornoz-propiedades',
         'southsoft-development',
-        'bm3-constructora',
+        'bm3-consultoria',
         'tommybox-training'
     ].includes(slug);
 
@@ -58,14 +58,14 @@ const renderCaseStudy = (slug: string) => {
                 return Arem4nCaseStudy;
             case 'arem4n-professional-brand':
                 return Arem4nProfessionalCaseStudy;
-            case 'osttech-cybersecurity':
-                return OstTechCaseStudy;
+            case 'osttech-software-salmonera':
+                return OstTechSoftwareSalmoneraCaseStudy;
             case 'albornoz-propiedades':
                 return AlbornozCaseStudy;
             case 'southsoft-development':
-                return SouthSoftCaseStudy;
-            case 'bm3-constructora':
-                return Bm3CaseStudy;
+                return SouthSoftDevelopmentCaseStudy;
+            case 'bm3-consultoria':
+                return Bm3ConsultoriaCaseStudy;
             case 'tommybox-training':
                 return TommyBoxCaseStudy;
             default:
