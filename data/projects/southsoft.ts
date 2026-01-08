@@ -8,7 +8,7 @@ export const southSoftProject: PortfolioProject = {
     slug: "southsoft-development",
     testimonial: "Son mucho más que un logo, una historia sintetizada.",
     clientName: "Francisco Arellano",
-    clientRole: "CEO",
+    clientRole: "Consultoría Tecnológica",
     link: "javascript:void(0);",
     galleryImages: [
             { src: "https://i.postimg.cc/tRd6jzft/20251103_133804_0001.png", alt: "Logo principal de SouthSoft para consultoría tecnológica" },

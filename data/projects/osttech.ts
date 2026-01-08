@@ -3,12 +3,12 @@ import { PortfolioProject } from '../../types';
 
 export const ostTechProject: PortfolioProject = {
     mainImg: "https://i.postimg.cc/bNztNtcG/20251103_133803_0000.png",
-    altText: "Logo OstTech Cybersecurity - Isotipo de zorro y escudo para software industrial",
+    altText: "Logo OstTech Desarrollo de Software - Isotipo de zorro y escudo para software industrial",
     title: "OST TECH",
-    slug: "osttech-cybersecurity",
+    slug: "osttech-software-salmonera",
     testimonial: "Fusión perfecta de industria y naturaleza.",
     clientName: "Omar Stormasen",
-    clientRole: "CEO",
+    clientRole: "Desarrollo de Software, Industria Salmonera",
     link: "javascript:void(0);",
     galleryImages: [
             { src: "https://i.postimg.cc/bNztNtcG/20251103_133803_0000.png", alt: "Isotipo principal del logo de OstTech" },
