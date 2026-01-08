@@ -143,9 +143,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, o
             >
                  <button
                     onClick={prevImage}
-                    className="absolute left-2 md:left-6 z-40 p-4 rounded-full bg-black/40 hover:bg-black/60 text-white transition hidden md:block hover:scale-110"
-                >
-                    <ChevronLeftIcon className="w-10 h-10" />
+                    className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-50 rounded-full bg-black/50 p-2 text-white opacity-100 transition hover:bg-black/75 hover:scale-110"
+                    aria-label="Imagen anterior"
+                 >
+                    <ChevronLeftIcon className="h-6 w-6" />
                 </button>
 
                 <AnimatePresence initial={false} custom={direction} mode="popLayout">
@@ -170,9 +171,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, o
 
                 <button
                     onClick={nextImage}
-                    className="absolute right-2 md:right-6 z-40 p-4 rounded-full bg-black/40 hover:bg-black/60 text-white transition hidden md:.block hover:scale-110"
+                    className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-50 rounded-full bg-black/50 p-2 text-white opacity-100 transition hover:bg-black/75 hover:scale-110"
+                    aria-label="Siguiente imagen"
                 >
-                    <ChevronRightIcon className="w-10 h-10" />
+                    <ChevronRightIcon className="h-6 w-6" />
                 </button>
             </div>
 

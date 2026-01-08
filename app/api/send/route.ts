@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const { email, message, name } = body;
 
     const data = await resend.emails.send({
-      from: 'AreMan <onboarding@resend.dev>',
+      from: 'Formulario Web <noreply@arem4n.com>',
       to: ['Sergio.areman@gmail.com'],
       subject: `Nuevo contacto de: ${name}`,
       html: `
