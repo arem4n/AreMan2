@@ -10,10 +10,10 @@ import { trackEvent } from '../analytics';
 import Arem4nCaseStudy from './casestudies/Arem4nCaseStudy';
 import Arem4nProfessionalCaseStudy from './casestudies/Arem4nProfessionalCaseStudy';
 import GenericCaseStudy from './casestudies/GenericCaseStudy';
-import OstTechCaseStudy from './casestudies/OstTechCaseStudy';
+import OstTechSoftwareSalmoneraCaseStudy from './casestudies/OstTechSoftwareSalmoneraCaseStudy';
 import AlbornozCaseStudy from './casestudies/AlbornozCaseStudy';
-import SouthSoftCaseStudy from './casestudies/SouthSoftCaseStudy';
-import Bm3CaseStudy from './casestudies/Bm3CaseStudy';
+import SouthSoftDevelopmentCaseStudy from './casestudies/SouthSoftDevelopmentCaseStudy';
+import Bm3ConsultoriaCaseStudy from './casestudies/Bm3ConsultoriaCaseStudy';
 import TommyBoxCaseStudy from './casestudies/TommyBoxCaseStudy';
 
 
@@ -23,14 +23,14 @@ const renderCaseStudy = (slug: string) => {
             return <Arem4nCaseStudy />;
         case 'arem4n-professional-brand':
             return <Arem4nProfessionalCaseStudy />;
-        case 'osttech-cybersecurity':
-            return <OstTechCaseStudy />;
+        case 'osttech-software-salmonera':
+            return <OstTechSoftwareSalmoneraCaseStudy />;
         case 'albornoz-propiedades':
             return <AlbornozCaseStudy />;
         case 'southsoft-development':
-            return <SouthSoftCaseStudy />;
-        case 'bm3-constructora':
-            return <Bm3CaseStudy />;
+            return <SouthSoftDevelopmentCaseStudy />;
+        case 'bm3-consultoria':
+            return <Bm3ConsultoriaCaseStudy />;
         case 'tommybox-training':
             return <TommyBoxCaseStudy />;
         default:
