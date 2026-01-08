@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     url: 'https://areman.vercel.app/',
     images: [
       {
-        url: 'https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png',
+        url: 'https://i.postimg.cc/d3wtGXNk/IMG_20250728_180701_596.webp',
         width: 1200,
         height: 630,
-        alt: 'Logo AREM4N - Cuervo heráldico con alas desplegadas',
+        alt: 'Logo AREM4N - Cuervo heráldico negro',
       },
     ],
     locale: 'es_CL',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     site: '@arem4n',
     title: 'AREM4N | Soberanía Visual & Branding Estratégico',
     description: 'LogoCodex™: Símbolos vivos para startups. Semiótica + Arquetipos + Narrativa. Puerto Montt, Chile.',
-    images: ['https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png'],
+    images: ['https://i.postimg.cc/d3wtGXNk/IMG_20250728_180701_596.webp'],
   },
   icons: 'https://i.postimg.cc/MK2vnGTk/icon.png',
   manifest: '/site.webmanifest',
