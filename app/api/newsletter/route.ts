@@ -28,7 +28,12 @@ export async function POST(request: Request) {
         email: email,
         unsubscribed: false,
       });
-      console.log('Successfully saved contact:', contact.id);
+      if (contact.data) {
+        console.log('Successfully saved contact:', contact.data.id);
+      } else {
+        // Handle the case where data is null, maybe log the whole response
+        console.warn('Contact was created but no data was returned, or an error occurred:', contact);
+      }
     } catch (error) {
       // Log the error for debugging but don't block the email sending.
       console.warn('Failed to save contact, probably already exists.');
@@ -96,7 +101,11 @@ export async function POST(request: Request) {
       html: emailHtml,
     });
 
-    console.log('Successfully sent email:', data.id);
+    if (data.data) {
+      console.log('Successfully sent email:', data.data.id);
+    } else {
+      console.warn('Email was sent but no data was returned, or an error occurred:', data);
+    }
     return NextResponse.json(data);
   } catch (error) {
     console.error('Unhandled error in newsletter API:', error);
