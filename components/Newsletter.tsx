@@ -16,14 +16,29 @@ const Newsletter: React.FC = () => {
 
         trackEvent('submit_newsletter_form', { offer: 'Creatividad Expandida Book' });
 
-        // SIMULACIÓN: Reemplazar con un servicio real como Mailchimp
-        console.log('Suscribiendo email:', email);
-        setTimeout(() => {
+        fetch('/api/newsletter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                // Try to parse the error message from the server
+                return response.json().then(err => { throw new Error(err.error || 'Algo salió mal.') });
+            }
+            return response.json();
+        })
+        .then(() => {
             setFormState({ submitting: false, success: true, error: '' });
             setEmail('');
-            // Ocultar mensaje de éxito después de 5 segundos
+            // Hide success message after 5 seconds
             setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
-        }, 2000);
+        })
+        .catch(error => {
+            setFormState({ submitting: false, success: false, error: error.message });
+        });
     };
 
     return (

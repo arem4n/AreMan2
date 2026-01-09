@@ -2,24 +2,36 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
 export async function POST(request: Request) {
+  console.log('Newsletter API route hit.');
+
+  if (!process.env.RESEND_API_KEY) {
+    console.error('CRITICAL: RESEND_API_KEY is not set in environment variables.');
+    return NextResponse.json({ error: 'Server configuration error: Missing API key.' }, { status: 500 });
+  }
+
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await request.json();
     const { email } = body;
 
+    console.log(`Received request for email: ${email}`);
+
     if (!email) {
+      console.log('Validation failed: Email is required.');
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
     // Step 1: Save the contact, ignore errors if the contact already exists.
     try {
-      await resend.contacts.create({
+      console.log(`Attempting to save contact: ${email}`);
+      const contact = await resend.contacts.create({
         email: email,
         unsubscribed: false,
       });
+      console.log('Successfully saved contact:', contact.id);
     } catch (error) {
       // Log the error for debugging but don't block the email sending.
-      console.warn('Failed to save contact, probably already exists:', error);
+      console.warn('Failed to save contact, probably already exists.');
     }
 
     // Step 2: Send the eBook email.
@@ -76,6 +88,7 @@ export async function POST(request: Request) {
 </body>
 </html>`;
 
+    console.log(`Attempting to send eBook email to: ${email}`);
     const data = await resend.emails.send({
       from: 'Sergio de AREM4N <noreply@arem4n.com>',
       to: [email],
@@ -83,8 +96,10 @@ export async function POST(request: Request) {
       html: emailHtml,
     });
 
+    console.log('Successfully sent email:', data.id);
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error('Unhandled error in newsletter API:', error);
+    return NextResponse.json({ error: 'An unexpected error occurred.' }, { status: 500 });
   }
 }
