@@ -8,6 +8,7 @@ import { trackEvent } from '../analytics';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 import ProjectModal from './ProjectModal';
 import TransitionLink from './TransitionLink';
+import Image from 'next/image';
 
 const Portfolio: React.FC = () => {
     const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
@@ -179,12 +180,14 @@ const Portfolio: React.FC = () => {
                                         className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl bg-white border border-deep-100 cursor-pointer group flex flex-col"
                                     >
                                         <div className={`relative w-full aspect-[16/9] flex items-center justify-center overflow-hidden ${isHeroLogo ? 'p-3' : ''}`}>
-                                            <img
+                                            <Image
                                                 src={project.mainImg}
                                                 alt={project.altText}
+                                                fill
+                                                unoptimized={true}
                                                 loading={isActive ? "eager" : "lazy"}
                                                 decoding={isActive ? "sync" : "async"}
-                                                className={`absolute w-full h-full transition-transform duration-500 ${isActive ? 'group-hover:scale-105' : ''} ${isHeroLogo ? 'object-contain' : 'object-cover'}`}
+                                                className={`transition-transform duration-500 ${isActive ? 'group-hover:scale-105' : ''} ${isHeroLogo ? 'object-contain' : 'object-cover'}`}
                                             />
                                         </div>
                                         <div className={`p-4 sm:p-5 text-center transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>

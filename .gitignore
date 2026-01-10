@@ -26,4 +26,6 @@ dist-ssr
 
 # Test artifacts
 /test-results/
-/*.png
+/playwright-report/
+/test-results/*.png
+/playwright-report/*.png

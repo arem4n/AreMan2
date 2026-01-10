@@ -5,6 +5,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { trackEvent } from '../analytics';
 import TransitionLink from './TransitionLink';
+import Image from 'next/image';
 
 interface HeaderProps {
     isMenuOpen: boolean;
@@ -52,13 +53,18 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
                         onClick={() => handleNavClick('#inicio')}
                         className="flex items-center cursor-pointer pl-4 pr-2 group"
                     >
-                        <motion.img 
+                        <motion.div
                             whileHover={{ scale: 1.1, rotate: -5 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            src="https://i.postimg.cc/d3wtGXNk/IMG_20250728_180701_596.webp" 
-                            alt="Logotipo de AREM4N" 
-                            className="h-10 w-auto" 
-                        />
+                        >
+                            <Image
+                                src="https://i.postimg.cc/MK2vnGTk/icon.png"
+                                alt="Logotipo de AREM4N"
+                                width={40}
+                                height={40}
+                                className="h-10 w-auto"
+                            />
+                        </motion.div>
                         <span className="sr-only">AREM4N</span>
                     </TransitionLink>
 

@@ -7,6 +7,7 @@ import { CloseIcon, ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 import type { PortfolioProject } from '../types';
 import { useRouter } from 'next/navigation';
 import { useTransitionContext } from '@/context/TransitionContext';
+import Image from 'next/image';
 
 interface ProjectModalProps {
     project: PortfolioProject;
@@ -159,11 +160,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onNext, o
                         transition={{ x: { type: "spring", stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } }}
                         className="absolute w-full h-full flex items-center justify-center p-4 pb-24 md:p-8 md:pb-8"
                     >
-                        <img
+                        <Image
                             src={images[validIndex].src}
                             alt={images[validIndex].alt}
+                            fill
+                            unoptimized={true}
                             loading="lazy"
-                            className="max-w-full max-h-full object-contain drop-shadow-2xl"
+                            className="object-contain drop-shadow-2xl"
                             draggable={false}
                         />
                     </motion.div>
