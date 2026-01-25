@@ -225,7 +225,7 @@ const Arem4nCaseStudy: React.FC = () => (
             <P><Strong>Proyecto:</Strong> AreMan - Escudo Heráldico de linaje familiar.</P>
             <P><Strong>Naturaleza:</Strong> Identidad genealógica y ancestral (no comercial).</P>
             <P><Strong>Desafío:</Strong> Crear un escudo que unifique dos linajes culturalmente distintos en un solo símbolo coherente, fusionando la herencia hispana (Arellano) con la mapuche (Manque).</P>
-            <ImageDisplay src="https://i.postimg.cc/158cFqpp/IMG-20250725-231309-545.webp" alt="Escudo heráldico de AreMan" caption="El escudo final: Síntesis de Cóndor, Montaña y Árbol."/>
+            <ImageDisplay src="/images/areman-escudo-diseno-final.webp" alt="Escudo heráldico de AreMan" caption="El escudo final: Síntesis de Cóndor, Montaña y Árbol."/>
         </Block>
 
         <Hr />
@@ -291,14 +291,14 @@ const Arem4nCaseStudy: React.FC = () => (
                 title="Codificación Cotidiana"
                 subtitle="Nivel 1: Físico (2D)"
                 description="El símbolo se integra en el uso diario. El timbre de goma y los stickers permiten marcar pertenencias, transformando objetos comunes en propiedad del linaje. Es la primera capa de apropiación territorial."
-                imageSrc="https://i.postimg.cc/brRpzLjw/1764016585551.jpg"
+                imageSrc="/images/areman-aplicacion-timbre-stickers.jpg"
             />
 
             <TransmediaBlock 
                 title="Permanencia Histórica"
                 subtitle="Nivel 2: Relieve (2.5D)"
                 description="Al llevar el diseño a un medallón pétreo en relieve, activamos la memoria ancestral. La luz y la sombra ahora dibujan el símbolo, no la tinta. Esto evoca lápidas, escudos de armas en castillos y monedas antiguas. Valida la atemporalidad del diseño."
-                imageSrc="https://i.postimg.cc/W3nCqNsk/1764073757167.jpg"
+                imageSrc="/images/areman-materializacion-medallon-relieve.jpg"
                 isReversed
             />
 
@@ -306,14 +306,14 @@ const Arem4nCaseStudy: React.FC = () => (
                 title="Mundo Habitable"
                 subtitle="Nivel 3: Escultórico (3D)"
                 description="El diorama rompe la cuarta pared. Ya no es una representación, es un lugar. El cóndor vuela sobre una montaña real. El árbol tiene volumen. Demuestra que el logotipo no es un dibujo plano, sino una ventana a un mundo narrativo tridimensional."
-                imageSrc="https://i.postimg.cc/tT5wnq9V/1764073978948.jpg"
+                imageSrc="/images/areman-materializacion-diorama-escultorico.jpg"
             />
 
             <TransmediaBlock 
                 title="El Mito Revelado"
                 subtitle="Nivel 4: Hiperrealismo"
                 description="La visión final. Una composición cinematográfica que muestra cómo el símbolo se vería si existiera en la realidad. Es la máxima expresión de la narrativa: el momento exacto en que el espíritu (Cóndor) toca la materia (Montaña)."
-                imageSrc="https://i.postimg.cc/prhm0wNQ/1764017630653.jpg"
+                imageSrc="/images/areman-composicion-hiperrealista.jpg"
                 isReversed
             />
         </Block>

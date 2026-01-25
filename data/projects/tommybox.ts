@@ -2,7 +2,7 @@
 import { PortfolioProject } from '../../types';
 
 export const tommyBoxProject: PortfolioProject = {
-    mainImg: "https://i.postimg.cc/rpM8kSt5/20251103_141407_0000.png",
+    mainImg: "/images/tommybox-logo-principal.png",
     altText: "Logo de TommyBox Training con tipografía bold.",
     title: "TOMMYBOX",
     slug: "tommybox-training",
@@ -11,11 +11,11 @@ export const tommyBoxProject: PortfolioProject = {
     clientRole: "Fundador",
     link: "javascript:void(0);",
     galleryImages: [
-        { src: "https://i.postimg.cc/rpM8kSt5/20251103_141407_0000.png", alt: "Logo Principal" },
-        { src: "https://i.postimg.cc/gcgBVvJf/1764011987123.jpg", alt: "Espacio físico del Gimnasio TommyBox" },
-        { src: "https://i.postimg.cc/9M2Cx5Y0/1764115781652.jpg", alt: "Merchandising Oficial: Poleras TommyBox" },
-        { src: "https://i.postimg.cc/CLbZLZj7/20251126-163614-0000.png", alt: "Variaciones de Color: Poleras TommyBox" },
-        { src: "https://i.postimg.cc/7hmh2RNF/1764191495962.jpg", alt: "Merchandising Oficial: Botella de Agua TommyBox" }
+        { src: "/images/tommybox-logo-principal.png", alt: "Logo Principal" },
+        { src: "/images/tommybox-gimnasio-espacio-fisico.jpg", alt: "Espacio físico del Gimnasio TommyBox" },
+        { src: "/images/tommybox-merchandising-poleras.jpg", alt: "Merchandising Oficial: Poleras TommyBox" },
+        { src: "/images/tommybox-poleras-variaciones-color.png", alt: "Variaciones de Color: Poleras TommyBox" },
+        { src: "/images/tommybox-merchandising-botella-agua.jpg", alt: "Merchandising Oficial: Botella de Agua TommyBox" }
     ],
     caseStudy: {
         client: "TommyBox",

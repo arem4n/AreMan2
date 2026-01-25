@@ -79,7 +79,7 @@ const AlbornozCaseStudy: React.FC = () => (
                 <li><Strong>La Letra "A" (10/10):</Strong> La estructura completa de la casa forma una "A" mayúscula sólida.</li>
                 <li><Strong>La Letra "P" (9.5/10):</Strong> El lado izquierdo de la casa forma una "P". Esto se logra mediante una <strong>asimetría intencional</strong> (el soporte derecho es más corto) y el refuerzo visual de la curvatura de los árboles.</li>
             </UL>
-             <ImageDisplay src="https://i.postimg.cc/nVKmJ154/20251103-133804-0002.png" alt="Isotipo Albornoz Propiedades" caption="Integración de A+P en la estructura de la casa y el árbol." />
+             <ImageDisplay src="/images/albornoz-logo-isotipo.png" alt="Isotipo Albornoz Propiedades" caption="Integración de A+P en la estructura de la casa y el árbol." />
         </Block>
         
         <Hr />
@@ -100,7 +100,7 @@ const AlbornozCaseStudy: React.FC = () => (
                 {/* Tarjeta Horizontal */}
                 <div className="bg-deep-50 p-4 rounded-xl">
                     <div className="aspect-video bg-gray-200 rounded-lg mb-4 overflow-hidden shadow-sm">
-                        <img src="https://i.postimg.cc/sXG6vWp9/mockup_ap_01.png" alt="Tarjeta de Presentación Mockup" className="w-full h-full object-cover" />
+                        <img src="/images/albornoz-tarjeta-presentacion.png" alt="Tarjeta de Presentación Mockup" className="w-full h-full object-cover" />
                     </div>
                     <h4 className="font-bold text-deep-800 mb-2">Tarjeta de Presentación</h4>
                     <P className="text-sm">Diseño polisémico. El anverso traza un "Camino Diagonal" desde el logo al contacto. El reverso revela un "Ojo Experto" formado por el QR y una hoja.</P>
@@ -109,7 +109,7 @@ const AlbornozCaseStudy: React.FC = () => (
                 {/* Carpeta Vertical */}
                 <div className="bg-deep-50 p-4 rounded-xl">
                     <div className="aspect-[3/4] bg-gray-200 rounded-lg mb-4 overflow-hidden shadow-sm">
-                        <img src="https://i.postimg.cc/L4YK1YHf/mockup_ap_05.png" alt="Carpeta de Oficio Mockup" className="w-full h-full object-cover" />
+                        <img src="/images/albornoz-carpeta-oficio.png" alt="Carpeta de Oficio Mockup" className="w-full h-full object-cover" />
                     </div>
                     <h4 className="font-bold text-deep-800 mb-2">Carpeta de Oficio</h4>
                     <P className="text-sm">Objeto de larga duración entregado en la firma de escrituras. Su diseño vertical refuerza la confianza y profesionalismo en el momento clave.</P>
@@ -118,7 +118,7 @@ const AlbornozCaseStudy: React.FC = () => (
                 {/* Pendón Vertical */}
                 <div className="bg-deep-50 p-4 rounded-xl">
                     <div className="aspect-[3/4] bg-gray-200 rounded-lg mb-4 overflow-hidden shadow-sm">
-                        <img src="https://i.postimg.cc/N0MPvSFV/mockup_ap_04.png" alt="Pendón de Escritorio" className="w-full h-full object-cover" />
+                        <img src="/images/albornoz-pendon-escritorio.png" alt="Pendón de Escritorio" className="w-full h-full object-cover" />
                     </div>
                     <h4 className="font-bold text-deep-800 mb-2">Pendón de Escritorio</h4>
                     <P className="text-sm">Elemento de branding vertical para punto de venta o feria, manteniendo la consistencia visual y autoridad de marca.</P>
@@ -127,7 +127,7 @@ const AlbornozCaseStudy: React.FC = () => (
                 {/* Oficina Horizontal */}
                 <div className="bg-deep-50 p-4 rounded-xl">
                     <div className="aspect-video bg-gray-200 rounded-lg mb-4 overflow-hidden shadow-sm">
-                        <img src="https://i.postimg.cc/TwKSgFXL/mockup_ap_06.png" alt="Oficina con Logotipo" className="w-full h-full object-cover" />
+                        <img src="/images/albornoz-aplicacion-oficina.png" alt="Oficina con Logotipo" className="w-full h-full object-cover" />
                     </div>
                     <h4 className="font-bold text-deep-800 mb-2">Oficina Corporativa</h4>
                     <P className="text-sm">Aplicación ambiental del logotipo, creando un espacio de trabajo que respira la identidad de la marca.</P>
@@ -137,10 +137,10 @@ const AlbornozCaseStudy: React.FC = () => (
                 <div className="md:col-span-2 bg-deep-50 p-4 rounded-xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                          <div className="aspect-[4/5] md:aspect-square bg-gray-200 rounded-lg overflow-hidden shadow-sm">
-                            <img src="https://i.postimg.cc/bvJFfWrn/mockup_ap_03.png" alt="Letrero Se Vende" className="w-full h-full object-cover" />
+                            <img src="/images/albornoz-senaletica-venta.png" alt="Letrero Se Vende" className="w-full h-full object-cover" />
                          </div>
                          <div className="aspect-[4/5] md:aspect-square bg-gray-200 rounded-lg overflow-hidden shadow-sm">
-                            <img src="https://i.postimg.cc/ZKtgvwsY/mockup_ap_02.png" alt="Letrero Se Arrienda" className="w-full h-full object-cover" />
+                            <img src="/images/albornoz-senaletica-arriendo.png" alt="Letrero Se Arrienda" className="w-full h-full object-cover" />
                          </div>
                     </div>
                     <h4 className="font-bold text-deep-800 mb-2">Señalética (Venta y Arriendo)</h4>

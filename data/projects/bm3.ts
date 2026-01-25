@@ -2,7 +2,7 @@
 import { PortfolioProject } from '../../types';
 
 export const bm3Project: PortfolioProject = {
-    mainImg: "https://i.postimg.cc/44vcg1Mv/20251103_133804_0003.png",
+    mainImg: "/images/bm3-logo.png",
     altText: "Logo BM3",
     title: "BM3",
     slug: "bm3-constructora",
@@ -11,7 +11,7 @@ export const bm3Project: PortfolioProject = {
     clientRole: "Fundador",
     link: "javascript:void(0);",
     galleryImages: [
-            { src: "https://i.postimg.cc/44vcg1Mv/20251103_133804_0003.png", alt: "Logo BM3" }
+            { src: "/images/bm3-logo.png", alt: "Logo BM3" }
     ],
     caseStudy: {
         client: "BM3 Servicios",

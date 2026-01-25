@@ -2,7 +2,7 @@
 import { PortfolioProject } from '../../types';
 
 export const ostTechProject: PortfolioProject = {
-    mainImg: "https://i.postimg.cc/bNztNtcG/20251103_133803_0000.png",
+    mainImg: "/images/osttech-logo-isotipo.png",
     altText: "Logo OstTech",
     title: "OST TECH",
     slug: "osttech-cybersecurity",
@@ -11,9 +11,9 @@ export const ostTechProject: PortfolioProject = {
     clientRole: "CEO",
     link: "javascript:void(0);",
     galleryImages: [
-            { src: "https://i.postimg.cc/bNztNtcG/20251103_133803_0000.png", alt: "Logo OstTech - Isotipo Principal" },
-            { src: "https://i.postimg.cc/8c5Fzwm7/1764185186746.png", alt: "Interfaz Móvil: App de Mantenimiento" },
-            { src: "https://i.postimg.cc/vmrxq4mf/1764185474043.png", alt: "Interfaz de Escritorio: Dashboard de Control" }
+            { src: "/images/osttech-logo-isotipo.png", alt: "Logo OstTech - Isotipo Principal" },
+            { src: "/images/osttech-interfaz-movil-app.png", alt: "Interfaz Móvil: App de Mantenimiento" },
+            { src: "/images/osttech-interfaz-escritorio-dashboard.png", alt: "Interfaz de Escritorio: Dashboard de Control" }
     ],
     caseStudy: {
         client: "Ost Tech",
