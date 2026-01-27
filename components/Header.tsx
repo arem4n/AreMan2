@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
                         <motion.img 
                             whileHover={{ scale: 1.1, rotate: -5 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            src="/images/arem4n-cuervo-negro-logo.webp"
+                            src="/images/header-logo.webp"
                             alt="Logotipo de AREM4N" 
                             className="h-10 w-auto" 
                         />

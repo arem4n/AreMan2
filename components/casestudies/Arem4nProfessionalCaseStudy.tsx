@@ -81,7 +81,7 @@ const Arem4nProfessionalCaseStudy: React.FC = () => (
             </UL>
             <ImageDisplay 
                 key="img-main"
-                src="/images/arem4n-cuervo-negro-logo.webp"
+                src="/images/arem4n-professional-brand-logo.webp"
                 alt="Logotipo de arem4n" 
                 caption="El logotipo final de la marca profesional 'arem4n'."
             />

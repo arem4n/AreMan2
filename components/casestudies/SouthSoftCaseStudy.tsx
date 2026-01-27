@@ -84,7 +84,7 @@ const SouthSoftCaseStudy: React.FC = () => (
                 <li><Strong>2. S de "Soft":</Strong> La mitad inferior (Gris). Referencia a la industria tecnológica.</li>
                 <li><Strong>3. Símbolo de Infinito (∞):</Strong> Al rotar la S o verla como un 8 continuo, representa el ciclo sin fin de la mejora continua (Kaizen).</li>
             </UL>
-            <ImageDisplay src="/images/southsoft-logo.png" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
+            <ImageDisplay src="https://i.postimg.cc/tRd6jzft/20251103_133804_0001.png" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
 
             <SubSectionTitle>La Metáfora de la Dualidad</SubSectionTitle>
             <P>El corte horizontal exacto divide el logo en dos mundos que se complementan:</P>
@@ -123,7 +123,7 @@ const SouthSoftCaseStudy: React.FC = () => (
         <SectionTitle>5. VALIDACIÓN Y TESTIMONIO</SectionTitle>
         <Block>
             <P>La identidad se aplica en todos los puntos de contacto, transmitiendo profesionalismo desde el primer correo.</P>
-            <ImageDisplay src="/images/southsoft-aplicacion-pie-firma.jpg" alt="Pie de firma SouthSoft" caption="Aplicación corporativa real: Pie de firma de correo electrónico." />
+            <ImageDisplay src="/images/southsoft-email-signature.jpg" alt="Pie de firma SouthSoft" caption="Aplicación corporativa real: Pie de firma de correo electrónico." />
             
             <Quote>
                 <P>"Trabajar con Sergio fue una experiencia muy agradable y fluida. Interpretó muy bien mi percepción de una empresa de tecnología en constante movimiento y la plasmó impecablemente en un logo que muestra las iniciales de mi empresa y el símbolo de infinito. Recomiendo el trabajo de Sergio, toda vez que sus creaciones tienen peso simbólico por lo que son <Strong>mucho más que un logo, una historia sintetizada</Strong>." - Francisco Arellano.</P>

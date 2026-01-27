@@ -15,6 +15,8 @@ import TommyBoxCaseStudy from './casestudies/TommyBoxCaseStudy';
 
 interface LogoCodexProps {
     navigateTo: (hash: string) => void;
+    selectedSlug: string;
+    onSelectSlug: (slug: string) => void;
 }
 
 const renderCaseStudy = (slug: string) => {
@@ -39,8 +41,7 @@ const renderCaseStudy = (slug: string) => {
 };
 
 
-const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo }) => {
-    const [selectedSlug, setSelectedSlug] = useState('areman-escudo-heraldico');
+const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelectSlug }) => {
     
     const handleCaseStudyNav = (e: React.MouseEvent, slug: string) => {
         e.preventDefault();
@@ -192,10 +193,10 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo }) => {
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-8 text-left max-w-2xl mx-auto">
                             <p className="text-deep-100 mb-4">Cada entrada en nuestro sistema contiene:</p>
                             <ul className="space-y-3 text-sm md:text-base font-mono text-creative-300">
-                                <li>> Origen Histórico (Mitos, religiones, arte)</li>
-                                <li>> Connotaciones Positivas (Transformación, poder)</li>
-                                <li>> Connotaciones Negativas (Riesgos culturales)</li>
-                                <li>> Arquetipo Asociado (¿Quién usa este símbolo?)</li>
+                                <li><span className="text-symbolic-400 mr-2">&gt;</span>Origen Histórico (Mitos, religiones, arte)</li>
+                                <li><span className="text-symbolic-400 mr-2">&gt;</span>Connotaciones Positivas (Transformación, poder)</li>
+                                <li><span className="text-symbolic-400 mr-2">&gt;</span>Connotaciones Negativas (Riesgos culturales)</li>
+                                <li><span className="text-symbolic-400 mr-2">&gt;</span>Arquetipo Asociado (¿Quién usa este símbolo?)</li>
                             </ul>
                         </div>
                     </div>
@@ -242,7 +243,7 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo }) => {
                             {portfolioProjects.map(project => (
                                 <button
                                     key={project.slug}
-                                    onClick={() => setSelectedSlug(project.slug)}
+                                    onClick={() => onSelectSlug(project.slug)}
                                     className={`px-5 py-2.5 font-semibold rounded-full text-sm transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-symbolic-500
                                         ${selectedSlug === project.slug 
                                             ? 'bg-symbolic-600 text-white shadow-md' 

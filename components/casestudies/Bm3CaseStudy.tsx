@@ -66,7 +66,7 @@ const Bm3CaseStudy: React.FC = () => (
                 <li><Strong>Tridimensionalidad:</Strong> Aporte estratégico del diseñador. Representa estructura, volumen y tangibilidad. Dice "construimos cosas reales y sólidas".</li>
                 <li><Strong>Interconexión:</Strong> Las cintas no se cortan, fluyen infinitamente. Representa la sinergia del equipo familiar.</li>
             </UL>
-             <ImageDisplay src="/images/bm3-logo.png" alt="Isotipo BM3" caption="Triqueta celta con tratamiento isométrico industrial." />
+             <ImageDisplay src="https://i.postimg.cc/44vcg1Mv/20251103_133804_0003.png" alt="Isotipo BM3" caption="Triqueta celta con tratamiento isométrico industrial." />
 
             <SubSectionTitle>Tipomorfología Oculta (Easter Egg)</SubSectionTitle>
             <P>El logo premia la observación detenida con una triple lectura (B + M + 3):</P>

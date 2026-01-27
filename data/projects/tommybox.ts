@@ -2,7 +2,7 @@
 import { PortfolioProject } from '../../types';
 
 export const tommyBoxProject: PortfolioProject = {
-    mainImg: "/images/tommybox-logo-principal.png",
+    mainImg: "/images/tommybox-main.png",
     altText: "Logo de TommyBox Training con tipografía bold.",
     title: "TOMMYBOX",
     slug: "tommybox-training",
@@ -11,11 +11,11 @@ export const tommyBoxProject: PortfolioProject = {
     clientRole: "Fundador",
     link: "javascript:void(0);",
     galleryImages: [
-        { src: "/images/tommybox-logo-principal.png", alt: "Logo Principal" },
-        { src: "/images/tommybox-gimnasio-espacio-fisico.jpg", alt: "Espacio físico del Gimnasio TommyBox" },
-        { src: "/images/tommybox-merchandising-poleras.jpg", alt: "Merchandising Oficial: Poleras TommyBox" },
-        { src: "/images/tommybox-poleras-variaciones-color.png", alt: "Variaciones de Color: Poleras TommyBox" },
-        { src: "/images/tommybox-merchandising-botella-agua.jpg", alt: "Merchandising Oficial: Botella de Agua TommyBox" }
+        { src: "/images/tommybox-main.png", alt: "Logo Principal" },
+        { src: "/images/tommybox-gym.jpg", alt: "Espacio físico del Gimnasio TommyBox" },
+        { src: "/images/tommybox-merch.jpg", alt: "Merchandising Oficial: Poleras TommyBox" },
+        { src: "/images/tommybox-colors.png", alt: "Variaciones de Color: Poleras TommyBox" },
+        { src: "/images/tommybox-bottle.jpg", alt: "Merchandising Oficial: Botella de Agua TommyBox" }
     ],
     caseStudy: {
         client: "TommyBox",
