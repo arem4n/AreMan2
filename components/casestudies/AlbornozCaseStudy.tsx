@@ -79,7 +79,7 @@ const AlbornozCaseStudy: React.FC = () => (
                 <li><Strong>La Letra "A" (10/10):</Strong> La estructura completa de la casa forma una "A" mayúscula sólida.</li>
                 <li><Strong>La Letra "P" (9.5/10):</Strong> El lado izquierdo de la casa forma una "P". Esto se logra mediante una <strong>asimetría intencional</strong> (el soporte derecho es más corto) y el refuerzo visual de la curvatura de los árboles.</li>
             </UL>
-             <ImageDisplay src="https://i.postimg.cc/nVKmJ154/20251103-133804-0002.png" alt="Isotipo Albornoz Propiedades" caption="Integración de A+P en la estructura de la casa y el árbol." />
+             <ImageDisplay src="https://i.postimg.cc/qMWSXvKr/Albornoz_Propiedades_logo.png" alt="Isotipo Albornoz Propiedades" caption="Integración de A+P en la estructura de la casa y el árbol." />
         </Block>
         
         <Hr />

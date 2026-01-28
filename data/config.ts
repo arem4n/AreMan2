@@ -1,3 +1,3 @@
 
-export const logoUrl = "https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png";
-export const whiteLogoUrl = "https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png";
+export const logoUrl = "/images/logo-black.png";
+export const whiteLogoUrl = "/images/logo-white.png";

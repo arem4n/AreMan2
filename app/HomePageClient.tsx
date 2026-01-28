@@ -16,8 +16,6 @@ import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
-import AnimatedSectionWrapper from '@/components/AnimatedSectionWrapper';
-
 export default function HomePageClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
@@ -44,16 +42,16 @@ export default function HomePageClient() {
       <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={navigateTo} />
       <main>
         <Hero navigateTo={navigateTo} />
-        <AnimatedSectionWrapper><About /></AnimatedSectionWrapper>
-        <AnimatedSectionWrapper><Services onPackageSelect={handleContactIntent} /></AnimatedSectionWrapper>
-        <AnimatedSectionWrapper><ROI /></AnimatedSectionWrapper>
-        <AnimatedSectionWrapper><LogoCodexCTA /></AnimatedSectionWrapper>
-        <AnimatedSectionWrapper><Portfolio onRequestProject={handleContactIntent} /></AnimatedSectionWrapper>
-        <AnimatedSectionWrapper><WhyChooseMe /></AnimatedSectionWrapper>
-        <AnimatedSectionWrapper><Process /></AnimatedSectionWrapper>
-        <AnimatedSectionWrapper><Deliverables /></AnimatedSectionWrapper>
-        <AnimatedSectionWrapper><FAQ /></AnimatedSectionWrapper>
-        <AnimatedSectionWrapper><Contact selectedPackage={selectedPackage} clearSelectedPackage={clearSelectedPackage} /></AnimatedSectionWrapper>
+        <About />
+        <Services onPackageSelect={handleContactIntent} />
+        <ROI />
+        <LogoCodexCTA navigateTo={navigateTo} />
+        <Portfolio onRequestProject={handleContactIntent} navigateTo={navigateTo} />
+        <WhyChooseMe />
+        <Process />
+        <Deliverables />
+        <FAQ />
+        <Contact selectedPackage={selectedPackage} clearSelectedPackage={clearSelectedPackage} />
         <Newsletter />
         <Footer />
       </main>

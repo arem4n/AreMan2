@@ -108,8 +108,8 @@ const OstTechCaseStudy: React.FC = () => (
         <SectionTitle>5. INTEGRACIÓN DE MARCA EN SOFTWARE</SectionTitle>
         <Block>
             <P>Las siguientes imágenes son referencias visuales para demostrar la <strong>aplicación del logotipo</strong>. No representan un diseño de interfaz (UI) realizado por mí, sino la integración del isotipo como sello de identidad dentro de las plataformas digitales existentes del cliente.</P>
-            <ImageDisplay src="https://i.postimg.cc/8c5Fzwm7/1764185186746.png" alt="Mockup App Móvil OstTech" caption="Referencia de aplicación del isotipo en entorno móvil." />
-            <ImageDisplay src="https://i.postimg.cc/vmrxq4mf/1764185474043.png" alt="Mockup Desktop OstTech" caption="Referencia de integración del logo en software de escritorio." />
+            <ImageDisplay src="/images/osttech-mobile-mockup.png" alt="Mockup App Móvil OstTech" caption="Referencia de aplicación del isotipo en entorno móvil." />
+            <ImageDisplay src="/images/osttech-desktop-mockup.png" alt="Mockup Desktop OstTech" caption="Referencia de integración del logo en software de escritorio." />
         </Block>
     </section>
 );

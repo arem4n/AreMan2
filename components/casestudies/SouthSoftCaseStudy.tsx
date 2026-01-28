@@ -123,7 +123,7 @@ const SouthSoftCaseStudy: React.FC = () => (
         <SectionTitle>5. VALIDACIÓN Y TESTIMONIO</SectionTitle>
         <Block>
             <P>La identidad se aplica en todos los puntos de contacto, transmitiendo profesionalismo desde el primer correo.</P>
-            <ImageDisplay src="https://i.postimg.cc/26YrHR76/1764116951640.jpg" alt="Pie de firma SouthSoft" caption="Aplicación corporativa real: Pie de firma de correo electrónico." />
+            <ImageDisplay src="/images/southsoft-email-signature.jpg" alt="Pie de firma SouthSoft" caption="Aplicación corporativa real: Pie de firma de correo electrónico." />
             
             <Quote>
                 <P>"Trabajar con Sergio fue una experiencia muy agradable y fluida. Interpretó muy bien mi percepción de una empresa de tecnología en constante movimiento y la plasmó impecablemente en un logo que muestra las iniciales de mi empresa y el símbolo de infinito. Recomiendo el trabajo de Sergio, toda vez que sus creaciones tienen peso simbólico por lo que son <Strong>mucho más que un logo, una historia sintetizada</Strong>." - Francisco Arellano.</P>

@@ -201,8 +201,8 @@ html.modal-open {
     animation: preloader-pulse 2s ease-in-out infinite;
     /* Replaced img with a div and mask to color the logo pink */
     background-color: #ec4899; /* symbolic-500 */
-    -webkit-mask-image: url('https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png');
-    mask-image: url('https://i.postimg.cc/Tw57pbrX/retouch-2025082016164562.png');
+    -webkit-mask-image: url('/images/logo-black.png');
+    mask-image: url('/images/logo-black.png');
     -webkit-mask-size: contain;
     mask-size: contain;
     -webkit-mask-position: center;
