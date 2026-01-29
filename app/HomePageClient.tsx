@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from 'react';
+import { useLoading } from '@/components/LoadingContext';
 import Header from '@/components/Header';
 import ElegantMenu from '@/components/ElegantMenu';
 import Hero from '@/components/Hero';
@@ -19,14 +20,12 @@ import Footer from '@/components/Footer';
 export default function HomePageClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
+  const { customNavigate } = useLoading();
 
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
   const navigateTo = (path: string) => {
-    const element = document.getElementById(path.replace('#', ''));
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    customNavigate(path);
   };
 
   const handleContactIntent = (intent: string) => {

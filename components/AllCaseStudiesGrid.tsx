@@ -11,8 +11,7 @@ const AllCaseStudiesGrid: React.FC<AllCaseStudiesGridProps> = ({ navigateTo, onB
     
     const handleNavigation = (e: React.MouseEvent, slug: string) => {
         e.preventDefault();
-        // A short delay can make the transition feel smoother if the view change is jarring
-        setTimeout(() => navigateTo(slug), 100);
+        navigateTo(`/portafolio/${slug}`);
     };
 
     return (
@@ -37,7 +36,7 @@ const AllCaseStudiesGrid: React.FC<AllCaseStudiesGridProps> = ({ navigateTo, onB
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {portfolioProjects.map((project, index) => (
                         <a 
-                            href={`#logocodex/${project.slug}`}
+                            href={`/portafolio/${project.slug}`}
                             onClick={(e) => handleNavigation(e, project.slug)}
                             key={project.slug} 
                             className="block bg-white rounded-2xl shadow-lg border border-deep-100 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-xl animate-fade-in-up overflow-hidden group" 

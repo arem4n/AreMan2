@@ -2,26 +2,26 @@
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import { useLoading } from '@/components/LoadingContext';
 import { BackArrowIcon } from '@/components/icons/CodexIcons';
 
 // FIX: Changed props type to React.PropsWithChildren to correctly handle `children` prop from a Server Component.
 export default function CaseStudyLayout({ children }: React.PropsWithChildren) {
-    const router = useRouter();
+    const { customNavigate } = useLoading();
 
     const navigateTo = (path: string) => {
         if (path.startsWith('#')) {
             sessionStorage.setItem('scrollToSection', path);
-            router.push('/');
+            customNavigate('/');
         } else {
-             router.push(path);
+            customNavigate(path);
         }
     };
     
     return (
          <div className="bg-deep-50 min-h-screen font-body overflow-x-hidden">
              <button
-                onClick={() => router.push('/logocodex')}
+                onClick={() => customNavigate('/portafolio')}
                 className="fixed bottom-6 right-6 z-[99] flex items-center justify-center bg-gradient-to-r from-symbolic-600 to-deep-700 text-white font-semibold py-3 px-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out animate-fade-in-up"
                 style={{ animationDelay: '900ms' }}
                 aria-label="Volver a LogoCodex"

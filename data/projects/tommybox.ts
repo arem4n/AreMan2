@@ -2,7 +2,7 @@
 import { PortfolioProject } from '../../types';
 
 export const tommyBoxProject: PortfolioProject = {
-    mainImg: "/images/tommybox-main.png",
+    mainImg: "/images/tommybox-logo-final.png",
     altText: "Logo de TommyBox Training con tipografía bold.",
     title: "TOMMYBOX",
     slug: "tommybox-training",
@@ -11,10 +11,10 @@ export const tommyBoxProject: PortfolioProject = {
     clientRole: "Fundador",
     link: "javascript:void(0);",
     galleryImages: [
-        { src: "/images/tommybox-main.png", alt: "Logo Principal" },
+        { src: "/images/tommybox-logo-final.png", alt: "Logo Principal" },
         { src: "/images/tommybox-gym.jpg", alt: "Espacio físico del Gimnasio TommyBox" },
         { src: "/images/tommybox-merch.jpg", alt: "Merchandising Oficial: Poleras TommyBox" },
-        { src: "/images/tommybox-colors.png", alt: "Variaciones de Color: Poleras TommyBox" },
+        { src: "/images/tommybox-color-variations.png", alt: "Variaciones de Color: Poleras TommyBox" },
         { src: "/images/tommybox-bottle.jpg", alt: "Merchandising Oficial: Botella de Agua TommyBox" }
     ],
     caseStudy: {

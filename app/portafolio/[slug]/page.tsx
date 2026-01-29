@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   return {
-    title: `Estudio de Caso: ${project.title} | AREM4N`,
+    title: `${project.title} | Caso de Estudio Portafolio LogoCodeX`,
     description: project.caseStudy.description,
   }
 }

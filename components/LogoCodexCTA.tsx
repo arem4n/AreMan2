@@ -19,7 +19,7 @@ const LogoCodexCTA: React.FC<LogoCodexCTAProps> = ({ navigateTo }) => {
                 <button
                     onClick={() => {
                         trackEvent('navigate_to_logocodex', { from: 'cta_section' });
-                        navigateTo('#logocodex');
+                        navigateTo('/portafolio');
                     }}
                     className="inline-block bg-creative-500 hover:bg-creative-600 text-deep-900 font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
                 >

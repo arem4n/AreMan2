@@ -12,12 +12,12 @@ export const albornozProject: PortfolioProject = {
     link: "javascript:void(0);",
     galleryImages: [
             { src: "/images/albornoz-main.png", alt: "Logo Albornoz - Isotipo Principal" },
-            { src: "/images/albornoz-card.png", alt: "Tarjeta de Presentación - Diseño Polisémico" },
+            { src: "/images/albornoz-business-card.png", alt: "Tarjeta de Presentación - Diseño Polisémico" },
             { src: "/images/albornoz-folder.png", alt: "Carpeta de Oficio - Entrega de Valor" },
-            { src: "/images/albornoz-banner.png", alt: "Pendón de Escritorio" },
+            { src: "/images/albornoz-desk-banner.png", alt: "Pendón de Escritorio" },
             { src: "/images/albornoz-office.png", alt: "Aplicación en Oficina Corporativa" },
-            { src: "/images/albornoz-sale.png", alt: "Señalética de Venta" },
-            { src: "/images/albornoz-rent.png", alt: "Señalética de Arriendo" }
+            { src: "/images/albornoz-for-sale-sign.png", alt: "Señalética de Venta" },
+            { src: "/images/albornoz-for-rent-sign.png", alt: "Señalética de Arriendo" }
     ],
     caseStudy: {
         client: "Albornoz Propiedades",
