@@ -34,13 +34,35 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }, [pathname]);
 
     const customNavigate = useCallback(async (url: string) => {
-        // Handle hash links on the same page
-        if (url.startsWith('#') && pathname === '/') {
-            const element = document.getElementById(url.replace('#', ''));
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+        // Handle internal hash links
+        if (url.startsWith('#')) {
+            if (pathname === '/') {
+                const element = document.getElementById(url.replace('#', ''));
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+            } else {
+                // If we are on a different page, we need to go home first
+                setIsLoading(true);
+                sessionStorage.setItem('scrollToSection', url);
+                router.push('/');
                 return;
             }
+        }
+
+        // Avoid showing preloader if we are already on the target path
+        const targetPath = url.split('#')[0].split('?')[0];
+        if (targetPath === pathname) {
+            // If there's a hash, let the browser handle it or scroll manually
+            if (url.includes('#')) {
+                const hash = url.split('#')[1];
+                const element = document.getElementById(hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            return;
         }
 
         // External or different page navigation

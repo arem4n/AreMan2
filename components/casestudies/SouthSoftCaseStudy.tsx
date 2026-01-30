@@ -84,7 +84,7 @@ const SouthSoftCaseStudy: React.FC = () => (
                 <li><Strong>2. S de "Soft":</Strong> La mitad inferior (Gris). Referencia a la industria tecnológica.</li>
                 <li><Strong>3. Símbolo de Infinito (∞):</Strong> Al rotar la S o verla como un 8 continuo, representa el ciclo sin fin de la mejora continua (Kaizen).</li>
             </UL>
-            <ImageDisplay src="https://i.postimg.cc/tRd6jzft/20251103_133804_0001.png" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
+            <ImageDisplay src="/images/southsoft-logo.png" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
 
             <SubSectionTitle>La Metáfora de la Dualidad</SubSectionTitle>
             <P>El corte horizontal exacto divide el logo en dos mundos que se complementan:</P>
@@ -101,7 +101,7 @@ const SouthSoftCaseStudy: React.FC = () => (
         <Block>
             <P>La filosofía Kaizen no es estática; es movimiento perpetuo. El logotipo cobra vida en entornos digitales, donde el ciclo infinito se manifiesta visualmente, demostrando que la mejora nunca se detiene.</P>
             <ImageDisplay 
-                src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUybTZhdGJ5NmlldWM0aHFpamU5MGh4cTJ3MmJ0ZmdxNHF0c2h4NHJrOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pHhXFl1iJgfYndMy41/giphy.gif"
+                src="/images/southsoft-loop.mp4"
                 alt="Motion Graphics SouthSoft"
                 caption="Dinámica del Infinito: Representación visual del ciclo de mejora continua."
             />

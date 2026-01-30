@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useLoading } from '@/components/LoadingContext';
 import Header from '@/components/Header';
 import ElegantMenu from '@/components/ElegantMenu';
@@ -21,6 +21,23 @@ export default function HomePageClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const { customNavigate } = useLoading();
+
+  // Effect to handle scrolling to section after navigation from a different page
+  useEffect(() => {
+    const scrollToSection = sessionStorage.getItem('scrollToSection');
+    if (scrollToSection) {
+      sessionStorage.removeItem('scrollToSection');
+      const id = scrollToSection.startsWith('#') ? scrollToSection.substring(1) : '';
+      if (id) {
+        setTimeout(() => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 300); // Slight delay to ensure content is rendered
+      }
+    }
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
 

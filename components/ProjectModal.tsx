@@ -155,12 +155,24 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateT
                         transition={{ x: { type: "spring", stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } }}
                         className="absolute w-full h-full flex items-center justify-center p-4 pb-24 md:p-8 md:pb-8"
                     >
-                        <img
-                            src={images[validIndex].src}
-                            alt={images[validIndex].alt}
-                            className="max-w-full max-h-full object-contain drop-shadow-2xl"
-                            draggable={false}
-                        />
+                        {images[validIndex].src.endsWith('.mp4') ? (
+                            <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="max-w-full max-h-full object-contain drop-shadow-2xl"
+                            >
+                                <source src={images[validIndex].src} type="video/mp4" />
+                            </video>
+                        ) : (
+                            <img
+                                src={images[validIndex].src}
+                                alt={images[validIndex].alt}
+                                className="max-w-full max-h-full object-contain drop-shadow-2xl"
+                                draggable={false}
+                            />
+                        )}
                     </motion.div>
                 </AnimatePresence>
 
