@@ -80,14 +80,25 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
 
         trackEvent('submit_contact_form', { fromPackage: selectedPackage || 'N/A' });
 
-        // SIMULACIÓN: Reemplazar con un servicio real como EmailJS
-        console.log('Enviando formulario:', formData);
-        setTimeout(() => {
-            setFormState({ submitting: false, success: true, error: '' });
-            setFormData({ name: '', email: '', message: '' });
-            // Ocultar mensaje de éxito después de 5 segundos
-            setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
-        }, 2000);
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        })
+        .then(async (res) => {
+            const data = await res.json();
+            if (res.ok) {
+                setFormState({ submitting: false, success: true, error: '' });
+                setFormData({ name: '', email: '', message: '' });
+                // Ocultar mensaje de éxito después de 5 segundos
+                setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
+            } else {
+                setFormState({ submitting: false, success: false, error: data.error || 'Ocurrió un error al enviar el mensaje.' });
+            }
+        })
+        .catch(() => {
+            setFormState({ submitting: false, success: false, error: 'Ocurrió un error de red. Intenta nuevamente.' });
+        });
     };
 
     return (

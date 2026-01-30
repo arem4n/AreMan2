@@ -16,14 +16,25 @@ const Newsletter: React.FC = () => {
 
         trackEvent('submit_newsletter_form', { offer: 'Creatividad Expandida Book' });
 
-        // SIMULACIÓN: Reemplazar con un servicio real como Mailchimp
-        console.log('Suscribiendo email:', email);
-        setTimeout(() => {
-            setFormState({ submitting: false, success: true, error: '' });
-            setEmail('');
-            // Ocultar mensaje de éxito después de 5 segundos
-            setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
-        }, 2000);
+        fetch('/api/newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+        })
+        .then(async (res) => {
+            const data = await res.json();
+            if (res.ok) {
+                setFormState({ submitting: false, success: true, error: '' });
+                setEmail('');
+                // Ocultar mensaje de éxito después de 5 segundos
+                setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
+            } else {
+                setFormState({ submitting: false, success: false, error: data.error || 'Ocurrió un error al suscribirte.' });
+            }
+        })
+        .catch(() => {
+            setFormState({ submitting: false, success: false, error: 'Ocurrió un error de red. Intenta nuevamente.' });
+        });
     };
 
     return (
