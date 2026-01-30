@@ -72,7 +72,7 @@ const OstTechCaseStudy: React.FC = () => (
                 <li><Strong>La Curva ("S"):</Strong> Una forma fluida y blanca dentro del engranaje. Representa la S de Stormasen, pero también el movimiento, el agua y la vida orgánica.</li>
                 <li><Strong>Movimiento Implícito:</Strong> La forma de la S sugiere que el engranaje está girando. Un engranaje estático es maquinaria rota; uno girando es producción viva.</li>
             </UL>
-            <ImageDisplay src="https://i.postimg.cc/bNztNtcG/20251103_133803_0000.png" alt="Isotipo OstTech" caption="Fusión de la mecánica industrial con la fluidez orgánica." />
+            <ImageDisplay src="/images/ost-tech-hero.png" alt="Isotipo OstTech" caption="Fusión de la mecánica industrial con la fluidez orgánica." />
         </Block>
         
         <Hr />

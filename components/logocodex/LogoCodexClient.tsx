@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useLoading } from '../LoadingContext';
 import LogoCodex from '../LogoCodex';
 import { portfolioProjects } from '../../constants';
 import Header from '../Header';
@@ -10,6 +11,7 @@ import ElegantMenu from '../ElegantMenu';
 
 const LogoCodexClient: React.FC = () => {
     const router = useRouter();
+    const { customNavigate } = useLoading();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     
     // SAFE STATE INITIALIZATION: Start with a default, non-window-dependent value.
@@ -48,39 +50,26 @@ const LogoCodexClient: React.FC = () => {
     }, []);
 
     const navigateTo = (path: string) => {
-        const performNav = () => {
-            if (path === '#logocodex') {
-                 // On the LogoCodex page, clicking the "LogoCodex" link should scroll to top.
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return;
-            }
-            if (path.startsWith('/')) {
-                router.push(path);
-            } else if (path.startsWith('#')) {
-                const homePageSections = ['inicio', 'sobre-mi', 'servicios', 'portafolio', 'proceso', 'contacto'];
-                const id = path.substring(1);
-                
-                if (homePageSections.includes(id)) {
-                    sessionStorage.setItem('scrollToSection', path);
-                    router.push('/');
-                } else {
-                    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        };
+        if (path === '/portafolio' || path === '#logocodex') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
 
-        if (isMenuOpen) {
-            toggleMenu();
-            setTimeout(performNav, 400);
+        const homePageSections = ['inicio', 'sobre-mi', 'servicios', 'portafolio', 'proceso', 'contacto'];
+        const id = path.startsWith('#') ? path.substring(1) : '';
+
+        if (homePageSections.includes(id)) {
+            sessionStorage.setItem('scrollToSection', path);
+            customNavigate('/');
         } else {
-            performNav();
+            customNavigate(path);
         }
     };
 
     const handleSelectSlug = (slug: string) => {
         if (slug !== selectedSlug) {
             setSelectedSlug(slug);
-            const newUrl = `/logocodex#${slug}`;
+            const newUrl = `/portafolio#${slug}`;
             // Use replaceState to avoid polluting browser history for tab-like navigation
             window.history.replaceState(null, '', newUrl);
         }

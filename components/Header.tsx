@@ -15,7 +15,7 @@ const navLinks = [
     { href: "#servicios", label: "Servicios" },
     { href: "#portafolio", label: "Portafolio" },
     { href: "#proceso", label: "Proceso" },
-    { href: "#logocodex", label: "LogoCodex" },
+    { href: "/portafolio", label: "LogoCodex" },
     { href: "#contacto", label: "Contacto" },
 ];
 
@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
-        if (href === '#logocodex') {
+        if (href === '/portafolio') {
             trackEvent('navigate_to_logocodex', { from: 'header_nav' });
         }
         navigateTo(href);

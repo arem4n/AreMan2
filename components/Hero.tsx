@@ -46,8 +46,8 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                         Solicitar Auditoría de Identidad
                     </a>
                     <a 
-                        href="#logocodex" 
-                        onClick={(e) => { e.preventDefault(); navigateTo('#logocodex'); }}
+                        href="/portafolio"
+                        onClick={(e) => { e.preventDefault(); navigateTo('/portafolio'); }}
                         className="inline-block bg-transparent hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 border border-white/30 hover:border-white"
                     >
                         Descubrir LogoCodex™

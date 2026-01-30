@@ -10,6 +10,20 @@ const nextConfig = {
             },
         ],
     },
+    async redirects() {
+        return [
+            {
+                source: '/logocodex',
+                destination: '/portafolio',
+                permanent: true,
+            },
+            {
+                source: '/logocodex/:slug',
+                destination: '/portafolio/:slug',
+                permanent: true,
+            },
+        ];
+    },
 };
 
 export default nextConfig;
