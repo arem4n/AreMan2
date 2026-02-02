@@ -3,14 +3,10 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ClientWrapper from "@/components/ClientWrapper";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: '--font-inter',
-});
-
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: '--font-playfair-display',
+  variable: '--font-playfair-display'
 });
 
 export const metadata: Metadata = {

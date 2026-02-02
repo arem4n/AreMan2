@@ -4,6 +4,33 @@ import React from 'react';
 import { useLoading } from '@/components/LoadingContext';
 import { BackArrowIcon } from '@/components/icons/CodexIcons';
 import Footer from '@/components/Footer';
+import { motion } from 'framer-motion';
+
+const NarrativeCard = ({ title, text, index }: { title: string, text: string, index: number }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        className="glass-card glass-card-hover p-8 md:p-12 rounded-3xl mb-8 group"
+    >
+        <div className="flex flex-col md:flex-row gap-8 items-start">
+            <div className="md:w-1/4">
+                <span className="text-symbolic-500 font-display text-4xl font-bold opacity-30 group-hover:opacity-100 transition-opacity">
+                    ACTO {index + 1}
+                </span>
+                <h3 className="text-white font-display text-xl font-bold tracking-wider uppercase mt-2">
+                    {title}
+                </h3>
+            </div>
+            <div className="md:w-3/4">
+                <p className="text-deep-100 text-lg md:text-xl leading-relaxed font-light">
+                    {text}
+                </p>
+            </div>
+        </div>
+    </motion.div>
+);
 
 export default function OrigenPage() {
     const { customNavigate } = useLoading();
@@ -17,8 +44,28 @@ export default function OrigenPage() {
         }
     };
 
+    const narrative = [
+        {
+            title: "El error que se volvió método",
+            text: "En la UBA aprendí que cada plano cuenta una historia y que los símbolos activan significados inconscientes. No sabía que estaba aprendiendo a leer identidades. Lo apliqué a marcas, no a películas."
+        },
+        {
+            title: "Cuando la máquina se volvió espejo",
+            text: "En 2024, usé la IA para nombrar lo que ya hacía por intuición. Así nació LogoCodeX™: la sistematización de décadas de práctica. 6 pasos documentados, 48 páginas de manual. La IA no creó el método; la IA me mostró que el método ya existía."
+        },
+        {
+            title: "Arquitectura de Identidad",
+            text: "Hoy no hago 'logos bonitos'. Construyo narrativas que justifican precios premium y conectan con arquetipos. Si tu startup valora la profundidad sobre la viralidad, hablemos."
+        }
+    ];
+
     return (
-        <div className="bg-deep-900 min-h-screen font-body text-deep-100 overflow-x-hidden selection:bg-symbolic-500/30">
+        <div
+            className="min-h-screen font-body text-deep-100 overflow-x-hidden selection:bg-symbolic-500/30"
+            style={{
+                background: 'radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 1) 0%, rgba(15, 23, 42, 1) 100%)'
+            }}
+        >
             {/* Minimal Header / Back Button */}
             <nav className="fixed top-0 left-0 w-full p-6 z-50 flex justify-between items-center pointer-events-none">
                 <button
@@ -30,69 +77,43 @@ export default function OrigenPage() {
                 </button>
             </nav>
 
-            <main>
+            <main className="relative z-10">
                 {/* HERO */}
-                <section className="min-h-screen flex flex-col justify-center items-center px-4 relative">
-                    <div className="absolute inset-0 bg-gradient-to-b from-deep-800 to-deep-900 -z-10"></div>
-                    <span className="text-symbolic-500 font-bold tracking-[0.3em] uppercase mb-4 animate-fade-in-up">Biografía</span>
-                    <h1 className="text-6xl md:text-9xl font-display font-bold text-white mb-8 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+                <section className="pt-32 pb-16 px-4 flex flex-col items-center">
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-symbolic-500 font-bold tracking-[0.3em] uppercase mb-4"
+                    >
+                        Origen
+                    </motion.span>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-6xl md:text-9xl font-display font-bold text-white mb-8 text-center"
+                    >
                         ORIGEN
-                    </h1>
-                    <p className="text-xl md:text-3xl text-deep-300 font-display italic max-w-2xl text-center leading-relaxed animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-                        "No estudié diseño gráfico. Estudié cine. Y eso cambió todo."
-                    </p>
-                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                    </div>
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="text-xl md:text-3xl text-deep-300 font-display italic max-w-2xl text-center leading-relaxed"
+                    >
+                        {"\"No estudié diseño gráfico. Estudié cine. Y eso cambió todo.\""}
+                    </motion.p>
                 </section>
 
-                {/* ACTO I */}
-                <section className="py-24 px-4 max-w-4xl mx-auto border-t border-white/5">
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div className="md:col-span-1">
-                            <h2 className="text-symbolic-500 font-display text-2xl font-bold sticky top-24">ACTO I <br/><span className="text-white text-base font-body tracking-wider uppercase opacity-50">La Formación</span></h2>
-                        </div>
-                        <div className="md:col-span-2 space-y-6">
-                            <h3 className="text-3xl font-display font-bold text-white">El error que se volvió método</h3>
-                            <p className="text-lg md:text-xl leading-relaxed text-deep-200">
-                                "En la UBA aprendí que cada plano cuenta una historia y que los símbolos activan significados inconscientes. No sabía que estaba aprendiendo a leer identidades. Lo apliqué a marcas, no a películas."
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ACTO II */}
-                <section className="py-24 px-4 max-w-4xl mx-auto border-t border-white/5">
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div className="md:col-span-1">
-                            <h2 className="text-symbolic-500 font-display text-2xl font-bold sticky top-24">ACTO II <br/><span className="text-white text-base font-body tracking-wider uppercase opacity-50">La Sistematización</span></h2>
-                        </div>
-                        <div className="md:col-span-2 space-y-6">
-                            <h3 className="text-3xl font-display font-bold text-white">Cuando la máquina se volvió espejo</h3>
-                            <p className="text-lg md:text-xl leading-relaxed text-deep-200">
-                                "En 2024, usé la IA para nombrar lo que ya hacía por intuición. Así nació LogoCodeX™: la sistematización de décadas de práctica. 6 pasos documentados, 48 páginas de manual. La IA no creó el método; la IA me mostró que el método ya existía."
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ACTO III */}
-                <section className="py-24 px-4 max-w-4xl mx-auto border-t border-white/5">
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div className="md:col-span-1">
-                            <h2 className="text-symbolic-500 font-display text-2xl font-bold sticky top-24">ACTO III <br/><span className="text-white text-base font-body tracking-wider uppercase opacity-50">El Presente</span></h2>
-                        </div>
-                        <div className="md:col-span-2 space-y-6">
-                            <h3 className="text-3xl font-display font-bold text-white">Arquitectura de Identidad</h3>
-                            <p className="text-lg md:text-xl leading-relaxed text-deep-200">
-                                "Hoy no hago 'logos bonitos'. Construyo narrativas que justifican precios premium y conectan con arquetipos. Si tu startup valora la profundidad sobre la viralidad, hablemos."
-                            </p>
-                        </div>
-                    </div>
+                {/* Narrative Cards Container */}
+                <section className="py-20 px-4 max-w-5xl mx-auto">
+                    {narrative.map((item, index) => (
+                        <NarrativeCard key={index} index={index} title={item.title} text={item.text} />
+                    ))}
                 </section>
 
                 {/* CTA Final */}
-                <section className="py-32 px-4 text-center bg-deep-800 border-t border-white/5">
+                <section className="py-32 px-4 text-center">
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-8">¿Listo para profundizar?</h2>
                     <button
                         onClick={() => navigateTo('#contacto')}

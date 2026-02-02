@@ -80,24 +80,24 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
 
         trackEvent('submit_contact_form', { fromPackage: selectedPackage || 'N/A' });
 
+        // Integration with Resend API
         fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
         })
-        .then(async (res) => {
-            const data = await res.json();
-            if (res.ok) {
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
                 setFormState({ submitting: false, success: true, error: '' });
                 setFormData({ name: '', email: '', message: '' });
-                // Ocultar mensaje de éxito después de 5 segundos
                 setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
             } else {
-                setFormState({ submitting: false, success: false, error: data.error || 'Ocurrió un error al enviar el mensaje.' });
+                setFormState({ submitting: false, success: false, error: data.error || 'Algo salió mal.' });
             }
         })
-        .catch(() => {
-            setFormState({ submitting: false, success: false, error: 'Ocurrió un error de red. Intenta nuevamente.' });
+        .catch(err => {
+            setFormState({ submitting: false, success: false, error: 'Error de conexión.' });
         });
     };
 

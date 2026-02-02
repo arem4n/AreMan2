@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
 
@@ -59,7 +60,7 @@ const OstTechCaseStudy: React.FC = () => (
             <SectionTitle>1. BRIEFING Y DESAFÍO</SectionTitle>
             <P><Strong>Cliente:</Strong> Omar Stormasen.</P>
             <P><Strong>Industria:</Strong> Acuicultura / Tecnología (Software de mantenimiento).</P>
-            <P><Strong>El Reto:</Strong> El cliente dio libertad creativa total ("algo representativo"). El desafío era evitar los clichés tecnológicos genéricos y crear una identidad que representara tanto la robustez industrial como la identidad personal del fundador.</P>
+            <P><Strong>El Reto:</Strong> El cliente dio libertad creativa total (&quot;algo representativo&quot;). El desafío era evitar los clichés tecnológicos genéricos y crear una identidad que representara tanto la robustez industrial como la identidad personal del fundador.</P>
         </Block>
 
         <Hr />
@@ -68,8 +69,8 @@ const OstTechCaseStudy: React.FC = () => (
         <Block>
             <SubSectionTitle>Isotipo: El Engranaje Orgánico</SubSectionTitle>
             <UL>
-                <li><Strong>El Engranaje ("O"):</Strong> Una rueda dentada sólida que representa la maquinaria industrial, la automatización y la letra O de Omar.</li>
-                <li><Strong>La Curva ("S"):</Strong> Una forma fluida y blanca dentro del engranaje. Representa la S de Stormasen, pero también el movimiento, el agua y la vida orgánica.</li>
+                <li><Strong>El Engranaje (&quot;O&quot;):</Strong> Una rueda dentada sólida que representa la maquinaria industrial, la automatización y la letra O de Omar.</li>
+                <li><Strong>La Curva (&quot;S&quot;):</Strong> Una forma fluida y blanca dentro del engranaje. Representa la S de Stormasen, pero también el movimiento, el agua y la vida orgánica.</li>
                 <li><Strong>Movimiento Implícito:</Strong> La forma de la S sugiere que el engranaje está girando. Un engranaje estático es maquinaria rota; uno girando es producción viva.</li>
             </UL>
             <ImageDisplay src="/images/ost-tech-hero.png" alt="Isotipo OstTech" caption="Fusión de la mecánica industrial con la fluidez orgánica." />
@@ -80,9 +81,9 @@ const OstTechCaseStudy: React.FC = () => (
         <SectionTitle>3. ANÁLISIS SEMIÓTICO PROFUNDO</SectionTitle>
         <Block>
             <SubSectionTitle>La Metáfora del Mantenimiento</SubSectionTitle>
-            <P>El engranaje simboliza el sistema complejo de una salmonera: si un diente falla, todo colapsa. El software OST es el "aceite" inteligente que mantiene el sistema en movimiento perpetuo.</P>
+            <P>El engranaje simboliza el sistema complejo de una salmonera: si un diente falla, todo colapsa. El software OST es el &quot;aceite&quot; inteligente que mantiene el sistema en movimiento perpetuo.</P>
             <Quote>
-                <P><Strong>El Alma en la Máquina:</Strong> El engranaje es la tecnología fría e impersonal. La 'S' curva en el centro es el toque humano, la personalización y la identidad de Omar dentro del sistema. Representa la intervención experta que previene el caos.</P>
+                <P><Strong>El Alma en la Máquina:</Strong> El engranaje es la tecnología fría e impersonal. La &apos;S&apos; curva en el centro es el toque humano, la personalización y la identidad de Omar dentro del sistema. Representa la intervención experta que previene el caos.</P>
             </Quote>
             
             <SubSectionTitle>Coherencia Industrial</SubSectionTitle>

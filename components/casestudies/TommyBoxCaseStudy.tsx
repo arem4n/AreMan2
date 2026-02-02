@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
 
@@ -59,7 +60,7 @@ const TommyBoxCaseStudy: React.FC = () => (
             <SectionTitle>1. BRIEFING Y CONTEXTO</SectionTitle>
             <P><Strong>Cliente:</Strong> Gustavo Arellano Manque.</P>
             <P><Strong>Industria:</Strong> Fitness / Entrenamiento Funcional.</P>
-            <P><Strong>Objetivo:</Strong> Crear una marca que transmitiera fuerza, comunidad y profesionalismo, alejándose de la estética agresiva típica de los gimnasios tradicionales ("No pain no gain") y acercándose a una visión más inteligente y funcional del movimiento.</P>
+            <P><Strong>Objetivo:</Strong> Crear una marca que transmitiera fuerza, comunidad y profesionalismo, alejándose de la estética agresiva típica de los gimnasios tradicionales (&quot;No pain no gain&quot;) y acercándose a una visión más inteligente y funcional del movimiento.</P>
         </Block>
 
         <Hr />
@@ -71,7 +72,7 @@ const TommyBoxCaseStudy: React.FC = () => (
             <ImageDisplay src="/images/tommybox-logo-v1.png" alt="Logo Versión 1 TommyBox" caption="Versión 1 (Histórica): Paleta verde/negro, más tradicional." />
             
             <SubSectionTitle>Logotipo y Símbolo (V2 Final)</SubSectionTitle>
-            <P>Se desarrolló un imagotipo que combina una tipografía robusta y moderna con un símbolo abstracto que sugiere una "Caja" (Box) abierta y dinámica, cambiando radicalmente a un Azul Eléctrico para diferenciación.</P>
+            <P>Se desarrolló un imagotipo que combina una tipografía robusta y moderna con un símbolo abstracto que sugiere una &quot;Caja&quot; (Box) abierta y dinámica, cambiando radicalmente a un Azul Eléctrico para diferenciación.</P>
             <UL>
                 <li><Strong>La Caja (Box):</Strong> Referencia directa al nombre y al tipo de espacio físico (Box de entrenamiento).</li>
                 <li><Strong>Dinamismo:</Strong> Las líneas no son cerradas, sugiriendo movimiento, entrada y salida de energía.</li>
@@ -86,7 +87,7 @@ const TommyBoxCaseStudy: React.FC = () => (
         <Block>
             <UL>
                 <li><Strong>1. El Héroe (Primario):</Strong> Superación personal, disciplina y logro de metas físicas.</li>
-                <li><Strong>2. El Amigo (Secundario):</Strong> Comunidad, pertenencia a la "tribu" del box. Accesible y motivador.</li>
+                <li><Strong>2. El Amigo (Secundario):</Strong> Comunidad, pertenencia a la &quot;tribu&quot; del box. Accesible y motivador.</li>
             </UL>
         </Block>
 

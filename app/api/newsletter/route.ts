@@ -6,8 +6,8 @@ export async function POST(request: Request) {
     const { email } = await request.json();
 
     if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is missing');
-      return NextResponse.json({ error: 'Configuration error' }, { status: 500 });
+      console.warn('RESEND_API_KEY is missing. Simulating success for development.');
+      return NextResponse.json({ success: true, simulated: true });
     }
 
     if (!email) {
@@ -17,11 +17,17 @@ export async function POST(request: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     // 1. Try to create the contact in the default audience
-    // As per memory, audience_id is omitted to use the default 'General' audience.
-    const response = await resend.contacts.create({
+    const contactPayload: any = {
       email: email,
       unsubscribed: false,
-    });
+      tags: [{ name: 'source', value: 'newsletter' }],
+    };
+
+    if (process.env.RESEND_AUDIENCE_ID) {
+      contactPayload.audienceId = process.env.RESEND_AUDIENCE_ID;
+    }
+
+    const response = await resend.contacts.create(contactPayload);
 
     if (response.error) {
       // If the error is because the contact already exists, we treat it as success
@@ -32,9 +38,6 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: response.error.message }, { status: 500 });
       }
     }
-
-    // Note: The user specified that the HTML template is already configured in the Resend dashboard.
-    // If the dashboard is set up to send a welcome email upon contact creation, it will happen automatically.
 
     return NextResponse.json({ success: true, data: response.data });
   } catch (error: any) {

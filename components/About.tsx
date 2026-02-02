@@ -11,7 +11,7 @@ const About: React.FC = () => {
                     Origen
                 </span>
                 <h2 className="text-3xl lg:text-6xl font-display font-bold text-deep-800 mb-8 leading-tight">
-                    "No estudié diseño gráfico. <br className="hidden md:block"/>Estudié cine."
+                    {"\"No estudié diseño gráfico. Estudié cine.\""}
                 </h2>
                 <p className="text-lg md:text-xl text-deep-700 leading-relaxed mb-10 max-w-2xl mx-auto">
                     Y eso cambió todo. Descubrí que las marcas funcionan como personajes: necesitan conflicto y resolución. Durante 10 años diseñé en los márgenes hasta que la IA me ayudó a sistematizar mi intuición en un método propio.

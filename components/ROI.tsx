@@ -26,7 +26,7 @@ const ROI: React.FC = () => {
                             </li>
                             <li className="flex items-start">
                                 <span className="text-red-500 mr-2">✖</span>
-                                <span><strong>Desconfianza Automática:</strong> Una estética de plantilla grita "amateur" o "riesgo" a los inversores.</span>
+                                <span><strong>Desconfianza Automática:</strong> Una estética de plantilla grita &quot;amateur&quot; o &quot;riesgo&quot; a los inversores.</span>
                             </li>
                             <li className="flex items-start">
                                 <span className="text-red-500 mr-2">✖</span>
@@ -46,7 +46,7 @@ const ROI: React.FC = () => {
                             </li>
                             <li className="flex items-start">
                                 <span className="text-green-400 mr-2">✔</span>
-                                <span><strong>Conversión Instantánea:</strong> La coherencia semiótica reduce la fricción. El cliente "entiende" tu valor sin leer.</span>
+                                <span><strong>Conversión Instantánea:</strong> La coherencia semiótica reduce la fricción. El cliente &quot;entiende&quot; tu valor sin leer.</span>
                             </li>
                             <li className="flex items-start">
                                 <span className="text-green-400 mr-2">✔</span>

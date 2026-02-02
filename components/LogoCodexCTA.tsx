@@ -14,7 +14,7 @@ const LogoCodexCTA: React.FC<LogoCodexCTAProps> = ({ navigateTo }) => {
                     El Mecanismo Único detrás de la Identidad
                 </h2>
                 <p className="text-lg text-deep-200 leading-relaxed mb-8 max-w-2xl mx-auto">
-                    La diferencia entre un "diseño bonito" y una marca inolvidable es el sistema que la construye. <strong>LogoCodex™</strong> no es solo teoría; es el protocolo que garantiza que tu marca no se pierda en el ruido digital.
+                    La diferencia entre un &quot;diseño bonito&quot; y una marca inolvidable es el sistema que la construye. <strong>LogoCodex™</strong> no es solo teoría; es el protocolo que garantiza que tu marca no se pierda en el ruido digital.
                 </p>
                 <button
                     onClick={() => {
