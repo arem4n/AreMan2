@@ -36,7 +36,7 @@ export default function CaseStudyLayout({ children }: React.PropsWithChildren) {
                 <section className="text-center bg-gradient-to-r from-symbolic-600 to-deep-700 text-white p-10 rounded-2xl shadow-xl animate-fade-in-up mt-16" style={{ animationDelay: '400ms' }}>
                     <h2 className="text-3xl lg:text-4xl font-display font-bold mb-6">¿Listo para codificar tu propia identidad?</h2>
                     <p className="text-lg text-symbolic-100 max-w-3xl mx-auto leading-relaxed">
-                        No dejes que tu marca sea un "average" de la industria. Apliquemos el sistema LogoCodex™ para construir una identidad soberana.
+                        No dejes que tu marca sea un &quot;average&quot; de la industria. Apliquemos el sistema LogoCodex™ para construir una identidad soberana.
                     </p>
                      <button
                         onClick={() => navigateTo('#contacto')}

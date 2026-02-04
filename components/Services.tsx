@@ -85,7 +85,7 @@ const Services: React.FC<ServicesProps> = ({ onPackageSelect }) => {
                     />
                 </div>
                 <p className="text-lg text-center max-w-3xl mx-auto text-deep-800 leading-relaxed">
-                    No compres "diseño bonito". Invierte en <strong>mitigación de riesgo</strong>. Una marca débil te cuesta clientes todos los días. Elige la profundidad estratégica que tu facturación merece.
+                    No compres &quot;diseño bonito&quot;. Invierte en <strong>mitigación de riesgo</strong>. Una marca débil te cuesta clientes todos los días. Elige la profundidad estratégica que tu facturación merece.
                 </p>
             </div>
         </section>

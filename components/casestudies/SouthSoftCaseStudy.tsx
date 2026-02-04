@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
 
@@ -57,7 +58,7 @@ const SouthSoftCaseStudy: React.FC = () => (
                 SOUTHSOFT
             </h2>
             <h1 className="text-4xl lg:text-5xl font-display font-bold text-gradient mb-4">
-                Consultoría Tecnológica & Filosofía Kaizen
+                Consultoría Tecnológica &amp; Filosofía Kaizen
             </h1>
             <p className="text-lg text-deep-600 max-w-2xl mx-auto">Código binario con raíces patagónicas y evolución constante.</p>
         </header>
@@ -66,9 +67,9 @@ const SouthSoftCaseStudy: React.FC = () => (
             <SectionTitle>1. BRIEFING Y CO-CREACIÓN</SectionTitle>
             <P><Strong>Cliente:</Strong> Francisco Arellano (CEO South Soft Chile SpA).</P>
             <P><Strong>Contexto:</Strong> Consultoría IT e implementación de ERP.</P>
-            <P><Strong>Filosofía:</Strong> Kaizen ("Mejora Continua"). La creencia de que todo sistema es perfectible y evolutivo.</P>
+            <P><Strong>Filosofía:</Strong> Kaizen (&quot;Mejora Continua&quot;). La creencia de que todo sistema es perfectible y evolutivo.</P>
              <Quote>
-                <P>"Todo se puede resolver... todo tiene un proceso de evolución." - Francisco Arellano.</P>
+                <P>&quot;Todo se puede resolver... todo tiene un proceso de evolución.&quot; - Francisco Arellano.</P>
             </Quote>
             <P>El concepto nació de una co-creación: el cliente propuso la idea abstracta de un infinito formado por una S cortada. El desafío fue materializar esa visión con precisión técnica.</P>
         </Block>
@@ -80,11 +81,11 @@ const SouthSoftCaseStudy: React.FC = () => (
             <SubSectionTitle>Tipomorfología de Triple Función</SubSectionTitle>
             <P>El isotipo es una pieza de ingeniería visual que cumple tres funciones simultáneas (Éxito 10/10):</P>
             <UL>
-                <li><Strong>1. S de "South":</Strong> La mitad superior (Azul). Referencia al origen geográfico y orgullo regional.</li>
-                <li><Strong>2. S de "Soft":</Strong> La mitad inferior (Gris). Referencia a la industria tecnológica.</li>
+                <li><Strong>1. S de &quot;South&quot;:</Strong> La mitad superior (Azul). Referencia al origen geográfico y orgullo regional.</li>
+                <li><Strong>2. S de &quot;Soft&quot;:</Strong> La mitad inferior (Gris). Referencia a la industria tecnológica.</li>
                 <li><Strong>3. Símbolo de Infinito (∞):</Strong> Al rotar la S o verla como un 8 continuo, representa el ciclo sin fin de la mejora continua (Kaizen).</li>
             </UL>
-            <ImageDisplay src="/images/southsoft-logo.png" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
+            <ImageDisplay src="/images/southsoft.gif" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
 
             <SubSectionTitle>La Metáfora de la Dualidad</SubSectionTitle>
             <P>El corte horizontal exacto divide el logo en dos mundos que se complementan:</P>
@@ -101,7 +102,7 @@ const SouthSoftCaseStudy: React.FC = () => (
         <Block>
             <P>La filosofía Kaizen no es estática; es movimiento perpetuo. El logotipo cobra vida en entornos digitales, donde el ciclo infinito se manifiesta visualmente, demostrando que la mejora nunca se detiene.</P>
             <ImageDisplay 
-                src="/images/southsoft-loop.mp4"
+                src="/images/southsoft.gif"
                 alt="Motion Graphics SouthSoft"
                 caption="Dinámica del Infinito: Representación visual del ciclo de mejora continua."
             />
@@ -114,7 +115,7 @@ const SouthSoftCaseStudy: React.FC = () => (
             <UL>
                 <li><Strong>1. El Sabio/Mentor (Primario):</Strong> El azul profundo y el infinito transmiten conocimiento acumulado y guía experta en procesos complejos.</li>
                 <li><Strong>2. El Creador/Artesano (Secundario):</Strong> La precisión del corte y la construcción geométrica hablan de soluciones a medida, no de productos enlatados.</li>
-                <li><Strong>3. El Explorador (Terciario):</Strong> La filosofía de "mejora infinita" implica una búsqueda constante de nuevas fronteras tecnológicas.</li>
+                <li><Strong>3. El Explorador (Terciario):</Strong> La filosofía de &quot;mejora infinita&quot; implica una búsqueda constante de nuevas fronteras tecnológicas.</li>
             </UL>
         </Block>
 
@@ -123,10 +124,10 @@ const SouthSoftCaseStudy: React.FC = () => (
         <SectionTitle>5. VALIDACIÓN Y TESTIMONIO</SectionTitle>
         <Block>
             <P>La identidad se aplica en todos los puntos de contacto, transmitiendo profesionalismo desde el primer correo.</P>
-            <ImageDisplay src="/images/southsoft-email-signature.jpg" alt="Pie de firma SouthSoft" caption="Aplicación corporativa real: Pie de firma de correo electrónico." />
+            <ImageDisplay src="/images/southsoft-signature.jpg" alt="Pie de firma SouthSoft" caption="Aplicación corporativa real: Pie de firma de correo electrónico." />
             
             <Quote>
-                <P>"Trabajar con Sergio fue una experiencia muy agradable y fluida. Interpretó muy bien mi percepción de una empresa de tecnología en constante movimiento y la plasmó impecablemente en un logo que muestra las iniciales de mi empresa y el símbolo de infinito. Recomiendo el trabajo de Sergio, toda vez que sus creaciones tienen peso simbólico por lo que son <Strong>mucho más que un logo, una historia sintetizada</Strong>." - Francisco Arellano.</P>
+                <P>&quot;Trabajar con Sergio fue una experiencia muy agradable y fluida. Interpretó muy bien mi percepción de una empresa de tecnología en constante movimiento y la plasmó impecablemente en un logo que muestra las iniciales de mi empresa y el símbolo de infinito. Recomiendo el trabajo de Sergio, toda vez que sus creaciones tienen peso simbólico por lo que son <Strong>mucho más que un logo, una historia sintetizada</Strong>.&quot; - Francisco Arellano.</P>
             </Quote>
             <P>Este testimonio valida el núcleo de la metodología LogoCodeX™: la capacidad de condensar la narrativa completa de una empresa (Historia Sintetizada) en un símbolo funcional, superando la mera decoración estética.</P>
         </Block>

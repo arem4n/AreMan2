@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <footer className="bg-deep-900 text-deep-400 py-8 text-center">
             <div className="max-w-6xl mx-auto px-4">
                 <div className="text-2xl font-display font-bold text-gradient mb-2">AREM4N</div>
-                <p className="text-sm mb-4">"Cada símbolo cuenta una historia. Cada diseño tiene alma. Cada marca puede trascender."</p>
+                <p className="text-sm mb-4">&quot;Cada símbolo cuenta una historia. Cada diseño tiene alma. Cada marca puede trascender.&quot;</p>
                 <p className="text-sm font-light">- AreMan, {currentYear}</p>
                 <p className="text-sm mt-4">&copy; {currentYear} AREM4N - Diseño Simbólico & Narrativa Visual</p>
             </div>

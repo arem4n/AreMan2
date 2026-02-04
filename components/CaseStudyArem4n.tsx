@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState, useCallback, useRef } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 
@@ -363,9 +364,9 @@ const CaseStudyArem4n: React.FC = () => (
             <Table 
                 headers={["Elemento", "Técnica", "Resultado Simbólico"]}
                 rows={[
-                    [<Strong>Árbol</Strong>, "Espacio Negativo", "El legado Arellano está 'contenido dentro' de la tierra, es el corazón de la montaña."],
-                    [<Strong>Montaña</Strong>, "Forma Positiva", "La base sólida y el entorno que permite que el legado exista."],
-                    [<Strong>Cóndor</Strong>, "Forma Positiva Dominante", "El espíritu Manque es el protector visible y la fuerza que corona la identidad."]
+                    [<Strong key="arbol">Árbol</Strong>, "Espacio Negativo", "El legado Arellano está 'contenido dentro' de la tierra, es el corazón de la montaña."],
+                    [<Strong key="montana">Montaña</Strong>, "Forma Positiva", "La base sólida y el entorno que permite que el legado exista."],
+                    [<Strong key="condor">Cóndor</Strong>, "Forma Positiva Dominante", "El espíritu Manque es el protector visible y la fuerza que corona la identidad."]
                 ]}
             />
             <ImagePlaceholder />

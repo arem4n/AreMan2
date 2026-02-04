@@ -10,7 +10,7 @@ interface ElegantMenuProps {
 
 const navLinks = [
     { href: "#inicio", label: "Inicio" },
-    { href: "#sobre-mi", label: "Sobre mí" },
+    { href: "#origen", label: "Origen" },
     { href: "#servicios", label: "Servicios" },
     { href: "#portafolio", label: "Portafolio" },
     { href: "#proceso", label: "Proceso" },

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
 
@@ -69,15 +70,15 @@ const AlbornozCaseStudy: React.FC = () => (
             <SubSectionTitle>Nivel 1: Simbolismo Icónico (Lo que ves)</SubSectionTitle>
             <UL>
                 <li><Strong>La Casa:</Strong> Forma arquetípica con techo triangular pronunciado (funcional para la lluvia sureña). Ventana de 4 paneles que simboliza luz, transparencia y hogar.</li>
-                <li><Strong>Los Árboles:</Strong> Una corona orgánica que "abraza" la casa. Comunica "propiedades en entornos naturales" y protección.</li>
+                <li><Strong>Los Árboles:</Strong> Una corona orgánica que &quot;abraza&quot; la casa. Comunica &quot;propiedades en entornos naturales&quot; y protección.</li>
                 <li><Strong>El Color:</Strong> Verde oliva/musgo. Un tono terroso real, no digital, que conecta con la vegetación húmeda de la zona.</li>
             </UL>
 
             <SubSectionTitle>Nivel 2: Tipomorfología Avanzada (Lo oculto)</SubSectionTitle>
             <P>El diseño integra las iniciales de la marca mediante una estructura inteligente:</P>
             <UL>
-                <li><Strong>La Letra "A" (10/10):</Strong> La estructura completa de la casa forma una "A" mayúscula sólida.</li>
-                <li><Strong>La Letra "P" (9.5/10):</Strong> El lado izquierdo de la casa forma una "P". Esto se logra mediante una <strong>asimetría intencional</strong> (el soporte derecho es más corto) y el refuerzo visual de la curvatura de los árboles.</li>
+                <li><Strong>La Letra &quot;A&quot; (10/10):</Strong> La estructura completa de la casa forma una &quot;A&quot; mayúscula sólida.</li>
+                <li><Strong>La Letra &quot;P&quot; (9.5/10):</Strong> El lado izquierdo de la casa forma una &quot;P&quot;. Esto se logra mediante una <strong>asimetría intencional</strong> (el soporte derecho es más corto) y el refuerzo visual de la curvatura de los árboles.</li>
             </UL>
              <ImageDisplay src="/images/albornoz-main.png" alt="Isotipo Albornoz Propiedades" caption="Integración de A+P en la estructura de la casa y el árbol." />
         </Block>
@@ -88,7 +89,7 @@ const AlbornozCaseStudy: React.FC = () => (
         <Block>
              <SubSectionTitle>Arquetipos Junguianos</SubSectionTitle>
              <UL>
-                <li><Strong>1. El Cuidador (Primario):</Strong> Seguridad, calidez, protección. Los árboles abrazando la casa dicen "aquí te cuidamos".</li>
+                <li><Strong>1. El Cuidador (Primario):</Strong> Seguridad, calidez, protección. Los árboles abrazando la casa dicen &quot;aquí te cuidamos&quot;.</li>
                 <li><Strong>2. El Sabio Local (Secundario):</Strong> Conocimiento profundo del territorio. El color específico demuestra que no es una franquicia genérica, sino un experto local.</li>
                 <li><Strong>3. El Inocente (Terciario):</Strong> Honestidad y simplicidad. La casa arquetípica genera confianza inmediata.</li>
              </UL>
@@ -103,7 +104,7 @@ const AlbornozCaseStudy: React.FC = () => (
                         <img src="/images/albornoz-tarjeta.png" alt="Tarjeta de Presentación Mockup" className="w-full h-full object-cover" />
                     </div>
                     <h4 className="font-bold text-deep-800 mb-2">Tarjeta de Presentación</h4>
-                    <P className="text-sm">Diseño polisémico. El anverso traza un "Camino Diagonal" desde el logo al contacto. El reverso revela un "Ojo Experto" formado por el QR y una hoja.</P>
+                    <P className="text-sm">Diseño polisémico. El anverso traza un &quot;Camino Diagonal&quot; desde el logo al contacto. El reverso revela un &quot;Ojo Experto&quot; formado por el QR y una hoja.</P>
                 </div>
 
                 {/* Carpeta Vertical */}
@@ -154,7 +155,7 @@ const AlbornozCaseStudy: React.FC = () => (
         <Block>
             <SectionTitle>4. VALIDACIÓN DEL CLIENTE</SectionTitle>
              <Quote>
-                <P>"Excelente trabajo personalizado, pudimos ir definiendo cada detalle y supiste interpretar a la perfección cada idea ligada a una emoción. Muchas gracias por tu trabajo." - Patricia Albornoz.</P>
+                <P>&quot;Excelente trabajo personalizado, pudimos ir definiendo cada detalle y supiste interpretar a la perfección cada idea ligada a una emoción. Muchas gracias por tu trabajo.&quot; - Patricia Albornoz.</P>
             </Quote>
             <P>Este testimonio público es la validación definitiva del método LogoCodeX™: trascender lo estético para codificar valores emocionales reales que el cliente siente como propios.</P>
         </Block>

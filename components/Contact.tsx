@@ -80,14 +80,25 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
 
         trackEvent('submit_contact_form', { fromPackage: selectedPackage || 'N/A' });
 
-        // SIMULACIÓN: Reemplazar con un servicio real como EmailJS
-        console.log('Enviando formulario:', formData);
-        setTimeout(() => {
-            setFormState({ submitting: false, success: true, error: '' });
-            setFormData({ name: '', email: '', message: '' });
-            // Ocultar mensaje de éxito después de 5 segundos
-            setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
-        }, 2000);
+        // Integration with Resend API
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                setFormState({ submitting: false, success: true, error: '' });
+                setFormData({ name: '', email: '', message: '' });
+                setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
+            } else {
+                setFormState({ submitting: false, success: false, error: data.error || 'Algo salió mal.' });
+            }
+        })
+        .catch(err => {
+            setFormState({ submitting: false, success: false, error: 'Error de conexión.' });
+        });
     };
 
     return (

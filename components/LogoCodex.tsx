@@ -69,7 +69,7 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                             Manual LogoCodeX™
                         </h1>
                         <p className="text-lg lg:text-xl text-deep-200 leading-relaxed max-w-3xl mx-auto">
-                            "Un logo debe operar como un símbolo vivo, no como un adorno gráfico."<br/>
+                            &quot;Un logo debe operar como un símbolo vivo, no como un adorno gráfico.&quot;<br/>
                             <span className="text-white font-medium">Sistema de Codificación Visual Simbólica.</span>
                         </p>
                         <div className="mt-8 inline-block px-6 py-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-md">
@@ -108,7 +108,7 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                                 </p>
                                 <div className="bg-deep-50 p-6 rounded-xl border-l-4 border-symbolic-600">
                                     <p className="text-deep-800 font-medium italic">
-                                        "La premisa es radical: Tu diseño no solo debe ser atractivo, debe activar una cadena de asociaciones culturales, emocionales y narrativas en la memoria colectiva."
+                                        &quot;La premisa es radical: Tu diseño no solo debe ser atractivo, debe activar una cadena de asociaciones culturales, emocionales y narrativas en la memoria colectiva.&quot;
                                     </p>
                                 </div>
                             </div>
@@ -158,9 +158,9 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                                     <ArchetypeIcon />
                                 </div>
                                 <h3 className="text-2xl font-display font-bold mb-3 text-deep-800">2. Psicología Arquetípica</h3>
-                                <p className="text-deep-600 mb-4 text-sm font-semibold uppercase tracking-wide opacity-70">Jung & Pearson</p>
+                                <p className="text-deep-600 mb-4 text-sm font-semibold uppercase tracking-wide opacity-70">Jung &amp; Pearson</p>
                                 <p className="text-deep-700 leading-relaxed mb-4">
-                                    Conectamos con patrones universales del inconsciente colectivo. Definimos si tu marca es un "Héroe", un "Creador" o un "Sabio" para generar identificación inmediata y emocional.
+                                    Conectamos con patrones universales del inconsciente colectivo. Definimos si tu marca es un &quot;Héroe&quot;, un &quot;Creador&quot; o un &quot;Sabio&quot; para generar identificación inmediata y emocional.
                                 </p>
                             </div>
 

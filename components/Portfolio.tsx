@@ -191,7 +191,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                 opacity = 0;
                             }
 
-                            const isHeroLogo = project.slug === 'areman-escudo-heraldico' || project.slug === 'arem4n-professional-brand';
+                            const isHeroLogo = project.slug === 'areman-escudo-heraldico' || project.slug === 'arem4n-professional-brand' || project.slug === 'southsoft-development';
 
                             return (
                                 <div 
@@ -231,7 +231,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                         {/* Testimonial - Visible on ALL screens now */}
                                         <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-deep-100/50 shadow-sm">
                                             <p className="text-deep-600 italic max-w-2xl mx-auto text-base lg:text-lg leading-relaxed">
-                                                "{project.testimonial}"
+                                                &quot;{project.testimonial}&quot;
                                             </p>
                                         </div>
                                     </div>

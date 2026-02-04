@@ -12,8 +12,8 @@ export const southSoftProject: PortfolioProject = {
     link: "javascript:void(0);",
     galleryImages: [
             { src: "/images/southsoft-logo.png", alt: "Logo SouthSoft" },
-            { src: "/images/southsoft-signature.jpg", alt: "Aplicación Corporativa: Pie de Firma" },
-            { src: "/images/southsoft-loop.mp4", alt: "Motion Graphics: Ciclo Infinito Kaizen" }
+            { src: "/images/southsoft.gif", alt: "GIF Animación SouthSoft" },
+            { src: "/images/southsoft-signature.jpg", alt: "Aplicación Corporativa: Pie de Firma" }
     ],
     caseStudy: {
         client: "SouthSoft",

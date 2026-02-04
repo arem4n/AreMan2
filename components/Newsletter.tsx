@@ -16,14 +16,25 @@ const Newsletter: React.FC = () => {
 
         trackEvent('submit_newsletter_form', { offer: 'Creatividad Expandida Book' });
 
-        // SIMULACIÓN: Reemplazar con un servicio real como Mailchimp
-        console.log('Suscribiendo email:', email);
-        setTimeout(() => {
-            setFormState({ submitting: false, success: true, error: '' });
-            setEmail('');
-            // Ocultar mensaje de éxito después de 5 segundos
-            setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
-        }, 2000);
+        // Integration with Resend API
+        fetch('/api/newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                setFormState({ submitting: false, success: true, error: '' });
+                setEmail('');
+                setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
+            } else {
+                setFormState({ submitting: false, success: false, error: data.error || 'Algo salió mal.' });
+            }
+        })
+        .catch(err => {
+            setFormState({ submitting: false, success: false, error: 'Error de conexión.' });
+        });
     };
 
     return (
@@ -36,12 +47,12 @@ const Newsletter: React.FC = () => {
                     Lead Magnet Exclusivo
                 </span>
                 <h3 className="text-3xl lg:text-5xl font-display font-bold mb-6">
-                    "La máquina no tiene sombra. <br/><span className="text-creative-400">Tú sí.</span>"
+                    {"\"La máquina no tiene sombra."} <br/><span className="text-creative-400">{"Tú sí.\""}</span>
                 </h3>
                 <p className="text-lg text-deep-100 mb-8 leading-relaxed max-w-2xl mx-auto">
                     El dataset es un mar plano donde todo tiende al promedio. Si quieres que tu identidad sobreviva, prepárate para la <strong>Resistencia Simbólica</strong>.
                     <br/><br/>
-                    Descarga <em>"Creatividad Expandida"</em>: No es una guía de prompts. Es un mapa de tus propias grietas para crear con IA sin perder tu alma.
+                    Descarga <em>{"\"Creatividad Expandida\""}</em>: No es una guía de prompts. Es un mapa de tus propias grietas para crear con IA sin perder tu alma.
                 </p>
                 <form onSubmit={handleSubmit} noValidate className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-lg mx-auto">
                     <label htmlFor="newsletter-email" className="sr-only">Tu Email</label>

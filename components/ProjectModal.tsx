@@ -46,6 +46,32 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateT
         }
     };
 
+    const images = (project.galleryImages && project.galleryImages.length > 0) 
+        ? project.galleryImages 
+        : [{ src: project.mainImg, alt: project.altText }];
+
+    const validIndex = (currentImageIndex >= 0 && currentImageIndex < images.length) ? currentImageIndex : 0;
+
+    const nextImage = React.useCallback(() => {
+        if (currentImageIndex === images.length - 1) {
+            // If at end of gallery, go to next PROJECT
+            onNext();
+        } else {
+            setDirection(1);
+            setCurrentImageIndex((prev) => (prev + 1) % images.length);
+        }
+    }, [currentImageIndex, images.length, onNext]);
+
+    const prevImage = React.useCallback(() => {
+        if (currentImageIndex === 0) {
+            // If at start of gallery, go to prev PROJECT
+            onPrev();
+        } else {
+            setDirection(-1);
+            setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+        }
+    }, [currentImageIndex, images.length, onPrev]);
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') onClose();
@@ -54,38 +80,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateT
         };
         window.addEventListener('keydown', handleKeyDown);
         document.body.style.overflow = 'hidden';
-        
+
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
             document.body.style.overflow = 'unset';
         };
-    }, [onClose]); 
-
-    const images = (project.galleryImages && project.galleryImages.length > 0) 
-        ? project.galleryImages 
-        : [{ src: project.mainImg, alt: project.altText }];
-
-    const validIndex = (currentImageIndex >= 0 && currentImageIndex < images.length) ? currentImageIndex : 0;
-
-    const nextImage = () => {
-        if (currentImageIndex === images.length - 1) {
-            // If at end of gallery, go to next PROJECT
-            onNext();
-        } else {
-            setDirection(1);
-            setCurrentImageIndex((prev) => (prev + 1) % images.length);
-        }
-    };
-
-    const prevImage = () => {
-        if (currentImageIndex === 0) {
-            // If at start of gallery, go to prev PROJECT
-            onPrev();
-        } else {
-            setDirection(-1);
-            setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-        }
-    };
+    }, [onClose, prevImage, nextImage]);
 
     const onTouchStart = (e: React.TouchEvent) => {
         touchEnd.current = null;

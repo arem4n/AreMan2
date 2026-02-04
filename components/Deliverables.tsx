@@ -83,7 +83,7 @@ const Deliverables: React.FC = () => {
                         Entregables de Alto Valor
                     </h2>
                     <p className="text-lg text-deep-600 max-w-3xl mx-auto">
-                        No entrego "archivos". Entrego activos estratégicos listos para desplegarse en cualquier campo de batalla comercial.
+                        No entrego &quot;archivos&quot;. Entrego activos estratégicos listos para desplegarse en cualquier campo de batalla comercial.
                     </p>
                 </div>
                 
