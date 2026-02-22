@@ -38,7 +38,13 @@ const Quote: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 const ImageDisplay: React.FC<{ src: string, alt: string, caption: string }> = ({ src, alt, caption }) => (
     <figure className="my-8">
         {src.endsWith('.mp4') ? (
-             <video autoPlay loop muted playsInline className="w-full h-auto rounded-lg shadow-lg object-cover bg-deep-50 p-4">
+             <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto rounded-lg shadow-lg object-cover bg-deep-50 p-4 pointer-events-none"
+            >
                 <source src={src} type="video/mp4" />
                 Tu navegador no soporta videos.
             </video>
@@ -85,7 +91,7 @@ const SouthSoftCaseStudy: React.FC = () => (
                 <li><Strong>2. S de &quot;Soft&quot;:</Strong> La mitad inferior (Gris). Referencia a la industria tecnológica.</li>
                 <li><Strong>3. Símbolo de Infinito (∞):</Strong> Al rotar la S o verla como un 8 continuo, representa el ciclo sin fin de la mejora continua (Kaizen).</li>
             </UL>
-            <ImageDisplay src="/images/southsoft.gif" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
+            <ImageDisplay src="/images/southsoft-loop.mp4" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
 
             <SubSectionTitle>La Metáfora de la Dualidad</SubSectionTitle>
             <P>El corte horizontal exacto divide el logo en dos mundos que se complementan:</P>
@@ -102,7 +108,7 @@ const SouthSoftCaseStudy: React.FC = () => (
         <Block>
             <P>La filosofía Kaizen no es estática; es movimiento perpetuo. El logotipo cobra vida en entornos digitales, donde el ciclo infinito se manifiesta visualmente, demostrando que la mejora nunca se detiene.</P>
             <ImageDisplay 
-                src="/images/southsoft.gif"
+                src="/images/southsoft-loop.mp4"
                 alt="Motion Graphics SouthSoft"
                 caption="Dinámica del Infinito: Representación visual del ciclo de mejora continua."
             />

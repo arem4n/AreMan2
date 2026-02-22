@@ -161,7 +161,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateT
                                 loop
                                 muted
                                 playsInline
-                                className="max-w-full max-h-full object-contain drop-shadow-2xl"
+                                className="max-w-full max-h-full object-contain drop-shadow-2xl pointer-events-none"
                             >
                                 <source src={images[validIndex].src} type="video/mp4" />
                             </video>
