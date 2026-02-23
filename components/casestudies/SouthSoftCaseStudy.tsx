@@ -91,7 +91,7 @@ const SouthSoftCaseStudy: React.FC = () => (
                 <li><Strong>2. S de &quot;Soft&quot;:</Strong> La mitad inferior (Gris). Referencia a la industria tecnológica.</li>
                 <li><Strong>3. Símbolo de Infinito (∞):</Strong> Al rotar la S o verla como un 8 continuo, representa el ciclo sin fin de la mejora continua (Kaizen).</li>
             </UL>
-            <ImageDisplay src="/images/southsoft-loop.mp4" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
+    <ImageDisplay src="/images/southsoft-logo.png" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
 
             <SubSectionTitle>La Metáfora de la Dualidad</SubSectionTitle>
             <P>El corte horizontal exacto divide el logo en dos mundos que se complementan:</P>

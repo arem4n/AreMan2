@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, SVGMotionProps } from 'framer-motion';
 import { trackEvent } from '../analytics';
 
 interface HeaderProps {
@@ -19,6 +19,16 @@ const navLinks = [
     { href: "#contacto", label: "Contacto" },
 ];
 
+const Path = (props: SVGMotionProps<SVGPathElement>) => (
+    <motion.path
+        fill="transparent"
+        strokeWidth="3"
+        stroke="hsl(0, 0%, 18%)" // deep-800 equivalent
+        strokeLinecap="round"
+        {...props}
+    />
+);
+
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) => {
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -31,15 +41,38 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
 
     return (
         <>
-            {/* Mobile Menu Button - unchanged */}
-            <button
+            {/* Mobile Menu Button - Redesigned with Framer Motion */}
+            <motion.button
+                initial={false}
+                animate={isMenuOpen ? "open" : "closed"}
                 onClick={toggleMenu}
-                className={`elegant-menu-button md:hidden ${isMenuOpen ? 'active' : ''}`}
+                className="fixed top-6 right-6 z-[60] p-4 bg-white/80 backdrop-blur-md rounded-full shadow-lg md:hidden border border-white/40"
                 aria-label="Abrir Menú"
                 aria-expanded={isMenuOpen}
             >
-                <div className="menu-lines"></div>
-            </button>
+                <svg width="23" height="23" viewBox="0 0 23 23">
+                    <Path
+                        variants={{
+                            closed: { d: "M 2 2.5 L 20 2.5" },
+                            open: { d: "M 3 16.5 L 17 2.5" }
+                        }}
+                    />
+                    <Path
+                        d="M 2 9.423 L 20 9.423"
+                        variants={{
+                            closed: { opacity: 1 },
+                            open: { opacity: 0 }
+                        }}
+                        transition={{ duration: 0.1 }}
+                    />
+                    <Path
+                        variants={{
+                            closed: { d: "M 2 16.346 L 20 16.346" },
+                            open: { d: "M 3 2.5 L 17 16.346" }
+                        }}
+                    />
+                </svg>
+            </motion.button>
             
             {/* Desktop Floating Island Header */}
             <motion.header 
@@ -49,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
                 className="hidden md:flex fixed top-6 left-0 right-0 z-50 justify-center pointer-events-none"
             >
                 <div className="pointer-events-auto bg-white/80 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/5 rounded-full px-2 py-2 flex items-center gap-6 transition-all duration-300 hover:bg-white/90 hover:shadow-xl">
-                    {/* Logo */}
+                    {/* Logo - Updated to Favicon style */}
                     <a 
                         href="#inicio" 
                         onClick={(e) => handleNavClick(e, '#inicio')} 
@@ -58,9 +91,9 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
                         <motion.img 
                             whileHover={{ scale: 1.1, rotate: -5 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            src="/images/header-logo.webp"
+                            src="https://i.postimg.cc/MK2vnGTk/icon.png"
                             alt="Logotipo de AREM4N" 
-                            className="h-10 w-auto" 
+                            className="h-10 w-10 object-contain"
                         />
                         <span className="sr-only">AREM4N</span>
                     </a>
