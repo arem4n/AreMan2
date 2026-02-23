@@ -22,9 +22,10 @@ const navLinks = [
 const Path = (props: SVGMotionProps<SVGPathElement>) => (
     <motion.path
         fill="transparent"
-        strokeWidth="3"
+        strokeWidth="2.5" // Slightly thinner for elegance
         stroke="hsl(0, 0%, 18%)" // deep-800 equivalent
         strokeLinecap="round"
+        strokeLinejoin="round"
         {...props}
     />
 );
@@ -41,35 +42,42 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
 
     return (
         <>
-            {/* Mobile Menu Button - Redesigned with Framer Motion */}
+            {/* Mobile Menu Button - Redesigned with precise geometry */}
             <motion.button
                 initial={false}
                 animate={isMenuOpen ? "open" : "closed"}
                 onClick={toggleMenu}
-                className="fixed top-6 right-6 z-[60] p-4 bg-white/80 backdrop-blur-md rounded-full shadow-lg md:hidden border border-white/40"
-                aria-label="Abrir Menú"
+                className="fixed top-6 right-6 z-[2000] p-4 bg-white/80 backdrop-blur-md rounded-full shadow-lg md:hidden border border-white/40"
+                aria-label={isMenuOpen ? "Cerrar Menú" : "Abrir Menú"}
                 aria-expanded={isMenuOpen}
             >
-                <svg width="23" height="23" viewBox="0 0 23 23">
+                 <svg width="24" height="24" viewBox="0 0 24 24">
+                    {/* Top line */}
                     <Path
                         variants={{
-                            closed: { d: "M 2 2.5 L 20 2.5" },
-                            open: { d: "M 3 16.5 L 17 2.5" }
+                            closed: { d: "M 4 6 L 20 6" },
+                            open: { d: "M 4 20 L 20 4" }
                         }}
+                        transition={{ duration: 0.3 }}
                     />
+
+                    {/* Middle line - fades out */}
                     <Path
-                        d="M 2 9.423 L 20 9.423"
+                        d="M 4 12 L 20 12"
                         variants={{
                             closed: { opacity: 1 },
                             open: { opacity: 0 }
                         }}
                         transition={{ duration: 0.1 }}
                     />
+
+                    {/* Bottom line */}
                     <Path
                         variants={{
-                            closed: { d: "M 2 16.346 L 20 16.346" },
-                            open: { d: "M 3 2.5 L 17 16.346" }
+                            closed: { d: "M 4 18 L 20 18" },
+                            open: { d: "M 4 4 L 20 20" }
                         }}
+                        transition={{ duration: 0.3 }}
                     />
                 </svg>
             </motion.button>
