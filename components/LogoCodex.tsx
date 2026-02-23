@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SemioticsIcon, LayersIcon, ArchetypeIcon, BookIcon, GridIcon, HomeIcon, BackArrowIcon } from './icons/CodexIcons';
 import { portfolioProjects } from '../constants';
@@ -42,6 +42,36 @@ const renderCaseStudy = (slug: string) => {
 
 
 const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelectSlug }) => {
+    const [showReturnButton, setShowReturnButton] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const tabsContainer = document.getElementById('case-study-tabs');
+            if (!tabsContainer) return;
+
+            const rect = tabsContainer.getBoundingClientRect();
+            // Show button if the tabs container is scrolled out of view (top < 0)
+            // and we are further down the page
+            if (rect.bottom < 0) {
+                setShowReturnButton(true);
+            } else {
+                setShowReturnButton(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToTabs = () => {
+        const tabsContainer = document.getElementById('case-study-tabs');
+        if (tabsContainer) {
+            // Scroll slightly above the tabs for better context
+            const yOffset = -100;
+            const y = tabsContainer.getBoundingClientRect().top + window.scrollY + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
     
     const handleCaseStudyNav = (e: React.MouseEvent, slug: string) => {
         e.preventDefault();
@@ -61,6 +91,32 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                 <HomeIcon className="w-5 h-5" />
                 <span className="hidden sm:inline ml-2">Volver a Inicio</span>
             </button>
+
+             {/* Floating Return to Tabs Button */}
+             <AnimatePresence>
+                {showReturnButton && (
+                    <motion.button
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                        onClick={scrollToTabs}
+                        className="fixed bottom-6 right-6 z-[99] flex items-center justify-center bg-white text-symbolic-600 border border-symbolic-100 font-bold p-4 rounded-full shadow-xl hover:shadow-2xl hover:bg-symbolic-50 transition-all duration-300 group"
+                        aria-label="Volver a Casos de Estudio"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-6 h-6 transform group-hover:-translate-y-1 transition-transform duration-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2.5}
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                        </svg>
+                        <span className="sr-only">Volver arriba</span>
+                    </motion.button>
+                )}
+            </AnimatePresence>
 
             <main>
                 <header id="inicio" className="text-center pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-deep-800 to-deep-900 text-white relative overflow-hidden">
@@ -239,7 +295,7 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                             Selecciona un proyecto para ver una disección completa bajo la lente del Manual LogoCodeX™.
                         </p>
                         
-                        <div className="flex flex-wrap justify-center gap-3 mb-12">
+                        <div id="case-study-tabs" className="flex flex-wrap justify-center gap-3 mb-12 scroll-mt-32">
                             {portfolioProjects.map(project => (
                                 <button
                                     key={project.slug}

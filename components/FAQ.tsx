@@ -5,20 +5,24 @@ import { ChevronRightIcon } from './icons/Icons';
 
 const faqs = [
     {
-        question: "¿Por qué no usar simplemente IA o una plantilla de $50?",
-        answer: "La IA (el Águila) trabaja con promedios estadísticos; genera lo que ya existe. Si buscas encajar, úsala. Si buscas destacar y poseer una identidad propia (el Cóndor), necesitas un arquitecto que dirija la herramienta, no que sea usado por ella. LogoCodex™ garantiza que tu marca no sea una alucinación genérica."
+        question: "¿Por qué hablan de \"Soberanía Visual\" y no solo de diseño de logotipos?",
+        answer: "Porque un logotipo aislado es solo un adorno. La Soberanía Visual es la construcción de un activo financiero intangible. Diseñamos sistemas completos basados en arquetipos y semiótica profunda que permiten a tu marca dejar de competir por precio y empezar a liderar por autoridad."
     },
     {
-        question: "¿Qué pasa si no me gusta la propuesta de diseño?",
-        answer: "No diseñamos para tu gusto personal, diseñamos para tu objetivo comercial y tu arquetipo de cliente. Sin embargo, el proceso LogoCodex™ incluye fases de validación (Paso 5) para asegurar que te sientas representado. No hay sorpresas desagradables, solo evolución estratégica."
+        question: "¿Cuál es el nivel de involucramiento requerido por parte del fundador?",
+        answer: "Requerimos una colaboración profunda durante la Fase 1 (Diagnóstico Semiótico). Nuestro método LogoCodex™ no funciona con formularios genéricos; necesitamos extraer la visión fundamental de los fundadores para codificarla en la identidad visual. Una vez superada esta fase, nuestro equipo asume el control técnico y arquitectónico."
     },
     {
-        question: "¿Cuánto tiempo toma el proceso completo?",
-        answer: "La soberanía no se construye en una tarde. Dependiendo del nivel de profundidad (Diagnóstico vs. Arquitectura Completa), el proceso toma entre 2 a 5 semanas. Preferimos hacerlo bien una vez, que hacerlo rápido y mal dos veces."
+        question: "¿Trabajan con cualquier tipo de empresa o rubro?",
+        answer: "No. Nuestro enfoque está diseñado específicamente para startups tecnológicas, ecosistemas de software y fundadores que buscan escalar. Si solo buscas un \"diseño rápido\" para salir del paso, nuestro ecosistema de trabajo resultará excesivo para tus necesidades."
     },
     {
-        question: "¿Entregas los archivos editables?",
-        answer: "Absolutamente. En la sección de 'Entregables' verás que recibes el 'Arsenal Completo': Vectores (AI, SVG), manuales y sistemas listos para usar. Eres dueño total de tu propiedad intelectual."
+        question: "¿Qué incluye exactamente la entrega de la Fase 3?",
+        answer: "No entregamos archivos sueltos. Entregamos un ecosistema funcional. Esto incluye versiones vectoriales infinitamente escalables, sistemas cromáticos exactos, motion graphics listos para implementación en código (React/Next.js), iconografía UI personalizada y un Manual de Marca exhaustivo que dicta las reglas absolutas de tu nueva identidad."
+    },
+    {
+        question: "¿Cómo integran la Inteligencia Artificial en el proceso?",
+        answer: "A través de nuestro pilar de \"Creatividad Expandida\". Usamos modelos de IA avanzados para acelerar diagnósticos, generar iteraciones complejas y testear aplicaciones en tiempo récord. Sin embargo, la dirección de arte, la estrategia semiótica y el pulido final de los vectores se mantienen estrictamente bajo control humano para garantizar originalidad absoluta."
     }
 ];
 
