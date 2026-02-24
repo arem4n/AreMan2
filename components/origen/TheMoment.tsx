@@ -51,7 +51,7 @@ export const TheMoment = () => {
 
                 <motion.div variants={item} className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
                     <p className="text-lg md:text-xl text-deep-100 italic">
-                        "Eso me hizo ver las marcas de otra manera. Una marca no es un logo. Es un sistema de decisiones que comunica algo constantemente, quiera o no. La pregunta no es si tu marca está diciendo algo. La pregunta es si está diciendo lo que quieres decir."
+                        &quot;Eso me hizo ver las marcas de otra manera. Una marca no es un logo. Es un sistema de decisiones que comunica algo constantemente, quiera o no. La pregunta no es si tu marca está diciendo algo. La pregunta es si está diciendo lo que quieres decir.&quot;
                     </p>
                 </motion.div>
             </motion.div>
