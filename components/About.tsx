@@ -11,11 +11,26 @@ const About: React.FC = () => {
                     Origen
                 </span>
                 <h2 className="text-3xl lg:text-6xl font-display font-bold text-deep-800 mb-8 leading-tight">
-                    {"\"No estudié diseño gráfico. Estudié cine.\""}
+                    {"No estudié diseño gráfico. Estudié cine."}
                 </h2>
-                <p className="text-lg md:text-xl text-deep-700 leading-relaxed mb-10 max-w-2xl mx-auto">
-                    Y eso cambió todo. Descubrí que las marcas funcionan como personajes: necesitan conflicto y resolución. Durante 10 años diseñé en los márgenes hasta que la IA me ayudó a sistematizar mi intuición en un método propio.
-                </p>
+                <div className="text-lg md:text-xl text-deep-700 leading-relaxed mb-10 max-w-3xl mx-auto space-y-6 text-left md:text-center">
+                    <p>
+                        En cine aprendí algo que la mayoría de los diseñadores no sabe: toda imagen transmite algo, quieras o no. El vacío también comunica. La omisión también es una decisión.
+                    </p>
+                    <p>
+                        Con el tiempo entendí que las marcas tienen el mismo problema.
+                    </p>
+                    <p>
+                        La mayoría parte de la estética y le asigna significado después. No al revés.
+                        El resultado puede verse bien. Pero el fundador nunca termina de sentirlo suyo.
+                    </p>
+                    <p className="font-bold text-deep-900">
+                        Y eso se nota.
+                    </p>
+                    <p>
+                        <strong className="text-symbolic-600">LogoCodeX™</strong> invierte ese orden. Primero entendemos qué es real y único en tu empresa. Después lo hacemos visible.
+                    </p>
+                </div>
                 <button
                     onClick={() => customNavigate('/origen')}
                     className="inline-flex items-center text-symbolic-600 font-bold text-lg hover:text-symbolic-700 transition-colors group"

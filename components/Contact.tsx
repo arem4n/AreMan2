@@ -110,11 +110,19 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
                         ref={titleRef}
                         className="text-3xl lg:text-5xl font-display font-bold mb-6 transition-all duration-500 transform origin-center"
                     >
-                        Solicita tu Auditoría de Identidad
+                        Hablemos.
                     </h2>
-                    <p className="text-lg opacity-90 mb-8">
-                        No sigas siendo un commodity. Conversemos sobre cómo aplicar LogoCodex™ para construir la soberanía visual de tu startup.
-                    </p>
+                    <div className="text-lg opacity-90 mb-8 max-w-2xl mx-auto space-y-4">
+                        <p>
+                             Lo que más me gusta de este trabajo no es el resultado final. Es el proceso de descubrir qué historia tiene tu empresa y encontrar la forma de contarla visualmente.
+                        </p>
+                        <p>
+                             Cada marca es una narrativa distinta. Eso nunca se vuelve rutina.
+                        </p>
+                        <p className="font-semibold text-creative-400">
+                             Si llegaste hasta acá, es probable que tengas algo que vale la pena contar. Escríbeme y lo descubrimos juntos.
+                        </p>
+                    </div>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                     <form onSubmit={handleSubmit} noValidate className="bg-deep-800 p-8 rounded-2xl shadow-xl flex flex-col space-y-4 border border-deep-600">

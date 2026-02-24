@@ -28,13 +28,13 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                 />
                 <div className="animate-float" style={{ animationDelay: '0.5s' }}>
                     <h1 className="text-4xl lg:text-7xl font-display font-bold leading-tight mb-4">
-                        Tu Startup merece más que una plantilla vacía.
+                        Tu competencia también tiene un logo...
                     </h1>
-                    <p className="text-xl lg:text-2xl font-display text-creative-400 mb-8 max-w-4xl mx-auto">
-                        En un mercado saturado de tendencias efímeras, utilizo la metodología <strong className="text-white border-b border-creative-400">LogoCodex™</strong> para inyectar identidad estratégica, semiótica y narrativa a tu marca.
+                    <p className="text-xl lg:text-3xl font-display text-white mb-8 max-w-4xl mx-auto italic opacity-90">
+                         Probablemente se parece al tuyo.
                     </p>
-                    <p className="text-sm md:text-base text-deep-100 mb-10 font-mono bg-black/20 inline-block px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
-                        Estrategia + Semiótica = Identidad Soberana
+                    <p className="text-base md:text-lg text-deep-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+                        <strong className="text-creative-400">LogoCodeX™</strong> no parte del diseño. Parte de entender qué hace única a tu empresa, y después lo hace visible.
                     </p>
                 </div>
                 <div className="flex flex-col md:flex-row gap-4 justify-center">
@@ -43,14 +43,14 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                         onClick={handleContactClick}
                         className="inline-block bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 border border-symbolic-400"
                     >
-                        Solicitar Auditoría de Identidad
+                        Solicitar Auditoría
                     </a>
                     <a 
-                        href="/portafolio"
-                        onClick={(e) => { e.preventDefault(); navigateTo('/portafolio'); }}
+                        href="/origen" // Updated link based on "Descubrir LogoCodeX™" usually leading to the method/origin page
+                         onClick={(e) => { e.preventDefault(); navigateTo('/origen'); }}
                         className="inline-block bg-transparent hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 border border-white/30 hover:border-white"
                     >
-                        Descubrir LogoCodex™
+                        Descubrir LogoCodeX™
                     </a>
                 </div>
             </div>
