@@ -56,7 +56,8 @@ export const WhyItMatters = () => {
                 <motion.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    transition={{ delay: 2, duration: 1 }} // Longer delay for the final line
+                    viewport={{ once: true }}
+                    transition={{ delay: 2, duration: 1 }} // 0.8s pause/fade-in
                     className="text-lg md:text-xl font-medium text-creative-600"
                 >
                     Si llegaste hasta acá, probablemente es la misma pregunta que te trajo aquí.
@@ -65,7 +66,8 @@ export const WhyItMatters = () => {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 3, duration: 0.5, type: "spring" }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 3, duration: 0.5, type: "spring" }} // Enters after text
                     className="mt-12"
                 >
                     <a

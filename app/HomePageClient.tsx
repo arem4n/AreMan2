@@ -7,8 +7,7 @@ import ElegantMenu from '@/components/ElegantMenu';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
-import ROI from '@/components/ROI';
-import LogoCodexCTA from '@/components/LogoCodexCTA';
+import LogoCodex from '@/components/LogoCodex'; // Changed from LogoCodexCTA based on new requirement to replace content
 import Portfolio from '@/components/Portfolio';
 import WhyChooseMe from '@/components/WhyChooseMe';
 import Process from '@/components/Process';
@@ -17,9 +16,11 @@ import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
+
 export default function HomePageClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
+  const [selectedSlug, setSelectedSlug] = useState<string>(''); // For LogoCodex
   const { customNavigate } = useLoading();
 
   // Effect to handle scrolling to section after navigation from a different page
@@ -60,8 +61,8 @@ export default function HomePageClient() {
         <Hero navigateTo={navigateTo} />
         <About />
         <Services onPackageSelect={handleContactIntent} />
-        <ROI />
-        <LogoCodexCTA navigateTo={navigateTo} />
+        {/* ROI Section Removed */}
+        <LogoCodex navigateTo={navigateTo} selectedSlug={selectedSlug} onSelectSlug={setSelectedSlug} />
         <Portfolio onRequestProject={handleContactIntent} navigateTo={navigateTo} />
         <WhyChooseMe />
         <Process />

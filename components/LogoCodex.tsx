@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SemioticsIcon, LayersIcon, ArchetypeIcon, BookIcon, GridIcon, HomeIcon, BackArrowIcon } from './icons/CodexIcons';
+import { HomeIcon } from './icons/CodexIcons';
 import { portfolioProjects } from '../constants';
 import { trackEvent } from '../analytics';
 import Arem4nCaseStudy from './casestudies/Arem4nCaseStudy';
@@ -73,25 +73,8 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
         }
     };
     
-    const handleCaseStudyNav = (e: React.MouseEvent, slug: string) => {
-        e.preventDefault();
-        trackEvent('view_case_study', { project_slug: slug, from: 'logocodex_main' });
-        navigateTo(`#logocodex/${slug}`);
-    };
-    
     return (
         <div className="bg-deep-50 min-h-screen font-body relative">
-             {/* Floating Home Button */}
-             <button
-                onClick={() => navigateTo('#inicio')}
-                className="fixed bottom-6 left-6 z-[99] flex items-center justify-center bg-gradient-to-r from-symbolic-600 to-deep-700 text-white font-semibold py-3 px-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out animate-fade-in-up"
-                style={{ animationDelay: '200ms' }}
-                aria-label="Volver al Inicio"
-            >
-                <HomeIcon className="w-5 h-5" />
-                <span className="hidden sm:inline ml-2">Volver a Inicio</span>
-            </button>
-
              {/* Floating Return to Tabs Button */}
              <AnimatePresence>
                 {showReturnButton && (
@@ -148,9 +131,15 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                                     <li>Conexiones instintivas e intuitivas con las personas correctas.</li>
                                     <li>Una historia interna que hace que todos los cabos se conecten.</li>
                                 </ul>
-                                <p className="text-deep-700 leading-relaxed font-bold">
+                                <p className="text-deep-700 leading-relaxed font-bold mb-8">
                                     El resultado no es un logo bonito. Es una marca que el fundador muestra con orgullo porque siente que lo representa de verdad.
                                 </p>
+                                <button
+                                    onClick={() => navigateTo('/origen')}
+                                    className="inline-block bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                                >
+                                    Conocer la metodología completa →
+                                </button>
                             </div>
                             <div className="md:w-1/2 bg-deep-900 p-8 rounded-2xl border border-deep-700 shadow-2xl text-white">
                                 <h3 className="text-xl font-bold text-creative-400 mb-4">Diferencia Fundamental</h3>
@@ -169,42 +158,6 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="metodologia" className="py-16 lg:py-24 bg-white">
-                    <div className="max-w-5xl mx-auto px-4">
-                        <h2 className="text-3xl lg:text-5xl font-display font-bold text-center mb-16 text-deep-800">
-                            Metodología: El Proceso de 6 Pasos
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {[
-                                { step: 1, title: "Anclaje de Identidad", desc: "Definimos la intención profunda más allá del producto." },
-                                { step: 2, title: "Definición de Arquetipo", desc: "Selección del rol psicológico (Héroe, Sabio, etc.)" },
-                                { step: 3, title: "Mapeo de Símbolos", desc: "Investigación en el Libro de Símbolos y filtrado cultural." },
-                                { step: 4, title: "Traducción Visual", desc: "Transformación de conceptos en formas, colores y ritmos." },
-                                { step: 5, title: "Iteración y Validación", desc: "Test de coherencia semiótica y ajustes." },
-                                { step: 6, title: "Integración Narrativa", desc: "Desarrollo del storytelling donde el logo es protagonista." }
-                            ].map((item) => (
-                                <div key={item.step} className="flex gap-4 items-start p-6 bg-deep-50 rounded-xl border border-deep-100">
-                                    <span className="flex-shrink-0 w-10 h-10 bg-symbolic-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                                        {item.step}
-                                    </span>
-                                    <div>
-                                        <h4 className="text-xl font-bold text-deep-800 mb-2">{item.title}</h4>
-                                        <p className="text-deep-600">{item.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                         <div className="mt-12 text-center">
-                            <button
-                                onClick={() => navigateTo('/origen')}
-                                className="inline-block bg-transparent hover:bg-symbolic-50 text-symbolic-600 font-semibold py-3 px-8 rounded-full transition-all duration-300 border border-symbolic-200"
-                            >
-                                Conocer la metodología completa →
-                            </button>
                         </div>
                     </div>
                 </section>

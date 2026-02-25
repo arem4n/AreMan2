@@ -179,7 +179,7 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
 
                     <div className="space-y-6 text-white">
                         <ContactInfoItem icon={<EmailIcon />} title="Email Directo" value="contacto@arem4n.com" href="mailto:contacto@arem4n.com" />
-                        <ContactInfoItem icon={<WhatsAppIcon />} title="WhatsApp (Urgencias)" value="+56 9 3497 3287" href="https://wa.me/56934973287" />
+                        <ContactInfoItem icon={<WhatsAppIcon />} title="WhatsApp" value="+56 9 3497 3287" href="https://wa.me/56934973287" />
                         <ContactInfoItem icon={<InstagramIcon />} title="Instagram" value="@arem4n" href="https://www.instagram.com/arem4n" />
                         <ContactInfoItem icon={<BehanceIcon />} title="Portafolio Extendido" value="behance.net/arem4n" href="https://www.behance.net/arem4n" />
                     </div>

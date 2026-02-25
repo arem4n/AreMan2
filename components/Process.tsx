@@ -47,7 +47,7 @@ const Process: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="text-3xl lg:text-5xl font-display font-bold text-center mb-20 text-deep-800"
                 >
-                    Proceso de Trabajo
+                    Así trabajamos juntos
                 </motion.h2>
                 
                 <div className="relative">
@@ -71,10 +71,10 @@ const Process: React.FC = () => {
                         viewport={{ once: true, margin: "-100px" }}
                         className="grid md:grid-cols-4 gap-12 relative z-10"
                     >
-                        <ProcessStep number={1} title="Brief y análisis de marca" description="Entendemos visión, objetivos y necesidades de la startup." />
-                        <ProcessStep number={2} title="Diseño y desarrollo" description="Logo, branding, motion graphics y video según paquete elegido." />
-                        <ProcessStep number={3} title="Revisión colaborativa" description="Trabajamos hasta que el resultado sea perfecto." />
-                        <ProcessStep number={4} title="Entrega lista para usar" description="Archivos listos para web, redes y otros medios." />
+                        <ProcessStep number={1} title="Diagnóstico" description="Entendemos qué es real y único en tu empresa antes de diseñar nada." />
+                        <ProcessStep number={2} title="Construcción simbólica" description="Aplicamos LogoCodeX™ para traducir esa esencia en símbolo, paleta y narrativa." />
+                        <ProcessStep number={3} title="Revisión conjunta" description="Iteramos hasta que sientas que lo que ves te representa de verdad." />
+                        <ProcessStep number={4} title="Entrega" description="Todos los archivos listos para usar, con el manual que explica cómo y por qué cada decisión." />
                     </motion.div>
                 </div>
             </div>
