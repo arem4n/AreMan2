@@ -16,7 +16,7 @@ export default function OrigenPage() {
 
     return (
         <div
-            className="min-h-screen font-body text-deep-100 overflow-x-hidden selection:bg-symbolic-500/30 bg-deep-900"
+            className="min-h-screen font-body text-deep-100 selection:bg-symbolic-500/30 bg-deep-900"
         >
             {/* Minimal Header / Back Button */}
             <nav className="fixed top-0 left-0 w-full p-6 z-50 flex justify-between items-center pointer-events-none">
