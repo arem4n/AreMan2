@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import { TheMoment } from '@/components/origen/TheMoment';
 import { CinemaConfirmed } from '@/components/origen/CinemaConfirmed';
 import { TheRupture } from '@/components/origen/TheRupture';
-import { BackToSouth } from '@/components/origen/BackToSouth';
+import ScrollytellingMap from '@/components/ScrollytellingMap';
 import { TheMethod } from '@/components/origen/TheMethod';
 import { WhyItMatters } from '@/components/origen/WhyItMatters';
 
@@ -34,7 +34,7 @@ export default function OrigenPage() {
                 <TheMoment />
                 <CinemaConfirmed />
                 <TheRupture />
-                <BackToSouth />
+                <ScrollytellingMap />
                 <TheMethod />
                 <WhyItMatters />
             </main>
