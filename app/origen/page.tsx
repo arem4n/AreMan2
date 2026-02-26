@@ -5,6 +5,7 @@ import { useLoading } from '@/components/LoadingContext';
 import { BackArrowIcon } from '@/components/icons/CodexIcons';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
+import ScrollytellingMap from '@/components/ScrollytellingMap';
 
 const NarrativeCard = ({ title, text, index }: { title: string, text: string, index: number }) => (
     <motion.div
@@ -104,6 +105,8 @@ export default function OrigenPage() {
                         {"\"No estudié diseño gráfico. Estudié cine. Y eso cambió todo.\""}
                     </motion.p>
                 </section>
+
+                <ScrollytellingMap />
 
                 {/* Narrative Cards Container */}
                 <section className="py-20 px-4 max-w-5xl mx-auto">
