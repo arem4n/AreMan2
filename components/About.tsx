@@ -28,7 +28,7 @@ const About: React.FC = () => {
                         Y eso se nota.
                     </p>
                     <p>
-                        <strong className="text-symbolic-600">LogoCodeX™</strong> invierte ese orden. Primero entendemos qué es real y único en tu empresa. Después lo hacemos visible.
+                        <strong className="text-symbolic-600">LogoCodeX™</strong> invierte ese orden. Primero entiendo qué es real y único en tu empresa. Después lo hago visible.
                     </p>
                 </div>
                 <button

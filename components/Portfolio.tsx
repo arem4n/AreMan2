@@ -108,7 +108,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
     return (
         <section id="portafolio" className="py-6 lg:py-8 bg-gradient-to-br from-deep-50 to-white overflow-hidden relative z-10">
             <div className="max-w-[1920px] mx-auto px-4 lg:px-12">
-                <h2 className="text-3xl lg:text-5xl font-display font-bold text-center mb-4 lg:mb-6 text-deep-800">
+                <h2 className="text-3xl lg:text-5xl font-display font-bold text-center mb-8 lg:mb-16 text-deep-800">
                     Portafolio
                 </h2>
                 
@@ -157,16 +157,16 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                             let pointerEvents = 'none';
 
                             if (isActive) {
-                                transform = 'translateX(-50%) translateY(-60%) translateZ(0px) scale(1)';
+                                transform = 'translateX(-50%) translateY(-45%) translateZ(0px) scale(1)';
                                 zIndex = 20;
                                 opacity = 1;
                                 blur = '0px';
                                 pointerEvents = 'auto';
                             } else if (offset === -1) {
                                 // Left Item
-                                transform = 'translateX(-120%) translateY(-60%) translateZ(-150px) scale(0.85)';
+                                transform = 'translateX(-120%) translateY(-45%) translateZ(-150px) scale(0.85)';
                                 if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                                     transform = 'translateX(-130%) translateY(-60%) scale(0.8)';
+                                     transform = 'translateX(-130%) translateY(-45%) scale(0.8)';
                                 } else {
                                      transform += ' rotateY(25deg)';
                                 }
@@ -175,9 +175,9 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                 blur = '2px';
                             } else if (offset === 1) {
                                 // Right Item
-                                transform = 'translateX(20%) translateY(-60%) translateZ(-150px) scale(0.85)';
+                                transform = 'translateX(20%) translateY(-45%) translateZ(-150px) scale(0.85)';
                                 if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                                     transform = 'translateX(30%) translateY(-60%) scale(0.8)';
+                                     transform = 'translateX(30%) translateY(-45%) scale(0.8)';
                                 } else {
                                      transform += ' rotateY(-25deg)';
                                 }
@@ -186,7 +186,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                 blur = '2px';
                             } else {
                                 // Hidden items
-                                transform = 'translateX(-50%) translateY(-60%) translateZ(-600px) scale(0)';
+                                transform = 'translateX(-50%) translateY(-45%) translateZ(-600px) scale(0)';
                                 zIndex = 0;
                                 opacity = 0;
                             }

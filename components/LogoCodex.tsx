@@ -210,7 +210,7 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                             ¿Tu marca es soberana o genérica?
                         </h2>
                         <p className="text-lg text-deep-700 leading-relaxed mb-8 max-w-2xl mx-auto">
-                            El Manual LogoCodeX™ es la herramienta práctica para evitar la irrelevancia. Juntos, podemos desvelar tu historia única y traducirla en un símbolo que nadie más podría reclamar.
+                            El Manual LogoCodeX™ es la herramienta práctica para evitar la irrelevancia. Juntos, puedo desvelar tu historia única y traducirla en un símbolo que nadie más podría reclamar.
                         </p>
                         <button
                             onClick={() => {

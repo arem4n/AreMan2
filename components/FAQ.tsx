@@ -6,15 +6,15 @@ import { ChevronRightIcon } from './icons/Icons';
 const faqs = [
     {
         question: "¿Por qué hablan de \"Soberanía Visual\" y no solo de diseño de logotipos?",
-        answer: "Porque un logotipo aislado es solo un adorno. La Soberanía Visual es la construcción de un activo financiero intangible. Diseñamos sistemas completos basados en arquetipos y semiótica profunda que permiten a tu marca dejar de competir por precio y empezar a liderar por autoridad."
+        answer: "Porque un logotipo aislado es solo un adorno. La Soberanía Visual es la construcción de un activo financiero intangible. Diseño sistemas completos basados en arquetipos y semiótica profunda que permiten a tu marca dejar de competir por precio y empezar a liderar por autoridad."
     },
     {
         question: "¿Cuál es el nivel de involucramiento requerido por parte del fundador?",
-        answer: "Requerimos una colaboración profunda durante la Fase 1 (Diagnóstico Semiótico). Nuestro método LogoCodex™ no funciona con formularios genéricos; necesitamos extraer la visión fundamental de los fundadores para codificarla en la identidad visual. Una vez superada esta fase, nuestro equipo asume el control técnico y arquitectónico."
+        answer: "Requiere una colaboración profunda durante la Fase 1 (Diagnóstico Semiótico). Mi método LogoCodex™ no funciona con formularios genéricos; necesito extraer la visión fundamental de los fundadores para codificarla en la identidad visual. Una vez superada esta fase, asumo el control técnico y arquitectónico."
     },
     {
         question: "¿Trabajan con cualquier tipo de empresa o rubro?",
-        answer: "No. Nuestro enfoque está diseñado específicamente para startups tecnológicas, ecosistemas de software y fundadores que buscan escalar. Si solo buscas un \"diseño rápido\" para salir del paso, nuestro ecosistema de trabajo resultará excesivo para tus necesidades."
+        answer: "No. Mi enfoque está diseñado específicamente para startups tecnológicas, ecosistemas de software y fundadores que buscan escalar. Si solo buscas un \"diseño rápido\" para salir del paso, mi ecosistema de trabajo resultará excesivo para tus necesidades."
     },
     {
         question: "¿Qué incluye exactamente la entrega de la Fase 3?",
@@ -22,7 +22,7 @@ const faqs = [
     },
     {
         question: "¿Cómo integran la Inteligencia Artificial en el proceso?",
-        answer: "A través de nuestro pilar de \"Creatividad Expandida\". Usamos modelos de IA avanzados para acelerar diagnósticos, generar iteraciones complejas y testear aplicaciones en tiempo récord. Sin embargo, la dirección de arte, la estrategia semiótica y el pulido final de los vectores se mantienen estrictamente bajo control humano para garantizar originalidad absoluta."
+        answer: "A través de mi pilar de \"Creatividad Expandida\". Uso modelos de IA avanzados para acelerar diagnósticos, generar iteraciones complejas y testear aplicaciones en tiempo récord. Sin embargo, la dirección de arte, la estrategia semiótica y el pulido final de los vectores se mantienen estrictamente bajo control humano para garantizar originalidad absoluta."
     }
 ];
 

@@ -7,7 +7,6 @@ import ElegantMenu from '@/components/ElegantMenu';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
-import LogoCodex from '@/components/LogoCodex'; // Changed from LogoCodexCTA based on new requirement to replace content
 import Portfolio from '@/components/Portfolio';
 import WhyChooseMe from '@/components/WhyChooseMe';
 import Process from '@/components/Process';
@@ -20,7 +19,6 @@ import Footer from '@/components/Footer';
 export default function HomePageClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
-  const [selectedSlug, setSelectedSlug] = useState<string>(''); // For LogoCodex
   const { customNavigate } = useLoading();
 
   // Effect to handle scrolling to section after navigation from a different page
@@ -62,7 +60,6 @@ export default function HomePageClient() {
         <About />
         <Services onPackageSelect={handleContactIntent} />
         {/* ROI Section Removed */}
-        <LogoCodex navigateTo={navigateTo} selectedSlug={selectedSlug} onSelectSlug={setSelectedSlug} />
         <Portfolio onRequestProject={handleContactIntent} navigateTo={navigateTo} />
         <WhyChooseMe />
         <Process />

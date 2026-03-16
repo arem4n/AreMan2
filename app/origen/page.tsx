@@ -8,7 +8,6 @@ import { TheMoment } from '@/components/origen/TheMoment';
 import { CinemaConfirmed } from '@/components/origen/CinemaConfirmed';
 import { TheRupture } from '@/components/origen/TheRupture';
 import { BackToSouth } from '@/components/origen/BackToSouth';
-import { TheMethod } from '@/components/origen/TheMethod';
 import { WhyItMatters } from '@/components/origen/WhyItMatters';
 
 export default function OrigenPage() {
@@ -35,7 +34,6 @@ export default function OrigenPage() {
                 <CinemaConfirmed />
                 <TheRupture />
                 <BackToSouth />
-                <TheMethod />
                 <WhyItMatters />
             </main>
 

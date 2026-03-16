@@ -47,7 +47,7 @@ const Process: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="text-3xl lg:text-5xl font-display font-bold text-center mb-20 text-deep-800"
                 >
-                    Así trabajamos juntos
+                    Así trabajo contigo
                 </motion.h2>
                 
                 <div className="relative">
@@ -71,7 +71,7 @@ const Process: React.FC = () => {
                         viewport={{ once: true, margin: "-100px" }}
                         className="grid md:grid-cols-4 gap-12 relative z-10"
                     >
-                        <ProcessStep number={1} title="Diagnóstico" description="Entendemos qué es real y único en tu empresa antes de diseñar nada." />
+                        <ProcessStep number={1} title="Diagnóstico" description="Entiendo qué es real y único en tu empresa antes de diseñar." />
                         <ProcessStep number={2} title="Construcción simbólica" description="Aplicamos LogoCodeX™ para traducir esa esencia en símbolo, paleta y narrativa." />
                         <ProcessStep number={3} title="Revisión conjunta" description="Iteramos hasta que sientas que lo que ves te representa de verdad." />
                         <ProcessStep number={4} title="Entrega" description="Todos los archivos listos para usar, con el manual que explica cómo y por qué cada decisión." />

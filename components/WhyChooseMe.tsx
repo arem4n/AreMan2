@@ -20,7 +20,7 @@ const WhyChooseMe: React.FC = () => {
                 
                 <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
                     <Card title="Trabajas conmigo, no con una agencia.">
-                        <p>No hay equipo detrás interpretando lo que dijiste en una reunión. El equipo soy yo. Cada decisión pasa por mí, desde el primer brief hasta la entrega final. Lo que construimos juntos es lo que se plasma.</p>
+                        <p>No hay equipo detrás interpretando lo que dijiste en una reunión. El equipo soy yo. Cada decisión pasa por mí, desde el primer brief hasta la entrega final. Lo que construyo contigo es lo que se plasma.</p>
                     </Card>
                     <Card title="El método tiene historia, no es improvisación.">
                         <p><strong>LogoCodeX™</strong> no es un framework inventado. Es la sistematización de mi forma natural de diseñar, el proceso que ya aplicaba intuitivamente durante años, puesto en palabras, en pasos y en un sistema replicable. Cada proyecto lo pone a prueba y lo refina.</p>

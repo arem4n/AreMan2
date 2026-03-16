@@ -120,7 +120,7 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
                              Cada marca es una narrativa distinta. Eso nunca se vuelve rutina.
                         </p>
                         <p className="font-semibold text-creative-400">
-                             Si llegaste hasta acá, es probable que tengas algo que vale la pena contar. Escríbeme y lo descubrimos juntos.
+                             Si llegaste hasta acá, es probable que tengas algo que vale la pena contar. Escríbeme y lo descubro juntos.
                         </p>
                     </div>
                 </div>
