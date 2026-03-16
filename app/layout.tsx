@@ -12,6 +12,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "AREM4N | Soberanía Visual & Branding Estratégico",
   description: "Portafolio de AREM4N, especialista en branding estratégico y soberanía visual utilizando la metodología LogoCodex™.",
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 export default function RootLayout({

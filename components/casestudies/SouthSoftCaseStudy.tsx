@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
+import { LivePreview } from '../LivePreview';
 
 // Helpers for consistent styling
 const SectionTitle: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => (
@@ -127,7 +128,15 @@ const SouthSoftCaseStudy: React.FC = () => (
 
         <Hr />
 
-        <SectionTitle>5. VALIDACIÓN Y TESTIMONIO</SectionTitle>
+        <SectionTitle>5. EXPERIENCIA EN VIVO (LIVE PREVIEW)</SectionTitle>
+        <Block>
+            <P>Para validar la funcionalidad y escalabilidad del diseño, implementamos un prototipo en vivo del sitio web de Southsoft, en donde la identidad cobra vida en el entorno final del usuario.</P>
+        </Block>
+        <LivePreview src="https://southsoft.cl" title="Southsoft Live Preview" />
+
+        <Hr />
+
+        <SectionTitle>6. VALIDACIÓN Y TESTIMONIO</SectionTitle>
         <Block>
             <P>La identidad se aplica en todos los puntos de contacto, transmitiendo profesionalismo desde el primer correo.</P>
             <ImageDisplay src="/images/southsoft-signature.jpg" alt="Pie de firma SouthSoft" caption="Aplicación corporativa real: Pie de firma de correo electrónico." />
