@@ -132,7 +132,7 @@ export default function OrigenClient() {
 
                     <FadeInText>
                         <blockquote className="border-l-4 border-slate-300 dark:border-slate-700 pl-6 md:pl-10 italic mb-16 text-slate-500 dark:text-slate-400">
-                            "Eso me hizo ver las marcas de otra manera. Una marca no es un logo. Es un sistema de decisiones que comunica algo constantemente, quiera o no. La pregunta no es si tu marca está diciendo algo. La pregunta es si está diciendo lo que quieres decir."
+                            &quot;Eso me hizo ver las marcas de otra manera. Una marca no es un logo. Es un sistema de decisiones que comunica algo constantemente, quiera o no. La pregunta no es si tu marca está diciendo algo. La pregunta es si está diciendo lo que quieres decir.&quot;
                         </blockquote>
                     </FadeInText>
 
@@ -189,7 +189,7 @@ export default function OrigenClient() {
                         {/* Footer minimalista de la página */}
                         <div className="flex flex-col gap-8 text-sm md:text-base text-slate-500 font-light tracking-widest uppercase">
                             <p className="text-slate-400">AREM4N</p>
-                            <p className="normal-case tracking-normal italic text-slate-400 max-w-md mx-auto">"Cada símbolo cuenta una historia. Cada diseño tiene alma. Cada marca puede trascender."<br/><span className="block mt-4 not-italic font-medium">Sergio Arellano</span></p>
+                            <p className="normal-case tracking-normal italic text-slate-400 max-w-md mx-auto">&quot;Cada símbolo cuenta una historia. Cada diseño tiene alma. Cada marca puede trascender.&quot;<br/><span className="block mt-4 not-italic font-medium">Sergio Arellano</span></p>
                             <p className="mt-12 text-xs">AreMan, 2026</p>
                             <div className="flex flex-col gap-2 text-xs text-slate-600 mt-8 border-t border-slate-800 pt-8 w-full max-w-xs mx-auto">
                                 <p>© 2026 AREM4N - Diseño Simbólico & Narrativa Visual</p>
