@@ -128,10 +128,21 @@ const SouthSoftCaseStudy: React.FC = () => (
 
         <Hr />
 
-        <SectionTitle>5. EXPERIENCIA EN VIVO (LIVE PREVIEW)</SectionTitle>
-        <Block>
-            <P>Para validar la funcionalidad y escalabilidad del diseño, implementamos un prototipo en vivo del sitio web de Southsoft, en donde la identidad cobra vida en el entorno final del usuario.</P>
-        </Block>
+        <div className="flex flex-col items-center justify-center py-16 text-center animate-fade-in-up">
+            <span className="text-xs font-bold tracking-[0.2em] text-creative-500 uppercase mb-4 block">
+                CASO DE ESTUDIO / INGENIERÍA DE CONVERSIÓN
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-deep-800 mb-6 max-w-3xl">
+                Soberanía Visual en Sistemas Complejos
+            </h2>
+            <p className="text-lg md:text-xl text-deep-500 leading-relaxed max-w-2xl mx-auto mb-10">
+                La estrategia de negocio y el código no tienen fronteras. Para la consultora B2B South Soft, el reto fue inyectar una identidad visual ágil dentro del ecosistema rígido de un ERP (Odoo). A través de vibe coding y diseño orientado a la conversión, transformé una infraestructura técnica en un embudo de ventas impecable, listo para captar clientes reales sin perder integración de datos.
+            </p>
+            <p className="text-sm font-medium text-deep-400 mb-6 italic">
+                Interactúa con el sistema real en vivo a continuación.
+            </p>
+        </div>
+
         <LivePreview src="https://southsoft.cl" title="Southsoft Live Preview" />
 
         <Hr />
