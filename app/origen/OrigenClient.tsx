@@ -196,7 +196,7 @@ export default function OrigenClient() {
                 {/* 4. La Ruptura y La Vuelta al Sur (Modo Oscuro Alto Contraste) */}
                 <section ref={ruptureRef} className="min-h-[150vh] flex flex-col pt-32 gap-y-48">
                     {/* La ruptura */}
-                    <div className="flex flex-col gap-12 max-w-3xl">
+                    <div className="flex flex-col gap-12 max-w-3xl bg-deep-800/90 p-8 md:p-12 rounded-3xl shadow-xl border border-deep-700 backdrop-blur-sm">
                         <motion.h2
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -206,13 +206,13 @@ export default function OrigenClient() {
                         >
                             La ruptura.
                         </motion.h2>
-                        <p className="text-2xl md:text-3xl font-light leading-relaxed text-deep-100">
+                        <p className="text-2xl md:text-3xl font-light leading-relaxed text-white">
                             Después de casi una década en Buenos Aires llegó un momento en que los marcos disponibles no alcanzaban. No porque fueran incorrectos. Porque mi forma de ver había crecido más allá de ellos.
                         </p>
                         <p className="text-3xl md:text-4xl font-bold leading-relaxed text-creative-400">
                             No podía seguir aplicando sistemas de otros sin traicionarme.
                         </p>
-                        <p className="text-2xl md:text-3xl font-light leading-relaxed text-deep-100">
+                        <p className="text-2xl md:text-3xl font-light leading-relaxed text-white">
                             Eso me obligó a hacer algo incómodo: construir mi propio sistema desde cero.
                         </p>
                     </div>
@@ -263,24 +263,26 @@ export default function OrigenClient() {
                         transition={{ duration: 0.8 }}
                         className="flex flex-col items-center"
                     >
-                        <h2 className="text-5xl md:text-7xl font-display font-bold text-white mb-16">Por qué importa.</h2>
-                        <p className="text-2xl md:text-3xl font-light text-deep-100 mb-8 max-w-3xl leading-relaxed">
-                            No construí LogoCodeX™ para diferenciarme en el mercado.
-                        </p>
-                        <p className="text-2xl md:text-3xl font-light text-deep-100 mb-16 max-w-3xl leading-relaxed">
-                            Lo construí porque no encontré ningún método que respondiera la pregunta que más me importaba:
-                        </p>
+                        <div className="bg-deep-800/90 p-8 md:p-16 rounded-3xl shadow-2xl border border-deep-700 backdrop-blur-sm mb-16 max-w-5xl flex flex-col items-center text-center">
+                            <h2 className="text-5xl md:text-7xl font-display font-bold text-white mb-16">Por qué importa.</h2>
+                            <p className="text-2xl md:text-3xl font-light text-white mb-8 max-w-3xl leading-relaxed">
+                                No construí LogoCodeX™ para diferenciarme en el mercado.
+                            </p>
+                            <p className="text-2xl md:text-3xl font-light text-white mb-16 max-w-3xl leading-relaxed">
+                                Lo construí porque no encontré ningún método que respondiera la pregunta que más me importaba:
+                            </p>
 
-                        <p className="text-4xl md:text-6xl font-display font-bold text-creative-400 italic mb-20 max-w-4xl leading-tight">
-                            ¿Cómo se hace visible lo que una empresa es realmente?
-                        </p>
+                            <p className="text-4xl md:text-6xl font-display font-bold text-creative-400 italic mb-20 max-w-4xl leading-tight">
+                                ¿Cómo se hace visible lo que una empresa es realmente?
+                            </p>
 
-                        <p className="text-xl md:text-2xl font-light text-deep-300 mb-10">
-                            Esa pregunta sigue siendo el centro de cada proyecto que tomo.
-                        </p>
-                        <p className="text-xl md:text-2xl font-medium text-white mb-24">
-                            Si llegaste hasta acá, probablemente es la misma pregunta que te trajo aquí.
-                        </p>
+                            <p className="text-xl md:text-2xl font-light text-white mb-10">
+                                Esa pregunta sigue siendo el centro de cada proyecto que tomo.
+                            </p>
+                            <p className="text-xl md:text-2xl font-medium text-white mb-8">
+                                Si llegaste hasta acá, probablemente es la misma pregunta que te trajo aquí.
+                            </p>
+                        </div>
 
                         <MagneticButton
                             onClick={() => customNavigate('/#contacto')}

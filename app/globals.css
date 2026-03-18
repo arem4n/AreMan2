@@ -310,3 +310,11 @@ input:focus-visible, textarea:focus-visible {
     -webkit-user-drag: none;
     user-select: none;
 }
+
+body.modal-open,
+html.modal-open {
+  overflow: hidden;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}

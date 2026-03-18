@@ -40,6 +40,19 @@ export default function HomePageClient() {
 
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
+
+    useEffect(() => {
+        const htmlElement = document.documentElement;
+        if (isMenuOpen) {
+            htmlElement.classList.add('modal-open');
+        } else {
+            htmlElement.classList.remove('modal-open');
+        }
+        return () => {
+            htmlElement.classList.remove('modal-open');
+        };
+    }, [isMenuOpen]);
+
   const navigateTo = (path: string) => {
     customNavigate(path);
   };

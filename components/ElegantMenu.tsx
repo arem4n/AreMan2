@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trackEvent } from '../analytics';
 
@@ -57,6 +57,20 @@ const itemVariants = {
 };
 
 const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateTo }) => {
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('modal-open');
+            document.documentElement.classList.add('modal-open');
+        } else {
+            document.body.classList.remove('modal-open');
+            document.documentElement.classList.remove('modal-open');
+        }
+        return () => {
+            document.body.classList.remove('modal-open');
+            document.documentElement.classList.remove('modal-open');
+        };
+    }, [isOpen]);
+
 
     const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
