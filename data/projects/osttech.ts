@@ -5,7 +5,7 @@ export const ostTechProject: PortfolioProject = {
     mainImg: "/images/ost-tech-hero.png",
     altText: "Logo OstTech",
     title: "OST TECH",
-    slug: "osttech-cybersecurity",
+    slug: "osttech-software",
     testimonial: "Fusión perfecta de industria y naturaleza.",
     clientName: "Omar Stormasen",
     clientRole: "CEO",

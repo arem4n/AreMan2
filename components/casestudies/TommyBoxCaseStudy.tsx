@@ -1,6 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
+import { BrowserMockup } from '../BrowserMockup';
+
+// TODO: Reemplaza esta URL con la URL real del deploy de TommyBox
+const TOMMYBOX_APP_URL = 'https://tommybox.cl';
 
 // Helpers for consistent styling
 const SectionTitle: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => (
@@ -101,6 +105,62 @@ const TommyBoxCaseStudy: React.FC = () => (
             <ImageDisplay src="/images/tommybox-color-variations.png" alt="Variaciones de Color TommyBox" caption="Versatilidad del diseño: Adaptación a diferentes colores de indumentaria." />
             <ImageDisplay src="/images/tommybox-water-bottle.jpg" alt="Botella de Agua TommyBox" caption="Extensión de marca: Merchandising funcional para la comunidad." />
         </Block>
+
+        <Hr />
+
+        <SectionTitle>5. LA PLATAFORMA DIGITAL</SectionTitle>
+        <Block>
+            <P>El logo fue el primer acto. Pero una marca sin herramientas no sostiene una comunidad. Por eso construimos la plataforma que TommyBox necesitaba para operar: <Strong>una web app completa, en producción, usada por clientes reales</Strong>.</P>
+            <P>El desafío no era técnico, era humano: ¿cómo hacés que alguien vuelva a entrenar mañana, y pasado, y la semana que viene? La respuesta estuvo en diseñar cada función pensando en ese momento de decisión.</P>
+        </Block>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <Block className="mb-0">
+                <p className="text-xs font-semibold tracking-widest text-symbolic-500 uppercase mb-2">Reserva de sesiones</p>
+                <P className="mb-1">Sin WhatsApp, sin llamadas. El cliente abre la app, ve la semana, elige su horario y confirma en segundos. Gustavo ve su agenda en tiempo real.</P>
+                <p className="text-xs text-deep-400 italic">Firestore en tiempo real · reglas de negocio server-side via Cloud Functions</p>
+            </Block>
+            <Block className="mb-0">
+                <p className="text-xs font-semibold tracking-widest text-symbolic-500 uppercase mb-2">Motor de gamificación</p>
+                <P className="mb-1">Cada sesión acumula XP. Cada racha desbloquea insignias. Hay una tabla de líderes mensual. El entrenamiento tiene memoria y recompensa la constancia.</P>
+                <p className="text-xs text-deep-400 italic">Lógica centralizada en constantes compartidas · recálculo autoritativo en el servidor</p>
+            </Block>
+            <Block className="mb-0">
+                <p className="text-xs font-semibold tracking-widest text-symbolic-500 uppercase mb-2">Dos mundos en una plataforma</p>
+                <P className="mb-1">Gustavo ve el historial completo, métricas por cliente y controla la agenda. El cliente ve su propio progreso. Misma app, dos realidades completamente distintas.</P>
+                <p className="text-xs text-deep-400 italic">Sistema de roles con rutas protegidas · Google OAuth + email</p>
+            </Block>
+            <Block className="mb-0">
+                <p className="text-xs font-semibold tracking-widest text-symbolic-500 uppercase mb-2">La app que avisa y celebra</p>
+                <P className="mb-1">Recordatorios antes de cada sesión. Notificaciones cuando se sube de nivel. Pequeños momentos que refuerzan el hábito sin ser invasivos.</P>
+                <p className="text-xs text-deep-400 italic">Firebase Cloud Messaging · notificaciones push nativas en móvil y desktop</p>
+            </Block>
+        </div>
+
+        <Block>
+            <SubSectionTitle className="mt-0">Las decisiones de ingeniería</SubSectionTitle>
+            <P>Cada tecnología del stack fue una elección deliberada, no un default. <Strong>React 19 + TypeScript</Strong> porque la interfaz es compleja y los errores en producción son costosos. <Strong>Firebase</Strong> porque necesitábamos tiempo real, auth robusta y funciones serverless sin operar infraestructura. <Strong>Cloud Functions</Strong> para que la lógica crítica —puntos, insignias, notificaciones— corra en el servidor y no pueda ser manipulada desde el cliente. <Strong>Vercel</Strong> para deploy continuo y distribución global desde el día uno.</P>
+            <p className="text-xs text-deep-400 border-t border-deep-100 pt-4 mt-2">React 19 · Firebase (Auth · Firestore · Storage · Cloud Functions Gen 2) · TypeScript · Tailwind CSS · Vercel</p>
+        </Block>
+
+        <div className="flex flex-col items-center justify-center py-8 text-center">
+            <p className="text-sm font-medium text-deep-400 mb-2 italic">Plataforma en producción — explora las vistas principales.</p>
+        </div>
+
+        <BrowserMockup
+            src={TOMMYBOX_APP_URL}
+            label="tommybox.cl"
+            autoInterval={3500}
+            screenshotAspect="3431/1511"
+            screenshots={[
+                { src: '/images/tommybox-screen-agenda.png', alt: 'Agenda Semanal' },
+                { src: '/images/tommybox-screen-comunidad.png', alt: 'Salón de Campeones' },
+                { src: '/images/tommybox-screen-feed.png', alt: 'Feed de Comunidad' },
+                { src: '/images/tommybox-screen-planes.png', alt: 'Planes de Entrenamiento' },
+                { src: '/images/tommybox-screen-logros.png', alt: 'Logros y Gamificación' },
+                { src: '/images/tommybox-screen-perfil.png', alt: 'Mi Perfil' },
+            ]}
+        />
     </section>
 );
 

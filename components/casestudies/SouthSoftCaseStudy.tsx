@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
-import { LivePreview } from '../LivePreview';
+import { BrowserMockup } from '../BrowserMockup';
 
 // Helpers for consistent styling
 const SectionTitle: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => (
@@ -135,15 +135,12 @@ const SouthSoftCaseStudy: React.FC = () => (
             <h2 className="text-3xl md:text-5xl font-display font-bold text-deep-800 mb-6 max-w-3xl">
                 Soberanía Visual en Sistemas Complejos
             </h2>
-            <p className="text-lg md:text-xl text-deep-500 leading-relaxed max-w-2xl mx-auto mb-10">
-                La estrategia de negocio y el código no tienen fronteras. Para la consultora B2B South Soft, el reto fue inyectar una identidad visual ágil dentro del ecosistema rígido de un ERP (Odoo). A través de vibe coding y diseño orientado a la conversión, transformé una infraestructura técnica en un embudo de ventas impecable, listo para captar clientes reales sin perder integración de datos.
-            </p>
-            <p className="text-sm font-medium text-deep-400 mb-6 italic">
-                Interactúa con el sistema real en vivo a continuación.
+            <p className="text-lg md:text-xl text-deep-500 leading-relaxed max-w-2xl mx-auto mb-6">
+                Para la consultora B2B South Soft, el reto fue inyectar una identidad visual ágil dentro del ecosistema rígido de un ERP (Odoo). A través de diseño orientado a la conversión, transformé una infraestructura técnica en un embudo de ventas impecable, listo para captar clientes reales sin perder integración de datos.
             </p>
         </div>
 
-        <LivePreview src="https://southsoft.cl" title="Southsoft Live Preview" />
+        <BrowserMockup src="https://southsoft.cl" label="southsoft.cl" />
 
         <Hr />
 

@@ -14,7 +14,14 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
     const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 1024);
     const autoplayRef = useRef<number | null>(null);
+
+    useEffect(() => {
+        const handler = () => setIsMobile(window.innerWidth < 1024);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
 
     // Touch handling for Swipe
     const touchStartX = useRef<number | null>(null);
@@ -59,7 +66,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
             setIsPaused(false);
             return;
         }
-        
+
         const distance = touchStartX.current - touchEndX.current;
         const minSwipeDistance = 50;
 
@@ -70,7 +77,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                 navigate('prev'); // Swiped Right -> Go Prev
             }
         }
-        
+
         // Reset
         touchStartX.current = null;
         touchEndX.current = null;
@@ -81,25 +88,25 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
     const handleProjectClick = (slug: string) => {
         trackEvent('open_project_modal', { project_slug: slug });
         setSelectedProjectSlug(slug);
-        setIsPaused(true); 
+        setIsPaused(true);
     };
 
     const closeModal = () => {
         setSelectedProjectSlug(null);
-        setIsPaused(false); 
+        setIsPaused(false);
     };
 
     const navigateModalProject = (direction: 'next' | 'prev') => {
         const currentIndex = portfolioProjects.findIndex(p => p.slug === selectedProjectSlug);
         if (currentIndex === -1) return;
-        
+
         let newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
         const total = portfolioProjects.length;
-        
+
         // Infinite loop in modal too
         if (newIndex >= total) newIndex = 0;
         if (newIndex < 0) newIndex = total - 1;
-        
+
         setSelectedProjectSlug(portfolioProjects[newIndex].slug);
     };
 
@@ -108,13 +115,13 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
     return (
         <section id="portafolio" className="py-6 lg:py-8 bg-gradient-to-br from-deep-50 to-white overflow-hidden relative z-10">
             <div className="max-w-[1920px] mx-auto px-4 lg:px-12">
-                <h2 className="text-3xl lg:text-5xl font-display font-bold text-center mb-8 lg:mb-16 text-deep-800">
+                <h2 className="relative z-[60] text-3xl lg:text-5xl font-display font-bold text-center mb-10 lg:mb-16 text-deep-800">
                     Portafolio
                 </h2>
-                
+
                 {/* --- CAROUSEL CONTAINER (Desktop 3D + Mobile 2D Unified) --- */}
-                <div 
-                    className="relative h-[650px] md:h-[700px] w-full perspective-1000 overflow-visible"
+                <div
+                    className="relative h-[650px] md:h-[700px] w-full perspective-1000 overflow-visible mt-8 lg:mt-12"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                     onTouchStart={handleTouchStart}
@@ -122,16 +129,16 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                     onTouchEnd={handleTouchEnd}
                 >
                     {/* Navigation Buttons */}
-                    <button 
-                        onClick={() => navigate('prev')} 
-                        className="absolute left-4 lg:left-10 top-[40%] -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl hover:scale-110 transition-all backdrop-blur-sm border border-deep-100"
+                    <button
+                        onClick={() => navigate('prev')}
+                        className="absolute left-4 lg:left-10 top-[40%] -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl [@media(hover:hover)]:hover:scale-110 active:scale-95 transition-[transform,box-shadow] duration-200 ease-out backdrop-blur-sm border border-deep-100"
                         aria-label="Anterior"
                     >
                         <ChevronLeftIcon />
                     </button>
-                    <button 
-                        onClick={() => navigate('next')} 
-                        className="absolute right-4 lg:right-10 top-[40%] -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl hover:scale-110 transition-all backdrop-blur-sm border border-deep-100"
+                    <button
+                        onClick={() => navigate('next')}
+                        className="absolute right-4 lg:right-10 top-[40%] -translate-y-1/2 z-50 bg-white/80 text-deep-800 p-3 lg:p-4 rounded-full shadow-xl [@media(hover:hover)]:hover:scale-110 active:scale-95 transition-[transform,box-shadow] duration-200 ease-out backdrop-blur-sm border border-deep-100"
                         aria-label="Siguiente"
                     >
                         <ChevronRightIcon />
@@ -141,20 +148,20 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                     <div className="w-full h-full relative flex justify-center items-center transform-style-3d">
                         {portfolioProjects.map((project, index) => {
                             const total = portfolioProjects.length;
-                            
+
                             // CALCULATE CIRCULAR OFFSET (The "Moebius" Logic)
                             let offset = index - activeIndex;
                             if (offset > total / 2) offset -= total;
                             if (offset < -total / 2) offset += total;
 
                             const isActive = offset === 0;
-                            
+
                             // --- STYLES ---
                             let transform = '';
                             let zIndex = 0;
                             let opacity = 0;
                             let blur = '0px';
-                            let pointerEvents = 'none';
+                            let pointerEvents: React.CSSProperties['pointerEvents'] = 'none';
 
                             if (isActive) {
                                 transform = 'translateX(-50%) translateY(-45%) translateZ(0px) scale(1)';
@@ -164,23 +171,17 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                 pointerEvents = 'auto';
                             } else if (offset === -1) {
                                 // Left Item
-                                transform = 'translateX(-120%) translateY(-45%) translateZ(-150px) scale(0.85)';
-                                if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                                     transform = 'translateX(-130%) translateY(-45%) scale(0.8)';
-                                } else {
-                                     transform += ' rotateY(25deg)';
-                                }
+                                transform = isMobile
+                                    ? 'translateX(-130%) translateY(-60%) scale(0.8)'
+                                    : 'translateX(-120%) translateY(-45%) translateZ(-150px) scale(0.85) rotateY(25deg)';
                                 zIndex = 10;
                                 opacity = 0.5;
                                 blur = '2px';
                             } else if (offset === 1) {
                                 // Right Item
-                                transform = 'translateX(20%) translateY(-45%) translateZ(-150px) scale(0.85)';
-                                if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                                     transform = 'translateX(30%) translateY(-45%) scale(0.8)';
-                                } else {
-                                     transform += ' rotateY(-25deg)';
-                                }
+                                transform = isMobile
+                                    ? 'translateX(30%) translateY(-60%) scale(0.8)'
+                                    : 'translateX(20%) translateY(-45%) translateZ(-150px) scale(0.85) rotateY(-25deg)';
                                 zIndex = 10;
                                 opacity = 0.5;
                                 blur = '2px';
@@ -191,29 +192,30 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                 opacity = 0;
                             }
 
-                            const isHeroLogo = project.slug === 'areman-escudo-heraldico' || project.slug === 'arem4n-professional-brand' || project.slug === 'southsoft-development';
+                            const isHeroLogo = project.slug === 'areman-escudo-heraldico' || project.slug === 'arem4n-professional-brand' || project.slug === 'southsoft-consultoria';
 
                             return (
-                                <div 
+                                <div
                                     key={project.slug}
-                                    className="carousel-card-wrapper absolute top-1/2 left-1/2 w-[85vw] md:w-[60vw] max-w-[900px] transition-all duration-700 ease-out"
-                                    style={{ 
-                                        transform, 
-                                        zIndex, 
-                                        opacity, 
+                                    className="carousel-card-wrapper absolute top-1/2 left-1/2 w-[85vw] md:w-[60vw] max-w-[900px]"
+                                    style={{
+                                        transform,
+                                        zIndex,
+                                        opacity,
                                         filter: `blur(${blur})`,
-                                        pointerEvents: pointerEvents as any 
+                                        pointerEvents,
+                                        transition: 'transform 350ms cubic-bezier(0.23,1,0.32,1), opacity 350ms cubic-bezier(0.23,1,0.32,1), filter 350ms cubic-bezier(0.23,1,0.32,1)',
                                     }}
                                 >
                                     {/* Card Content */}
-                                    <div 
+                                    <div
                                         onClick={() => isActive && handleProjectClick(project.slug)}
                                         className={`relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 aspect-[16/9] flex items-center justify-center cursor-pointer group ${isHeroLogo ? 'p-3' : 'p-0'}`}
                                     >
-                                        <img 
-                                            src={project.mainImg} 
-                                            alt={project.altText} 
-                                            className={`w-full h-full object-contain transition-transform duration-700 ${isActive ? 'group-hover:scale-105' : ''} ${!isHeroLogo ? 'object-cover' : ''}`}
+                                        <img
+                                            src={project.mainImg}
+                                            alt={project.altText}
+                                            className={`w-full h-full object-contain transition-transform duration-300 ease-out ${isActive ? 'group-hover:scale-105' : ''} ${!isHeroLogo ? 'object-cover' : ''}`}
                                         />
                                         {isActive && (
                                             <div className="absolute inset-0 bg-gradient-to-t from-deep-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pb-10 items-center">
@@ -222,12 +224,12 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                             </div>
                                         )}
                                     </div>
-                                    
+
                                     {/* Info below card (With Ascending/Descending Animation) */}
                                     <div className={`mt-4 lg:mt-6 px-4 text-center transition-all duration-700 ease-out transform ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                                         <h3 className="text-2xl lg:text-3xl font-display font-bold text-deep-800 mb-2">{project.title}</h3>
                                         <p className="text-creative-600 font-semibold tracking-widest uppercase text-xs lg:text-sm mb-3">{project.clientRole}</p>
-                                        
+
                                         {/* Testimonial - Visible on ALL screens now */}
                                         <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-deep-100/50 shadow-sm">
                                             <p className="text-deep-600 italic max-w-2xl mx-auto text-base lg:text-lg leading-relaxed">
@@ -240,7 +242,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                         })}
                     </div>
                 </div>
-                
+
                 {/* Mobile Hint */}
                 <div className="text-center text-deep-400 text-sm mt-2 lg:hidden animate-pulse">
                     Desliza o usa las flechas para girar
@@ -249,9 +251,9 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
 
             <AnimatePresence>
                 {selectedProject && (
-                    <ProjectModal 
-                        project={selectedProject} 
-                        onClose={closeModal} 
+                    <ProjectModal
+                        project={selectedProject}
+                        onClose={closeModal}
                         navigateTo={navigateTo}
                         onNext={() => navigateModalProject('next')}
                         onPrev={() => navigateModalProject('prev')}

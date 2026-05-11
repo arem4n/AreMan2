@@ -15,6 +15,8 @@ import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
+import LogoCodexTeaser from '@/components/LogoCodexTeaser';
+
 
 export default function HomePageClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,39 +43,35 @@ export default function HomePageClient() {
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
 
-    useEffect(() => {
-        const htmlElement = document.documentElement;
-        if (isMenuOpen) {
-            htmlElement.classList.add('modal-open');
-        } else {
-            htmlElement.classList.remove('modal-open');
-        }
-        return () => {
-            htmlElement.classList.remove('modal-open');
-        };
-    }, [isMenuOpen]);
-
-  const navigateTo = (path: string) => {
-    customNavigate(path);
-  };
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    if (isMenuOpen) {
+      htmlElement.classList.add('modal-open');
+    } else {
+      htmlElement.classList.remove('modal-open');
+    }
+    return () => {
+      htmlElement.classList.remove('modal-open');
+    };
+  }, [isMenuOpen]);
 
   const handleContactIntent = (intent: string) => {
     setSelectedPackage(intent);
-    navigateTo('#contacto');
+    customNavigate('#contacto');
   };
 
   const clearSelectedPackage = useCallback(() => setSelectedPackage(null), []);
 
   return (
     <div className="bg-white">
-      <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={navigateTo} />
-      <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={navigateTo} />
+      <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={customNavigate} />
+      <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={customNavigate} />
       <main>
-        <Hero navigateTo={navigateTo} />
+        <Hero navigateTo={customNavigate} />
         <About />
         <Services onPackageSelect={handleContactIntent} />
-        {/* ROI Section Removed */}
-        <Portfolio onRequestProject={handleContactIntent} navigateTo={navigateTo} />
+        <LogoCodexTeaser navigateTo={customNavigate} />
+        <Portfolio onRequestProject={handleContactIntent} navigateTo={customNavigate} />
         <WhyChooseMe />
         <Process />
         <Deliverables />

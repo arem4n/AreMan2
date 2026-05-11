@@ -215,7 +215,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateT
                             >
                                 Quiero algo así
                             </button>
-                            <a 
+                            <a
                                 href={`/portafolio/${project.slug}`}
                                 onClick={handleAnalysisClick}
                                 className="flex-1 lg:flex-none text-center px-5 py-2.5 rounded-full bg-symbolic-600 hover:bg-symbolic-700 text-white font-bold text-sm transition shadow-lg shadow-symbolic-600/30 whitespace-nowrap"

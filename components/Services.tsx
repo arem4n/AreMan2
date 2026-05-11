@@ -7,12 +7,11 @@ interface ServiceCardProps {
     title: string;
     price: string;
     description: string[];
-    subtitle?: string; // Added subtitle
+    subtitle?: string;
     recommended?: boolean;
     gradientText?: boolean;
     onButtonClick: (title: string) => void;
     icon?: React.ReactNode;
-    animationProps?: any;
 }
 
 // Safe parser to handle bold text without dangerouslySetInnerHTML
@@ -26,18 +25,15 @@ const renderSafeText = (text: string) => {
     });
 };
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, price, subtitle, description, recommended = false, gradientText = false, onButtonClick, icon, animationProps }) => (
-    <div className={`relative card-hover rounded-2xl p-6 lg:p-8 shadow-lg flex flex-col h-full transition-all duration-300 ease-in-out ${recommended ? 'bg-gradient-to-r from-symbolic-600 to-deep-700 text-white shadow-xl' : 'bg-white border border-deep-100'}`}>
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, price, subtitle, description, recommended = false, gradientText = false, onButtonClick, icon }) => (
+    <div className={`relative card-hover rounded-2xl p-6 lg:p-8 shadow-lg flex flex-col h-full transition duration-200 ease-out ${recommended ? 'bg-gradient-to-r from-symbolic-600 to-deep-700 text-white shadow-xl' : 'bg-white border border-deep-100'}`}>
         {recommended && <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-creative-400 text-deep-900 px-3 py-1 rounded-full text-sm font-semibold z-10">RECOMENDADO</div>}
 
         {icon && (
             <div className="flex justify-center mb-6">
-                <motion.div
-                    {...animationProps}
-                    className="p-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
-                >
+                <div className="p-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
                     {icon}
-                </motion.div>
+                </div>
             </div>
         )}
 
@@ -65,7 +61,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, price, subtitle, descr
                 trackEvent('select_service_package', { packageName: title });
                 onButtonClick(title);
             }} 
-            className={`mt-6 self-center w-max inline-block text-center font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${recommended ? 'bg-creative-500 hover:bg-creative-600 text-deep-900' : 'bg-symbolic-600 hover:bg-symbolic-700 text-white'}`}
+            className={`mt-6 self-center w-max inline-block text-center font-semibold py-3 px-8 rounded-full transition duration-200 ease-out shadow-lg hover:shadow-xl [@media(hover:hover)]:hover:scale-105 active:scale-95 ${recommended ? 'bg-creative-500 hover:bg-creative-600 text-deep-900' : 'bg-symbolic-600 hover:bg-symbolic-700 text-white'}`}
         >
             Auditar con este Pack
         </a>
@@ -98,24 +94,15 @@ const Services: React.FC<ServicesProps> = ({ onPackageSelect }) => {
                                     d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
                                     initial={{ pathLength: 0 }}
                                     animate={{ pathLength: 1 }}
-                                    transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatType: "loop" }}
+                                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                                 />
-                                <motion.path
+                                <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                    animate={{
-                                        scale: [1, 1.2, 1],
-                                        opacity: [0.5, 1, 0.5]
-                                    }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                                 />
                             </svg>
                         }
-                        animationProps={{
-                            animate: { scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] },
-                            transition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                        }}
                     />
                     <ServiceCard 
                         title="AUTORIDAD"
@@ -133,17 +120,13 @@ const Services: React.FC<ServicesProps> = ({ onPackageSelect }) => {
                                 <motion.path
                                     initial={{ pathLength: 0 }}
                                     animate={{ pathLength: 1 }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"
                                 />
                             </svg>
                         }
-                        animationProps={{
-                            animate: { y: [0, -10, 0] },
-                            transition: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                        }}
                     />
                     <ServiceCard 
                         title="LEGADO"
@@ -158,25 +141,78 @@ const Services: React.FC<ServicesProps> = ({ onPackageSelect }) => {
                         onButtonClick={onPackageSelect}
                         icon={
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12 text-deep-800">
-                                <motion.path
-                                    initial={{ rotate: 0 }}
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.263l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
                                 />
                             </svg>
                         }
-                        animationProps={{
-                            animate: { rotate: 360 },
-                            transition: { duration: 10, repeat: Infinity, ease: "linear" }
-                        }}
                     />
                 </div>
                 <p className="text-lg text-center max-w-3xl mx-auto text-deep-800 leading-relaxed">
                     No compres &quot;diseño bonito&quot;. Invierte en <strong>mitigación de riesgo</strong>. Una marca débil te cuesta clientes todos los días. Elige la profundidad estratégica que tu facturación merece.
                 </p>
+
+                {/* ── CONSTRUCCIÓN DIGITAL ── */}
+                <div className="mt-20 pt-16 border-t border-deep-200">
+                    <div className="text-center mb-12">
+                        <span className="inline-block px-4 py-1.5 bg-deep-900/5 text-deep-500 text-xs font-bold tracking-widest uppercase rounded-full mb-4">
+                            Construcción Digital
+                        </span>
+                        <h3 className="text-3xl lg:text-4xl font-display font-bold text-deep-800 mb-4">
+                            Del símbolo a la experiencia
+                        </h3>
+                        <p className="text-lg text-deep-600 max-w-2xl mx-auto">
+                            La identidad es el punto de partida. También construyo el espacio digital donde vive.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+                        {/* Página Web */}
+                        <div className="bg-white rounded-2xl p-8 shadow-lg border border-deep-100 flex flex-col gap-4">
+                            <span className="text-xs font-bold tracking-widest text-symbolic-600 uppercase">Página Web</span>
+                            <h4 className="text-2xl font-display font-bold text-deep-800">Tu marca, con domicilio en internet.</h4>
+                            <p className="text-deep-700 leading-relaxed flex-grow">
+                                Landing pages, sitios corporativos y portfolios. Diseñados para convertir, construidos con Next.js y optimizados para velocidad y posicionamiento.
+                                No son plantillas: cada sitio refleja la identidad que construimos juntos.
+                            </p>
+                            <div>
+                                <div className="text-2xl font-bold text-symbolic-600">$200 – $800 USD</div>
+                                <div className="text-sm text-deep-500">Inversión estimada</div>
+                            </div>
+                            <a
+                                href="#contacto"
+                                onClick={(e) => { e.preventDefault(); onPackageSelect('Página Web'); }}
+                                className="self-start mt-2 font-semibold py-3 px-8 rounded-full bg-symbolic-600 hover:bg-symbolic-700 text-white transition duration-200 ease-out shadow-lg [@media(hover:hover)]:hover:scale-105 active:scale-95"
+                            >
+                                Conversar sobre mi sitio
+                            </a>
+                        </div>
+
+                        {/* Web App */}
+                        <div className="bg-deep-900 rounded-2xl p-8 shadow-xl border border-deep-700 flex flex-col gap-4 text-white">
+                            <span className="text-xs font-bold tracking-widest text-creative-400 uppercase">Web App</span>
+                            <h4 className="text-2xl font-display font-bold text-white">Cuando necesitas un sistema, no solo una vitrina.</h4>
+                            <p className="text-deep-300 leading-relaxed flex-grow">
+                                Aplicaciones con autenticación, base de datos en tiempo real, lógica de negocio y paneles de gestión.
+                                Gamificación, reservas, roles de usuario, notificaciones push.
+                                Stack: React · Next.js · Firebase · TypeScript · Vercel.
+                            </p>
+                            <div>
+                                <div className="text-2xl font-bold text-creative-400">$2,000 – $5,000 USD</div>
+                                <div className="text-sm text-deep-400">Inversión estimada · según alcance</div>
+                            </div>
+                            <a
+                                href="#contacto"
+                                onClick={(e) => { e.preventDefault(); onPackageSelect('Web App'); }}
+                                className="self-start mt-2 font-semibold py-3 px-8 rounded-full bg-creative-500 hover:bg-creative-400 text-deep-900 transition duration-200 ease-out shadow-lg [@media(hover:hover)]:hover:scale-105 active:scale-95"
+                            >
+                                Conversar sobre mi app
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );

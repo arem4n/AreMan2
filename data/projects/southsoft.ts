@@ -5,7 +5,7 @@ export const southSoftProject: PortfolioProject = {
     mainImg: "/images/southsoft-logo.png",
     altText: "Logo SouthSoft",
     title: "SOUTHSOFT",
-    slug: "southsoft-development",
+    slug: "southsoft-consultoria",
     testimonial: "Son mucho más que un logo, una historia sintetizada.",
     clientName: "Francisco Arellano",
     clientRole: "CEO",
