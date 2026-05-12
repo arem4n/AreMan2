@@ -58,18 +58,40 @@ const itemVariants = {
 
 const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateTo }) => {
     useEffect(() => {
-        if (isOpen) {
-            document.body.classList.add('modal-open');
-            document.documentElement.classList.add('modal-open');
-        } else {
-            document.body.classList.remove('modal-open');
-            document.documentElement.classList.remove('modal-open');
-        }
-        return () => {
-            document.body.classList.remove('modal-open');
-            document.documentElement.classList.remove('modal-open');
+        if (!isOpen) return;
+
+        const firstLink = document.querySelector<HTMLAnchorElement>('[data-menu-link]');
+        firstLink?.focus();
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                toggleMenu();
+                return;
+            }
+            if (e.key !== 'Tab') return;
+
+            const focusable = Array.from(
+                document.querySelectorAll<HTMLElement>('[data-menu-link], [data-menu-cta]')
+            );
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (e.shiftKey) {
+                if (document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            } else {
+                if (document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
         };
-    }, [isOpen]);
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, [isOpen, toggleMenu]);
 
 
     const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -100,6 +122,7 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
                                 <motion.li key={link.href} variants={itemVariants} className="w-full text-center">
                                     <a
                                         href={link.href}
+                                        data-menu-link
                                         onClick={(e) => handleLinkClick(e, link.href)}
                                         className="block text-3xl md:text-5xl font-display font-bold text-white hover:text-symbolic-400 transition-colors duration-300 py-2"
                                     >
@@ -116,6 +139,7 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
                             <p className="text-deep-200 mb-4 font-light">¿Hablemos de tu marca?</p>
                             <a
                                 href="#contacto"
+                                data-menu-cta
                                 onClick={(e) => handleLinkClick(e, "#contacto")}
                                 className="inline-block px-8 py-3 bg-symbolic-600 text-white font-bold rounded-full hover:bg-symbolic-500 transition-colors shadow-lg shadow-symbolic-600/20"
                             >

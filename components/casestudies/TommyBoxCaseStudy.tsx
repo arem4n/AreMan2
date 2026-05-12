@@ -152,13 +152,22 @@ const TommyBoxCaseStudy: React.FC = () => (
             label="tommybox.cl"
             autoInterval={3500}
             screenshotAspect="3431/1511"
+            defaultView="auto"
             screenshots={[
-                { src: '/images/tommybox-screen-agenda.png', alt: 'Agenda Semanal' },
-                { src: '/images/tommybox-screen-comunidad.png', alt: 'Salón de Campeones' },
-                { src: '/images/tommybox-screen-feed.png', alt: 'Feed de Comunidad' },
-                { src: '/images/tommybox-screen-planes.png', alt: 'Planes de Entrenamiento' },
-                { src: '/images/tommybox-screen-logros.png', alt: 'Logros y Gamificación' },
-                { src: '/images/tommybox-screen-perfil.png', alt: 'Mi Perfil' },
+                { src: '/images/tommybox-screen-agenda.png', alt: 'Agenda Semanal — Desktop' },
+                { src: '/images/tommybox-screen-comunidad.png', alt: 'Salón de Campeones — Desktop' },
+                { src: '/images/tommybox-screen-feed.png', alt: 'Feed de Comunidad — Desktop' },
+                { src: '/images/tommybox-screen-planes.png', alt: 'Planes de Entrenamiento — Desktop' },
+                { src: '/images/tommybox-screen-logros.png', alt: 'Logros y Gamificación — Desktop' },
+                { src: '/images/tommybox-screen-perfil.png', alt: 'Mi Perfil — Desktop' },
+            ]}
+            mobileScreenshots={[
+                { src: '/images/tommybox-mobile-agenda.webp', alt: 'Agenda Semanal — Mobile' },
+                { src: '/images/tommybox-mobile-comunidad.webp', alt: 'Salón de Campeones — Mobile' },
+                { src: '/images/tommybox-mobile-feed.webp', alt: 'Feed de Comunidad — Mobile' },
+                { src: '/images/tommybox-mobile-planes.webp', alt: 'Planes de Entrenamiento — Mobile' },
+                { src: '/images/tommybox-mobile-logros.webp', alt: 'Logros y Gamificación — Mobile' },
+                { src: '/images/tommybox-mobile-perfil.webp', alt: 'Mi Perfil — Mobile' },
             ]}
         />
     </section>

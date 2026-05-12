@@ -47,8 +47,12 @@ const config: Config = {
             }
         },
         fontFamily: {
-            'display': ['var(--font-playfair-display)', 'serif'],
-            'body': ['var(--font-inter)', 'sans-serif']
+            'display': ['var(--font-barlow-condensed)', 'sans-serif'],
+            'body': ['var(--font-epilogue)', 'sans-serif']
+        },
+        fontSize: {
+            'fluid-hero': ['clamp(2.25rem, 5vw + 1rem, 4.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+            'fluid-section': ['clamp(1.875rem, 3.5vw + 0.75rem, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.015em' }],
         }
     }
   },

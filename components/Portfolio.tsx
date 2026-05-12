@@ -113,7 +113,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
     const selectedProject = portfolioProjects.find(p => p.slug === selectedProjectSlug);
 
     return (
-        <section id="portafolio" className="py-6 lg:py-8 bg-gradient-to-br from-deep-50 to-white overflow-hidden relative z-10">
+        <section id="portafolio" className="py-6 lg:py-8 bg-deep-50 overflow-hidden relative z-10">
             <div className="max-w-[1920px] mx-auto px-4 lg:px-12">
                 <h2 className="relative z-[60] text-3xl lg:text-5xl font-display font-bold text-center mb-10 lg:mb-16 text-deep-800">
                     Portafolio

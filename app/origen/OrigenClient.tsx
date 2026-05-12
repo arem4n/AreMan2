@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useInView, Variants } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useInView, useReducedMotion, Variants } from 'framer-motion';
 import { useLoading } from '@/components/LoadingContext';
+import { useMenu } from '@/hooks/useMenu';
 import { MagneticButton } from '@/components/MagneticButton';
 import Header from '@/components/Header';
 import ElegantMenu from '@/components/ElegantMenu';
@@ -10,13 +11,14 @@ import Footer from '@/components/Footer';
 
 // Hero stagger — solo para "Volver."
 const StaggeredText = ({ text, className = '' }: { text: string, className?: string }) => {
+    const shouldReduceMotion = useReducedMotion();
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
-        show: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.2 } }
+        show: { opacity: 1, transition: { staggerChildren: shouldReduceMotion ? 0 : 0.05, delayChildren: shouldReduceMotion ? 0 : 0.2 } }
     };
     const wordVariants: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }
+        hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+        show: { opacity: 1, y: 0, transition: { duration: shouldReduceMotion ? 0 : 0.35, ease: [0.16, 1, 0.3, 1] } }
     };
     return (
         <motion.div variants={containerVariants} initial="hidden" animate="show" className={className}>
@@ -31,9 +33,14 @@ const StaggeredText = ({ text, className = '' }: { text: string, className?: str
 
 // Animación blur de scroll — usada una sola vez para la frase filosófica central
 const ScrollBlurCard = ({ children }: { children: React.ReactNode }) => {
+    const shouldReduceMotion = useReducedMotion();
     const ref = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: ref, offset: ["start 90%", "center center"] });
-    const blur = useTransform(scrollYProgress, [0, 1], ["blur(12px)", "blur(0px)"]);
+    const blur = useTransform(
+        scrollYProgress,
+        [0, 1],
+        shouldReduceMotion ? ['blur(0px)', 'blur(0px)'] : ['blur(12px)', 'blur(0px)']
+    );
     const opacity = useTransform(scrollYProgress, [0, 1], [0.15, 1]);
     const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
     return (
@@ -49,6 +56,7 @@ const ScrollBlurCard = ({ children }: { children: React.ReactNode }) => {
 
 // Reveal simple al entrar en viewport — reemplaza HandwritingTypewriter
 const RevealText = ({ children, className = '', delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => {
+    const shouldReduceMotion = useReducedMotion();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
     return (
@@ -56,7 +64,7 @@ const RevealText = ({ children, className = '', delay = 0 }: { children: React.R
             ref={ref}
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
             className={className}
         >
             {children}
@@ -73,8 +81,7 @@ const ChapterLabel = ({ label }: { label: string }) => (
 
 export default function OrigenClient() {
     const { customNavigate } = useLoading();
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const toggleMenu = () => setIsMenuOpen(prev => !prev);
+    const { isMenuOpen, toggleMenu } = useMenu();
     const navigateTo = (path: string) => { customNavigate(path); };
 
     return (

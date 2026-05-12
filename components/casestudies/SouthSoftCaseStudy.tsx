@@ -140,7 +140,7 @@ const SouthSoftCaseStudy: React.FC = () => (
             </p>
         </div>
 
-        <BrowserMockup src="https://southsoft.cl" label="southsoft.cl" />
+        <BrowserMockup src="https://southsoft.cl" label="southsoft.cl" iframeMobileAspect="9/16" />
 
         <Hr />
 

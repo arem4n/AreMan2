@@ -11,6 +11,7 @@ import AlbornozCaseStudy from './casestudies/AlbornozCaseStudy';
 import SouthSoftCaseStudy from './casestudies/SouthSoftCaseStudy';
 import Bm3CaseStudy from './casestudies/Bm3CaseStudy';
 import TommyBoxCaseStudy from './casestudies/TommyBoxCaseStudy';
+import { Icon } from './icons/Icons';
 
 interface LogoCodexProps {
     navigateTo: (hash: string) => void;
@@ -77,9 +78,7 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                     ${showBackToTabs ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'}`}
                 aria-label="Volver a selección de casos"
             >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-                </svg>
+                <Icon name="ui-chevron-right" size={16} className="-rotate-90" />
                 <span className="hidden sm:inline text-sm">Casos de estudio</span>
             </button>
 

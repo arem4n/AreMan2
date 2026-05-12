@@ -1,19 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Epilogue, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import ClientWrapper from "@/components/ClientWrapper";
 
-const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
-const playfair = Playfair_Display({
+const epilogue = Epilogue({
   subsets: ["latin"],
-  variable: '--font-playfair-display'
+  variable: '--font-epilogue',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  variable: '--font-barlow-condensed',
+  weight: ['600', '700', '800'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "AREM4N | Soberanía Visual & Branding Estratégico",
-  description: "Portafolio de AREM4N, especialista en branding estratégico y soberanía visual utilizando la metodología LogoCodex™.",
+  title: {
+    default: 'AREM4N | Soberanía Visual & Branding Estratégico',
+    template: '%s | AREM4N',
+  },
+  description: 'Metodología LogoCodeX™ para identidades que justifican precios premium.',
   icons: {
-    icon: '/icon.png',
+    icon: '/images/icon.png',
   },
 };
 
@@ -23,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className={inter.className}>
+    <html lang="es" className={`${epilogue.variable} ${barlowCondensed.variable}`}>
+      <body className={epilogue.className}>
         <ClientWrapper>
           {children}
         </ClientWrapper>

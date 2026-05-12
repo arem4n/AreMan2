@@ -16,12 +16,19 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const router = useRouter();
     const pathname = usePathname();
 
-    // Initial load preloader
+    // Initial load preloader — se apaga cuando el browser termina de cargar
     useEffect(() => {
-        const timer = setTimeout(() => {
+        if (document.readyState === 'complete') {
             setIsLoading(false);
-        }, 1000);
-        return () => clearTimeout(timer);
+        } else {
+            const handleLoad = () => setIsLoading(false);
+            window.addEventListener('load', handleLoad, { once: true });
+            const fallback = setTimeout(() => setIsLoading(false), 2000);
+            return () => {
+                window.removeEventListener('load', handleLoad);
+                clearTimeout(fallback);
+            };
+        }
     }, []);
 
     // Ensure preloader hides after navigation

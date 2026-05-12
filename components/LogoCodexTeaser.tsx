@@ -2,23 +2,27 @@
 
 import React from 'react';
 import { trackEvent } from '../analytics';
+import { Icon, IconName } from './icons/Icons';
 
 interface LogoCodexTeaserProps {
     navigateTo: (path: string) => void;
 }
 
-const pillars = [
+const pillars: { icon: IconName, number: string, title: string, desc: string }[] = [
     {
+        icon: 'codex-semiotica',
         number: '01',
         title: 'Semiótica Visual',
         desc: 'Peirce & Barthes — denotación, connotación, mito.',
     },
     {
+        icon: 'codex-arquetipos',
         number: '02',
         title: 'Psicología Arquetípica',
         desc: 'Jung & Pearson — el inconsciente colectivo de tu marca.',
     },
     {
+        icon: 'codex-narrativa',
         number: '03',
         title: 'Narrativa Estratégica',
         desc: 'El signo gráfico convertido en historia coherente.',
@@ -32,7 +36,7 @@ const LogoCodexTeaser: React.FC<LogoCodexTeaserProps> = ({ navigateTo }) => {
     };
 
     return (
-        <section className="py-24 lg:py-32 bg-deep-900 text-white overflow-hidden relative">
+        <section className="py-24 lg:py-40 bg-deep-900 text-white overflow-hidden relative">
             {/* Fondo decorativo */}
             <div className="absolute inset-0 opacity-5 pointer-events-none select-none flex items-center justify-center">
                 <span className="text-[20rem] font-display font-bold tracking-tighter text-white leading-none">LC</span>
@@ -57,10 +61,13 @@ const LogoCodexTeaser: React.FC<LogoCodexTeaserProps> = ({ navigateTo }) => {
                     {pillars.map((p) => (
                         <div
                             key={p.number}
-                            className="group p-6 rounded-2xl border border-deep-700 bg-deep-800/50 hover:border-symbolic-500/50 hover:bg-deep-800 transition-all duration-300"
+                            className="group p-8 rounded-2xl border border-deep-700 bg-deep-800/50 hover:border-symbolic-500/50 hover:bg-deep-800 transition-all duration-300"
                         >
-                            <span className="block font-mono text-symbolic-500 text-sm font-bold mb-3">{p.number}</span>
-                            <h3 className="text-lg font-display font-bold text-white mb-2 group-hover:text-creative-300 transition-colors duration-300">
+                            <div className="w-12 h-12 flex items-center justify-center bg-deep-700 rounded-xl mb-6 text-creative-400 group-hover:text-symbolic-400 transition-colors duration-300">
+                                <Icon name={p.icon} size={28} />
+                            </div>
+                            <span className="block font-mono text-deep-500 text-xs font-bold mb-3 uppercase tracking-widest">{p.number} / Pilar</span>
+                            <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-creative-300 transition-colors duration-300">
                                 {p.title}
                             </h3>
                             <p className="text-deep-400 text-sm leading-relaxed">{p.desc}</p>
@@ -72,12 +79,10 @@ const LogoCodexTeaser: React.FC<LogoCodexTeaserProps> = ({ navigateTo }) => {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                     <button
                         onClick={handleCta}
-                        className="inline-flex items-center gap-3 bg-symbolic-600 hover:bg-symbolic-500 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-xl shadow-symbolic-900/50 hover:shadow-symbolic-700/40 hover:scale-105"
+                        className="inline-flex items-center gap-3 bg-symbolic-600 hover:bg-symbolic-500 text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 shadow-xl shadow-symbolic-900/50 hover:shadow-symbolic-700/40 hover:scale-105"
                     >
                         Explorar el Manual Completo
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
+                        <Icon name="ui-arrow-right" size={20} />
                     </button>
                     <span className="text-deep-500 text-sm">
                         Incluye casos de estudio y metodología completa
@@ -89,3 +94,4 @@ const LogoCodexTeaser: React.FC<LogoCodexTeaserProps> = ({ navigateTo }) => {
 };
 
 export default LogoCodexTeaser;
+

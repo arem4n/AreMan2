@@ -1,13 +1,18 @@
 "use client";
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 export const MagneticButton = ({ children, onClick, className = '' }: { children: React.ReactNode; onClick?: () => void; className?: string }) => {
   const ref = useRef<HTMLButtonElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [hasHover, setHasHover] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+
+  useEffect(() => {
+    setHasHover(window.matchMedia('(hover: hover)').matches);
+  }, []);
 
   // Smooth springs for magnetic feel
   const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
@@ -15,7 +20,7 @@ export const MagneticButton = ({ children, onClick, className = '' }: { children
   const springY = useSpring(y, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!ref.current) return;
+    if (!hasHover || !ref.current) return;
     const { clientX, clientY } = e;
     const { width, height, left, top } = ref.current.getBoundingClientRect();
 
@@ -37,6 +42,7 @@ export const MagneticButton = ({ children, onClick, className = '' }: { children
   };
 
   const handleMouseLeave = () => {
+    if (!hasHover) return;
     setIsHovered(false);
     x.set(0);
     y.set(0);

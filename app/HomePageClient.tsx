@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import { useLoading } from '@/components/LoadingContext';
+import { useMenu } from '@/hooks/useMenu';
 import Header from '@/components/Header';
 import ElegantMenu from '@/components/ElegantMenu';
 import Hero from '@/components/Hero';
@@ -19,7 +20,7 @@ import LogoCodexTeaser from '@/components/LogoCodexTeaser';
 
 
 export default function HomePageClient() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMenuOpen, toggleMenu } = useMenu();
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const { customNavigate } = useLoading();
 
@@ -40,21 +41,6 @@ export default function HomePageClient() {
     }
   }, []);
 
-  const toggleMenu = () => setIsMenuOpen(prev => !prev);
-
-
-  useEffect(() => {
-    const htmlElement = document.documentElement;
-    if (isMenuOpen) {
-      htmlElement.classList.add('modal-open');
-    } else {
-      htmlElement.classList.remove('modal-open');
-    }
-    return () => {
-      htmlElement.classList.remove('modal-open');
-    };
-  }, [isMenuOpen]);
-
   const handleContactIntent = (intent: string) => {
     setSelectedPackage(intent);
     customNavigate('#contacto');
@@ -64,6 +50,12 @@ export default function HomePageClient() {
 
   return (
     <div className="bg-white">
+      <a
+        href="#inicio"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-symbolic-600 focus:text-white focus:rounded-lg focus:font-semibold"
+      >
+        Saltar al contenido
+      </a>
       <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={customNavigate} />
       <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={customNavigate} />
       <main>

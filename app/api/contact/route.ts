@@ -1,9 +1,14 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { escape } from 'html-escaper';
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, message, honeypot } = await request.json();
+
+    if (honeypot) {
+      return NextResponse.json({ success: true });
+    }
 
     if (!process.env.RESEND_API_KEY) {
       console.warn('RESEND_API_KEY is missing. Simulating success for development.');
@@ -25,15 +30,15 @@ export async function POST(request: Request) {
     try {
       await resend.emails.send({
         from: 'Formulario Web <noreply@arem4n.com>',
-        to: 'sergio.areman@gmail.com',
+        to: process.env.CONTACT_EMAIL ?? 'sergio.areman@gmail.com',
         subject: `Nuevo Lead Web: ${name}`,
         replyTo: email,
         html: `
           <h1>Nuevo contacto desde la web</h1>
-          <p><strong>Nombre:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Nombre:</strong> ${escape(name)}</p>
+          <p><strong>Email:</strong> ${escape(email)}</p>
           <p><strong>Mensaje:</strong></p>
-          <p>${message}</p>
+          <p>${escape(message).replace(/\n/g, '<br>')}</p>
         `,
       });
     } catch (emailError) {
