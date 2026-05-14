@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useInView, useReducedMotion, Variants } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, useReducedMotion, useSpring, Variants } from 'framer-motion';
 import { useLoading } from '@/components/LoadingContext';
 import { useMenu } from '@/hooks/useMenu';
-import { MagneticButton } from '@/components/MagneticButton';
 import Header from '@/components/Header';
 import ElegantMenu from '@/components/ElegantMenu';
 import Footer from '@/components/Footer';
@@ -72,6 +71,25 @@ const RevealText = ({ children, className = '', delay = 0 }: { children: React.R
     );
 };
 
+const CountUp = ({ value, suffix }: { value: number, suffix: string }) => {
+    const ref = useRef<HTMLSpanElement>(null);
+    const isInView = useInView(ref, { once: true });
+    const shouldReduceMotion = useReducedMotion();
+    const count = useTransform(
+        useSpring(
+            isInView && !shouldReduceMotion ? value : 0,
+            { stiffness: 60, damping: 20 }
+        ),
+        (v) => Math.round(v)
+    );
+    return (
+        <span ref={ref} className="text-3xl md:text-4xl font-display font-bold text-symbolic-400">
+            <motion.span>{count}</motion.span>
+            <span className="text-lg md:text-xl text-deep-300 ml-1">{suffix}</span>
+        </span>
+    );
+};
+
 // Marcador de capítulo
 const ChapterLabel = ({ label }: { label: string }) => (
     <span className="font-mono text-xs tracking-[0.2em] text-creative-400 uppercase block mb-2">
@@ -89,10 +107,10 @@ export default function OrigenClient() {
             <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={navigateTo} />
             <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={navigateTo} />
 
-            <main className="relative w-full max-w-4xl mx-auto px-6 lg:px-12 py-32 md:py-48 flex flex-col gap-y-24 md:gap-y-40">
+            <main className="relative w-full max-w-4xl mx-auto px-6 lg:px-12 py-32 md:py-48 flex flex-col gap-y-24 md:gap-y-40" style={{ position: 'relative', zIndex: 1 }}>
 
                 {/* OPENING */}
-                <section className="min-h-[60vh] flex flex-col justify-center">
+                <section className="flex flex-col justify-center">
                     <StaggeredText
                         text="Volver."
                         className="text-7xl md:text-8xl lg:text-[8rem] font-display font-bold leading-none tracking-tight mb-8 text-symbolic-600"
@@ -111,10 +129,14 @@ export default function OrigenClient() {
                 <section className="flex flex-col gap-10 md:gap-14">
                     <ChapterLabel label="Buenos Aires, 2012–2022" />
 
-                    <RevealText className="text-xl md:text-2xl font-light leading-relaxed text-deep-200">
+                    <RevealText delay={0} className="text-xl md:text-2xl font-light leading-relaxed text-deep-200">
                         Hay un momento en la carrera donde dejás de ver imágenes y empezás a leerlas.
+                    </RevealText>
+                    <RevealText delay={0.1} className="text-xl md:text-2xl font-light leading-relaxed text-deep-200">
                         Para mí fue cuando entendí que todo comunica con intención, aunque el autor quiera desaparecer.
-                        Que detrás de cada imagen, cada palabra, cada símbolo, hay una decisión que dice algo más de lo que parece.
+                    </RevealText>
+                    <RevealText delay={0.2} className="text-xl md:text-2xl font-light leading-relaxed text-deep-200">
+                        Detrás de cada imagen, cada palabra, cada símbolo, hay una decisión que dice algo más de lo que parece.
                     </RevealText>
 
                     <ScrollBlurCard>
@@ -126,22 +148,52 @@ export default function OrigenClient() {
                         </p>
                     </ScrollBlurCard>
 
-                    <div className="bg-white/5 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/10">
-                        <RevealText>
-                            <p className="text-xs font-bold tracking-[0.2em] text-creative-400 uppercase mb-8">
-                                Lo que el cine confirmó.
-                            </p>
-                            <p className="text-xl md:text-2xl font-light leading-relaxed text-deep-100 mb-6">
+                    <div className="bg-white/5 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/10 flex flex-col gap-6">
+                        <p className="text-xs font-bold tracking-[0.2em] text-creative-400 uppercase">
+                            Lo que el cine confirmó.
+                        </p>
+                        <RevealText delay={0}>
+                            <p className="text-xl md:text-2xl font-light leading-relaxed text-deep-100">
                                 Estudié Diseño de Imagen y Sonido en la FADU, Buenos Aires. Casi una década aprendiendo que cada plano tiene que justificar su existencia. Que el espacio, la luz y el símbolo comunican antes que las palabras.
                             </p>
-                            <p className="text-xl md:text-2xl font-light leading-relaxed text-symbolic-300 italic mb-6">
+                        </RevealText>
+                        <RevealText delay={0.15}>
+                            <p className="text-xl md:text-2xl font-light leading-relaxed text-symbolic-300 italic">
                                 Que un personaje sin historia interna no convence a nadie, por más bien que se vea.
                             </p>
+                        </RevealText>
+                        <RevealText delay={0.3}>
                             <p className="text-xl md:text-2xl font-light leading-relaxed text-deep-100">
                                 Con el tiempo empecé a aplicar eso a las marcas. Una marca es un personaje. Necesita una historia interna coherente para que el mundo externo la crea. Sin eso, es decoración que se ve bien en el portafolio pero no funciona en el mundo real.
                             </p>
                         </RevealText>
                     </div>
+                    {/* Stats */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                        className="grid grid-cols-3 gap-4 md:gap-8"
+                    >
+                        {[
+                            { value: 10, suffix: 'años', label: 'formación audiovisual' },
+                            { value: 7, suffix: 'casos', label: 'LogoCodeX™ aplicado' },
+                            { value: 3, suffix: 'países', label: 'clientes activos' },
+                        ].map((stat, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 12 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                className="flex flex-col items-center text-center p-4 md:p-6 rounded-2xl bg-deep-800/40 border border-deep-700/40"
+                            >
+                                <CountUp value={stat.value} suffix={stat.suffix} />
+                                <span className="text-xs font-mono tracking-widest text-deep-400 uppercase mt-2">{stat.label}</span>
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </section>
 
                 {/* ACTO II — La ruptura */}
@@ -187,23 +239,23 @@ export default function OrigenClient() {
                         En 2022 volví a Chile. A Puerto Montt. Al lugar del que me había ido.
                     </RevealText>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-80px" }}
-                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="border-l-4 border-symbolic-400 pl-8 md:pl-12 py-2 flex flex-col gap-6"
-                    >
-                        <p className="text-xl md:text-2xl font-light leading-relaxed text-deep-100">
-                            Volví siendo otra persona. Con años de práctica, con preguntas propias y con algo que todavía no tenía nombre.
-                        </p>
-                        <p className="text-xl md:text-2xl font-light leading-relaxed text-deep-200">
-                            Fue en esa vuelta donde empecé a ver con claridad algo que siempre había operado en mí: que la identidad genuina no se construye de afuera hacia adentro.
-                        </p>
-                        <p className="text-2xl md:text-3xl font-bold leading-relaxed text-symbolic-300">
-                            Se construye al revés. Primero entender qué es real. Después hacerlo visible.
-                        </p>
-                    </motion.div>
+                    <div className="border-l-4 border-symbolic-400 pl-8 md:pl-12 py-2 flex flex-col gap-6">
+                        <RevealText delay={0}>
+                            <p className="text-xl md:text-2xl font-light leading-relaxed text-deep-100">
+                                Volví siendo otra persona. Con años de práctica, con preguntas propias y con algo que todavía no tenía nombre.
+                            </p>
+                        </RevealText>
+                        <RevealText delay={0.1}>
+                            <p className="text-xl md:text-2xl font-light leading-relaxed text-deep-200">
+                                Fue en esa vuelta donde empecé a ver con claridad algo que siempre había operado en mí: que la identidad genuina no se construye de afuera hacia adentro.
+                            </p>
+                        </RevealText>
+                        <RevealText delay={0.2}>
+                            <p className="text-2xl md:text-3xl font-bold leading-relaxed text-symbolic-300">
+                                Se construye al revés. Primero entender qué es real. Después hacerlo visible.
+                            </p>
+                        </RevealText>
+                    </div>
                 </section>
 
                 {/* CIERRE */}
@@ -212,6 +264,21 @@ export default function OrigenClient() {
                         <p className="text-xl md:text-2xl font-light text-deep-300 max-w-2xl leading-relaxed">
                             No construí LogoCodeX™ para diferenciarme en el mercado. Lo construí porque no encontré ningún método que respondiera la pregunta que más me importaba:
                         </p>
+                    </RevealText>
+
+                    <motion.div className="w-full max-w-xs mx-auto">
+                        <div className="h-px bg-deep-700 rounded-full overflow-hidden">
+                            <motion.div
+                                className="h-full bg-symbolic-500"
+                                initial={{ width: '0%' }}
+                                whileInView={{ width: '100%' }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                            />
+                        </div>
+                    </motion.div>
+
+                    <RevealText className="flex flex-col items-center gap-8 w-full">
                         <p className="text-4xl md:text-6xl font-display font-bold text-creative-400 italic max-w-4xl leading-tight">
                             ¿Cómo se hace visible lo que una empresa es realmente?
                         </p>
@@ -220,12 +287,18 @@ export default function OrigenClient() {
                         </p>
                     </RevealText>
 
-                    <MagneticButton
+                    <motion.button
                         onClick={() => customNavigate('/#contacto')}
-                        className="bg-symbolic-600 hover:bg-symbolic-700 text-white shadow-xl shadow-symbolic-600/20 px-12 py-6 text-xl"
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="bg-symbolic-600 hover:bg-symbolic-700 text-white shadow-xl shadow-symbolic-600/20 px-12 py-6 text-xl rounded-2xl font-display font-bold tracking-wide cursor-pointer"
                     >
                         Solicitar Auditoría de Identidad
-                    </MagneticButton>
+                    </motion.button>
                 </section>
 
             </main>
