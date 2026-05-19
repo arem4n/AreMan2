@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Epilogue, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import ClientWrapper from "@/components/ClientWrapper";
+import { Analytics } from "@vercel/analytics/next";
 
 const epilogue = Epilogue({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
         <ClientWrapper>
           {children}
         </ClientWrapper>
+        <Analytics />
       </body>
     </html>
   );
