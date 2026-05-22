@@ -3,7 +3,7 @@ import OrigenClient from './OrigenClient';
 
 export const metadata: Metadata = {
   title: 'Origen | AREM4N - Soberanía Visual',
-  description: 'El momento que cambió cómo veo todo. La historia detrás de la Soberanía Visual.',
+  description: 'La evolución de Sergio Arellano / AREM4N — identidad, software y automatización construidos período por período.',
 };
 
 export default function OrigenPage() {

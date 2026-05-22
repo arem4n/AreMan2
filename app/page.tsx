@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: 'AREM4N',
     images: [
       {
-        url: '/images/og-arem4n.jpg',
+        url: '/images/og-arem4n.webp',
         width: 1200,
         height: 630,
         alt: 'AREM4N — Soberanía Visual & Branding Estratégico',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AREM4N | Soberanía Visual',
     description: 'Tu competencia también tiene un logo. Probablemente se parece al tuyo.',
-    images: ['/images/og-arem4n.jpg'],
+    images: ['/images/og-arem4n.webp'],
   },
 };
 

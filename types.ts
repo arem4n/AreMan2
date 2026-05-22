@@ -31,6 +31,7 @@ export interface PortfolioProject {
     testimonial: string;
     clientName: string;
     clientRole: string;
+    clientAvatar?: string;
     link: string;
     galleryImages: { src: string; alt: string }[];
     slug: string;

@@ -18,6 +18,5 @@ export const arem4nProject: PortfolioProject = {
         description: "Marca Personal. El mensajero de la chispa creativa.",
         title: "AREM4N",
         subtitle: "Marca Personal Freelance",
-        sections: []
     }
 };

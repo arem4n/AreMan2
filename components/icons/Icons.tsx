@@ -26,6 +26,4 @@ export const ArrowRightIcon: React.FC<IconProps> = ({ className = "h-6 w-6", siz
     <Icon name="ui-arrow-right" className={className} size={size} />
 );
 
-// Note: Pause and Play are specific to some interactions, but we've unified UI icons.
-// If needed, they can be added to Icon.tsx icons object.
 

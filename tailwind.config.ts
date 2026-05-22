@@ -48,7 +48,8 @@ const config: Config = {
         },
         fontFamily: {
             'display': ['var(--font-barlow-condensed)', 'sans-serif'],
-            'body': ['var(--font-epilogue)', 'sans-serif']
+            'body': ['var(--font-epilogue)', 'sans-serif'],
+            'jetbrains': ['var(--font-jetbrains-mono)', 'monospace'],
         },
         fontSize: {
             'fluid-hero': ['clamp(2.25rem, 5vw + 1rem, 4.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],

@@ -1,7 +1,8 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trackEvent } from '../analytics';
+import { whiteLogoUrl } from '../constants';
 
 interface ElegantMenuProps {
     isOpen: boolean;
@@ -43,22 +44,26 @@ const itemVariants = {
     open: {
         y: 0,
         opacity: 1,
-        transition: {
-            y: { type: "spring", stiffness: 300, damping: 24 }
-        }
+        transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
     },
     closed: {
-        y: 50,
+        y: 30,
         opacity: 0,
-        transition: {
-            y: { type: "spring", stiffness: 300, damping: 24 }
-        }
+        transition: { duration: 0.25, ease: [0.4, 0, 1, 1] }
     }
 };
 
 const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateTo }) => {
+    const previousFocusRef = useRef<HTMLElement | null>(null);
+
     useEffect(() => {
-        if (!isOpen) return;
+        if (!isOpen) {
+            previousFocusRef.current?.focus();
+            previousFocusRef.current = null;
+            return;
+        }
+
+        previousFocusRef.current = document.activeElement as HTMLElement;
 
         const firstLink = document.querySelector<HTMLAnchorElement>('[data-menu-link]');
         firstLink?.focus();
@@ -71,7 +76,7 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
             if (e.key !== 'Tab') return;
 
             const focusable = Array.from(
-                document.querySelectorAll<HTMLElement>('[data-menu-link], [data-menu-cta]')
+                document.querySelectorAll<HTMLElement>('[data-menu-toggle], [data-menu-link], [data-menu-cta]')
             );
             const first = focusable[0];
             const last = focusable[focusable.length - 1];
@@ -107,47 +112,71 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
     return (
         <AnimatePresence>
             {isOpen && (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate="open"
-                    exit="closed"
-                    variants={menuVariants}
-                    className="fixed inset-0 z-[50] flex flex-col items-center justify-center bg-deep-900/95 backdrop-blur-xl"
-                    aria-modal="true"
-                    role="dialog"
-                >
-                    <nav className="w-full max-w-lg px-6">
-                        <ul className="flex flex-col items-center gap-6">
-                            {navLinks.map((link) => (
-                                <motion.li key={link.href} variants={itemVariants} className="w-full text-center">
-                                    <a
-                                        href={link.href}
-                                        data-menu-link
-                                        onClick={(e) => handleLinkClick(e, link.href)}
-                                        className="block text-3xl md:text-5xl font-display font-bold text-white hover:text-symbolic-400 transition-colors duration-300 py-2"
-                                    >
-                                        {link.label}
-                                    </a>
-                                </motion.li>
-                            ))}
-                        </ul>
+                <>
+                    {/* Backdrop — separate from content so its background never gets caught in opacity:0 animation */}
+                    <motion.div
+                        key="menu-backdrop"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, transition: { duration: 0.25 } }}
+                        exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.5 } }}
+                        className="fixed inset-0 z-[1998]"
+                        style={{ backgroundColor: '#0f172a' }}
+                        aria-hidden="true"
+                    />
 
-                        <motion.div
-                            variants={itemVariants}
-                            className="mt-12 pt-8 border-t border-white/10 text-center"
-                        >
-                            <p className="text-deep-200 mb-4 font-light">¿Hablemos de tu marca?</p>
-                            <a
-                                href="#contacto"
-                                data-menu-cta
-                                onClick={(e) => handleLinkClick(e, "#contacto")}
-                                className="inline-block px-8 py-3 bg-symbolic-600 text-white font-bold rounded-full hover:bg-symbolic-500 transition-colors shadow-lg shadow-symbolic-600/20"
+                    {/* Content */}
+                    <motion.div
+                        key="menu-content"
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        variants={menuVariants}
+                        id="main-menu-dialog"
+                        className="fixed inset-0 z-[1999] flex flex-col items-center justify-center overflow-hidden pt-20 pb-4 md:py-8"
+                        aria-modal="true"
+                        role="dialog"
+                        aria-label="Navegación principal"
+                    >
+                        <nav className="w-full max-w-lg px-6">
+                            <motion.div variants={itemVariants} className="flex justify-center mb-5 md:mb-10">
+                                <img
+                                    src={whiteLogoUrl}
+                                    alt="AREM4N"
+                                    className="h-12 md:h-16 w-auto object-contain"
+                                />
+                            </motion.div>
+                            <ul className="flex flex-col items-center gap-2 md:gap-6">
+                                {navLinks.map((link) => (
+                                    <motion.li key={link.href} variants={itemVariants} className="w-full text-center">
+                                        <a
+                                            href={link.href}
+                                            data-menu-link
+                                            onClick={(e) => handleLinkClick(e, link.href)}
+                                            className="block text-2xl md:text-4xl lg:text-5xl font-display font-bold text-white hover:text-symbolic-400 transition-colors duration-300 py-1 md:py-2"
+                                        >
+                                            {link.label}
+                                        </a>
+                                    </motion.li>
+                                ))}
+                            </ul>
+
+                            <motion.div
+                                variants={itemVariants}
+                                className="mt-4 md:mt-12 pt-4 md:pt-8 border-t border-white/10 text-center"
                             >
-                                Iniciar Auditoría
-                            </a>
-                        </motion.div>
-                    </nav>
-                </motion.div>
+                                <p className="text-deep-200 mb-4 font-light text-sm md:text-base">¿Hablemos de tu marca?</p>
+                                <a
+                                    href="#contacto"
+                                    data-menu-cta
+                                    onClick={(e) => handleLinkClick(e, "#contacto")}
+                                    className="inline-block px-8 py-3 bg-symbolic-600 text-white font-bold rounded-full hover:bg-symbolic-500 transition-colors shadow-lg shadow-symbolic-600/20 text-sm md:text-base"
+                                >
+                                    Iniciar Auditoría
+                                </a>
+                            </motion.div>
+                        </nav>
+                    </motion.div>
+                </>
             )}
         </AnimatePresence>
     );

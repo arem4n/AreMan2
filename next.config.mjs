@@ -32,6 +32,11 @@ const nextConfig = {
                 destination: '/portafolio/osttech-software',
                 permanent: true,
             },
+            {
+                source: '/portafolio/bm3-constructora',
+                destination: '/portafolio/bm3-servicios',
+                permanent: true,
+            },
         ];
     },
 };

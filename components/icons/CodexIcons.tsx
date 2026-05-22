@@ -7,7 +7,7 @@ export const BackArrowIcon: React.FC<{ className?: string }> = ({ className = "w
 );
 
 export const HomeIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-    <Icon name="deliverable-logo" className={className} /> // Closest geometric match for home/logo in the new system
+    <Icon name="deliverable-logo" className={className} />
 );
 
 // Semantic Icons for LogoCodex
@@ -16,7 +16,7 @@ export const SemioticsIcon: React.FC = () => (
 );
 
 export const LayersIcon: React.FC = () => (
-    <Icon name="services-autoridad" size={48} /> // Auth icons are layers
+    <Icon name="services-autoridad" size={48} />
 );
 
 export const ArchetypeIcon: React.FC = () => (

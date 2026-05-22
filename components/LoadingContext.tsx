@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { STORAGE_KEYS } from '@/lib/storageKeys';
 
 interface LoadingContextType {
     isLoading: boolean;
@@ -52,7 +53,7 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
             } else {
                 // If we are on a different page, we need to go home first
                 setIsLoading(true);
-                sessionStorage.setItem('scrollToSection', url);
+                sessionStorage.setItem(STORAGE_KEYS.scrollToSection, url);
                 router.push('/');
                 return;
             }

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { whiteLogoUrl } from '../constants';
 
@@ -39,14 +40,16 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                 animate="visible"
                 className="relative max-w-6xl mx-auto px-4 text-center text-white"
             >
-                <motion.img
-                    variants={logoItem}
-                    src={whiteLogoUrl}
-                    alt="Logotipo AREM4N"
-                    className="w-40 md:w-48 h-auto mx-auto mb-8"
-                    decoding="sync"
-                    {...({ fetchpriority: 'high' } as Record<string, string>)}
-                />
+                <motion.div variants={logoItem} className="relative w-40 md:w-48 h-16 md:h-20 mx-auto mb-8">
+                    <Image
+                        src={whiteLogoUrl}
+                        alt="Logotipo AREM4N"
+                        fill
+                        priority
+                        sizes="(max-width: 768px) 160px, 192px"
+                        className="object-contain"
+                    />
+                </motion.div>
                 <motion.h1 variants={heroItem} className="text-fluid-hero font-display font-bold mb-4">
                     Tu competencia también tiene un logo...
                 </motion.h1>

@@ -50,6 +50,8 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
                 className="fixed top-6 right-6 z-[2000] p-4 bg-white/80 backdrop-blur-md rounded-full shadow-lg md:hidden border border-white/40"
                 aria-label={isMenuOpen ? "Cerrar Menú" : "Abrir Menú"}
                 aria-expanded={isMenuOpen}
+                aria-controls="main-menu-dialog"
+                data-menu-toggle
             >
                  <svg width="24" height="24" viewBox="0 0 24 24">
                     {/* Top line */}
@@ -99,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
                         <motion.img 
                             whileHover={{ scale: 1.1, rotate: -5 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            src="/images/icon.png"
+                            src="/images/icon.webp"
                             alt="Logotipo de AREM4N" 
                             className="h-10 w-10 object-contain"
                         />

@@ -12,11 +12,11 @@ interface WhyItemProps {
 const WhyItem = ({ icon, number, title, children, className }: WhyItemProps & PropsWithChildren) => (
     <div className={`py-12 lg:py-4 px-6 lg:px-8 group transition-all duration-300 ${className ?? ''}`}>
         <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-sm border border-deep-100 text-symbolic-600 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
-                <Icon name={icon} size={28} />
+            <div className="text-symbolic-600 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 flex-shrink-0">
+                <Icon name={icon} size={32} />
             </div>
-            <span className="text-xs font-mono font-bold tracking-[0.2em] text-deep-400 uppercase">
-                Etapa {number}
+            <span className="text-4xl font-display font-extrabold text-symbolic-100 leading-none select-none group-hover:text-symbolic-200 transition-colors duration-300">
+                {number}
             </span>
         </div>
         <h4 className="font-display font-bold text-deep-900 text-xl lg:text-2xl mb-4 leading-snug group-hover:text-symbolic-600 transition-colors">

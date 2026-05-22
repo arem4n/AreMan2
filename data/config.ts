@@ -1,3 +1,3 @@
 
-export const logoUrl = "/images/logo-black.png";
-export const whiteLogoUrl = "/images/logo-white.png";
+export const logoUrl = "/images/logo-black.webp";
+export const whiteLogoUrl = "/images/logo-white.webp";

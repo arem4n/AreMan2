@@ -73,7 +73,7 @@ const TommyBoxCaseStudy: React.FC = () => (
         <Block>
             <SubSectionTitle>Evolución: De la V1 a la Versión Final</SubSectionTitle>
             <P>El proyecto pasó por una etapa inicial (V1) donde se utilizó una paleta verde y negra, con un enfoque más tradicional. Esta versión sirvió como base para entender que la marca necesitaba más energía y distinción.</P>
-            <ImageDisplay src="/images/tommybox-logo-v1.png" alt="Logo Versión 1 TommyBox" caption="Versión 1 (Histórica): Paleta verde/negro, más tradicional." />
+            <ImageDisplay src="/images/tommybox-logo-v1.webp" alt="Logo Versión 1 TommyBox" caption="Versión 1 (Histórica): Paleta verde/negro, más tradicional." />
             
             <SubSectionTitle>Logotipo y Símbolo (V2 Final)</SubSectionTitle>
             <P>Se desarrolló un imagotipo que combina una tipografía robusta y moderna con un símbolo abstracto que sugiere una &quot;Caja&quot; (Box) abierta y dinámica, cambiando radicalmente a un Azul Eléctrico para diferenciación.</P>
@@ -82,7 +82,7 @@ const TommyBoxCaseStudy: React.FC = () => (
                 <li><Strong>Dinamismo:</Strong> Las líneas no son cerradas, sugiriendo movimiento, entrada y salida de energía.</li>
                 <li><Strong>Tipografía:</Strong> Sans-serif bold, sólida y legible, para maximizar la visibilidad en aplicaciones físicas (paredes, poleras).</li>
             </UL>
-            <ImageDisplay src="/images/tommybox-logo-final.png" alt="Logo TommyBox Final" caption="Isotipo y Logotipo principal final (V2)." />
+            <ImageDisplay src="/images/tommybox-logo-final.webp" alt="Logo TommyBox Final" caption="Isotipo y Logotipo principal final (V2)." />
         </Block>
         
         <Hr />
@@ -100,10 +100,10 @@ const TommyBoxCaseStudy: React.FC = () => (
         <SectionTitle>4. VISUALIZACIÓN EN CONTEXTO</SectionTitle>
         <Block>
             <P>El diseño no vive solo en pantallas; habita el espacio físico y la indumentaria de la comunidad. La marca se integra en el entorno real donde ocurre la transformación.</P>
-            <ImageDisplay src="/images/tommybox-gym.jpg" alt="Gimnasio TommyBox" caption="El espacio físico real donde se desarrolló el método. La identidad visual habita el gimnasio." />
-            <ImageDisplay src="/images/tommybox-merch.jpg" alt="Merchandising TommyBox" caption="Aplicación de la marca en indumentaria oficial (Poleras)." />
-            <ImageDisplay src="/images/tommybox-color-variations.png" alt="Variaciones de Color TommyBox" caption="Versatilidad del diseño: Adaptación a diferentes colores de indumentaria." />
-            <ImageDisplay src="/images/tommybox-water-bottle.jpg" alt="Botella de Agua TommyBox" caption="Extensión de marca: Merchandising funcional para la comunidad." />
+            <ImageDisplay src="/images/tommybox-gym.webp" alt="Gimnasio TommyBox" caption="El espacio físico real donde se desarrolló el método. La identidad visual habita el gimnasio." />
+            <ImageDisplay src="/images/tommybox-merch.webp" alt="Merchandising TommyBox" caption="Aplicación de la marca en indumentaria oficial (Poleras)." />
+            <ImageDisplay src="/images/tommybox-color-variations.webp" alt="Variaciones de Color TommyBox" caption="Versatilidad del diseño: Adaptación a diferentes colores de indumentaria." />
+            <ImageDisplay src="/images/tommybox-water-bottle.webp" alt="Botella de Agua TommyBox" caption="Extensión de marca: Merchandising funcional para la comunidad." />
         </Block>
 
         <Hr />
@@ -154,12 +154,12 @@ const TommyBoxCaseStudy: React.FC = () => (
             screenshotAspect="3431/1511"
             defaultView="auto"
             screenshots={[
-                { src: '/images/tommybox-screen-agenda.png', alt: 'Agenda Semanal — Desktop' },
-                { src: '/images/tommybox-screen-comunidad.png', alt: 'Salón de Campeones — Desktop' },
-                { src: '/images/tommybox-screen-feed.png', alt: 'Feed de Comunidad — Desktop' },
-                { src: '/images/tommybox-screen-planes.png', alt: 'Planes de Entrenamiento — Desktop' },
-                { src: '/images/tommybox-screen-logros.png', alt: 'Logros y Gamificación — Desktop' },
-                { src: '/images/tommybox-screen-perfil.png', alt: 'Mi Perfil — Desktop' },
+                { src: '/images/tommybox-screen-agenda.webp', alt: 'Agenda Semanal — Desktop' },
+                { src: '/images/tommybox-screen-comunidad.webp', alt: 'Salón de Campeones — Desktop' },
+                { src: '/images/tommybox-screen-feed.webp', alt: 'Feed de Comunidad — Desktop' },
+                { src: '/images/tommybox-screen-planes.webp', alt: 'Planes de Entrenamiento — Desktop' },
+                { src: '/images/tommybox-screen-logros.webp', alt: 'Logros y Gamificación — Desktop' },
+                { src: '/images/tommybox-screen-perfil.webp', alt: 'Mi Perfil — Desktop' },
             ]}
             mobileScreenshots={[
                 { src: '/images/tommybox-mobile-agenda.webp', alt: 'Agenda Semanal — Mobile' },

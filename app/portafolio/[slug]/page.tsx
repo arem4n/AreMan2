@@ -47,7 +47,7 @@ const renderPage = (slug: string) => {
             return <AlbornozCaseStudy />;
         case 'southsoft-consultoria':
             return <SouthSoftCaseStudy />;
-        case 'bm3-constructora':
+        case 'bm3-servicios':
             return <Bm3CaseStudy />;
         case 'tommybox-training':
             return <TommyBoxCaseStudy />;

@@ -4,6 +4,7 @@
 import React from 'react';
 import { useLoading } from '@/components/LoadingContext';
 import { BackArrowIcon } from '@/components/icons/CodexIcons';
+import { STORAGE_KEYS } from '@/lib/storageKeys';
 
 // FIX: Changed props type to React.PropsWithChildren to correctly handle `children` prop from a Server Component.
 export default function CaseStudyLayout({ children }: React.PropsWithChildren) {
@@ -11,7 +12,7 @@ export default function CaseStudyLayout({ children }: React.PropsWithChildren) {
 
     const navigateTo = (path: string) => {
         if (path.startsWith('#')) {
-            sessionStorage.setItem('scrollToSection', path);
+            sessionStorage.setItem(STORAGE_KEYS.scrollToSection, path);
             customNavigate('/');
         } else {
             customNavigate(path);

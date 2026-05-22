@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRightIcon, Icon, IconName } from './icons/Icons';
+import { Icon, IconName } from './icons/Icons';
+import { ChevronRightIcon } from './icons/Icons';
 
 const faqs: { icon: IconName, question: string, answer: string }[] = [
     {
@@ -41,7 +41,7 @@ const FAQItem: React.FC<{ icon: IconName; question: string; answer: string; inde
                 aria-expanded={isOpen}
                 aria-controls={`faq-panel-${index}`}
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full py-6 flex justify-between items-center text-left focus:outline-none group"
+                className="w-full py-6 flex justify-between items-center text-left focus-visible:outline-none group"
             >
                 <div className="flex items-center gap-4">
                     <div className={`flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg transition-colors ${isOpen ? 'bg-symbolic-600 text-white' : 'bg-deep-100 text-deep-500 group-hover:bg-deep-200'}`}>
@@ -51,29 +51,29 @@ const FAQItem: React.FC<{ icon: IconName; question: string; answer: string; inde
                         {question}
                     </span>
                 </div>
-                <span className={`transform transition-transform duration-300 ${isOpen ? 'rotate-90 text-symbolic-600' : 'text-deep-400'}`}>
+                <span className={`transform transition-transform duration-300 flex-shrink-0 ml-4 ${isOpen ? 'rotate-90 text-symbolic-600' : 'text-deep-400'}`}>
                     <ChevronRightIcon className="w-6 h-6" />
                 </span>
             </button>
 
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        id={`faq-panel-${index}`}
-                        role="region"
-                        aria-labelledby={`faq-btn-${index}`}
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                    >
-                        <p className="pb-6 text-deep-600 leading-relaxed">
-                            {answer}
-                        </p>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {/* grid-template-rows transition avoids animating height directly (no layout thrash) */}
+            <div
+                id={`faq-panel-${index}`}
+                role="region"
+                aria-labelledby={`faq-btn-${index}`}
+                style={{
+                    display: 'grid',
+                    gridTemplateRows: isOpen ? '1fr' : '0fr',
+                    opacity: isOpen ? 1 : 0,
+                    transition: 'grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease',
+                }}
+            >
+                <div style={{ overflow: 'hidden' }}>
+                    <p className="pb-6 text-deep-600 leading-relaxed">
+                        {answer}
+                    </p>
+                </div>
+            </div>
         </div>
     );
 };

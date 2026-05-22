@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import { useLoading } from '@/components/LoadingContext';
+import { STORAGE_KEYS } from '@/lib/storageKeys';
 import { useMenu } from '@/hooks/useMenu';
 import Header from '@/components/Header';
 import ElegantMenu from '@/components/ElegantMenu';
@@ -26,9 +27,9 @@ export default function HomePageClient() {
 
   // Effect to handle scrolling to section after navigation from a different page
   useEffect(() => {
-    const scrollToSection = sessionStorage.getItem('scrollToSection');
+    const scrollToSection = sessionStorage.getItem(STORAGE_KEYS.scrollToSection);
     if (scrollToSection) {
-      sessionStorage.removeItem('scrollToSection');
+      sessionStorage.removeItem(STORAGE_KEYS.scrollToSection);
       const id = scrollToSection.startsWith('#') ? scrollToSection.substring(1) : '';
       if (id) {
         setTimeout(() => {

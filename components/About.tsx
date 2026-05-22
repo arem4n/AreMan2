@@ -18,17 +18,10 @@ const About: React.FC = () => {
                         En cine aprendí algo que la mayoría de los diseñadores no sabe: toda imagen transmite algo, quieras o no. El vacío también comunica. La omisión también es una decisión.
                     </p>
                     <p>
-                        Con el tiempo entendí que las marcas tienen el mismo problema.
+                        Con el tiempo entendí que las marcas tienen el mismo problema. Y que resolverlo no termina en un logo — termina en los sistemas que hacen que ese logo funcione en el mundo real.
                     </p>
                     <p>
-                        La mayoría parte de la estética y le asigna significado después. No al revés.
-                        El resultado puede verse bien. Pero el fundador nunca termina de sentirlo suyo.
-                    </p>
-                    <p className="font-bold text-deep-900">
-                        Y eso se nota.
-                    </p>
-                    <p>
-                        <strong className="text-symbolic-600">LogoCodeX™</strong> invierte ese orden. Primero entiendo qué es real y único en tu empresa. Después lo hago visible.
+                        <strong className="text-symbolic-600">LogoCodeX™</strong> es el método. El software es la consecuencia.
                     </p>
                     <p className="text-deep-500 text-base">
                         — Sergio Arellano, Puerto Montt · Chile

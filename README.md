@@ -1,20 +1,30 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# AREM4N — Sitio personal
 
-# Run and deploy your AI Studio app
+Sitio de branding personal y portafolio. Next.js 14 App Router, TypeScript, Tailwind CSS, Framer Motion.
 
-This contains everything you need to run your app locally.
+## Rutas
 
-View your app in AI Studio: https://ai.studio/apps/drive/10spcdfMbDHvZz3PCQme2EIGJZ2rpSa8m
+| Ruta | Descripción |
+|---|---|
+| `/` | Homepage — Hero, Services, Portfolio, FAQ, Contacto |
+| `/portafolio` | Portafolio LogoCodex (client component) |
+| `/portafolio/[slug]` | Case study individual |
+| `/origen` | Narrativa larga sobre el origen de la marca |
 
-## Run Locally
+## Comandos
 
-**Prerequisites:**  Node.js
+```bash
+npm run dev        # Dev server en puerto 3000
+npm run build      # Build de producción
+npm run start      # Correr build de producción
+npm run lint       # ESLint
+npx tsc --noEmit   # TypeScript check
+```
 
+## Variables de entorno
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```
+RESEND_API_KEY        # Envío de emails (formulario de contacto)
+RESEND_AUDIENCE_ID    # Opcional: audiencia Resend
+CONTACT_EMAIL         # Destino de emails (default: sergio.areman@gmail.com)
+```
