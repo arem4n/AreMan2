@@ -268,10 +268,10 @@ export default function OrigenClient() {
             className="flex flex-col gap-4"
           >
             <h1 className="font-display text-fluid-hero font-bold uppercase leading-none tracking-tight text-deep-50">
-              SERGIO ARELLANO / AREM4N
+              SERGIO ARELLANO MANQUE / AREM4N
             </h1>
             <p className="font-body text-base md:text-lg text-deep-100 opacity-80">
-              Puerto Montt, Chile · Diseño Simbólico & Narrativa Visual
+              Identidades que justifican lo que cobrás.
             </p>
             <div className="flex items-center gap-2.5 mt-2">
               <span className="relative flex h-2.5 w-2.5 flex-shrink-0">

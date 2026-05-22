@@ -56,67 +56,29 @@ const TRAYECTORIA = [
 
 const SIGNALS = [
   {
-    label: 'Guitarra',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-symbolic-600">
-        <path d="m16 9.5 3-3" /><path d="M9 22c-1.5 0-3-1-3-3s1.5-3 3-3 3 1 3 3-1.5 3-3 3Z" />
-        <path d="M9 16c-1.5 0-3-1.5-3-3.5S7.5 9 9 9c1.6 0 3 1.6 3 3.5S10.5 16 9 16Z" />
-        <path d="m14 11.5 6-6" /><path d="M18.5 7 21 4.5" /><path d="M17 5.5 19.5 3" />
-      </svg>
-    ),
-    body: 'Exige disciplina, precisión técnica y un sentido riguroso de la estructura. Es el balance entre la técnica rigurosa y la expresión creativa.'
-  },
-  {
-    label: 'Batería',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-symbolic-600">
-        <path d="m2 2 8 8" /><path d="m22 2-8 8" /><ellipse cx="12" cy="9" rx="10" ry="5" />
-        <path d="M7 13.4v7.9" /><path d="M12 14v8" /><path d="M17 13.4v7.9" />
-        <path d="M2 9v8a10 5 0 0 0 20 0V9" />
-      </svg>
-    ),
-    body: 'El tempo y la base rítmica que sostiene a todo ensamble. Representa la consistencia, la coordinación independiente y la fuerza que da estructura global.'
-  },
-  {
-    label: 'Fútbol',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-symbolic-600">
-        <circle cx="12" cy="12" r="10" /><path d="M12 7.5L8.5 10v4l3.5 2.5 3.5-2.5v-4z" />
-        <path d="M12 2v5.5" /><path d="M12 22v-5.5" /><path d="M2 12h6.5" /><path d="M22 12h-6.5" />
-        <path d="m5.5 5.5 3 2" /><path d="m18.5 5.5-3 2" /><path d="m5.5 18.5 3-2" /><path d="m18.5 18.5-3-2" />
-      </svg>
-    ),
-    body: 'Estrategia colectiva, lectura del espacio y coordinación grupal en tiempo real. Representa la capacidad de operar en equipo hacia un objetivo común.'
-  },
-  {
-    label: 'Básquetbol',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-symbolic-600">
-        <circle cx="12" cy="12" r="10" /><path d="M4.9 4.9 Q 10 12 4.9 19.1" />
-        <path d="M19.1 4.9 Q 14 12 19.1 19.1" /><path d="M2 12h20" /><path d="M12 2v20" />
-      </svg>
-    ),
-    body: 'Transiciones rápidas, precisión en espacios reducidos y agilidad táctica bajo presión. Representa la adaptabilidad y la toma de decisiones inmediata.'
-  },
-  {
     label: 'Herencia Mapuche',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-symbolic-600"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>,
-    body: 'Una perspectiva no occidental sobre identidad y territorio. Entiende que la identidad genuina no se construye de afuera hacia adentro.'
+    body: 'Manque no es un apellido decorativo. Es una perspectiva sobre identidad que no viene de ningún libro de branding — viene de entender que lo que eres de verdad no se construye desde afuera. Eso es exactamente lo que hago con cada marca: encontrar lo que ya existe antes de diseñar nada.'
   },
   {
-    label: 'Años de experiencia en ventas de piso',
+    label: 'Años de ventas de piso',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-symbolic-600"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>,
-    body: 'No es teoría. Es meta encima todos los días, cliente enfrente, cierre real. Eso es lo que diferencia un sistema de identidad que se ve bien en portafolio de uno que funciona cuando hay dinero en juego.'
+    body: 'Diez años con meta encima y cliente enfrente. Sé lo que significa que una identidad visual tenga que cerrar una venta real, no ganar un premio de diseño. Por eso lo que construyo no es para portafolio — es para el momento en que alguien decide si te compra a vos o a tu competencia.'
+  },
+  {
+    label: 'Formación en cine — UBA',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-symbolic-600"><rect x="2" y="2" width="20" height="20" rx="2" /><line x1="7" y1="2" x2="7" y2="22" /><line x1="17" y1="2" x2="17" y2="22" /><line x1="2" y1="12" x2="22" y2="12" /><line x1="2" y1="7" x2="7" y2="7" /><line x1="2" y1="17" x2="7" y2="17" /><line x1="17" y1="17" x2="22" y2="17" /><line x1="17" y1="7" x2="22" y2="7" /></svg>,
+    body: 'El cine enseña que cada elemento en pantalla tiene que justificar su existencia o está saboteando al resto. Aplicado a marcas: no hay decisiones neutras. Tu tipografía comunica algo. Tu paleta comunica algo. El silencio también comunica. LogoCodeX™ es ese principio sistematizado.'
   },
   {
     label: 'Gastronomía internacional',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-symbolic-600"><path d="M18 8h1a4 4 0 0 1 0 8h-1" /><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" /><line x1="6" y1="1" x2="6" y2="4" /><line x1="10" y1="1" x2="10" y2="4" /><line x1="14" y1="1" x2="14" y2="4" /></svg>,
-    body: 'Los detalles hacen la diferencia. Siempre.'
+    body: 'Una experiencia gastronómica no es la suma de ingredientes — es la coherencia de cómo se integran. Una marca funciona igual. No es el logo, no es el copy, no es el color por separado. Es si todo eso produce una sensación unificada en quien lo recibe.'
   },
   {
-    label: 'Pensamiento no-linear',
+    label: 'Pensamiento no-lineal',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-symbolic-600"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z" /><path d="M6 21a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3v12a3 3 0 0 0 3 3z" /></svg>,
-    body: 'Conecta sistemas, narrativa y tecnología simultáneamente. Ve el problema completo antes de tocar una sola parte.'
+    body: 'No proceso un problema por partes en secuencia. Lo veo completo primero. Eso permite identificar dónde está la causa real de un problema de identidad, que casi nunca es donde el cliente cree que está.'
   }
 ];
 
@@ -322,7 +284,7 @@ export const DashboardSection = React.memo(function DashboardSection({
               <h3 className="font-display text-base font-bold uppercase tracking-wider text-symbolic-600/70 mb-6">
                 Señales
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 {SIGNALS.map((sig) => (
                   <button
                     key={sig.label}

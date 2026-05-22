@@ -289,13 +289,13 @@ const icons = {
     </g>
   ),
 
-  // WhatsApp: speech bubble with phone receiver
+  // WhatsApp: speech bubble + phone receiver (earpiece top-right, mouthpiece bottom-left)
   'contact-whatsapp': (
     <g>
       <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-      <path d="M9 8.5c.5 1.5 1.5 3 3 4s2.5 1.5 4 1.5" />
-      <circle cx="9" cy="8.5" r="1" fill="currentColor" stroke="none" />
-      <circle cx="16" cy="14" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="8.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="9.5" cy="14.5" r="1" fill="currentColor" stroke="none" />
+      <path d="M14.5 9c-1 1.5-2.5 3.5-5 5" />
     </g>
   ),
 
@@ -308,13 +308,13 @@ const icons = {
     </g>
   ),
 
-  // Behance: clear B letterform with stroke
+  // Behance: filled B letterform + overline bar
   'contact-behance': (
     <g>
-      <path d="M6 4v16" />
-      <path d="M6 4h5c2 0 3.5 1.5 3.5 3.5S13 11 11 11H6" />
-      <path d="M6 11h6c2.5 0 4 2 4 4.5S14.5 20 12 20H6" />
-      <path d="M13 6h7" />
+      <rect x="5" y="4" width="2.5" height="16" fill="currentColor" stroke="none" />
+      <path d="M7.5 4h4c2.2 0 3.8 1.2 3.8 3.3S13.7 10.5 11.5 10.5H7.5z" fill="currentColor" stroke="none" />
+      <path d="M7.5 10.5h4.5c2.5 0 4.2 1.4 4.2 4s-1.7 4-4.2 4H7.5z" fill="currentColor" stroke="none" />
+      <path d="M13 5.5h6" strokeWidth="2" strokeLinecap="round" />
     </g>
   ),
 
