@@ -86,12 +86,16 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                 {/* SECCIÓN 1: Hero */}
                 <section id="logocodex" className="text-center pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-deep-800 to-deep-900 text-white relative overflow-hidden">
                     <div className="max-w-4xl mx-auto px-4 animate-fade-in-up">
+                        <span className="inline-block px-4 py-1.5 bg-white/10 border border-white/20 text-deep-200 text-xs font-bold tracking-widest uppercase rounded-full mb-6">
+                            Portafolio de Identidad Visual
+                        </span>
                         <h2 className="text-4xl lg:text-7xl font-display font-bold mb-4 text-creative-400">
-                            Manual LogoCodeX™
+                            LogoCodeX™
                         </h2>
                         <p className="text-lg lg:text-xl text-deep-200 leading-relaxed max-w-3xl mx-auto">
-                            &quot;Un logo debe operar como un símbolo vivo, no como un adorno gráfico.&quot;<br />
-                            <span className="text-white font-medium">Sistema de Codificación Visual Simbólica.</span>
+                            Cada proyecto aquí fue construido con el método LogoCodeX™ —{' '}
+                            <span className="text-white font-medium">un sistema de codificación simbólica que convierte un logotipo en un activo de marca</span>{' '}
+                            con capas de significado cultural, arquetípico y narrativo.
                         </p>
                         <div className="mt-8 inline-block px-6 py-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-md">
                             <span className="font-mono text-creative-300">Símbolo Vivo = Memoria Cultural + Narrativa + Evolución</span>

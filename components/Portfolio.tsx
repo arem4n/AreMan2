@@ -231,6 +231,18 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                 </div>
             </div>
 
+            <div className="text-center mt-8 lg:mt-10">
+                <button
+                    onClick={() => navigateTo('/portafolio')}
+                    className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-deep-300 text-deep-700 font-semibold text-sm hover:border-symbolic-500 hover:text-symbolic-600 hover:bg-symbolic-50 transition-all duration-200"
+                >
+                    Ver portafolio completo
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+
             <AnimatePresence>
                 {selectedProject && (
                     <ProjectModal
