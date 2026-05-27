@@ -39,9 +39,6 @@ const Newsletter: React.FC = () => {
 
     return (
         <section className="py-16 bg-deep-900 text-white text-center relative overflow-hidden">
-            {/* Background element for texture */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-deep-900 via-symbolic-600 to-deep-900"></div>
-            
             <div className="max-w-4xl mx-auto px-4 relative z-10">
                 <span className="inline-block py-1 px-3 rounded-full bg-creative-400/10 text-creative-400 text-xs font-bold tracking-widest uppercase mb-4 border border-creative-400/20">
                     Lead Magnet Exclusivo
@@ -60,7 +57,7 @@ const Newsletter: React.FC = () => {
                         type="email" 
                         id="newsletter-email" 
                         placeholder="tu@email.com" 
-                        className="w-full md:w-2/3 px-4 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-creative-400 backdrop-blur-sm transition-all" 
+                        className="w-full md:w-2/3 px-4 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-creative-400 transition-all" 
                         required 
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}

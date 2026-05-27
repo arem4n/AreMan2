@@ -41,13 +41,13 @@ const renderPage = (slug: string) => {
             return <Arem4nCaseStudy />;
         case 'arem4n-professional-brand':
             return <Arem4nProfessionalCaseStudy />;
-        case 'osttech-cybersecurity':
+        case 'osttech-software':
             return <OstTechCaseStudy />;
         case 'albornoz-propiedades':
             return <AlbornozCaseStudy />;
-        case 'southsoft-development':
+        case 'southsoft-consultoria':
             return <SouthSoftCaseStudy />;
-        case 'bm3-constructora':
+        case 'bm3-servicios':
             return <Bm3CaseStudy />;
         case 'tommybox-training':
             return <TommyBoxCaseStudy />;

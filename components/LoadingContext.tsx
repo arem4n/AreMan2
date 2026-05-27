@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { STORAGE_KEYS } from '@/lib/storageKeys';
 
 interface LoadingContextType {
     isLoading: boolean;
@@ -16,12 +17,19 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const router = useRouter();
     const pathname = usePathname();
 
-    // Initial load preloader
+    // Initial load preloader — se apaga cuando el browser termina de cargar
     useEffect(() => {
-        const timer = setTimeout(() => {
+        if (document.readyState === 'complete') {
             setIsLoading(false);
-        }, 1000);
-        return () => clearTimeout(timer);
+        } else {
+            const handleLoad = () => setIsLoading(false);
+            window.addEventListener('load', handleLoad, { once: true });
+            const fallback = setTimeout(() => setIsLoading(false), 2000);
+            return () => {
+                window.removeEventListener('load', handleLoad);
+                clearTimeout(fallback);
+            };
+        }
     }, []);
 
     // Ensure preloader hides after navigation
@@ -45,7 +53,7 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
             } else {
                 // If we are on a different page, we need to go home first
                 setIsLoading(true);
-                sessionStorage.setItem('scrollToSection', url);
+                sessionStorage.setItem(STORAGE_KEYS.scrollToSection, url);
                 router.push('/');
                 return;
             }

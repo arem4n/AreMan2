@@ -292,14 +292,14 @@ const Arem4nCaseStudy: React.FC = () => (
                 title="Codificación Cotidiana"
                 subtitle="Nivel 1: Físico (2D)"
                 description="El símbolo se integra en el uso diario. El timbre de goma y los stickers permiten marcar pertenencias, transformando objetos comunes en propiedad del linaje. Es la primera capa de apropiación territorial."
-                imageSrc="/images/arem4n-escudo-wood-mockup.jpg"
+                imageSrc="/images/arem4n-escudo-wood-mockup.webp"
             />
 
             <TransmediaBlock 
                 title="Permanencia Histórica"
                 subtitle="Nivel 2: Relieve (2.5D)"
                 description="Al llevar el diseño a un medallón pétreo en relieve, activamos la memoria ancestral. La luz y la sombra ahora dibujan el símbolo, no la tinta. Esto evoca lápidas, escudos de armas en castillos y monedas antiguas. Valida la atemporalidad del diseño."
-                imageSrc="/images/arem4n-escudo-wax-mockup.jpg"
+                imageSrc="/images/arem4n-escudo-wax-mockup.webp"
                 isReversed
             />
 
@@ -307,14 +307,14 @@ const Arem4nCaseStudy: React.FC = () => (
                 title="Mundo Habitable"
                 subtitle="Nivel 3: Escultórico (3D)"
                 description="El diorama rompe la cuarta pared. Ya no es una representación, es un lugar. El cóndor vuela sobre una montaña real. El árbol tiene volumen. Demuestra que el logotipo no es un dibujo plano, sino una ventana a un mundo narrativo tridimensional."
-                imageSrc="/images/arem4n-escudo-shield-mockup.jpg"
+                imageSrc="/images/arem4n-escudo-shield-mockup.webp"
             />
 
             <TransmediaBlock 
                 title="El Mito Revelado"
                 subtitle="Nivel 4: Hiperrealismo"
                 description="La visión final. Una composición cinematográfica que muestra cómo el símbolo se vería si existiera en la realidad. Es la máxima expresión de la narrativa: el momento exacto en que el espíritu (Cóndor) toca la materia (Montaña)."
-                imageSrc="/images/arem4n-escudo-ring-mockup.jpg"
+                imageSrc="/images/arem4n-escudo-ring-mockup.webp"
                 isReversed
             />
         </Block>

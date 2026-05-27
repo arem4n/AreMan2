@@ -22,6 +22,21 @@ const nextConfig = {
                 destination: '/portafolio/:slug',
                 permanent: true,
             },
+            {
+                source: '/portafolio/southsoft-development',
+                destination: '/portafolio/southsoft-consultoria',
+                permanent: true,
+            },
+            {
+                source: '/portafolio/osttech-cybersecurity',
+                destination: '/portafolio/osttech-software',
+                permanent: true,
+            },
+            {
+                source: '/portafolio/bm3-constructora',
+                destination: '/portafolio/bm3-servicios',
+                permanent: true,
+            },
         ];
     },
 };

@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
+import { BrowserMockup } from '../BrowserMockup';
 
 // Helpers for consistent styling
 const SectionTitle: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => (
@@ -91,7 +92,7 @@ const SouthSoftCaseStudy: React.FC = () => (
                 <li><Strong>2. S de &quot;Soft&quot;:</Strong> La mitad inferior (Gris). Referencia a la industria tecnológica.</li>
                 <li><Strong>3. Símbolo de Infinito (∞):</Strong> Al rotar la S o verla como un 8 continuo, representa el ciclo sin fin de la mejora continua (Kaizen).</li>
             </UL>
-            <ImageDisplay src="/images/southsoft-loop.mp4" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
+    <ImageDisplay src="/images/southsoft-logo.webp" alt="Logo SouthSoft" caption="La S cortada como símbolo de infinito y dualidad." />
 
             <SubSectionTitle>La Metáfora de la Dualidad</SubSectionTitle>
             <P>El corte horizontal exacto divide el logo en dos mundos que se complementan:</P>
@@ -127,10 +128,26 @@ const SouthSoftCaseStudy: React.FC = () => (
 
         <Hr />
 
-        <SectionTitle>5. VALIDACIÓN Y TESTIMONIO</SectionTitle>
+        <div className="flex flex-col items-center justify-center py-16 text-center animate-fade-in-up">
+            <span className="text-xs font-bold tracking-[0.2em] text-creative-500 uppercase mb-4 block">
+                CASO DE ESTUDIO / INGENIERÍA DE CONVERSIÓN
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-deep-800 mb-6 max-w-3xl">
+                Soberanía Visual en Sistemas Complejos
+            </h2>
+            <p className="text-lg md:text-xl text-deep-500 leading-relaxed max-w-2xl mx-auto mb-6">
+                Para la consultora B2B South Soft, el reto fue inyectar una identidad visual ágil dentro del ecosistema rígido de un ERP (Odoo). A través de diseño orientado a la conversión, transformé una infraestructura técnica en un embudo de ventas impecable, listo para captar clientes reales sin perder integración de datos.
+            </p>
+        </div>
+
+        <BrowserMockup src="https://southsoft.cl" label="southsoft.cl" iframeMobileAspect="9/16" />
+
+        <Hr />
+
+        <SectionTitle>6. VALIDACIÓN Y TESTIMONIO</SectionTitle>
         <Block>
             <P>La identidad se aplica en todos los puntos de contacto, transmitiendo profesionalismo desde el primer correo.</P>
-            <ImageDisplay src="/images/southsoft-signature.jpg" alt="Pie de firma SouthSoft" caption="Aplicación corporativa real: Pie de firma de correo electrónico." />
+            <ImageDisplay src="/images/southsoft-signature.webp" alt="Pie de firma SouthSoft" caption="Aplicación corporativa real: Pie de firma de correo electrónico." />
             
             <Quote>
                 <P>&quot;Trabajar con Sergio fue una experiencia muy agradable y fluida. Interpretó muy bien mi percepción de una empresa de tecnología en constante movimiento y la plasmó impecablemente en un logo que muestra las iniciales de mi empresa y el símbolo de infinito. Recomiendo el trabajo de Sergio, toda vez que sus creaciones tienen peso simbólico por lo que son <Strong>mucho más que un logo, una historia sintetizada</Strong>.&quot; - Francisco Arellano.</P>

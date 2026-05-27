@@ -1,6 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
+import { BrowserMockup } from '../BrowserMockup';
+
+// TODO: Reemplaza esta URL con la URL real del deploy de TommyBox
+const TOMMYBOX_APP_URL = 'https://tommybox.cl';
 
 // Helpers for consistent styling
 const SectionTitle: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => (
@@ -69,7 +73,7 @@ const TommyBoxCaseStudy: React.FC = () => (
         <Block>
             <SubSectionTitle>Evolución: De la V1 a la Versión Final</SubSectionTitle>
             <P>El proyecto pasó por una etapa inicial (V1) donde se utilizó una paleta verde y negra, con un enfoque más tradicional. Esta versión sirvió como base para entender que la marca necesitaba más energía y distinción.</P>
-            <ImageDisplay src="/images/tommybox-logo-v1.png" alt="Logo Versión 1 TommyBox" caption="Versión 1 (Histórica): Paleta verde/negro, más tradicional." />
+            <ImageDisplay src="/images/tommybox-logo-v1.webp" alt="Logo Versión 1 TommyBox" caption="Versión 1 (Histórica): Paleta verde/negro, más tradicional." />
             
             <SubSectionTitle>Logotipo y Símbolo (V2 Final)</SubSectionTitle>
             <P>Se desarrolló un imagotipo que combina una tipografía robusta y moderna con un símbolo abstracto que sugiere una &quot;Caja&quot; (Box) abierta y dinámica, cambiando radicalmente a un Azul Eléctrico para diferenciación.</P>
@@ -78,7 +82,7 @@ const TommyBoxCaseStudy: React.FC = () => (
                 <li><Strong>Dinamismo:</Strong> Las líneas no son cerradas, sugiriendo movimiento, entrada y salida de energía.</li>
                 <li><Strong>Tipografía:</Strong> Sans-serif bold, sólida y legible, para maximizar la visibilidad en aplicaciones físicas (paredes, poleras).</li>
             </UL>
-            <ImageDisplay src="/images/tommybox-logo-final.png" alt="Logo TommyBox Final" caption="Isotipo y Logotipo principal final (V2)." />
+            <ImageDisplay src="/images/tommybox-logo-final.webp" alt="Logo TommyBox Final" caption="Isotipo y Logotipo principal final (V2)." />
         </Block>
         
         <Hr />
@@ -96,11 +100,76 @@ const TommyBoxCaseStudy: React.FC = () => (
         <SectionTitle>4. VISUALIZACIÓN EN CONTEXTO</SectionTitle>
         <Block>
             <P>El diseño no vive solo en pantallas; habita el espacio físico y la indumentaria de la comunidad. La marca se integra en el entorno real donde ocurre la transformación.</P>
-            <ImageDisplay src="/images/tommybox-gym.jpg" alt="Gimnasio TommyBox" caption="El espacio físico real donde se desarrolló el método. La identidad visual habita el gimnasio." />
-            <ImageDisplay src="/images/tommybox-merch.jpg" alt="Merchandising TommyBox" caption="Aplicación de la marca en indumentaria oficial (Poleras)." />
-            <ImageDisplay src="/images/tommybox-color-variations.png" alt="Variaciones de Color TommyBox" caption="Versatilidad del diseño: Adaptación a diferentes colores de indumentaria." />
-            <ImageDisplay src="/images/tommybox-water-bottle.jpg" alt="Botella de Agua TommyBox" caption="Extensión de marca: Merchandising funcional para la comunidad." />
+            <ImageDisplay src="/images/tommybox-gym.webp" alt="Gimnasio TommyBox" caption="El espacio físico real donde se desarrolló el método. La identidad visual habita el gimnasio." />
+            <ImageDisplay src="/images/tommybox-merch.webp" alt="Merchandising TommyBox" caption="Aplicación de la marca en indumentaria oficial (Poleras)." />
+            <ImageDisplay src="/images/tommybox-color-variations.webp" alt="Variaciones de Color TommyBox" caption="Versatilidad del diseño: Adaptación a diferentes colores de indumentaria." />
+            <ImageDisplay src="/images/tommybox-water-bottle.webp" alt="Botella de Agua TommyBox" caption="Extensión de marca: Merchandising funcional para la comunidad." />
         </Block>
+
+        <Hr />
+
+        <SectionTitle>5. LA PLATAFORMA DIGITAL</SectionTitle>
+        <Block>
+            <P>El logo fue el primer acto. Pero una marca sin herramientas no sostiene una comunidad. Por eso construimos la plataforma que TommyBox necesitaba para operar: <Strong>una web app completa, en producción, usada por clientes reales</Strong>.</P>
+            <P>El desafío no era técnico, era humano: ¿cómo hacés que alguien vuelva a entrenar mañana, y pasado, y la semana que viene? La respuesta estuvo en diseñar cada función pensando en ese momento de decisión.</P>
+        </Block>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <Block className="mb-0">
+                <p className="text-xs font-semibold tracking-widest text-symbolic-500 uppercase mb-2">Reserva de sesiones</p>
+                <P className="mb-1">Sin WhatsApp, sin llamadas. El cliente abre la app, ve la semana, elige su horario y confirma en segundos. Gustavo ve su agenda en tiempo real.</P>
+                <p className="text-xs text-deep-400 italic">Firestore en tiempo real · reglas de negocio server-side via Cloud Functions</p>
+            </Block>
+            <Block className="mb-0">
+                <p className="text-xs font-semibold tracking-widest text-symbolic-500 uppercase mb-2">Motor de gamificación</p>
+                <P className="mb-1">Cada sesión acumula XP. Cada racha desbloquea insignias. Hay una tabla de líderes mensual. El entrenamiento tiene memoria y recompensa la constancia.</P>
+                <p className="text-xs text-deep-400 italic">Lógica centralizada en constantes compartidas · recálculo autoritativo en el servidor</p>
+            </Block>
+            <Block className="mb-0">
+                <p className="text-xs font-semibold tracking-widest text-symbolic-500 uppercase mb-2">Dos mundos en una plataforma</p>
+                <P className="mb-1">Gustavo ve el historial completo, métricas por cliente y controla la agenda. El cliente ve su propio progreso. Misma app, dos realidades completamente distintas.</P>
+                <p className="text-xs text-deep-400 italic">Sistema de roles con rutas protegidas · Google OAuth + email</p>
+            </Block>
+            <Block className="mb-0">
+                <p className="text-xs font-semibold tracking-widest text-symbolic-500 uppercase mb-2">La app que avisa y celebra</p>
+                <P className="mb-1">Recordatorios antes de cada sesión. Notificaciones cuando se sube de nivel. Pequeños momentos que refuerzan el hábito sin ser invasivos.</P>
+                <p className="text-xs text-deep-400 italic">Firebase Cloud Messaging · notificaciones push nativas en móvil y desktop</p>
+            </Block>
+        </div>
+
+        <Block>
+            <SubSectionTitle className="mt-0">Las decisiones de ingeniería</SubSectionTitle>
+            <P>Cada tecnología del stack fue una elección deliberada, no un default. <Strong>React 19 + TypeScript</Strong> porque la interfaz es compleja y los errores en producción son costosos. <Strong>Firebase</Strong> porque necesitábamos tiempo real, auth robusta y funciones serverless sin operar infraestructura. <Strong>Cloud Functions</Strong> para que la lógica crítica —puntos, insignias, notificaciones— corra en el servidor y no pueda ser manipulada desde el cliente. <Strong>Vercel</Strong> para deploy continuo y distribución global desde el día uno.</P>
+            <p className="text-xs text-deep-400 border-t border-deep-100 pt-4 mt-2">React 19 · Firebase (Auth · Firestore · Storage · Cloud Functions Gen 2) · TypeScript · Tailwind CSS · Vercel</p>
+        </Block>
+
+        <div className="flex flex-col items-center justify-center py-8 text-center">
+            <p className="text-sm font-medium text-deep-400 mb-2 italic">Plataforma en producción — explora las vistas principales.</p>
+        </div>
+
+        <BrowserMockup
+            src={TOMMYBOX_APP_URL}
+            label="tommybox.cl"
+            autoInterval={3500}
+            screenshotAspect="3431/1511"
+            defaultView="auto"
+            screenshots={[
+                { src: '/images/tommybox-screen-agenda.webp', alt: 'Agenda Semanal — Desktop' },
+                { src: '/images/tommybox-screen-comunidad.webp', alt: 'Salón de Campeones — Desktop' },
+                { src: '/images/tommybox-screen-feed.webp', alt: 'Feed de Comunidad — Desktop' },
+                { src: '/images/tommybox-screen-planes.webp', alt: 'Planes de Entrenamiento — Desktop' },
+                { src: '/images/tommybox-screen-logros.webp', alt: 'Logros y Gamificación — Desktop' },
+                { src: '/images/tommybox-screen-perfil.webp', alt: 'Mi Perfil — Desktop' },
+            ]}
+            mobileScreenshots={[
+                { src: '/images/tommybox-mobile-agenda.webp', alt: 'Agenda Semanal — Mobile' },
+                { src: '/images/tommybox-mobile-comunidad.webp', alt: 'Salón de Campeones — Mobile' },
+                { src: '/images/tommybox-mobile-feed.webp', alt: 'Feed de Comunidad — Mobile' },
+                { src: '/images/tommybox-mobile-planes.webp', alt: 'Planes de Entrenamiento — Mobile' },
+                { src: '/images/tommybox-mobile-logros.webp', alt: 'Logros y Gamificación — Mobile' },
+                { src: '/images/tommybox-mobile-perfil.webp', alt: 'Mi Perfil — Mobile' },
+            ]}
+        />
     </section>
 );
 

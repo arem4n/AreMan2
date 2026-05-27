@@ -73,7 +73,7 @@ const OstTechCaseStudy: React.FC = () => (
                 <li><Strong>La Curva (&quot;S&quot;):</Strong> Una forma fluida y blanca dentro del engranaje. Representa la S de Stormasen, pero también el movimiento, el agua y la vida orgánica.</li>
                 <li><Strong>Movimiento Implícito:</Strong> La forma de la S sugiere que el engranaje está girando. Un engranaje estático es maquinaria rota; uno girando es producción viva.</li>
             </UL>
-            <ImageDisplay src="/images/ost-tech-hero.png" alt="Isotipo OstTech" caption="Fusión de la mecánica industrial con la fluidez orgánica." />
+            <ImageDisplay src="/images/ost-tech-hero.webp" alt="Isotipo OstTech" caption="Fusión de la mecánica industrial con la fluidez orgánica." />
         </Block>
         
         <Hr />
@@ -109,8 +109,8 @@ const OstTechCaseStudy: React.FC = () => (
         <SectionTitle>5. INTEGRACIÓN DE MARCA EN SOFTWARE</SectionTitle>
         <Block>
             <P>Las siguientes imágenes son referencias visuales para demostrar la <strong>aplicación del logotipo</strong>. No representan un diseño de interfaz (UI) realizado por mí, sino la integración del isotipo como sello de identidad dentro de las plataformas digitales existentes del cliente.</P>
-            <ImageDisplay src="/images/osttech-mobile-mockup.png" alt="Mockup App Móvil OstTech" caption="Referencia de aplicación del isotipo en entorno móvil." />
-            <ImageDisplay src="/images/osttech-desktop-mockup.png" alt="Mockup Desktop OstTech" caption="Referencia de integración del logo en software de escritorio." />
+            <ImageDisplay src="/images/osttech-mobile-mockup.webp" alt="Mockup App Móvil OstTech" caption="Referencia de aplicación del isotipo en entorno móvil." />
+            <ImageDisplay src="/images/osttech-desktop-mockup.webp" alt="Mockup Desktop OstTech" caption="Referencia de integración del logo en software de escritorio." />
         </Block>
     </section>
 );

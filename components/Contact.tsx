@@ -21,7 +21,7 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage }) => {
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', message: '', honeypot: '' });
     const [formState, setFormState] = useState({ submitting: false, success: false, error: '' });
     
     const sectionRef = useRef<HTMLElement>(null);
@@ -37,31 +37,26 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
                 setFormData(prev => ({ ...prev, message: newMessage }));
             }
 
-            // 2. Scroll Logic
-            // We set a delay to ensure this executes AFTER the main navigation/hash scroll
-            const timer = setTimeout(() => {
+            const outerTimer = setTimeout(() => {
                 if (sectionRef.current) {
-                    // Scroll the SECTION into view, not just the title. 
-                    // This ensures the blue background fills the viewport from the start, 
-                    // preventing the "white section" above from bleeding in.
                     sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    
                     if (titleRef.current) {
-                        // Visual "Pop" Animation to indicate location
                         titleRef.current.classList.add('scale-110', 'text-creative-400');
-                        
-                        // 3. Cleanup animation
-                        setTimeout(() => {
-                            if (titleRef.current) {
-                                titleRef.current.classList.remove('scale-110', 'text-creative-400');
-                            }
-                            clearSelectedPackage();
-                        }, 2000);
                     }
                 }
-            }, 500); 
+            }, 500);
 
-            return () => clearTimeout(timer);
+            const innerTimer = setTimeout(() => {
+                if (titleRef.current) {
+                    titleRef.current.classList.remove('scale-110', 'text-creative-400');
+                }
+                clearSelectedPackage();
+            }, 2500);
+
+            return () => {
+                clearTimeout(outerTimer);
+                clearTimeout(innerTimer);
+            };
         }
     }, [selectedPackage, clearSelectedPackage]);
     
@@ -72,6 +67,14 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        
+        // Bot detection: if honeypot is filled, we act as if it succeeded but do nothing.
+        if (formData.honeypot) {
+            setFormState({ submitting: false, success: true, error: '' });
+            setFormData({ name: '', email: '', message: '', honeypot: '' });
+            return;
+        }
+
         if (!formData.name || !formData.email || !formData.message) {
             setFormState({ submitting: false, success: false, error: 'Por favor, completa todos los campos.' });
             return;
@@ -90,7 +93,7 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
         .then(data => {
             if (data.success) {
                 setFormState({ submitting: false, success: true, error: '' });
-                setFormData({ name: '', email: '', message: '' });
+                setFormData({ name: '', email: '', message: '', honeypot: '' });
                 setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
             } else {
                 setFormState({ submitting: false, success: false, error: data.error || 'Algo salió mal.' });
@@ -102,19 +105,26 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
     };
 
     return (
-        <section id="contacto" ref={sectionRef} className="py-16 lg:py-24 bg-gradient-to-br from-deep-800 via-deep-600 to-symbolic-600 relative">
-            <div className="absolute inset-0 bg-black/30"></div>
-            <div className="relative max-w-4xl mx-auto px-4">
+        <section id="contacto" ref={sectionRef} className="py-16 lg:py-24 bg-deep-900 relative">
+            <div className="max-w-4xl mx-auto px-4">
                 <div className="text-center text-white mb-12">
                     <h2 
                         ref={titleRef}
                         className="text-3xl lg:text-5xl font-display font-bold mb-6 transition-all duration-500 transform origin-center"
                     >
-                        Solicita tu Auditoría de Identidad
+                        Hablemos.
                     </h2>
-                    <p className="text-lg opacity-90 mb-8">
-                        No sigas siendo un commodity. Conversemos sobre cómo aplicar LogoCodex™ para construir la soberanía visual de tu startup.
-                    </p>
+                    <div className="text-lg opacity-90 mb-8 max-w-2xl mx-auto space-y-4">
+                        <p>
+                             Lo que más me gusta de este trabajo no es el resultado final. Es el proceso de descubrir qué historia tiene tu empresa y encontrar la forma de contarla visualmente.
+                        </p>
+                        <p>
+                             Cada marca es una narrativa distinta. Eso nunca se vuelve rutina.
+                        </p>
+                        <p className="font-semibold text-creative-400">
+                             Si llegaste hasta acá, es probable que tengas algo que vale la pena contar. Escríbeme y lo descubro juntos.
+                        </p>
+                    </div>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                     <form onSubmit={handleSubmit} noValidate className="bg-deep-800 p-8 rounded-2xl shadow-xl flex flex-col space-y-4 border border-deep-600">
@@ -158,7 +168,16 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
                             required
                         ></textarea>
                         
-                        <input type="text" name="honeypot" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+                        <input 
+                            type="text" 
+                            name="honeypot" 
+                            style={{ display: 'none' }} 
+                            tabIndex={-1} 
+                            autoComplete="off" 
+                            value={formData.honeypot} 
+                            onChange={handleChange} 
+                        />
+
 
                         <div className="h-14 pt-1">
                             <button type="submit" disabled={formState.submitting} className="w-full bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:bg-deep-600 disabled:cursor-not-allowed">
@@ -171,7 +190,7 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
 
                     <div className="space-y-6 text-white">
                         <ContactInfoItem icon={<EmailIcon />} title="Email Directo" value="contacto@arem4n.com" href="mailto:contacto@arem4n.com" />
-                        <ContactInfoItem icon={<WhatsAppIcon />} title="WhatsApp (Urgencias)" value="+56 9 3497 3287" href="https://wa.me/56934973287" />
+                        <ContactInfoItem icon={<WhatsAppIcon />} title="WhatsApp Directo" value="+56 9 3497 3287" href="https://wa.me/56934973287" />
                         <ContactInfoItem icon={<InstagramIcon />} title="Instagram" value="@arem4n" href="https://www.instagram.com/arem4n" />
                         <ContactInfoItem icon={<BehanceIcon />} title="Portafolio Extendido" value="behance.net/arem4n" href="https://www.behance.net/arem4n" />
                     </div>

@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLoading } from '../LoadingContext';
+import { useMenu } from '@/hooks/useMenu';
+import { STORAGE_KEYS } from '@/lib/storageKeys';
 import LogoCodex from '../LogoCodex';
 import { portfolioProjects } from '../../constants';
 import Header from '../Header';
@@ -12,14 +14,10 @@ import ElegantMenu from '../ElegantMenu';
 const LogoCodexClient: React.FC = () => {
     const router = useRouter();
     const { customNavigate } = useLoading();
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    
+    const { isMenuOpen, toggleMenu } = useMenu();
+
     // SAFE STATE INITIALIZATION: Start with a default, non-window-dependent value.
     const [selectedSlug, setSelectedSlug] = useState('areman-escudo-heraldico');
-
-    const toggleMenu = () => {
-        setIsMenuOpen(prev => !prev);
-    };
 
     // This effect runs ONLY on the client, preventing hydration errors.
     useEffect(() => {
@@ -30,14 +28,6 @@ const LogoCodexClient: React.FC = () => {
 
         const initialSlug = getSlugFromHash();
         setSelectedSlug(initialSlug);
-
-        const shouldScroll = sessionStorage.getItem('scrollToCaseStudy') === 'true';
-        if (shouldScroll) {
-            sessionStorage.removeItem('scrollToCaseStudy');
-            setTimeout(() => {
-                document.getElementById('casos-de-estudio')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
-        }
 
         const handleHashChange = () => {
             setSelectedSlug(getSlugFromHash());
@@ -59,7 +49,7 @@ const LogoCodexClient: React.FC = () => {
         const id = path.startsWith('#') ? path.substring(1) : '';
 
         if (homePageSections.includes(id)) {
-            sessionStorage.setItem('scrollToSection', path);
+            sessionStorage.setItem(STORAGE_KEYS.scrollToSection, path);
             customNavigate('/');
         } else {
             customNavigate(path);
@@ -75,18 +65,6 @@ const LogoCodexClient: React.FC = () => {
         }
     };
     
-    useEffect(() => {
-        const htmlElement = document.documentElement;
-        if (isMenuOpen) {
-            htmlElement.classList.add('modal-open');
-        } else {
-            htmlElement.classList.remove('modal-open');
-        }
-        return () => {
-            htmlElement.classList.remove('modal-open');
-        };
-    }, [isMenuOpen]);
-
     return (
         <>
             <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={navigateTo} />

@@ -12,16 +12,15 @@ export const aremanProject: PortfolioProject = {
     link: "javascript:void(0);",
     galleryImages: [
             { src: "/images/areman-main.webp", alt: "Escudo AreMan - Diseño Final" },
-            { src: "/images/areman-wood.jpg", alt: "Aplicación Física: Timbre y Stickers" },
-            { src: "/images/areman-wax.jpg", alt: "Materialización 2.5D: Medallón en Relieve" },
-            { src: "/images/areman-shield.jpg", alt: "Materialización 3D: Diorama Escultórico" },
-            { src: "/images/areman-ring.jpg", alt: "Composición Hiperrealista" }
+            { src: "/images/areman-wood.webp", alt: "Aplicación Física: Timbre y Stickers" },
+            { src: "/images/areman-wax.webp", alt: "Materialización 2.5D: Medallón en Relieve" },
+            { src: "/images/areman-shield.webp", alt: "Materialización 3D: Diorama Escultórico" },
+            { src: "/images/areman-ring.webp", alt: "Composición Hiperrealista" }
     ],
     caseStudy: {
         client: "Familia Arellano Manque",
         description: "Escudo Heráldico. Fusión de linajes y simbología ancestral.",
         title: "AREMAN",
         subtitle: "Escudo Heráldico Familiar",
-        sections: []
     }
 };

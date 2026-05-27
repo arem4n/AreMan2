@@ -2,13 +2,13 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import { useLoading } from '@/components/LoadingContext';
+import { STORAGE_KEYS } from '@/lib/storageKeys';
+import { useMenu } from '@/hooks/useMenu';
 import Header from '@/components/Header';
 import ElegantMenu from '@/components/ElegantMenu';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
-import ROI from '@/components/ROI';
-import LogoCodexCTA from '@/components/LogoCodexCTA';
 import Portfolio from '@/components/Portfolio';
 import WhyChooseMe from '@/components/WhyChooseMe';
 import Process from '@/components/Process';
@@ -17,16 +17,19 @@ import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
+import LogoCodexTeaser from '@/components/LogoCodexTeaser';
+
+
 export default function HomePageClient() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMenuOpen, toggleMenu } = useMenu();
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const { customNavigate } = useLoading();
 
   // Effect to handle scrolling to section after navigation from a different page
   useEffect(() => {
-    const scrollToSection = sessionStorage.getItem('scrollToSection');
+    const scrollToSection = sessionStorage.getItem(STORAGE_KEYS.scrollToSection);
     if (scrollToSection) {
-      sessionStorage.removeItem('scrollToSection');
+      sessionStorage.removeItem(STORAGE_KEYS.scrollToSection);
       const id = scrollToSection.startsWith('#') ? scrollToSection.substring(1) : '';
       if (id) {
         setTimeout(() => {
@@ -39,30 +42,29 @@ export default function HomePageClient() {
     }
   }, []);
 
-  const toggleMenu = () => setIsMenuOpen(prev => !prev);
-
-  const navigateTo = (path: string) => {
-    customNavigate(path);
-  };
-
   const handleContactIntent = (intent: string) => {
     setSelectedPackage(intent);
-    navigateTo('#contacto');
+    customNavigate('#contacto');
   };
 
   const clearSelectedPackage = useCallback(() => setSelectedPackage(null), []);
 
   return (
     <div className="bg-white">
-      <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={navigateTo} />
-      <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={navigateTo} />
+      <a
+        href="#inicio"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-symbolic-600 focus:text-white focus:rounded-lg focus:font-semibold"
+      >
+        Saltar al contenido
+      </a>
+      <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={customNavigate} />
+      <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={customNavigate} />
       <main>
-        <Hero navigateTo={navigateTo} />
+        <Hero navigateTo={customNavigate} />
         <About />
         <Services onPackageSelect={handleContactIntent} />
-        <ROI />
-        <LogoCodexCTA navigateTo={navigateTo} />
-        <Portfolio onRequestProject={handleContactIntent} navigateTo={navigateTo} />
+        <LogoCodexTeaser navigateTo={customNavigate} />
+        <Portfolio onRequestProject={handleContactIntent} navigateTo={customNavigate} />
         <WhyChooseMe />
         <Process />
         <Deliverables />

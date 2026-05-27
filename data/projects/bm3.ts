@@ -2,22 +2,21 @@
 import { PortfolioProject } from '../../types';
 
 export const bm3Project: PortfolioProject = {
-    mainImg: "/images/bm3-main.png",
+    mainImg: "/images/bm3-main.webp",
     altText: "Logo BM3",
     title: "BM3",
-    slug: "bm3-constructora",
+    slug: "bm3-servicios",
     testimonial: "Ingeniería y familia unidas.",
     clientName: "Marcelo España",
     clientRole: "Fundador",
     link: "javascript:void(0);",
     galleryImages: [
-            { src: "/images/bm3-main.png", alt: "Logo BM3" }
+            { src: "/images/bm3-main.webp", alt: "Logo BM3" }
     ],
     caseStudy: {
         client: "BM3 Servicios",
         description: "Ingeniería Estructural. Solidez familiar y técnica.",
         title: "BM3 SERVICIOS",
         subtitle: "Ingeniería y Construcción",
-        sections: []
     }
 };

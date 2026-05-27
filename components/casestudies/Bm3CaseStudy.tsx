@@ -64,10 +64,10 @@ const Bm3CaseStudy: React.FC = () => (
             <SubSectionTitle>Modernización Ancestral</SubSectionTitle>
             <P>La base es la <Strong>Triqueta Celta</Strong> (símbolo de tres puntas entrelazadas). Sin embargo, para alejarlo del esoterismo y acercarlo a la ingeniería, se aplicó un tratamiento tridimensional de &quot;cinta plegada&quot;.</P>
             <UL>
-                <li><Strong>Tridimensionalidad:</Strong> Aporte estratégico del diseñador. Representa estructura, volumen y tangibilidad. Dice &quot;construimos cosas reales y sólidas&quot;.</li>
+                <li><Strong>Tridimensionalidad:</Strong> Aporte estratégico del diseñador. Representa estructura, volumen y tangibilidad. Dice &quot;construye cosas reales y sólidas&quot;.</li>
                 <li><Strong>Interconexión:</Strong> Las cintas no se cortan, fluyen infinitamente. Representa la sinergia del equipo familiar.</li>
             </UL>
-             <ImageDisplay src="/images/bm3-main.png" alt="Isotipo BM3" caption="Triqueta celta con tratamiento isométrico industrial." />
+             <ImageDisplay src="/images/bm3-main.webp" alt="Isotipo BM3" caption="Triqueta celta con tratamiento isométrico industrial." />
 
             <SubSectionTitle>Tipomorfología Oculta (Easter Egg)</SubSectionTitle>
             <P>El logo premia la observación detenida con una triple lectura (B + M + 3):</P>

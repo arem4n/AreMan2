@@ -1,6 +1,7 @@
 import React from 'react';
 import { portfolioProjects } from '../constants';
 import { BackArrowIcon } from './icons/CodexIcons';
+import { Icon } from './icons/Icons';
 
 interface AllCaseStudiesGridProps {
     navigateTo: (slug: string) => void;
@@ -51,7 +52,7 @@ const AllCaseStudiesGrid: React.FC<AllCaseStudiesGridProps> = ({ navigateTo, onB
                                 <p className="text-sm text-deep-600 mb-4 h-20 overflow-hidden text-ellipsis">{project.caseStudy.description}</p>
                                 <span className="font-semibold text-symbolic-600 group-hover:text-symbolic-700 transition-colors flex items-center">
                                     Ver análisis completo 
-                                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 ml-1">&rarr;</span>
+                                    <Icon name="ui-arrow-right" size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                                 </span>
                             </div>
                         </a>
@@ -61,5 +62,6 @@ const AllCaseStudiesGrid: React.FC<AllCaseStudiesGridProps> = ({ navigateTo, onB
         </div>
     );
 };
+
 
 export default AllCaseStudiesGrid;
