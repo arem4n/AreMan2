@@ -1,0 +1,314 @@
+{
+  "Navigation": {
+    "inicio": "Home",
+    "origen": "Origin",
+    "servicios": "Services",
+    "portafolio": "Portfolio",
+    "proceso": "Process",
+    "logocodex": "LogoCodex",
+    "contacto": "Contact"
+  },
+  "Header": {
+    "audit": "Get Audit",
+    "logoAlt": "AREM4N Logotype",
+    "openMenu": "Open Menu",
+    "closeMenu": "Close Menu"
+  },
+  "ElegantMenu": {
+    "prompt": "Let's talk about your brand.",
+    "cta": "Start Your Audit",
+    "navLabel": "Main navigation"
+  },
+  "HomePage": {
+    "skipContent": "Skip to content"
+  },
+  "Hero": {
+    "headline": "Your competition has a logo too...",
+    "subheadline": "Yours probably looks just like theirs.",
+    "description": "doesn't start with design. It starts by understanding what makes your company unique — then makes it visible.",
+    "ctaPrimary": "Request an Audit",
+    "ctaSecondary": "Discover LogoCodeX™",
+    "logoAlt": "AREM4N Logotype"
+  },
+  "About": {
+    "tag": "Origin",
+    "headline": "I didn't study graphic design. I studied film.",
+    "p1": "Film taught me something most designers don't know: every image communicates something, whether you intend it or not. Emptiness communicates. Omission is a decision.",
+    "p2": "Over time I understood that brands have the same problem. And solving it doesn't end with a logo — it ends with the systems that make that logo work in the real world.",
+    "p3": "is the method. The software is the consequence.",
+    "byline": "— Sergio Arellano, Puerto Montt · Chile",
+    "cta": "Read the full story"
+  },
+  "Services": {
+    "title": "Intervention Levels",
+    "disclaimerPre": "Don't buy \"pretty design\". Invest in",
+    "disclaimerBold": "risk mitigation",
+    "disclaimerPost": ". A weak brand costs you clients every single day. Choose the strategic depth your revenue deserves.",
+    "recommended": "RECOMMENDED",
+    "estimatedInvestment": "Estimated investment",
+    "estimatedInvestmentScope": "Estimated investment · scope dependent",
+    "ctaCard": "Audit with this Package",
+    "presencia": {
+      "title": "PRESENCE",
+      "subtitle": "Your brand exists and stands out.",
+      "price": "$150 - $250 USD",
+      "description": "A logo built from what makes your company unique, with everything you need to use it well: color palette, typography, brand manual, and a complete analysis of what it represents."
+    },
+    "autoridad": {
+      "title": "AUTHORITY",
+      "subtitle": "Your brand convinces before you speak.",
+      "price": "$400 - $600 USD",
+      "description1": "Everything from Presence, plus the real-world applications where your brand lives: stationery, social media, and motion graphics.",
+      "description2": "An identity that doesn't just look good in the file. It looks good everywhere.",
+      "description3": "For companies that know who they are and need the world to see it."
+    },
+    "legado": {
+      "title": "LEGACY",
+      "subtitle": "Your brand transcends the product.",
+      "price": "$900 - $1,500 USD",
+      "description1": "In three years your company may have changed its product, market, or scale. Your brand shouldn't need to be rebuilt each time.",
+      "description2": "Legacy builds the identity that sustains all those changes: the internal story of your company, the criteria for communicating it, and the video that tells it.",
+      "description3": "For founders who aren't building a business. They're building something that lasts."
+    },
+    "digital": {
+      "tag": "Digital Build",
+      "title": "From symbol to experience",
+      "subtitle": "Identity is the starting point. I also build the digital space where it lives.",
+      "webTag": "Website",
+      "webTitle": "Your brand, with an address on the internet.",
+      "webDescription": "Landing pages, corporate sites, and portfolios. Designed to convert, built with Next.js, and optimized for speed and search ranking. These aren't templates: every site reflects the identity we build together.",
+      "webPrice": "$200 – $800 USD",
+      "webCta": "Talk about my site",
+      "appTag": "Web App",
+      "appTitle": "When you need a system, not just a showcase.",
+      "appDescription": "Applications with authentication, real-time database, business logic, and management dashboards. Gamification, bookings, user roles, push notifications. Stack: React · Next.js · Firebase · TypeScript · Vercel.",
+      "appPrice": "$2,000 – $5,000 USD",
+      "appCta": "Talk about my app",
+      "appCaseLink": "See real case: TommyBox →"
+    }
+  },
+  "LogoCodexTeaser": {
+    "tag": "Methodology",
+    "title": "LogoCodeX™ Manual",
+    "description": "The human brain decides in <strong>0.05 seconds</strong> whether to trust your brand. LogoCodeX™ is the system that makes that decision inevitable.",
+    "pillar": "Pillar",
+    "pillar01Title": "Visual Semiotics",
+    "pillar01Desc": "Peirce & Barthes — denotation, connotation, myth.",
+    "pillar02Title": "Archetypal Psychology",
+    "pillar02Desc": "Jung & Pearson — your brand's collective unconscious.",
+    "pillar03Title": "Strategic Narrative",
+    "pillar03Desc": "The graphic sign turned into a coherent story.",
+    "cta": "Explore the Full Manual",
+    "ctaSub": "Includes case studies and complete methodology"
+  },
+  "WhyChooseMe": {
+    "tag": "Real Differentiation",
+    "title": "Why AREM4N?",
+    "item01Title": "You work with me, not an agency.",
+    "item01Body": "There's no team behind the scenes misinterpreting what you said in a meeting. The team is me. Every decision goes through me, from the first brief to the final delivery. What I build with you is what gets made.",
+    "item02Title": "The method has history, not improvisation.",
+    "item02BodyPre": "isn't an invented framework. It's the systematization of my natural design approach — the process I was already applying intuitively for years, put into words, steps, and a replicable system. Every project tests and refines it.",
+    "item03Title": "My own brand is the first proof.",
+    "item03Body1Pre": "is Project Zero. The first place I applied LogoCodeX™ before offering it to anyone else.",
+    "item03Body2": "What you see on this page isn't decoration. The raven, the palette, the typography, the copy, the design. Every decision went through the same process I'll apply to your brand.",
+    "item03Body3": "I'm not selling you something I haven't tested on myself first."
+  },
+  "Process": {
+    "title": "How I work with you",
+    "step1Title": "Discovery",
+    "step1Desc": "I understand what's real and unique about your company before designing anything.",
+    "step2Title": "Symbolic construction",
+    "step2Desc": "We apply LogoCodeX™ to translate that essence into symbol, palette, and narrative.",
+    "step3Title": "Joint review",
+    "step3Desc": "We iterate until what you see truly represents who you are.",
+    "step4Title": "Delivery",
+    "step4Desc": "All files ready to use, with a manual explaining how and why every decision was made."
+  },
+  "Deliverables": {
+    "tag": "The Brand Arsenal",
+    "title": "High-Value Deliverables",
+    "subtitle": "I don't deliver \"files\". I deliver strategic assets ready to deploy on any commercial battlefield.",
+    "hint": "(Click a card to activate the deliverable)",
+    "mobileHint": "Swipe to see more",
+    "prevAriaLabel": "Previous",
+    "nextAriaLabel": "Next",
+    "logo": { "title": "Vector Logo", "description": "SVG, AI, PNG. Infinite scalability without quality loss." },
+    "manual": { "title": "Brand Manual", "description": "The bible of your identity. Usage rules, tones, and typographies." },
+    "motion": { "title": "Motion Graphics", "description": "Your logo in motion. Intros and outros for video." },
+    "cromatico": { "title": "Color System", "description": "Exact codes (HEX, RGB, CMYK) for total consistency." },
+    "tipografia": { "title": "Typography", "description": "Primary and secondary font selection with licenses." },
+    "mockups": { "title": "Real Mockups", "description": "Visualization on physical products and digital environments." },
+    "iconografia": { "title": "Icon Set", "description": "Secondary visual language for UI and presentations." },
+    "social": { "title": "Social Media Kit", "description": "Editable templates for Instagram and LinkedIn." }
+  },
+  "FAQ": {
+    "tag": "Strategic Questions",
+    "title": "Questions Before Starting",
+    "q1": "Why do you talk about 'Visual Sovereignty' and not just logo design?",
+    "a1": "Because an isolated logo is just decoration. Visual Sovereignty is the construction of an intangible financial asset. I design complete systems based on archetypes and deep semiotics that allow your brand to stop competing on price and start leading through authority.",
+    "q2": "What level of involvement is required from the founder?",
+    "a2": "It requires deep collaboration during Phase 1 (Semiotic Diagnosis). My LogoCodex™ method doesn't work with generic forms; I need to extract the fundamental vision of the founders to encode it into the visual identity. Once this phase is complete, I take over technical and architectural control.",
+    "q3": "Do you work with any type of company or industry?",
+    "a3": "Yes. The LogoCodeX™ method doesn't depend on the industry — it depends on having something real to tell. I've worked with technology, services, gastronomy and more. What I do require is commitment to the process: if you're looking for quick design without depth, my way of working will feel excessive for that.",
+    "q4": "What exactly does the Phase 3 delivery include?",
+    "a4": "We don't deliver loose files. We deliver a functional ecosystem. This includes infinitely scalable vector versions, exact color systems, motion graphics ready for code implementation (React/Next.js), custom UI iconography, and an exhaustive Brand Manual that dictates the absolute rules of your new identity.",
+    "q5": "How do you integrate Artificial Intelligence into the process?",
+    "a5": "Through my 'Expanded Creativity' pillar. I use advanced AI models to accelerate diagnostics, generate complex iterations, and test applications in record time. However, art direction, semiotic strategy, and final vector refinement remain strictly under human control to guarantee absolute originality."
+  },
+  "Contact": {
+    "title": "Let's talk.",
+    "p1": "What I love most about this work isn't the final result. It's the process of discovering what story your company has and finding the way to tell it visually.",
+    "p2": "Every brand is a different narrative. That never gets routine.",
+    "p3": "If you made it this far, you probably have something worth telling. Write to me and we'll find out together.",
+    "formTag": "Initial Diagnosis",
+    "namePlaceholder": "Founder's Name",
+    "emailPlaceholder": "Corporate Email",
+    "messagePlaceholder": "Tell me briefly: What's your startup's biggest identity challenge today?",
+    "nameLabel": "Your Name",
+    "emailLabel": "Your Email",
+    "messageLabel": "Your Message",
+    "submit": "Request Diagnosis",
+    "submitting": "Processing...",
+    "successMessage": "Request received! I'll be in touch to schedule.",
+    "errorRequired": "Please fill in all fields.",
+    "errorConnection": "Connection error.",
+    "packageMessage": "Hi Sergio, I'd like to audit my brand with the '{package}' package. How does the LogoCodex process work?",
+    "emailTitle": "Direct Email",
+    "whatsappTitle": "Direct WhatsApp",
+    "instagramTitle": "Instagram",
+    "behanceTitle": "Extended Portfolio"
+  },
+  "Newsletter": {
+    "tag": "Exclusive Lead Magnet",
+    "title1": "\"The machine casts no shadow.",
+    "title2": "You do.\"",
+    "description1": "The dataset is a flat sea where everything trends toward average. If you want your identity to survive, get ready for",
+    "descriptionBold": "Symbolic Resistance",
+    "description2": "Download",
+    "descriptionBook": "\"Expanded Creativity\"",
+    "description3": ": Not a prompts guide. It's a map of your own cracks for creating with AI without losing your soul.",
+    "emailPlaceholder": "you@email.com",
+    "emailLabel": "Your Email",
+    "submit": "Get the Book",
+    "submitting": "Sending...",
+    "successMessage": "Sent! Check your inbox (or spam).",
+    "errorEmail": "Please enter a valid email.",
+    "errorConnection": "Something went wrong.",
+    "disclaimer": "* By subscribing, you agree to receive emails about creative sovereignty. Zero spam."
+  },
+  "Footer": {
+    "quote": "Every symbol tells a story. Every design has a soul. Every brand can transcend.",
+    "copyright": "Sergio Arellano — AREM4N, Puerto Montt · Chile"
+  },
+  "Portfolio": {
+    "title": "Portfolio",
+    "swipeHint": "Swipe or use arrows to browse",
+    "prevAriaLabel": "Previous project",
+    "nextAriaLabel": "Next project",
+    "viewProject": "View Project",
+    "viewFullPortfolio": "View full portfolio"
+  },
+  "CaseStudyLayout": {
+    "backButton": "Back to LogoCodex",
+    "backAriaLabel": "Back to LogoCodex",
+    "ctaTitle": "Ready to encode your own identity?",
+    "ctaDescription": "Don't let your brand be an industry \"average\". Let's apply the LogoCodex™ system to build a sovereign identity.",
+    "ctaButton": "Request Project Audit"
+  },
+  "Metadata": {
+    "homeTitle": "AREM4N | Visual Sovereignty & Strategic Branding",
+    "homeDescription": "LogoCodeX™: the system that builds identities that justify premium prices. Presence, Authority, Legacy — and the digital platforms where they live.",
+    "homeOgTitle": "AREM4N | Visual Sovereignty",
+    "homeOgDescription": "Your competition has a logo too. It probably looks just like yours. LogoCodeX™ changes that.",
+    "portfolioTitle": "Design Portfolio | LogoCodeX",
+    "portfolioDescription": "Explore the LogoCodex™ project codex and methodology to transform logos into living visual codes with multiple layers of meaning.",
+    "origenTitle": "Origin | AREM4N - Visual Sovereignty",
+    "origenDescription": "The evolution of Sergio Arellano / AREM4N — identity, software, and automation built period by period.",
+    "caseStudyNotFound": "Case Study Not Found | AREM4N",
+    "caseStudySuffix": "| LogoCodeX Portfolio Case Study"
+  },
+  "LogoCodex": {
+    "homeBtn": "Back to Home",
+    "casesBtn": "Case Studies",
+    "hero": {
+      "tag": "Visual Identity Portfolio",
+      "descPre": "Every project here was built using the LogoCodeX™ method — ",
+      "descEm": "a symbolic coding system that transforms a logo into a brand asset",
+      "descPost": " with layers of cultural, archetypal and narrative meaning.",
+      "formula": "Living Symbol = Cultural Memory + Narrative + Evolution"
+    },
+    "value": {
+      "tag": "Why does this matter for your revenue?",
+      "title": "Not Philosophy — Risk Mitigation",
+      "bodyPre": "The human brain decides in ",
+      "bodyNum": "0.05 seconds",
+      "bodyMid": " whether to trust your brand or ignore it. If your image is generic (template), you're invisible. ",
+      "bodyPost": " is the engineering that ensures your brand is perceived as instant authority, justifying your premium pricing and building tribal loyalty."
+    },
+    "origin": {
+      "title": "The Origin of the Method",
+      "p1Pre": "LogoCodeX™ was born as a response to a crisis: the abundance of aesthetically correct but ",
+      "p1Em": "emotionally empty",
+      "p1Post": " logos.",
+      "p2": "The proliferation of generic templates has led many brands to differentiate only by color or typography, lacking a symbolic core capable of sustaining a long-term narrative.",
+      "quote": "The premise is radical: Your design must not only be attractive — it must activate a chain of cultural, emotional and narrative associations in collective memory.",
+      "boxTitle": "Fundamental Difference",
+      "traditional": "Traditional Logo",
+      "traditionalDesc": "A static graphic element that identifies.",
+      "living": "Living Symbol (LogoCodeX)",
+      "li1Bold": "Activates cultural memory:",
+      "li1Rest": " Connects with pre-existing experiences.",
+      "li2Bold": "Generates layers:",
+      "li2Rest": " Immediate (denotation) and hidden (myth) reading.",
+      "li3Bold": "Builds narrative:",
+      "li3Rest": " It's a character in the brand's story."
+    },
+    "pillars": {
+      "title": "The 3 Theoretical Pillars",
+      "p1Title": "1. Visual Semiotics",
+      "p1Sub": "Peirce & Barthes",
+      "p1Desc": "We understand how signs work. We use the triadic model (Icon, Index, Symbol) and Barthes' levels (Denotation, Connotation, Myth) to ensure the message is read with the correct intention.",
+      "p2Title": "2. Archetypal Psychology",
+      "p2Sub": "Jung & Pearson",
+      "p2Desc": "We connect with universal patterns of the collective unconscious. We define whether your brand is a \"Hero\", a \"Creator\" or a \"Sage\" to generate immediate and emotional identification.",
+      "p3Title": "3. Strategic Narrative",
+      "p3Sub": "The Brand Myth",
+      "p3Desc": "We transform a graphic sign into a story. We ensure coherence between the symbol, the brand promise and its cultural context."
+    },
+    "book": {
+      "title": "The Book of Symbols",
+      "descPre": "The operational heart of LogoCodeX™. Not an image bank — it's a ",
+      "descEm": "live repository of meanings",
+      "descPost": ".",
+      "intro": "Each entry in our system contains:",
+      "item1": "Historical Origin (Myths, religions, art)",
+      "item2": "Positive Connotations (Transformation, power)",
+      "item3": "Negative Connotations (Cultural risks)",
+      "item4": "Associated Archetype (Who uses this symbol?)"
+    },
+    "method": {
+      "title": "Methodology: The 6-Step Process",
+      "step1Title": "Identity Anchoring",
+      "step1Desc": "We define the deep intention beyond the product.",
+      "step2Title": "Archetype Definition",
+      "step2Desc": "Selection of the psychological role (Hero, Sage, etc.)",
+      "step3Title": "Symbol Mapping",
+      "step3Desc": "Research in the Book of Symbols and cultural filtering.",
+      "step4Title": "Visual Translation",
+      "step4Desc": "Transformation of concepts into shapes, colors and rhythms.",
+      "step5Title": "Iteration & Validation",
+      "step5Desc": "Semiotic coherence testing and adjustments.",
+      "step6Title": "Narrative Integration",
+      "step6Desc": "Development of storytelling where the logo is the protagonist."
+    },
+    "cases": {
+      "title": "The Code in Action: Case Studies",
+      "subtitle": "Select a project to see a complete dissection through the lens of the LogoCodeX™ Manual."
+    },
+    "cta": {
+      "title": "Is your brand sovereign or generic?",
+      "body": "The LogoCodeX™ Manual is the practical tool to avoid irrelevance. Together, we can uncover your unique story and translate it into a symbol that no one else could claim.",
+      "btn": "Request Identity Audit"
+    }
+  }
+}
