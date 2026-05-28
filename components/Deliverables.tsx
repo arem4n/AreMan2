@@ -1,6 +1,7 @@
 
 import React, { useRef, useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { ChevronLeftIcon, ChevronRightIcon, Icon, IconName } from './icons/Icons';
 
 const IconWrapper: React.FC<{ name: IconName, isSelected: boolean, className?: string }> = ({ name, isSelected, className }) => (
@@ -9,23 +10,25 @@ const IconWrapper: React.FC<{ name: IconName, isSelected: boolean, className?: s
     </div>
 );
 
-const deliverables: { name: IconName, title: string, description: string }[] = [
-    { name: 'deliverable-logo', title: 'Logo Vectorial', description: 'SVG, AI, PNG. Escalabilidad infinita sin pérdida de calidad.' },
-    { name: 'deliverable-manual', title: 'Manual de Marca', description: 'La biblia de tu identidad. Reglas de uso, tonos y tipografías.' },
-    { name: 'deliverable-motion', title: 'Motion Graphics', description: 'Tu logo en movimiento. Intros y outros para video.' },
-    { name: 'deliverable-cromatico', title: 'Sistema Cromático', description: 'Códigos exactos (HEX, RGB, CMYK) para consistencia total.' },
-    { name: 'deliverable-tipografia', title: 'Tipografía', description: 'Selección de fuentes primarias y secundarias con licencias.' },
-    { name: 'deliverable-mockups', title: 'Mockups Reales', description: 'Visualización en productos físicos y entornos digitales.' },
-    { name: 'deliverable-iconografia', title: 'Set de Iconos', description: 'Lenguaje visual secundario para UI y presentaciones.' },
-    { name: 'deliverable-social', title: 'Kit Social Media', description: 'Plantillas editables para Instagram y LinkedIn.' },
+type DeliverableKey = 'logo' | 'manual' | 'motion' | 'cromatico' | 'tipografia' | 'mockups' | 'iconografia' | 'social';
+
+const deliverableIcons: { name: IconName; key: DeliverableKey }[] = [
+    { name: 'deliverable-logo', key: 'logo' },
+    { name: 'deliverable-manual', key: 'manual' },
+    { name: 'deliverable-motion', key: 'motion' },
+    { name: 'deliverable-cromatico', key: 'cromatico' },
+    { name: 'deliverable-tipografia', key: 'tipografia' },
+    { name: 'deliverable-mockups', key: 'mockups' },
+    { name: 'deliverable-iconografia', key: 'iconografia' },
+    { name: 'deliverable-social', key: 'social' },
 ];
 
 const DeliverableCard: React.FC<{
-    name: IconName,
-    title: string,
-    description: string,
-    isSelected: boolean,
-    onClick: () => void
+    name: IconName;
+    title: string;
+    description: string;
+    isSelected: boolean;
+    onClick: () => void;
 }> = ({ name, title, description, isSelected, onClick }) => (
     <div
         onClick={onClick}
@@ -42,24 +45,19 @@ const DeliverableCard: React.FC<{
     </div>
 );
 
-
-
 const Deliverables: React.FC = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+    const t = useTranslations('Deliverables');
 
     const scroll = useCallback((direction: 'left' | 'right') => {
         if (scrollContainerRef.current) {
             const { current } = scrollContainerRef;
-            const scrollAmount = 340; // Card width + gap roughly
-            const newScrollLeft = direction === 'left' 
-                ? current.scrollLeft - scrollAmount 
+            const scrollAmount = 340;
+            const newScrollLeft = direction === 'left'
+                ? current.scrollLeft - scrollAmount
                 : current.scrollLeft + scrollAmount;
-            
-            current.scrollTo({
-                left: newScrollLeft,
-                behavior: 'smooth'
-            });
+            current.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
         }
     }, []);
 
@@ -69,7 +67,6 @@ const Deliverables: React.FC = () => {
 
     return (
         <section id="entregables" className="py-16 lg:py-24 bg-deep-50 relative overflow-hidden">
-            {/* Background Pattern */}
             <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
                 <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -83,63 +80,58 @@ const Deliverables: React.FC = () => {
 
             <div className="max-w-[1920px] mx-auto px-4 lg:px-8 relative z-10">
                 <div className="text-center mb-12">
-                    <motion.span 
+                    <motion.span
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         className="inline-block py-1 px-3 rounded-full bg-symbolic-100 text-symbolic-600 text-xs font-bold tracking-widest uppercase mb-4 border border-symbolic-200"
                     >
-                        El Arsenal de Marca
+                        {t('tag')}
                     </motion.span>
                     <h2 className="text-3xl lg:text-5xl font-display font-bold text-deep-800 mb-6">
-                        Entregables de Alto Valor
+                        {t('title')}
                     </h2>
-                    <p className="text-lg text-deep-600 max-w-3xl mx-auto">
-                        No entrego &quot;archivos&quot;. Entrego activos estratégicos listos para desplegarse en cualquier campo de batalla comercial.
-                    </p>
-                    <p className="text-sm text-symbolic-400 mt-2 italic">(Haz clic en una tarjeta para activar el entregable)</p>
+                    <p className="text-lg text-deep-600 max-w-3xl mx-auto">{t('subtitle')}</p>
+                    <p className="text-sm text-symbolic-400 mt-2 italic">{t('hint')}</p>
                 </div>
-                
+
                 <div className="relative group max-w-7xl mx-auto">
-                    {/* Navigation Buttons */}
-                    <button 
+                    <button
                         onClick={() => scroll('left')}
                         className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white text-deep-800 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-deep-50 hidden md:flex items-center justify-center border border-deep-100"
-                        aria-label="Anterior"
+                        aria-label={t('prevAriaLabel')}
                     >
                         <ChevronLeftIcon className="w-6 h-6" />
                     </button>
-                    
-                    <button 
+
+                    <button
                         onClick={() => scroll('right')}
                         className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white text-deep-800 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-deep-50 hidden md:flex items-center justify-center border border-deep-100"
-                        aria-label="Siguiente"
+                        aria-label={t('nextAriaLabel')}
                     >
                         <ChevronRightIcon className="w-6 h-6" />
                     </button>
 
-                    {/* Carousel Container */}
-                    <div 
+                    <div
                         ref={scrollContainerRef}
                         className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-12 px-4 scrollbar-hide items-stretch"
                         style={{ scrollPaddingLeft: '1rem', scrollPaddingRight: '1rem' }}
                     >
-                        {deliverables.map((item, index) => (
-                            <DeliverableCard 
-                                key={index} 
+                        {deliverableIcons.map((item, index) => (
+                            <DeliverableCard
+                                key={index}
                                 name={item.name}
-                                title={item.title} 
-                                description={item.description}
+                                title={t(`${item.key}.title` as any)}
+                                description={t(`${item.key}.description` as any)}
                                 isSelected={selectedIdx === index}
                                 onClick={() => handleCardClick(index)}
                             />
                         ))}
                     </div>
                 </div>
-                
-                {/* Mobile Hint */}
+
                 <div className="text-center text-deep-400 text-sm mt-[-1rem] md:hidden animate-pulse">
-                    Desliza para ver más &rarr;
+                    {t('mobileHint')} &rarr;
                 </div>
             </div>
         </section>

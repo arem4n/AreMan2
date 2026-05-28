@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { whiteLogoUrl } from '../constants';
 
 const heroContainer = {
@@ -26,6 +27,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
     const shouldReduce = useReducedMotion();
     const initial = shouldReduce ? 'visible' : 'hidden';
+    const t = useTranslations('Hero');
 
     const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
@@ -43,7 +45,7 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                 <motion.div variants={logoItem} className="relative w-40 md:w-48 h-16 md:h-20 mx-auto mb-8">
                     <Image
                         src={whiteLogoUrl}
-                        alt="Logotipo AREM4N"
+                        alt={t('logoAlt')}
                         fill
                         priority
                         sizes="(max-width: 768px) 160px, 192px"
@@ -51,13 +53,13 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                     />
                 </motion.div>
                 <motion.h1 variants={heroItem} className="text-fluid-hero font-display font-bold mb-4">
-                    Tu competencia también tiene un logo...
+                    {t('headline')}
                 </motion.h1>
                 <motion.p variants={heroItem} className="text-xl lg:text-3xl font-display text-white mb-8 max-w-4xl mx-auto italic opacity-90">
-                    Probablemente se parece al tuyo.
+                    {t('subheadline')}
                 </motion.p>
                 <motion.p variants={heroItem} className="text-base md:text-lg text-deep-100 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    <strong className="text-creative-400">LogoCodeX™</strong> no parte del diseño. Parte de entender qué hace única a tu empresa, y después lo hace visible.
+                    <strong className="text-creative-400">LogoCodeX™</strong>{' '}{t('description')}
                 </motion.p>
                 <motion.div variants={heroItem} className="flex flex-col md:flex-row gap-4 justify-center">
                     <a
@@ -65,14 +67,14 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                         onClick={handleContactClick}
                         className="inline-block bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-4 px-8 rounded-full transition duration-200 ease-out shadow-lg hover:shadow-xl hover:scale-[1.03] border border-symbolic-500"
                     >
-                        Solicitar Auditoría
+                        {t('ctaPrimary')}
                     </a>
                     <a
                         href="/portafolio"
                         onClick={(e) => { e.preventDefault(); navigateTo('/portafolio'); }}
                         className="inline-block bg-transparent hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-full transition duration-200 ease-out border border-white/30 hover:border-white/60"
                     >
-                        Descubrir LogoCodeX™
+                        {t('ctaSecondary')}
                     </a>
                 </motion.div>
             </motion.div>

@@ -1,24 +1,16 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { trackEvent } from '../analytics';
 import { whiteLogoUrl } from '../constants';
+import LanguageSwitcher from './LanguageSwitcher';
 
 interface ElegantMenuProps {
     isOpen: boolean;
     toggleMenu: () => void;
     navigateTo: (hash: string) => void;
 }
-
-const navLinks = [
-    { href: "#inicio", label: "Inicio" },
-    { href: "#origen", label: "Origen" },
-    { href: "#servicios", label: "Servicios" },
-    { href: "#portafolio", label: "Portafolio" },
-    { href: "#proceso", label: "Proceso" },
-    { href: "/portafolio", label: "LogoCodex" },
-    { href: "#contacto", label: "Contacto" },
-];
 
 const menuVariants = {
     open: {
@@ -54,7 +46,18 @@ const itemVariants = {
 };
 
 const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateTo }) => {
+    const t = useTranslations();
     const previousFocusRef = useRef<HTMLElement | null>(null);
+
+    const navLinks = [
+        { href: "#inicio", label: t('Navigation.inicio') },
+        { href: "#origen", label: t('Navigation.origen') },
+        { href: "#servicios", label: t('Navigation.servicios') },
+        { href: "#portafolio", label: t('Navigation.portafolio') },
+        { href: "#proceso", label: t('Navigation.proceso') },
+        { href: "/portafolio", label: t('Navigation.logocodex') },
+        { href: "#contacto", label: t('Navigation.contacto') },
+    ];
 
     useEffect(() => {
         if (!isOpen) {
@@ -98,10 +101,8 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
         return () => document.removeEventListener('keydown', handleKeyDown);
     }, [isOpen, toggleMenu]);
 
-
     const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
-        
         if (href === '/portafolio') {
             trackEvent('navigate_to_logocodex', { from: 'elegant_menu' });
         }
@@ -113,7 +114,6 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
         <AnimatePresence>
             {isOpen && (
                 <>
-                    {/* Backdrop — separate from content so its background never gets caught in opacity:0 animation */}
                     <motion.div
                         key="menu-backdrop"
                         initial={{ opacity: 0 }}
@@ -124,7 +124,6 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
                         aria-hidden="true"
                     />
 
-                    {/* Content */}
                     <motion.div
                         key="menu-content"
                         initial="closed"
@@ -135,7 +134,7 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
                         className="fixed inset-0 z-[1999] flex flex-col items-center justify-center overflow-hidden pt-20 pb-4 md:py-8"
                         aria-modal="true"
                         role="dialog"
-                        aria-label="Navegación principal"
+                        aria-label={t('ElegantMenu.navLabel')}
                     >
                         <nav className="w-full max-w-lg px-6">
                             <motion.div variants={itemVariants} className="flex justify-center mb-5 md:mb-10">
@@ -164,15 +163,18 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
                                 variants={itemVariants}
                                 className="mt-4 md:mt-12 pt-4 md:pt-8 border-t border-white/10 text-center"
                             >
-                                <p className="text-deep-200 mb-4 font-light text-sm md:text-base">¿Hablemos de tu marca?</p>
+                                <p className="text-deep-200 mb-4 font-light text-sm md:text-base">{t('ElegantMenu.prompt')}</p>
                                 <a
                                     href="#contacto"
                                     data-menu-cta
                                     onClick={(e) => handleLinkClick(e, "#contacto")}
                                     className="inline-block px-8 py-3 bg-symbolic-600 text-white font-bold rounded-full hover:bg-symbolic-500 transition-colors shadow-lg shadow-symbolic-600/20 text-sm md:text-base"
                                 >
-                                    Iniciar Auditoría
+                                    {t('ElegantMenu.cta')}
                                 </a>
+                                <div className="mt-6">
+                                    <LanguageSwitcher className="text-white/60 hover:text-white" />
+                                </div>
                             </motion.div>
                         </nav>
                     </motion.div>

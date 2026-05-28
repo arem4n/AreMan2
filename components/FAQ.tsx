@@ -1,34 +1,15 @@
 
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Icon, IconName } from './icons/Icons';
 import { ChevronRightIcon } from './icons/Icons';
 
-const faqs: { icon: IconName, question: string, answer: string }[] = [
-    {
-        icon: 'faq-soberania',
-        question: "¿Por qué hablan de \"Soberanía Visual\" y no solo de diseño de logotipos?",
-        answer: "Porque un logotipo aislado es solo un adorno. La Soberanía Visual es la construcción de un activo financiero intangible. Diseño sistemas completos basados en arquetipos y semiótica profunda que permiten a tu marca dejar de competir por precio y empezar a liderar por autoridad."
-    },
-    {
-        icon: 'faq-involucramiento',
-        question: "¿Cuál es el nivel de involucramiento requerido por parte del fundador?",
-        answer: "Requiere una colaboración profunda durante la Fase 1 (Diagnóstico Semiótico). Mi método LogoCodex™ no funciona con formularios genéricos; necesito extraer la visión fundamental de los fundadores para codificarla en la identidad visual. Una vez superada esta fase, asumo el control técnico y arquitectónico."
-    },
-    {
-        icon: 'faq-filtro',
-        question: "¿Trabajan con cualquier tipo de empresa o rubro?",
-        answer: "Sí. El método LogoCodeX™ no depende del rubro, depende de que haya algo real que contar. He trabajado con tecnología, servicios, gastronomía y más. Lo que sí requiero es compromiso con el proceso: si buscas un diseño rápido sin profundidad, mi forma de trabajar resultará excesiva para eso."
-    },
-    {
-        icon: 'faq-entrega',
-        question: "¿Qué incluye exactamente la entrega de la Fase 3?",
-        answer: "No entregamos archivos sueltos. Entregamos un ecosistema funcional. Esto incluye versiones vectoriales infinitamente escalables, sistemas cromáticos exactos, motion graphics listos para implementación en código (React/Next.js), iconografía UI personalizada y un Manual de Marca exhaustivo que dicta las reglas absolutas de tu nueva identidad."
-    },
-    {
-        icon: 'faq-ia',
-        question: "¿Cómo integran la Inteligencia Artificial en el proceso?",
-        answer: "A través de mi pilar de \"Creatividad Expandida\". Uso modelos de IA avanzados para acelerar diagnósticos, generar iteraciones complejas y testear aplicaciones en tiempo récord. Sin embargo, la dirección de arte, la estrategia semiótica y el pulido final de los vectores se mantienen estrictamente bajo control humano para garantizar originalidad absoluta."
-    }
+const faqIcons: IconName[] = [
+    'faq-soberania',
+    'faq-involucramiento',
+    'faq-filtro',
+    'faq-entrega',
+    'faq-ia',
 ];
 
 const FAQItem: React.FC<{ icon: IconName; question: string; answer: string; index: number }> = ({ icon, question, answer, index }) => {
@@ -56,7 +37,6 @@ const FAQItem: React.FC<{ icon: IconName; question: string; answer: string; inde
                 </span>
             </button>
 
-            {/* grid-template-rows transition avoids animating height directly (no layout thrash) */}
             <div
                 id={`faq-panel-${index}`}
                 role="region"
@@ -69,9 +49,7 @@ const FAQItem: React.FC<{ icon: IconName; question: string; answer: string; inde
                 }}
             >
                 <div style={{ overflow: 'hidden' }}>
-                    <p className="pb-6 text-deep-600 leading-relaxed">
-                        {answer}
-                    </p>
+                    <p className="pb-6 text-deep-600 leading-relaxed">{answer}</p>
                 </div>
             </div>
         </div>
@@ -79,15 +57,23 @@ const FAQItem: React.FC<{ icon: IconName; question: string; answer: string; inde
 };
 
 const FAQ: React.FC = () => {
+    const t = useTranslations('FAQ');
+
+    const faqs = faqIcons.map((icon, i) => ({
+        icon,
+        question: t(`q${i + 1}` as any),
+        answer: t(`a${i + 1}` as any),
+    }));
+
     return (
         <section className="py-16 bg-white">
             <div className="max-w-3xl mx-auto px-4">
                 <div className="text-center mb-12">
                     <span className="inline-block py-1 px-3 rounded-full bg-deep-200 text-deep-700 text-xs font-bold tracking-widest uppercase mb-4">
-                        Dudas Estratégicas
+                        {t('tag')}
                     </span>
                     <h2 className="text-3xl lg:text-4xl font-display font-bold text-deep-800">
-                        Preguntas antes de Iniciar
+                        {t('title')}
                     </h2>
                 </div>
                 <div className="bg-white rounded-2xl shadow-sm border border-deep-100 p-6 lg:p-8">

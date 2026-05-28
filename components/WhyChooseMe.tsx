@@ -1,5 +1,6 @@
 
 import React, { type PropsWithChildren } from 'react';
+import { useTranslations } from 'next-intl';
 import { Icon, IconName } from './icons/Icons';
 
 interface WhyItemProps {
@@ -29,29 +30,31 @@ const WhyItem = ({ icon, number, title, children, className }: WhyItemProps & Pr
 );
 
 const WhyChooseMe: React.FC = () => {
+    const t = useTranslations('WhyChooseMe');
+
     return (
         <section id="por-que-elegirme" className="py-20 lg:py-32 bg-deep-50">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="text-center mb-20">
                     <span className="inline-block py-1 px-3 rounded-full bg-deep-200 text-deep-700 text-xs font-bold tracking-widest uppercase mb-4">
-                        Diferenciación Real
+                        {t('tag')}
                     </span>
                     <h2 className="text-fluid-section font-display font-bold text-deep-800">
-                        ¿Por qué AREM4N?
+                        {t('title')}
                     </h2>
                 </div>
-                
+
                 <div className="grid lg:grid-cols-3 gap-0 divide-y divide-deep-200 lg:divide-y-0 lg:divide-x border-y lg:border-y-0 border-deep-200">
-                    <WhyItem icon="why-individual" number="01" title="Trabajas conmigo, no con una agencia." className="lg:pr-10 first:pt-0 lg:pt-4">
-                        <p>No hay equipo detrás interpretando lo que dijiste en una reunión. El equipo soy yo. Cada decisión pasa por mí, desde el primer brief hasta la entrega final. Lo que construyo contigo es lo que se plasma.</p>
+                    <WhyItem icon="why-individual" number="01" title={t('item01Title')} className="lg:pr-10 first:pt-0 lg:pt-4">
+                        <p>{t('item01Body')}</p>
                     </WhyItem>
-                    <WhyItem icon="why-metodo" number="02" title="El método tiene historia, no es improvisación." className="lg:px-10">
-                        <p><strong>LogoCodeX™</strong> no es un framework inventado. Es la sistematización de mi forma natural de diseñar, el proceso que ya aplicaba intuitivamente durante años, puesto en palabras, en pasos y en un sistema replicable. Cada proyecto lo pone a prueba y lo refina.</p>
+                    <WhyItem icon="why-metodo" number="02" title={t('item02Title')} className="lg:px-10">
+                        <p><strong>LogoCodeX™</strong>{' '}{t('item02BodyPre')}</p>
                     </WhyItem>
-                    <WhyItem icon="why-prueba" number="03" title="Mi propia marca es la primera prueba." className="lg:pl-10 last:pb-0 lg:pb-4">
-                        <p className="mb-3"><strong>AREM4N</strong> es el Proyecto Cero. El primer lugar donde apliqué LogoCodeX™ antes de ofrecérselo a alguien más.</p>
-                        <p>Lo que ves en esta página no es decoración. El cuervo, la paleta, la tipografía, el copy, el diseño. Cada decisión pasó por el mismo proceso que voy a aplicar en tu marca.</p>
-                        <p className="font-semibold italic mt-3 text-symbolic-600">No te estoy vendiendo algo que no haya probado primero en mí mismo.</p>
+                    <WhyItem icon="why-prueba" number="03" title={t('item03Title')} className="lg:pl-10 last:pb-0 lg:pb-4">
+                        <p className="mb-3"><strong>AREM4N</strong>{' '}{t('item03Body1Pre')}</p>
+                        <p>{t('item03Body2')}</p>
+                        <p className="font-semibold italic mt-3 text-symbolic-600">{t('item03Body3')}</p>
                     </WhyItem>
                 </div>
             </div>
@@ -60,4 +63,3 @@ const WhyChooseMe: React.FC = () => {
 };
 
 export default WhyChooseMe;
-

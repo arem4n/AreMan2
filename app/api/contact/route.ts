@@ -2,6 +2,8 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { escape } from 'html-escaper';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   try {
     const { name, email, message, honeypot } = await request.json();
