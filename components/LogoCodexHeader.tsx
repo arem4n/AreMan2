@@ -108,7 +108,7 @@ const LogoCodexHeader: React.FC<LogoCodexHeaderProps> = ({ navigateTo }) => {
                     aria-labelledby="logocodex-menu-title"
                 >
                     <div className="text-center max-w-[600px] px-8 py-12">
-                        <h2 id="logocodex-menu-title" className={`text-gradient text-4xl md:text-5xl font-display font-bold mb-12 transition-all duration-600 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}>Menú LogoCodex™</h2>
+                        <h2 id="logocodex-menu-title" className={`text-deep-800 text-4xl md:text-5xl font-display font-bold mb-12 transition-all duration-600 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}>Menú LogoCodex™</h2>
                         <nav>
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {navLinks.map((link, index) => (

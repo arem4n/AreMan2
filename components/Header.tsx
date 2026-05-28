@@ -15,7 +15,7 @@ const Path = (props: SVGMotionProps<SVGPathElement>) => (
     <motion.path
         fill="transparent"
         strokeWidth="2.5"
-        stroke="hsl(0, 0%, 18%)"
+        stroke="var(--c-surface-700)"
         strokeLinecap="round"
         strokeLinejoin="round"
         {...props}

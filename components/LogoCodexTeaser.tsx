@@ -53,7 +53,7 @@ const LogoCodexTeaser: React.FC<LogoCodexTeaserProps> = ({ navigateTo }) => {
                             <div className="w-12 h-12 flex items-center justify-center bg-deep-700 rounded-xl mb-6 text-creative-400 group-hover:text-symbolic-400 transition-colors duration-300">
                                 <Icon name={p.icon} size={28} />
                             </div>
-                            <span className="block font-mono text-deep-500 text-xs font-bold mb-3 uppercase tracking-widest">
+                            <span className="block font-body text-deep-500 text-xs font-bold mb-3 uppercase tracking-widest">
                                 {p.number} / {t('pillar')}
                             </span>
                             <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-creative-300 transition-colors duration-300">

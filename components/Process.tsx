@@ -40,7 +40,7 @@ const ProcessStep = ({
             </div>
         </div>
         <h4 className="font-display font-bold text-deep-800 text-lg mb-3">{title}</h4>
-        <p className="text-sm text-deep-500 max-w-[200px] mx-auto leading-relaxed">{description}</p>
+        <p className="text-sm text-deep-500 max-w-[15rem] mx-auto leading-relaxed">{description}</p>
     </motion.div>
 );
 

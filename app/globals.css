@@ -273,6 +273,12 @@ input:focus-visible, textarea:focus-visible {
     }
 }
 
+/* Missing utility classes required by Portfolio and Services */
+.perspective-1000 { perspective: 1000px; }
+.transform-style-3d { transform-style: preserve-3d; }
+.card-hover { transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; }
+.card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1); }
+
 /* Legacy classes kept for Preloader compatibility */
 .carousel-3d-slide img {
     -webkit-user-drag: none;

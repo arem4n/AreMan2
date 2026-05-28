@@ -22,7 +22,7 @@ const FAQItem: React.FC<{ icon: IconName; question: string; answer: string; inde
                 aria-expanded={isOpen}
                 aria-controls={`faq-panel-${index}`}
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full py-6 flex justify-between items-center text-left focus-visible:outline-none group"
+                className="w-full py-6 flex justify-between items-center text-left focus-visible:ring-2 focus-visible:ring-symbolic-500 focus-visible:ring-offset-2 focus-visible:rounded-sm group"
             >
                 <div className="flex items-center gap-4">
                     <div className={`flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg transition-colors ${isOpen ? 'bg-symbolic-600 text-white' : 'bg-deep-100 text-deep-500 group-hover:bg-deep-200'}`}>

@@ -11,7 +11,7 @@ const ContactInfoItem = ({ icon, title, value, href, linkClass }: { icon: React.
         </div>
         <div>
             <div className="font-semibold">{title}</div>
-            <a href={href} target="_blank" rel="noopener noreferrer" className={`opacity-90 transition-colors ${linkClass || 'text-creative-400 hover:text-creative-300'}`}>{value}</a>
+            <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`${value} (abre en nueva ventana)`} className={`opacity-90 transition-colors ${linkClass || 'text-creative-400 hover:text-creative-300'}`}>{value}</a>
         </div>
     </div>
 );
@@ -37,10 +37,11 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
                 setFormData(prev => ({ ...prev, message: newMessage }));
             }
 
+            const shouldReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const outerTimer = setTimeout(() => {
                 if (sectionRef.current) {
                     sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    if (titleRef.current) {
+                    if (!shouldReduce && titleRef.current) {
                         titleRef.current.classList.add('scale-110', 'text-creative-400');
                     }
                 }

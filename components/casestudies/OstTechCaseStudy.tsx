@@ -114,7 +114,7 @@ const OstTechCaseStudy: React.FC = () => {
         <section>
             <header className="text-center mb-16">
                 <h2 className="text-3xl lg:text-4xl font-display font-bold mb-2 text-deep-800">OST TECH</h2>
-                <h1 className="text-4xl lg:text-5xl font-display font-bold text-gradient mb-4">{c.headerTitle}</h1>
+                <h1 className="text-4xl lg:text-5xl font-display font-bold text-deep-800 mb-4">{c.headerTitle}</h1>
                 <p className="text-lg text-deep-600 max-w-2xl mx-auto">{c.headerSub}</p>
             </header>
 

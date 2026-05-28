@@ -71,7 +71,7 @@ const Newsletter: React.FC = () => {
                     {formState.success && <p className="text-sm text-creative-300 font-medium">{t('successMessage')}</p>}
                     {formState.error && <p className="text-sm text-symbolic-400">{formState.error}</p>}
                 </div>
-                <p className="text-xs text-deep-500 mt-8 font-mono">{t('disclaimer')}</p>
+                <p className="text-xs text-deep-500 mt-8 tracking-wide">{t('disclaimer')}</p>
             </div>
         </section>
     );

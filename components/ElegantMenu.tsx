@@ -120,7 +120,7 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
                         animate={{ opacity: 1, transition: { duration: 0.25 } }}
                         exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.5 } }}
                         className="fixed inset-0 z-[1998]"
-                        style={{ backgroundColor: '#0f172a' }}
+                        style={{ backgroundColor: 'var(--c-surface-900)' }}
                         aria-hidden="true"
                     />
 

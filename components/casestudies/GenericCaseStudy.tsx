@@ -86,7 +86,7 @@ const GenericCaseStudy: React.FC<GenericCaseStudyProps> = ({ slug }) => {
     return (
         <div className="font-body">
             <header className="text-center mb-16">
-                <h1 className="text-4xl lg:text-6xl font-display font-bold text-gradient mb-4">
+                <h1 className="text-4xl lg:text-6xl font-display font-bold text-deep-800 mb-4">
                     {caseStudy.title || title}
                 </h1>
                 <p className="text-lg text-deep-600 max-w-2xl mx-auto">{caseStudy.subtitle || caseStudy.description}</p>

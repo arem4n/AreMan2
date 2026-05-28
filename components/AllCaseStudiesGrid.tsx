@@ -19,7 +19,7 @@ const AllCaseStudiesGrid: React.FC<AllCaseStudiesGridProps> = ({ navigateTo, onB
         <div className="bg-deep-50 min-h-screen font-body">
             <main className="max-w-6xl mx-auto px-4 py-16 lg:py-24">
                 <header className="text-center mb-16 animate-fade-in-up">
-                    <h1 className="text-4xl lg:text-6xl font-display font-bold text-gradient mb-4">
+                    <h1 className="text-4xl lg:text-6xl font-display font-bold text-deep-800 mb-4">
                         Todos los Casos de Estudio
                     </h1>
                     <p className="text-lg text-deep-800 max-w-3xl mx-auto">
