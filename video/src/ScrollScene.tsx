@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { SectionLabel } from "./SectionLabel";
 import { TapIndicator } from "./TapIndicator";
 import { TapPoint } from "./scenes";
@@ -22,7 +22,7 @@ export const ScrollScene: React.FC<Props> = ({
   const frame = useCurrentFrame();
 
   // Inicia el scroll después del label fade-in (frame 15)
-  // Usa easeInOut implícito de interpolate
+  // easeInOut — decelerates into each scene end
   const translateY = interpolate(
     frame,
     [15, durationInFrames - 10],
@@ -30,6 +30,7 @@ export const ScrollScene: React.FC<Props> = ({
     {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
+      easing: Easing.inOut(Easing.ease),
     }
   );
 

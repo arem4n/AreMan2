@@ -39,7 +39,7 @@ export const TapIndicator: React.FC<Props> = ({ points }) => {
 
         return (
           <div
-            key={i}
+            key={`${point.x}-${point.y}-${point.frame}`}
             style={{
               position: "absolute",
               left: point.x,
