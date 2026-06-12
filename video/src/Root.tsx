@@ -1,18 +1,18 @@
 import React from "react";
-import { AbsoluteFill, Composition } from "remotion";
+import { Composition } from "remotion";
+import { loadFont } from "@remotion/google-fonts/BarlowCondensed";
+import { WalkthroughRoot } from "./WalkthroughRoot";
+import { FPS, TOTAL_FRAMES, VIDEO_HEIGHT, VIDEO_WIDTH } from "./scenes";
 
-// Placeholder — replaced in Task 6 with WalkthroughRoot
-const PlaceholderComp: React.FC = () => (
-  <AbsoluteFill style={{ background: "#0f172a" }} />
-);
+loadFont("normal", { weights: ["700"] });
 
 export const Root: React.FC = () => (
   <Composition
     id="WalkthroughComposition"
-    component={PlaceholderComp}
-    durationInFrames={2250}
-    fps={30}
-    width={1080}
-    height={1920}
+    component={WalkthroughRoot}
+    durationInFrames={TOTAL_FRAMES}
+    fps={FPS}
+    width={VIDEO_WIDTH}
+    height={VIDEO_HEIGHT}
   />
 );
