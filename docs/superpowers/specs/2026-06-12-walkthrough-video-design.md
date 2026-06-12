@@ -12,7 +12,7 @@ Video de presentación del sitio AREM4N (~75 segundos) estilo "alguien navegando
 |---|---|
 | Estilo | Scroll + cursor animado |
 | Duración | ~75 segundos (2250 frames @ 30fps) |
-| Resolución | 1920 × 1080 (16:9) |
+| Resolución | 1080 × 1920 (9:16 — vertical, Instagram Reels / TikTok) |
 | Enfoque | Screenshots → Remotion (Approach A) |
 | Codec | H.264 → MP4 |
 
@@ -32,11 +32,11 @@ Video de presentación del sitio AREM4N (~75 segundos) estilo "alguien navegando
 ```
 scripts/capture-screens.ts   # Playwright: captura screenshots de cada sección
 video/
-  public/screens/            # 8 x PNG full-page (1920px wide)
+  public/screens/            # 8 x PNG full-page (390px wide — viewport mobile)
   src/
     WalkthroughRoot.tsx      # Composición principal — encadena Sequences
     ScrollScene.tsx          # Pan vertical sobre screenshot + cursor
-    Cursor.tsx               # SVG cursor animado con spring()
+    TapIndicator.tsx         # Círculo SVG de tap mobile con spring()
     SectionLabel.tsx         # Overlay de título por sección
   remotion.config.ts
   package.json
@@ -47,18 +47,19 @@ output/
 ## Componentes Remotion
 
 ### `WalkthroughRoot.tsx`
-Composición principal. Define specs del video (1920×1080, 30fps, 2250 frames). Usa `<Sequence from={offset} durationInFrames={n}>` para encadenar cada `ScrollScene`. Calcula offsets acumulativos desde el array de scenes.
+Composición principal. Define specs del video (1080×1920, 30fps, 2250 frames). Usa `<Sequence from={offset} durationInFrames={n}>` para encadenar cada `ScrollScene`. Calcula offsets acumulativos desde el array de scenes.
 
 ### `ScrollScene.tsx`
-Props: `imageSrc: string`, `durationInFrames: number`, `label: string`, `cursorPath: CursorPoint[]`
+Props: `imageSrc: string`, `durationInFrames: number`, `label: string`, `tapPoints: TapPoint[]`
 
 Comportamiento:
 - Primeros ~15 frames: `SectionLabel` fade-in
-- Frames 15→end: `interpolate()` anima `translateY` de la imagen (pan de arriba hacia abajo simulando scroll)
-- `Cursor` se mueve entre los `cursorPath` points con `spring()`
+- Frames 15→end: `interpolate()` anima `translateY` de la imagen (pan vertical simulando scroll mobile)
+- La imagen capturada a 390px se escala a 1080px de ancho (`objectFit: cover`), llenando el frame 9:16
+- `TapIndicator` aparece en los `tapPoints` definidos por escena
 
-### `Cursor.tsx`
-SVG puntero. Props: `points: {x,y,frame}[]`, `currentFrame: number`. Interpola posición con `spring()` entre cada punto. Escala ligera al "hacer click" (pulse effect).
+### `TapIndicator.tsx`
+Círculo SVG animado que simula un tap en mobile. Props: `points: {x,y,frame}[]`, `currentFrame: number`. Aparece con scale 0→1 usando `spring()`, hace pulse, desaparece. Reemplaza al cursor mouse — en 9:16 el contexto es mobile browsing.
 
 ### `SectionLabel.tsx`
 Props: `label: string`, `durationInFrames: number`. Fade-in primeros 10 frames, hold 15 frames, fade-out siguientes 10 frames — todo relativo al inicio de la escena. Posición: esquina inferior izquierda, tipografía Barlow Condensed, color `#db2777`.
@@ -67,8 +68,9 @@ Props: `label: string`, `durationInFrames: number`. Fade-in primeros 10 frames, 
 
 `scripts/capture-screens.ts`:
 1. Apunta al dev server en `http://localhost:3000` (requiere `npm run dev` corriendo)
-2. Para homepage: navega a `/`, espera hidratación, scroll a cada sección, `page.screenshot({ fullPage: false, clip: viewport })`
-3. Para otras páginas: navega, espera, screenshot completo
+2. Viewport: `390 × 844` (iPhone 14 Pro) — captura el layout mobile responsive del sitio
+3. Para homepage: navega a `/`, espera hidratación, scroll a cada sección, `page.screenshot({ fullPage: true })` — imagen completa de la sección
+4. Para otras páginas: navega, espera, screenshot completo a 390px de ancho
 4. Guarda en `video/public/screens/<slug>.png`
 
 Secciones capturadas con sus selectores de scroll:
@@ -110,5 +112,5 @@ Dependencias adicionales necesarias en `video/package.json`:
 
 - Audio / música de fondo
 - Subtítulos o narración
-- Versión vertical (9:16) para Reels
+- Versión horizontal (16:9) alternativa
 - Animaciones en vivo del sitio (Framer Motion no se captura en screenshots)
