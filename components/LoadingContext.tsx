@@ -45,8 +45,12 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
                 const element = document.getElementById(url.replace('#', ''));
                 if (element) {
                     element.scrollIntoView({ behavior: 'smooth' });
-                    return;
                 }
+                // Si el elemento no existe (ej. ancla con typo, o contenido condicional
+                // aún no montado), no hay nada más que hacer: sin este return, el código
+                // caía al flujo de navegación de más abajo y terminaba llamando a
+                // router.push('#el-hash'), una URL sin path que no tiene sentido.
+                return;
             } else {
                 setIsLoading(true);
                 sessionStorage.setItem(STORAGE_KEYS.scrollToSection, url);

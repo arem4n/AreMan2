@@ -9,7 +9,9 @@ npm run dev        # Dev server on port 3000
 npm run build      # Production build
 npm run start      # Run production build
 npm run lint       # ESLint
-npx tsc --noEmit   # TypeScript check (no test suite exists)
+npx tsc --noEmit   # TypeScript check
+npm test           # Vitest suite (see tests/README.md)
+npm run test:watch # Vitest in watch mode
 ```
 
 ## Architecture
