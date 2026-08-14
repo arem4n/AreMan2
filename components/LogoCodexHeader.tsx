@@ -100,7 +100,7 @@ const LogoCodexHeader: React.FC<LogoCodexHeaderProps> = ({ navigateTo }) => {
                 <div 
                     ref={menuRef}
                     className={`fixed inset-0 z-[999] flex items-center justify-center transition-all duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] 
-                    bg-gradient-to-br from-[rgba(30,41,59,0.95)] via-[rgba(71,85,105,0.9)] to-[rgba(219,39,119,0.85)] backdrop-blur-2xl
+                    bg-gradient-to-br from-[rgba(30,41,59,0.95)] via-[rgba(71,85,105,0.9)] to-[rgba(204,31,114,0.85)] backdrop-blur-2xl
                     ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                     onClick={(e) => { if (e.target === e.currentTarget) toggleMenu(); }}
                     role="dialog"

@@ -4,16 +4,17 @@
 
 /* ─── DESIGN TOKENS ──────────────────────────────────────── */
 :root {
-    --c-primary:     #db2777;
-    --c-primary-500: #ec4899;
-    --c-primary-400: #f472b6;
-    --c-primary-300: #f9a8d4;
-    --c-primary-200: #fbcfe8;
-    --c-surface-900: #0f172a;
+    /* Context Injection v3 — matches tailwind.config.ts symbolic/deep/creative */
+    --c-primary:     #cc1f72;
+    --c-primary-500: #DF418D;
+    --c-primary-400: #E571A9;
+    --c-primary-300: #EEA8C9;
+    --c-primary-200: #F5CDE0;
+    --c-surface-900: #0d0e22;
     --c-surface-800: #1e293b;
     --c-surface-700: #334155;
     --c-muted:       #94a3b8;
-    --c-accent:      #facc15;
+    --c-accent:      #b8860b;
 }
 
 @layer base {
@@ -77,7 +78,7 @@ section[id] {
     }
     100% {
         box-shadow: 0 0 0 15px color-mix(in srgb, var(--c-primary-500) 0%, transparent);
-        border-color: #be185d;
+        border-color: #901952;
     }
 }
 .highlight-on-focus {

@@ -36,7 +36,7 @@ export function TLNode({
             isHorizontal ? "w-3.5 h-3.5" : "w-2.5 h-2.5"
           } ${rm ? '' : 'transition-all duration-300 ease-out'} ${
             isActive
-              ? 'bg-symbolic-600 border-symbolic-600 scale-[1.3] opacity-100 shadow-[0_0_12px_2px_rgba(219,39,119,0.4)]'
+              ? 'bg-symbolic-600 border-symbolic-600 scale-[1.3] opacity-100 shadow-[0_0_12px_2px_rgba(204,31,114,0.4)]'
               : `${
                   isHorizontal
                     ? 'bg-white border-deep-300'
