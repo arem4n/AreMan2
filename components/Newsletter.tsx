@@ -1,12 +1,15 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import { trackEvent } from '../analytics';
 
 const Newsletter: React.FC = () => {
     const t = useTranslations('Newsletter');
     const [email, setEmail] = useState('');
     const [formState, setFormState] = useState({ submitting: false, success: false, error: '' });
+    const [turnstileToken, setTurnstileToken] = useState('');
+    const turnstileRef = useRef<TurnstileInstance>(null);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -14,6 +17,12 @@ const Newsletter: React.FC = () => {
             setFormState({ submitting: false, success: false, error: t('errorEmail') });
             return;
         }
+
+        if (!turnstileToken) {
+            setFormState({ submitting: false, success: false, error: t('captchaError') });
+            return;
+        }
+
         setFormState({ submitting: true, success: false, error: '' });
 
         trackEvent('submit_newsletter_form', { offer: 'Creatividad Expandida Book' });
@@ -21,20 +30,26 @@ const Newsletter: React.FC = () => {
         fetch('/api/newsletter', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({ email, turnstileToken }),
         })
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
                     setFormState({ submitting: false, success: true, error: '' });
                     setEmail('');
+                    setTurnstileToken('');
+                    turnstileRef.current?.reset();
                     setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
                 } else {
                     setFormState({ submitting: false, success: false, error: data.error || t('errorConnection') });
+                    setTurnstileToken('');
+                    turnstileRef.current?.reset();
                 }
             })
             .catch(() => {
                 setFormState({ submitting: false, success: false, error: t('errorConnection') });
+                setTurnstileToken('');
+                turnstileRef.current?.reset();
             });
     };
 
@@ -63,10 +78,19 @@ const Newsletter: React.FC = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <button type="submit" disabled={formState.submitting} className="w-full md:w-auto whitespace-nowrap bg-creative-500 hover:bg-creative-600 text-deep-900 font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-creative-500/20 disabled:bg-deep-700 disabled:opacity-75 disabled:cursor-not-allowed">
+                    <button type="submit" disabled={formState.submitting || !turnstileToken} className="w-full md:w-auto whitespace-nowrap bg-creative-500 hover:bg-creative-600 text-deep-900 font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-creative-500/20 disabled:bg-deep-700 disabled:opacity-75 disabled:cursor-not-allowed">
                         {formState.submitting ? t('submitting') : t('submit')}
                     </button>
                 </form>
+                <div className="flex justify-center mt-4">
+                    <Turnstile
+                        ref={turnstileRef}
+                        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''}
+                        onSuccess={(token) => setTurnstileToken(token)}
+                        onExpire={() => setTurnstileToken('')}
+                        onError={() => setTurnstileToken('')}
+                    />
+                </div>
                 <div className="h-6 mt-4">
                     {formState.success && <p className="text-sm text-creative-300 font-medium">{t('successMessage')}</p>}
                     {formState.error && <p className="text-sm text-symbolic-400">{formState.error}</p>}
