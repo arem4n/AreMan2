@@ -34,10 +34,12 @@ beforeEach(() => {
   delete process.env.RESEND_API_KEY;
   delete process.env.RESEND_AUDIENCE_ID;
   delete process.env.CONTACT_EMAIL;
+  delete process.env.TURNSTILE_SECRET_KEY;
 });
 
 afterEach(() => {
   process.env = { ...ORIGINAL_ENV };
+  vi.unstubAllGlobals();
 });
 
 describe('POST /api/contact', () => {
@@ -152,5 +154,49 @@ describe('POST /api/contact', () => {
     const badRequest = new Request('http://localhost/api/contact', { method: 'POST', body: '{no es json' });
     const res = await POST(badRequest);
     expect(res.status).toBe(500);
+  });
+
+  it('con TURNSTILE_SECRET_KEY seteado y sin turnstileToken: responde 400, no llama a Resend', async () => {
+    process.env.RESEND_API_KEY = 'test_key';
+    process.env.TURNSTILE_SECRET_KEY = 'secret_test';
+    const { POST } = await import('@/app/api/contact/route');
+
+    const res = await POST(makeRequest({ name: 'Bot', email: 'bot@spam.com', message: 'spam' }));
+    const json = await res.json();
+
+    expect(res.status).toBe(400);
+    expect(json.error).toBe('Verificación anti-bot fallida');
+    expect(sendMock).not.toHaveBeenCalled();
+    expect(createMock).not.toHaveBeenCalled();
+  });
+
+  it('con TURNSTILE_SECRET_KEY seteado y token que Cloudflare rechaza: responde 400, no llama a Resend', async () => {
+    process.env.RESEND_API_KEY = 'test_key';
+    process.env.TURNSTILE_SECRET_KEY = 'secret_test';
+    const fetchMock = vi.fn().mockResolvedValue({ json: async () => ({ success: false }) });
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { POST } = await import('@/app/api/contact/route');
+    const res = await POST(makeRequest({ name: 'Bot', email: 'bot@spam.com', message: 'spam', turnstileToken: 'token-malo' }));
+    const json = await res.json();
+
+    expect(res.status).toBe(400);
+    expect(json.error).toBe('Verificación anti-bot fallida');
+    expect(sendMock).not.toHaveBeenCalled();
+  });
+
+  it('con TURNSTILE_SECRET_KEY seteado y token válido: sigue el flujo normal y llama a Resend', async () => {
+    process.env.RESEND_API_KEY = 'test_key';
+    process.env.TURNSTILE_SECRET_KEY = 'secret_test';
+    const fetchMock = vi.fn().mockResolvedValue({ json: async () => ({ success: true }) });
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { POST } = await import('@/app/api/contact/route');
+    const res = await POST(makeRequest({ name: 'Sergio', email: 'sergio@example.com', message: 'Hola', turnstileToken: 'token-bueno' }));
+    const json = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(json.success).toBe(true);
+    expect(sendMock).toHaveBeenCalledTimes(1);
   });
 });

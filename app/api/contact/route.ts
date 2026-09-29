@@ -1,12 +1,19 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { escape } from 'html-escaper';
+import { verifyTurnstile } from '@/lib/verifyTurnstile';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message, honeypot } = await request.json();
+    const { name, email, message, honeypot, turnstileToken } = await request.json();
+
+    const clientIp = request.headers.get('x-forwarded-for') ?? undefined;
+    const isHuman = await verifyTurnstile(turnstileToken, clientIp);
+    if (!isHuman) {
+      return NextResponse.json({ error: 'Verificación anti-bot fallida' }, { status: 400 });
+    }
 
     if (honeypot) {
       return NextResponse.json({ success: true });
