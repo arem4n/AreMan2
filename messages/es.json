@@ -171,6 +171,7 @@
     "submitting": "Procesando...",
     "successMessage": "¡Solicitud recibida! Te contactaré para agendar.",
     "errorRequired": "Por favor, completa todos los campos.",
+    "captchaError": "No pudimos verificar que no eres un bot. Si usas un bloqueador de anuncios, desactívalo para este sitio e intenta de nuevo.",
     "errorConnection": "Error de conexión.",
     "packageMessage": "Hola Sergio, quiero auditar mi marca con el paquete '{package}'. ¿Cómo funciona el proceso LogoCodex?",
     "emailTitle": "Email Directo",
@@ -193,6 +194,7 @@
     "submitting": "Enviando...",
     "successMessage": "¡Enviado! Revisa tu bandeja de entrada (o spam).",
     "errorEmail": "Por favor, ingresa un email válido.",
+    "captchaError": "No pudimos verificar que no eres un bot. Si usas un bloqueador de anuncios, desactívalo para este sitio e intenta de nuevo.",
     "errorConnection": "Algo salió mal.",
     "disclaimer": "* Al suscribirte, aceptas recibir correos sobre soberanía creativa. Cero spam."
   },

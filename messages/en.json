@@ -171,6 +171,7 @@
     "submitting": "Processing...",
     "successMessage": "Request received! I'll be in touch to schedule.",
     "errorRequired": "Please fill in all fields.",
+    "captchaError": "We couldn't verify you're not a bot. If you use an ad blocker, disable it for this site and try again.",
     "errorConnection": "Connection error.",
     "packageMessage": "Hi Sergio, I'd like to audit my brand with the '{package}' package. How does the LogoCodex process work?",
     "emailTitle": "Direct Email",
@@ -193,6 +194,7 @@
     "submitting": "Sending...",
     "successMessage": "Sent! Check your inbox (or spam).",
     "errorEmail": "Please enter a valid email.",
+    "captchaError": "We couldn't verify you're not a bot. If you use an ad blocker, disable it for this site and try again.",
     "errorConnection": "Something went wrong.",
     "disclaimer": "* By subscribing, you agree to receive emails about creative sovereignty. Zero spam."
   },
