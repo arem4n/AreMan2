@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import { trackEvent } from '../analytics';
 import { EmailIcon, WhatsAppIcon, InstagramIcon, BehanceIcon } from './icons/SocialIcons';
 
@@ -25,6 +26,8 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
     const t = useTranslations('Contact');
     const [formData, setFormData] = useState({ name: '', email: '', message: '', honeypot: '' });
     const [formState, setFormState] = useState({ submitting: false, success: false, error: '' });
+    const [turnstileToken, setTurnstileToken] = useState('');
+    const turnstileRef = useRef<TurnstileInstance>(null);
 
     const sectionRef = useRef<HTMLElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
@@ -79,6 +82,12 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
             setFormState({ submitting: false, success: false, error: t('errorRequired') });
             return;
         }
+
+        if (!turnstileToken) {
+            setFormState({ submitting: false, success: false, error: t('captchaError') });
+            return;
+        }
+
         setFormState({ submitting: true, success: false, error: '' });
 
         trackEvent('submit_contact_form', { fromPackage: selectedPackage || 'N/A' });
@@ -86,20 +95,26 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
         fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
+            body: JSON.stringify({ ...formData, turnstileToken }),
         })
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
                     setFormState({ submitting: false, success: true, error: '' });
                     setFormData({ name: '', email: '', message: '', honeypot: '' });
+                    setTurnstileToken('');
+                    turnstileRef.current?.reset();
                     setTimeout(() => setFormState(fs => ({ ...fs, success: false })), 5000);
                 } else {
                     setFormState({ submitting: false, success: false, error: data.error || t('errorConnection') });
+                    setTurnstileToken('');
+                    turnstileRef.current?.reset();
                 }
             })
             .catch(() => {
                 setFormState({ submitting: false, success: false, error: t('errorConnection') });
+                setTurnstileToken('');
+                turnstileRef.current?.reset();
             });
     };
 
@@ -170,8 +185,16 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
                             onChange={handleChange}
                         />
 
+                        <Turnstile
+                            ref={turnstileRef}
+                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''}
+                            onSuccess={(token) => setTurnstileToken(token)}
+                            onExpire={() => setTurnstileToken('')}
+                            onError={() => setTurnstileToken('')}
+                        />
+
                         <div className="h-14 pt-1">
-                            <button type="submit" disabled={formState.submitting} className="w-full bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:bg-deep-600 disabled:cursor-not-allowed">
+                            <button type="submit" disabled={formState.submitting || !turnstileToken} className="w-full bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:bg-deep-600 disabled:cursor-not-allowed">
                                 {formState.submitting ? t('submitting') : t('submit')}
                             </button>
                             {formState.success && <p className="text-center text-sm text-creative-300 pt-2">{t('successMessage')}</p>}
