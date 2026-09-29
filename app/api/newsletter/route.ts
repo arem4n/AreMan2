@@ -1,11 +1,18 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { verifyTurnstile } from '@/lib/verifyTurnstile';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const { email, turnstileToken } = await request.json();
+
+    const clientIp = request.headers.get('x-forwarded-for') ?? undefined;
+    const isHuman = await verifyTurnstile(turnstileToken, clientIp);
+    if (!isHuman) {
+      return NextResponse.json({ error: 'Verificación anti-bot fallida' }, { status: 400 });
+    }
 
     if (!process.env.RESEND_API_KEY) {
       console.warn('RESEND_API_KEY is missing. Simulating success for development.');
