@@ -90,17 +90,19 @@ Deeper brand/design-system context (target users, emotional arc, aesthetic direc
 
 | Route | Purpose |
 |---|---|
-| `/api/contact` | Contact form — sends email via Resend, has a honeypot field |
-| `/api/newsletter` | Newsletter signup — creates a Resend contact |
+| `/api/contact` | Contact form — sends email via Resend, has a honeypot field + Cloudflare Turnstile verification |
+| `/api/newsletter` | Newsletter signup — creates a Resend contact + Cloudflare Turnstile verification |
 
-Both no-op gracefully (simulate success) if `RESEND_API_KEY` is absent. Both treat a Resend "contact already exists" error as success rather than failure. See `tests/api-contact.test.ts` / `tests/api-newsletter.test.ts` for the full behavior matrix, including how to mock the `resend` module.
+Both no-op gracefully (simulate success) if `RESEND_API_KEY` is absent. Both treat a Resend "contact already exists" error as success rather than failure. Both reject with a 400 if `lib/verifyTurnstile.ts` can't confirm the submission came from a real browser — it fails closed if `TURNSTILE_SECRET_KEY` is set but Cloudflare's `siteverify` call errors out, and no-ops (like the Resend key) if `TURNSTILE_SECRET_KEY` is absent. See `tests/api-contact.test.ts` / `tests/api-newsletter.test.ts` for the full behavior matrix, including how to mock the `resend` module.
 
 ### Environment Variables
 
 ```
-RESEND_API_KEY        # Email sending
-RESEND_AUDIENCE_ID    # Optional: Resend audience for newsletter contacts
-CONTACT_EMAIL         # Override destination email (default: sergio.areman@gmail.com)
+RESEND_API_KEY                  # Email sending
+RESEND_AUDIENCE_ID              # Optional: Resend audience for newsletter contacts
+CONTACT_EMAIL                   # Override destination email (default: sergio.areman@gmail.com)
+NEXT_PUBLIC_TURNSTILE_SITE_KEY  # Cloudflare Turnstile site key (public, sent to the client)
+TURNSTILE_SECRET_KEY            # Cloudflare Turnstile secret key (server-side verification)
 ```
 
 ### Key Patterns
