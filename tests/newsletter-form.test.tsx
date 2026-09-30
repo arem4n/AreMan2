@@ -31,6 +31,14 @@ afterEach(() => {
 });
 
 describe('Newsletter form + Turnstile', () => {
+  beforeEach(() => {
+    vi.stubEnv('NEXT_PUBLIC_TURNSTILE_SITE_KEY', 'test-site-key');
+  });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
   it('el botón de enviar está deshabilitado hasta resolver el captcha', () => {
     render(<Newsletter />);
     expect(screen.getByRole('button', { name: 'submit' })).toBeDisabled();
@@ -52,5 +60,25 @@ describe('Newsletter form + Turnstile', () => {
     const [, options] = fetchMock.mock.calls[0];
     const sentBody = JSON.parse(options.body as string);
     expect(sentBody.turnstileToken).toBe('fake-token');
+  });
+});
+
+describe('Newsletter form sin NEXT_PUBLIC_TURNSTILE_SITE_KEY configurado', () => {
+  it('el botón de enviar está habilitado sin resolver ningún captcha y el submit llega a fetch', async () => {
+    expect(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY).toBeUndefined();
+
+    const user = userEvent.setup();
+    render(<Newsletter />);
+
+    expect(screen.queryByTestId('fake-turnstile')).not.toBeInTheDocument();
+
+    await user.type(screen.getByPlaceholderText('emailPlaceholder'), 'sergio@example.com');
+
+    const submitButton = screen.getByRole('button', { name: 'submit' });
+    expect(submitButton).not.toBeDisabled();
+
+    await user.click(submitButton);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
   });
 });

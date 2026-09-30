@@ -105,6 +105,8 @@ NEXT_PUBLIC_TURNSTILE_SITE_KEY  # Cloudflare Turnstile site key (public, sent to
 TURNSTILE_SECRET_KEY            # Cloudflare Turnstile secret key (server-side verification)
 ```
 
+Set both Turnstile variables together, not just one — setting only `TURNSTILE_SECRET_KEY` on the server without also setting `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (and redeploying) means the server will reject every submission, since the client can never obtain a token. `NEXT_PUBLIC_*` values are inlined into the client bundle at build time, so changing them in Vercel requires a new deployment to take effect, not just an env var update.
+
 ### Key Patterns
 
 - **Framer Motion** for all animations. Always check `useReducedMotion()` and skip animations when true.

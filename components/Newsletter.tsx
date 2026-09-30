@@ -6,6 +6,7 @@ import { trackEvent } from '../analytics';
 
 const Newsletter: React.FC = () => {
     const t = useTranslations('Newsletter');
+    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
     const [email, setEmail] = useState('');
     const [formState, setFormState] = useState({ submitting: false, success: false, error: '' });
     const [turnstileToken, setTurnstileToken] = useState('');
@@ -18,7 +19,7 @@ const Newsletter: React.FC = () => {
             return;
         }
 
-        if (!turnstileToken) {
+        if (turnstileSiteKey && !turnstileToken) {
             setFormState({ submitting: false, success: false, error: t('captchaError') });
             return;
         }
@@ -78,19 +79,21 @@ const Newsletter: React.FC = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <button type="submit" disabled={formState.submitting || !turnstileToken} className="w-full md:w-auto whitespace-nowrap bg-creative-500 hover:bg-creative-600 text-deep-900 font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-creative-500/20 disabled:bg-deep-700 disabled:opacity-75 disabled:cursor-not-allowed">
+                    <button type="submit" disabled={formState.submitting || (!!turnstileSiteKey && !turnstileToken)} className="w-full md:w-auto whitespace-nowrap bg-creative-500 hover:bg-creative-600 text-deep-900 font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-creative-500/20 disabled:bg-deep-700 disabled:opacity-75 disabled:cursor-not-allowed">
                         {formState.submitting ? t('submitting') : t('submit')}
                     </button>
                 </form>
-                <div className="flex justify-center mt-4">
-                    <Turnstile
-                        ref={turnstileRef}
-                        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''}
-                        onSuccess={(token) => setTurnstileToken(token)}
-                        onExpire={() => setTurnstileToken('')}
-                        onError={() => setTurnstileToken('')}
-                    />
-                </div>
+                {turnstileSiteKey && (
+                    <div className="flex justify-center mt-4">
+                        <Turnstile
+                            ref={turnstileRef}
+                            siteKey={turnstileSiteKey}
+                            onSuccess={(token) => setTurnstileToken(token)}
+                            onExpire={() => setTurnstileToken('')}
+                            onError={() => setTurnstileToken('')}
+                        />
+                    </div>
+                )}
                 <div className="h-6 mt-4">
                     {formState.success && <p className="text-sm text-creative-300 font-medium">{t('successMessage')}</p>}
                     {formState.error && <p className="text-sm text-symbolic-400">{formState.error}</p>}

@@ -24,6 +24,7 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage }) => {
     const t = useTranslations('Contact');
+    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
     const [formData, setFormData] = useState({ name: '', email: '', message: '', honeypot: '' });
     const [formState, setFormState] = useState({ submitting: false, success: false, error: '' });
     const [turnstileToken, setTurnstileToken] = useState('');
@@ -83,7 +84,7 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
             return;
         }
 
-        if (!turnstileToken) {
+        if (turnstileSiteKey && !turnstileToken) {
             setFormState({ submitting: false, success: false, error: t('captchaError') });
             return;
         }
@@ -185,16 +186,18 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
                             onChange={handleChange}
                         />
 
-                        <Turnstile
-                            ref={turnstileRef}
-                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''}
-                            onSuccess={(token) => setTurnstileToken(token)}
-                            onExpire={() => setTurnstileToken('')}
-                            onError={() => setTurnstileToken('')}
-                        />
+                        {turnstileSiteKey && (
+                            <Turnstile
+                                ref={turnstileRef}
+                                siteKey={turnstileSiteKey}
+                                onSuccess={(token) => setTurnstileToken(token)}
+                                onExpire={() => setTurnstileToken('')}
+                                onError={() => setTurnstileToken('')}
+                            />
+                        )}
 
                         <div className="h-14 pt-1">
-                            <button type="submit" disabled={formState.submitting || !turnstileToken} className="w-full bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:bg-deep-600 disabled:cursor-not-allowed">
+                            <button type="submit" disabled={formState.submitting || (!!turnstileSiteKey && !turnstileToken)} className="w-full bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:bg-deep-600 disabled:cursor-not-allowed">
                                 {formState.submitting ? t('submitting') : t('submit')}
                             </button>
                             {formState.success && <p className="text-center text-sm text-creative-300 pt-2">{t('successMessage')}</p>}
