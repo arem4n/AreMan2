@@ -13,6 +13,7 @@ import SouthSoftCaseStudy from './casestudies/SouthSoftCaseStudy';
 import Bm3CaseStudy from './casestudies/Bm3CaseStudy';
 import TommyBoxCaseStudy from './casestudies/TommyBoxCaseStudy';
 import { Icon } from './icons/Icons';
+import { useLocalizedHref, isPlainLeftClick } from '@/hooks/useLocalizedHref';
 
 interface LogoCodexProps {
     navigateTo: (hash: string) => void;
@@ -43,6 +44,7 @@ const renderCaseStudy = (slug: string) => {
 
 const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelectSlug }) => {
     const t = useTranslations('LogoCodex');
+    const localizedHref = useLocalizedHref();
     const tabsRef = useRef<HTMLDivElement>(null);
     const [showBackToTabs, setShowBackToTabs] = useState(false);
 
@@ -262,9 +264,15 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
 
                         <div ref={tabsRef} className="flex flex-wrap justify-center gap-3 mb-12">
                             {portfolioProjects.map(project => (
-                                <button
+                                <a
                                     key={project.slug}
-                                    onClick={() => onSelectSlug(project.slug)}
+                                    href={localizedHref(`/portafolio/${project.slug}`)}
+                                    aria-current={selectedSlug === project.slug ? 'true' : undefined}
+                                    onClick={(e) => {
+                                        if (!isPlainLeftClick(e)) return;
+                                        e.preventDefault();
+                                        onSelectSlug(project.slug);
+                                    }}
                                     className={`px-5 py-2.5 font-semibold rounded-full text-sm transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-symbolic-500
                                         ${selectedSlug === project.slug
                                             ? 'bg-symbolic-600 text-white shadow-md'
@@ -272,7 +280,7 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                                         }`}
                                 >
                                     {project.title}
-                                </button>
+                                </a>
                             ))}
                         </div>
 

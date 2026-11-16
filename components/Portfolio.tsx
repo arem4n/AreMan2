@@ -6,6 +6,7 @@ import { portfolioProjects } from '../constants';
 import { trackEvent } from '../analytics';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 import ProjectModal from './ProjectModal';
+import { useLocalizedHref, isPlainLeftClick } from '@/hooks/useLocalizedHref';
 
 interface PortfolioProps {
     navigateTo: (path: string) => void;
@@ -14,6 +15,7 @@ interface PortfolioProps {
 
 const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) => {
     const t = useTranslations('Portfolio');
+    const localizedHref = useLocalizedHref();
     const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -142,8 +144,15 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                     aria-hidden={!isActive}
                                     className={`carousel-slide-wrapper w-[85vw] sm:w-[60vw] md:w-[50vw] lg:w-[40vw] max-w-[540px] ${slideClass}`}
                                 >
-                                    <div
-                                        onClick={() => isActive && handleProjectClick(project.slug)}
+                                    <a
+                                        href={localizedHref(`/portafolio/${project.slug}`)}
+                                        tabIndex={isActive ? 0 : -1}
+                                        aria-label={`${t('viewProject')}: ${project.title}`}
+                                        onClick={(e) => {
+                                            if (!isPlainLeftClick(e)) return;
+                                            e.preventDefault();
+                                            if (isActive) handleProjectClick(project.slug);
+                                        }}
                                         className={`relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-deep-100 aspect-[16/9] flex items-center justify-center cursor-pointer group ${isHeroLogo ? 'p-3' : 'p-0'}`}
                                     >
                                         <Image
@@ -159,7 +168,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                                 <span className="px-5 py-1.5 bg-symbolic-600 text-white text-xs font-bold rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{t('viewProject')}</span>
                                             </div>
                                         )}
-                                    </div>
+                                    </a>
 
                                     <div className={`mt-3 lg:mt-4 px-4 transition-all duration-700 ease-out transform ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                                         <div className="text-center mb-2">
@@ -207,15 +216,20 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
             </div>
 
             <div className="text-center mt-8 lg:mt-10">
-                <button
-                    onClick={() => navigateTo('/portafolio')}
+                <a
+                    href={localizedHref('/portafolio')}
+                    onClick={(e) => {
+                        if (!isPlainLeftClick(e)) return;
+                        e.preventDefault();
+                        navigateTo('/portafolio');
+                    }}
                     className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-deep-300 text-deep-700 font-semibold text-sm hover:border-symbolic-500 hover:text-symbolic-600 hover:bg-symbolic-50 transition-all duration-200"
                 >
                     {t('viewFullPortfolio')}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                </button>
+                </a>
             </div>
 
             <AnimatePresence>

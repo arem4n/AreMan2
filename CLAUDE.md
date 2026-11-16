@@ -44,6 +44,15 @@ app/[locale]/page.tsx             →  HomePageClient
 
 **Never use `<Link>` or `router.push` directly.** All navigation goes through `customNavigate` from `useLoading()` (`components/LoadingContext.tsx`). This triggers the full-screen preloader transition. Hash links (`/#contacto`) auto-handle: smooth-scroll if already on `/`, otherwise navigate home first, using the `sessionStorage` key from `lib/storageKeys.ts`. If the hash target doesn't exist in the DOM, `customNavigate` returns without navigating anywhere (it used to fall through to `router.push('#hash')` — a pathless URL — before this was fixed; see `tests/loading-context.test.tsx`).
 
+Every internal destination must still be a real `<a href>` so crawlers can follow it (before 2026-11 `/origen`, the case studies and `/en` were only reachable through `onClick` buttons). The pattern: `href={localizedHref('/origen')}` from `useLocalizedHref()` plus an `onClick` that returns early unless `isPlainLeftClick(e)`, then `preventDefault()` and `customNavigate(...)` (both helpers in `hooks/useLocalizedHref.ts`). Ctrl/Cmd-click keeps working, and `customNavigate` always receives the path **without** locale prefix.
+
+### SEO
+
+- `lib/seo.ts` is the single source for the canonical domain (`SITE_URL`, with `www`), locale-aware paths, hreflang maps and `pageMetadata()`. Every page's `generateMetadata` must return `pageMetadata({ locale, path, title, description })`: Next replaces `openGraph` wholesale when a page defines it, so building metadata by hand drops the share image and `og:url`.
+- `app/sitemap.ts` and `app/robots.ts` are generated from `indexablePaths()` in the same file; a new top-level route has to be added there (case studies are picked up from `portfolioProjects`). `tests/seo.test.ts` covers this.
+- Share images are `public/images/og-arem4n.jpg` (es) and `og-arem4n-en.jpg` (en), 1200×630 JPG.
+- 404: `app/[locale]/[...rest]/page.tsx` catches unknown URLs and calls `notFound()`, which renders `app/[locale]/not-found.tsx`. `app/not-found.tsx` (own `<html>`, inline styles) only serves requests that skip the locale middleware, e.g. paths with a file extension. With `notFound()` Next 14 answers 404 + `noindex` but paints the page client-side, which is why the localized page sets `document.title` itself.
+
 ### Portfolio: Two Rendering Paths
 
 `/portafolio` has two independent rendering paths that **both** need a `case` entry per project — nothing throws if you forget one (both switches have a `GenericCaseStudy` default), so the omission is easy to miss without the test that checks it (`tests/data-integrity.test.ts`):

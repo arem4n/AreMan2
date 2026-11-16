@@ -1,39 +1,20 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import HomePageClient from './HomePageClient';
+import { pageMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
     const { locale } = params;
     const t = await getTranslations({ locale, namespace: 'Metadata' });
 
-    const isEs = locale === 'es';
-
-    return {
+    return pageMetadata({
+        locale,
+        path: '/',
         title: t('homeTitle'),
         description: t('homeDescription'),
-        openGraph: {
-            title: t('homeOgTitle'),
-            description: t('homeOgDescription'),
-            url: 'https://arem4n.com',
-            siteName: 'AREM4N',
-            images: [
-                {
-                    url: '/images/og-arem4n.webp',
-                    width: 1200,
-                    height: 630,
-                    alt: t('homeOgTitle'),
-                },
-            ],
-            locale: isEs ? 'es_CL' : 'en_US',
-            type: 'website',
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: t('homeOgTitle'),
-            description: t('homeOgDescription'),
-            images: ['/images/og-arem4n.webp'],
-        },
-    };
+        ogTitle: t('homeOgTitle'),
+        ogDescription: t('homeOgDescription'),
+    });
 }
 
 const faqSchemaEs = {

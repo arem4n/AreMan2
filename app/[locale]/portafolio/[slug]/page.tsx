@@ -13,6 +13,7 @@ import Bm3CaseStudy from '@/components/casestudies/Bm3CaseStudy';
 import TommyBoxCaseStudy from '@/components/casestudies/TommyBoxCaseStudy';
 import GenericCaseStudy from '@/components/casestudies/GenericCaseStudy';
 import CaseStudyLayout from './CaseStudyLayout';
+import { pageMetadata, SITE_NAME } from '@/lib/seo';
 
 export async function generateMetadata({
     params,
@@ -28,10 +29,15 @@ export async function generateMetadata({
     }
 
     const t = await getTranslations({ locale, namespace: 'Metadata' });
-    return {
-        title: `${project.title} ${t('caseStudySuffix')}`,
+    const title = `${project.title} ${t('caseStudySuffix')}`;
+    return pageMetadata({
+        locale,
+        path: `/portafolio/${project.slug}`,
+        title,
         description: project.caseStudy.description,
-    };
+        ogTitle: `${title} | ${SITE_NAME}`,
+        ogType: 'article',
+    });
 }
 
 export function generateStaticParams() {

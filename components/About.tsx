@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { useLoading } from './LoadingContext';
+import { useLocalizedHref, isPlainLeftClick } from '@/hooks/useLocalizedHref';
 
 const About: React.FC = () => {
     const { customNavigate } = useLoading();
     const t = useTranslations('About');
+    const localizedHref = useLocalizedHref();
 
     return (
         <section id="origen" className="py-16 lg:py-24 bg-white overflow-hidden">
@@ -23,13 +25,18 @@ const About: React.FC = () => {
                     </p>
                     <p className="text-deep-500 text-base">{t('byline')}</p>
                 </div>
-                <button
-                    onClick={() => customNavigate('/origen')}
+                <a
+                    href={localizedHref('/origen')}
+                    onClick={(e) => {
+                        if (!isPlainLeftClick(e)) return;
+                        e.preventDefault();
+                        customNavigate('/origen');
+                    }}
                     className="inline-flex items-center text-symbolic-600 font-bold text-lg hover:text-symbolic-700 transition-colors group"
                 >
                     {t('cta')}
                     <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
-                </button>
+                </a>
             </div>
         </section>
     );

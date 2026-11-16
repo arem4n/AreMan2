@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { trackEvent } from '../analytics';
 import { whiteLogoUrl } from '../constants';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useLocalizedHref } from '@/hooks/useLocalizedHref';
 
 interface ElegantMenuProps {
     isOpen: boolean;
@@ -47,6 +48,7 @@ const itemVariants = {
 
 const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateTo }) => {
     const t = useTranslations();
+    const localizedHref = useLocalizedHref();
     const previousFocusRef = useRef<HTMLElement | null>(null);
 
     const navLinks = [
@@ -148,7 +150,7 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
                                 {navLinks.map((link) => (
                                     <motion.li key={link.href} variants={itemVariants} className="w-full text-center">
                                         <a
-                                            href={link.href}
+                                            href={localizedHref(link.href)}
                                             data-menu-link
                                             onClick={(e) => handleLinkClick(e, link.href)}
                                             className="block text-2xl md:text-4xl lg:text-5xl font-display font-bold text-white hover:text-symbolic-400 transition-colors duration-300 py-1 md:py-2"

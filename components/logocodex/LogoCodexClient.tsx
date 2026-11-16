@@ -59,7 +59,8 @@ const LogoCodexClient: React.FC = () => {
     const handleSelectSlug = (slug: string) => {
         if (slug !== selectedSlug) {
             setSelectedSlug(slug);
-            const newUrl = `/portafolio#${slug}`;
+            // pathname ya incluye el prefijo de idioma (/en/portafolio)
+            const newUrl = `${window.location.pathname}#${slug}`;
             // Use replaceState to avoid polluting browser history for tab-like navigation
             window.history.replaceState(null, '', newUrl);
         }

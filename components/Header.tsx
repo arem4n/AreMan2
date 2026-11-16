@@ -4,6 +4,7 @@ import { motion, SVGMotionProps } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { trackEvent } from '../analytics';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useLocalizedHref, isPlainLeftClick } from '@/hooks/useLocalizedHref';
 
 interface HeaderProps {
     isMenuOpen: boolean;
@@ -24,6 +25,7 @@ const Path = (props: SVGMotionProps<SVGPathElement>) => (
 
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) => {
     const t = useTranslations();
+    const localizedHref = useLocalizedHref();
 
     const navLinks = [
         { href: "#inicio", label: t('Navigation.inicio') },
@@ -36,10 +38,11 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
     ];
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-        e.preventDefault();
         if (href === '/portafolio') {
             trackEvent('navigate_to_logocodex', { from: 'header_nav' });
         }
+        if (!isPlainLeftClick(e)) return;
+        e.preventDefault();
         navigateTo(href);
     };
 
@@ -107,7 +110,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu, navigateTo }) =
                         {navLinks.map(link => (
                             <a
                                 key={link.href}
-                                href={link.href}
+                                href={localizedHref(link.href)}
                                 onClick={(e) => handleNavClick(e, link.href)}
                                 className="relative px-4 py-2 rounded-full text-sm font-medium text-deep-600 transition-colors hover:text-deep-900 group"
                             >

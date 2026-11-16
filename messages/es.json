@@ -217,6 +217,14 @@
     "ctaDescription": "No dejes que tu marca sea un \"average\" de la industria. Apliquemos el sistema LogoCodex™ para construir una identidad soberana.",
     "ctaButton": "Solicitar Auditoría de Proyecto"
   },
+  "NotFound": {
+    "metaTitle": "Página no encontrada",
+    "code": "Error 404",
+    "title": "Esta página no existe.",
+    "description": "Puede que el enlace esté mal escrito o que la página haya cambiado de lugar.",
+    "ctaHome": "Volver al inicio",
+    "ctaPortfolio": "Ver el portafolio"
+  },
   "Metadata": {
     "homeTitle": "AREM4N | Soberanía Visual & Branding Estratégico",
     "homeDescription": "LogoCodeX™: el sistema que construye identidades que justifican precios premium. Presencia, Autoridad, Legado — y las plataformas digitales donde viven.",
@@ -224,7 +232,7 @@
     "homeOgDescription": "Tu competencia también tiene un logo. Probablemente se parece al tuyo. LogoCodeX™ cambia eso.",
     "portfolioTitle": "Portafolio de Diseño | LogoCodeX",
     "portfolioDescription": "Explora el Codex de proyectos y la metodología LogoCodex™ para transformar logotipos en códigos visuales vivos con múltiples capas de significado.",
-    "origenTitle": "Origen | AREM4N - Soberanía Visual",
+    "origenTitle": "Origen: la historia de Sergio Arellano",
     "origenDescription": "La evolución de Sergio Arellano / AREM4N — identidad, software y automatización construidos período por período.",
     "caseStudyNotFound": "Caso de Estudio no Encontrado | AREM4N",
     "caseStudySuffix": "| Caso de Estudio Portafolio LogoCodeX"

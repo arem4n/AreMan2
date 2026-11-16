@@ -4,6 +4,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { trackEvent } from '../analytics';
 import { Icon, IconName } from './icons/Icons';
+import { useLocalizedHref, isPlainLeftClick } from '@/hooks/useLocalizedHref';
 
 interface LogoCodexTeaserProps {
     navigateTo: (path: string) => void;
@@ -18,8 +19,12 @@ const pillarIcons: { icon: IconName; number: string; titleKey: string; descKey: 
 const LogoCodexTeaser: React.FC<LogoCodexTeaserProps> = ({ navigateTo }) => {
     const t = useTranslations('LogoCodexTeaser');
 
-    const handleCta = () => {
+    const localizedHref = useLocalizedHref();
+
+    const handleCta = (e: React.MouseEvent<HTMLAnchorElement>) => {
         trackEvent('navigate_to_logocodex', { from: 'home_teaser' });
+        if (!isPlainLeftClick(e)) return;
+        e.preventDefault();
         navigateTo('/portafolio');
     };
 
@@ -65,13 +70,14 @@ const LogoCodexTeaser: React.FC<LogoCodexTeaserProps> = ({ navigateTo }) => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                    <button
+                    <a
+                        href={localizedHref('/portafolio')}
                         onClick={handleCta}
                         className="inline-flex items-center gap-3 bg-symbolic-600 hover:bg-symbolic-500 text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 shadow-xl shadow-symbolic-900/50 hover:shadow-symbolic-700/40 hover:scale-105"
                     >
                         {t('cta')}
                         <Icon name="ui-arrow-right" size={20} />
-                    </button>
+                    </a>
                     <span className="text-deep-500 text-sm">{t('ctaSub')}</span>
                 </div>
             </div>

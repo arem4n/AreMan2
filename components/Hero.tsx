@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { whiteLogoUrl } from '../constants';
+import { useLocalizedHref, isPlainLeftClick } from '@/hooks/useLocalizedHref';
 
 const heroContainer = {
     hidden: {},
@@ -28,6 +29,7 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
     const shouldReduce = useReducedMotion();
     const initial = shouldReduce ? 'visible' : 'hidden';
     const t = useTranslations('Hero');
+    const localizedHref = useLocalizedHref();
 
     const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
@@ -70,8 +72,12 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                         {t('ctaPrimary')}
                     </a>
                     <a
-                        href="/portafolio"
-                        onClick={(e) => { e.preventDefault(); navigateTo('/portafolio'); }}
+                        href={localizedHref('/portafolio')}
+                        onClick={(e) => {
+                            if (!isPlainLeftClick(e)) return;
+                            e.preventDefault();
+                            navigateTo('/portafolio');
+                        }}
                         className="inline-block bg-transparent hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-full transition duration-200 ease-out border border-white/30 hover:border-white/60"
                     >
                         {t('ctaSecondary')}

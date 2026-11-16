@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import ClientWrapper from "@/components/ClientWrapper";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL } from '@/lib/seo';
 
 const epilogue = Epilogue({
     subsets: ["latin"],
@@ -30,6 +31,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL(SITE_URL),
     title: {
         default: 'AREM4N | Soberanía Visual & Branding Estratégico',
         template: '%s | AREM4N',
