@@ -33,7 +33,10 @@ describe('portfolioProjects: forma de los datos', () => {
       expect(p.title, `title de "${p.slug}"`).toBeTruthy();
       expect(p.mainImg, `mainImg de "${p.slug}"`).toBeTruthy();
       expect(p.altText, `altText de "${p.slug}"`).toBeTruthy();
-      expect(p.testimonial, `testimonial de "${p.slug}"`).toBeTruthy();
+      // La cita es opcional (los proyectos propios no la llevan), pero nunca vacía.
+      if (p.testimonial !== undefined) {
+        expect(p.testimonial.trim(), `testimonial de "${p.slug}"`).not.toBe('');
+      }
       expect(p.clientName, `clientName de "${p.slug}"`).toBeTruthy();
       expect(p.clientRole, `clientRole de "${p.slug}"`).toBeTruthy();
       expect(p.link, `link de "${p.slug}"`).toBeTruthy();

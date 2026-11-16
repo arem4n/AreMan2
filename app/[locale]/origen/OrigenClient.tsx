@@ -188,7 +188,7 @@ const PERIODS_EN: Period[] = [
 ];
 
 const heroStrings = {
-  es: { tagline: 'Identidades que justifican lo que cobrás.', status: 'Sistema activo' },
+  es: { tagline: 'Identidades que justifican lo que cobras.', status: 'Sistema activo' },
   en: { tagline: 'Identities that justify what you charge.', status: 'System active' }
 };
 

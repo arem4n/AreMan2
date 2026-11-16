@@ -33,10 +33,10 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
     title: {
-        default: 'AREM4N | Soberanía Visual & Branding Estratégico',
+        default: 'Diseño de identidad visual y branding en Puerto Montt | AREM4N',
         template: '%s | AREM4N',
     },
-    description: 'Metodología LogoCodeX™ para identidades que justifican precios premium.',
+    description: 'Sergio Arellano diseña logotipos, identidades visuales y sitios web para empresas desde Puerto Montt, Chile, con su método LogoCodeX™.',
     icons: {
         icon: '/images/icon.webp',
     },

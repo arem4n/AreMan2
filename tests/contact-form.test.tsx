@@ -50,6 +50,9 @@ describe('Contact form + Turnstile', () => {
   it('el botón de enviar está deshabilitado hasta resolver el captcha', () => {
     renderContact();
     expect(screen.getByRole('button', { name: 'submit' })).toBeDisabled();
+    // El widget es invisible salvo que haga falta interacción, así que el
+    // formulario tiene que explicar por qué el botón todavía no responde.
+    expect(screen.getByRole('status')).toHaveTextContent('captchaPending');
   });
 
   it('al resolver el captcha, el botón se habilita y el token viaja en el POST', async () => {

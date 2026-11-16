@@ -193,9 +193,11 @@ const Portfolio: React.FC<PortfolioProps> = ({ navigateTo, onRequestProject }) =
                                             </div>
 
                                             <div className="flex-1 min-w-0">
-                                                <p className="text-deep-600 italic text-xs lg:text-sm leading-relaxed">
-                                                    &ldquo;{project.testimonial}&rdquo;
-                                                </p>
+                                                {project.testimonial && (
+                                                    <p className="text-deep-600 italic text-xs lg:text-sm leading-relaxed">
+                                                        &ldquo;{project.testimonial}&rdquo;
+                                                    </p>
+                                                )}
                                                 <div className="mt-1 flex flex-wrap items-baseline gap-x-1.5">
                                                     <span className="font-body text-[10px] lg:text-xs font-bold text-deep-800">{project.clientName}</span>
                                                     <span className="text-[9px] lg:text-xs text-deep-400 font-medium font-body">&middot;</span>

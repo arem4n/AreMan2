@@ -44,6 +44,7 @@ const renderCaseStudy = (slug: string) => {
 
 const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelectSlug }) => {
     const t = useTranslations('LogoCodex');
+    const tProcess = useTranslations('Process');
     const localizedHref = useLocalizedHref();
     const tabsRef = useRef<HTMLDivElement>(null);
     const [showBackToTabs, setShowBackToTabs] = useState(false);
@@ -62,10 +63,16 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
         document.getElementById('casos-de-estudio')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
-    const steps = ([1, 2, 3, 4, 5, 6] as const).map(n => ({
-        step: n,
-        title: t(`method.step${n}Title` as any),
-        desc: t(`method.step${n}Desc` as any),
+    // El proceso son los mismos 4 pasos de la portada (namespace `Process`);
+    // aquí se detalla qué tareas del método ocurren dentro de cada uno.
+    const phases = ([[1, [1, 2]], [2, [3, 4]], [3, [5]], [4, [6]]] as const).map(([phase, tasks]) => ({
+        phase,
+        title: tProcess(`step${phase}Title` as any),
+        tasks: tasks.map(n => ({
+            id: n,
+            title: t(`method.step${n}Title` as any),
+            desc: t(`method.step${n}Desc` as any),
+        })),
     }));
 
     return (
@@ -237,14 +244,24 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                             {t('method.title')}
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {steps.map((item) => (
-                                <div key={item.step} className="flex gap-4 items-start p-6 bg-deep-50 rounded-xl border border-deep-100">
-                                    <span className="flex-shrink-0 w-10 h-10 bg-symbolic-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                                        {item.step}
+                            {phases.map((item) => (
+                                <div key={item.phase} className="flex gap-4 items-start p-6 bg-deep-50 rounded-xl border border-deep-100">
+                                    <span aria-hidden="true" className="flex-shrink-0 w-10 h-10 bg-symbolic-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                                        {item.phase}
                                     </span>
                                     <div>
-                                        <h4 className="text-xl font-bold text-deep-800 mb-2">{item.title}</h4>
-                                        <p className="text-deep-600">{item.desc}</p>
+                                        <p className="text-xs font-bold uppercase tracking-widest text-symbolic-700 mb-1">
+                                            {t('method.phaseLabel', { n: item.phase })}
+                                        </p>
+                                        <h3 className="text-xl font-bold text-deep-800 mb-3">{item.title}</h3>
+                                        <ul className="space-y-3">
+                                            {item.tasks.map(task => (
+                                                <li key={task.id}>
+                                                    <span className="block font-semibold text-deep-800">{task.title}</span>
+                                                    <span className="block text-deep-600">{task.desc}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
                                 </div>
                             ))}

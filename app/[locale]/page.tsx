@@ -17,61 +17,31 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     });
 }
 
-const faqSchemaEs = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-        {
-            '@type': 'Question',
-            name: '¿Por qué hablan de "Soberanía Visual" y no solo de diseño de logotipos?',
-            acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Porque un logotipo aislado es solo un adorno. La Soberanía Visual es la construcción de un activo financiero intangible. Diseño sistemas completos basados en arquetipos y semiótica profunda que permiten a tu marca dejar de competir por precio y empezar a liderar por autoridad.',
-            },
-        },
-        {
-            '@type': 'Question',
-            name: '¿Cuál es el nivel de involucramiento requerido por parte del fundador?',
-            acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Requiere una colaboración profunda durante la Fase 1 (Diagnóstico Semiótico). Mi método LogoCodeX™ no funciona con formularios genéricos; necesito extraer la visión fundamental de los fundadores para codificarla en la identidad visual.',
-            },
-        },
-        {
-            '@type': 'Question',
-            name: '¿Trabajan con cualquier tipo de empresa o rubro?',
-            acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Sí. El método LogoCodeX™ no depende del rubro, depende de que haya algo real que contar.',
-            },
-        },
-        {
-            '@type': 'Question',
-            name: '¿Qué incluye exactamente la entrega de la Fase 3?',
-            acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'No entregamos archivos sueltos. Entregamos un ecosistema funcional con versiones vectoriales, sistemas cromáticos, motion graphics y Manual de Marca.',
-            },
-        },
-        {
-            '@type': 'Question',
-            name: '¿Cómo integran la Inteligencia Artificial en el proceso?',
-            acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'A través de mi pilar de "Creatividad Expandida". Uso modelos de IA avanzados para acelerar diagnósticos, generar iteraciones complejas y testear aplicaciones en tiempo récord.',
-            },
-        },
-    ],
-};
+const FAQ_ITEMS = [1, 2, 3, 4, 5] as const;
 
-export default function HomePage({ params }: { params: { locale: string } }) {
+export default async function HomePage({ params }: { params: { locale: string } }) {
     setRequestLocale(params.locale);
+
+    // Los datos estructurados salen de los mismos textos que se ven en la
+    // sección de preguntas frecuentes (namespace `FAQ`), en el idioma de la
+    // página: una sola fuente, y `/en` ya no publica las preguntas en español.
+    const t = await getTranslations({ locale: params.locale, namespace: 'FAQ' });
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        inLanguage: params.locale,
+        mainEntity: FAQ_ITEMS.map(n => ({
+            '@type': 'Question',
+            name: t(`q${n}`),
+            acceptedAnswer: { '@type': 'Answer', text: t(`a${n}`) },
+        })),
+    };
 
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaEs) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }}
             />
             <HomePageClient />
         </>

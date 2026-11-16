@@ -1,7 +1,8 @@
 
 import React, { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
+import type { TurnstileInstance } from '@marsidev/react-turnstile';
+import LazyTurnstile from './LazyTurnstile';
 import { trackEvent } from '../analytics';
 
 const Newsletter: React.FC = () => {
@@ -10,6 +11,8 @@ const Newsletter: React.FC = () => {
     const [email, setEmail] = useState('');
     const [formState, setFormState] = useState({ submitting: false, success: false, error: '' });
     const [turnstileToken, setTurnstileToken] = useState('');
+    const [captchaFailed, setCaptchaFailed] = useState(false);
+    const [captchaInteractive, setCaptchaInteractive] = useState(false);
     const turnstileRef = useRef<TurnstileInstance>(null);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -84,19 +87,23 @@ const Newsletter: React.FC = () => {
                     </button>
                 </form>
                 {turnstileSiteKey && (
-                    <div className="flex justify-center mt-4">
-                        <Turnstile
-                            ref={turnstileRef}
-                            siteKey={turnstileSiteKey}
-                            onSuccess={(token) => setTurnstileToken(token)}
-                            onExpire={() => setTurnstileToken('')}
-                            onError={() => setTurnstileToken('')}
-                        />
-                    </div>
+                    <LazyTurnstile
+                        ref={turnstileRef}
+                        siteKey={turnstileSiteKey}
+                        className="flex justify-center mt-4"
+                        onToken={(token) => { setTurnstileToken(token); setCaptchaFailed(false); setCaptchaInteractive(false); }}
+                        onNeedsInteraction={() => setCaptchaInteractive(true)}
+                        onClear={(failed) => { setTurnstileToken(''); setCaptchaFailed(failed); }}
+                    />
                 )}
-                <div className="h-6 mt-4">
+                <div className="min-h-6 mt-4">
                     {formState.success && <p className="text-sm text-creative-300 font-medium">{t('successMessage')}</p>}
                     {formState.error && <p className="text-sm text-symbolic-400">{formState.error}</p>}
+                    {!!turnstileSiteKey && !turnstileToken && !formState.success && !formState.error && (
+                        <p role="status" className="text-sm text-deep-200">
+                            {captchaFailed ? t('captchaError') : captchaInteractive ? t('captchaInteract') : t('captchaPending')}
+                        </p>
+                    )}
                 </div>
                 <p className="text-xs text-deep-500 mt-8 tracking-wide">{t('disclaimer')}</p>
             </div>

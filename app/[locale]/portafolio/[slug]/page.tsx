@@ -29,7 +29,7 @@ export async function generateMetadata({
     }
 
     const t = await getTranslations({ locale, namespace: 'Metadata' });
-    const title = `${project.title} ${t('caseStudySuffix')}`;
+    const title = `${project.title}${t('caseStudySuffix')}`;
     return pageMetadata({
         locale,
         path: `/portafolio/${project.slug}`,

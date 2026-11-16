@@ -12,13 +12,16 @@ import { tommyBoxProject } from './data/projects/tommybox';
 // Re-export logos for backward compatibility with components using constants.ts
 export { logoUrl, whiteLogoUrl };
 
-// Aggregate projects into the main array
+// Aggregate projects into the main array.
+// El orden es el del carrusel de la portada y el de las pestañas de /portafolio
+// (la primera es la que se abre por defecto): primero los clientes externos,
+// después los proyectos familiares y al final la marca propia.
 export const portfolioProjects: PortfolioProject[] = [
-    aremanProject,
-    arem4nProject,
-    ostTechProject,
     albornozProject,
-    southSoftProject,
+    ostTechProject,
     bm3Project,
-    tommyBoxProject
+    tommyBoxProject,
+    southSoftProject,
+    aremanProject,
+    arem4nProject
 ];

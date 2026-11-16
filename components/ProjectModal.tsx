@@ -282,9 +282,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateT
                         </div>
 
                         {/* Testimonial text */}
-                        <div className="relative z-10 text-white/90 text-[11px] lg:text-sm italic leading-relaxed font-body">
-                           <p>&ldquo;{project.testimonial}&rdquo;</p>
-                        </div>
+                        {project.testimonial && (
+                            <div className="relative z-10 text-white/90 text-[11px] lg:text-sm italic leading-relaxed font-body">
+                               <p>&ldquo;{project.testimonial}&rdquo;</p>
+                            </div>
+                        )}
                     </div>
 
                     {/* Gallery Thumbnails */}

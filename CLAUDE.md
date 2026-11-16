@@ -104,6 +104,16 @@ Deeper brand/design-system context (target users, emotional arc, aesthetic direc
 
 Both no-op gracefully (simulate success) if `RESEND_API_KEY` is absent. Both treat a Resend "contact already exists" error as success rather than failure. Both reject with a 400 if `lib/verifyTurnstile.ts` can't confirm the submission came from a real browser — it fails closed if `TURNSTILE_SECRET_KEY` is set but Cloudflare's `siteverify` call errors out, and no-ops (like the Resend key) if `TURNSTILE_SECRET_KEY` is absent. See `tests/api-contact.test.ts` / `tests/api-newsletter.test.ts` for the full behavior matrix, including how to mock the `resend` module.
 
+### Copy and forms (2026-11)
+
+- **One call to action:** "Hablemos de tu marca" / "Let's talk about your brand" (header: "Hablemos" / "Let's talk"). Don't bring back the "auditoría" variants. The form sends a message, it doesn't book a call; the only promise made is the 24–48 business-hour reply (`Contact.nextStep`, same window as the Resend auto-reply).
+- **Voice:** first person singular and "tú" (no company "we", no voseo). The brand is always written `LogoCodeX™` in visible text.
+- **Process:** four steps everywhere (`Process` namespace). `/portafolio` groups the six method tasks inside those four steps (`phases` in `components/LogoCodex.tsx`); the FAQ refers to steps by name.
+- **Turnstile:** both forms use `components/LazyTurnstile.tsx` (dark theme, `interaction-only`, mounted when the form nears the viewport). The widget is usually invisible, so each form shows a `role="status"` line while there is no token (`captchaPending` / `captchaInteract` / `captchaError`). To test by hand, build with Cloudflare's test site keys in `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: `1x00000000000000000000AA` (always passes) and `3x00000000000000000000FF` (forces the checkbox).
+- **Naming:** the section and menu entry are "Portafolio" (one menu entry, pointing to `/portafolio`); LogoCodeX™ is only the name of the method.
+- **Portfolio order:** `portfolioProjects` in `constants.ts` drives the home carousel and the default tab of `/portafolio` (first item): external clients first, family projects next, own brand last. `testimonial` is optional (own projects have none).
+- **FAQ JSON-LD** in `app/[locale]/page.tsx` is built from the `FAQ` messages in the page's locale; don't hard-code a copy.
+
 ### Environment Variables
 
 ```

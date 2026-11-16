@@ -73,7 +73,7 @@ const content = {
         s5P1Pre: 'El logo fue el primer acto. Pero una marca sin herramientas no sostiene una comunidad. Por eso construimos la plataforma que TommyBox necesitaba para operar: ',
         s5P1Bold: 'una web app completa, en producción, usada por clientes reales',
         s5P1Post: '.',
-        s5P2: 'El desafío no era técnico, era humano: ¿cómo hacés que alguien vuelva a entrenar mañana, y pasado, y la semana que viene? La respuesta estuvo en diseñar cada función pensando en ese momento de decisión.',
+        s5P2: 'El desafío no era técnico, era humano: ¿cómo haces que alguien vuelva a entrenar mañana, y pasado, y la semana que viene? La respuesta estuvo en diseñar cada función pensando en ese momento de decisión.',
         feat1Tag: 'Reserva de sesiones',
         feat1Body: 'Sin WhatsApp, sin llamadas. El cliente abre la app, ve la semana, elige su horario y confirma en segundos. Gustavo ve su agenda en tiempo real.',
         feat1Tech: 'Firestore en tiempo real · reglas de negocio server-side via Cloud Functions',

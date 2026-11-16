@@ -28,7 +28,8 @@ export interface PortfolioProject {
     mainImg: string;
     altText: string;
     title: string;
-    testimonial: string;
+    /** Cita del cliente. Se omite en los proyectos propios: no hay cliente que citar. */
+    testimonial?: string;
     clientName: string;
     clientRole: string;
     clientAvatar?: string;

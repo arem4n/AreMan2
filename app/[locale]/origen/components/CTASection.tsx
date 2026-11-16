@@ -6,7 +6,7 @@ import { useLocalizedHref, isPlainLeftClick } from '@/hooks/useLocalizedHref';
 
 const strings = {
     es: {
-        heading: 'Ya sabés quién soy.',
+        heading: 'Ya sabes quién soy.',
         headingLine2: '¿Hablamos de tu empresa?',
         btnPortfolio: 'Ver el trabajo',
         btnContact: 'Escribir directamente',

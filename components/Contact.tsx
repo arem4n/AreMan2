@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
+import type { TurnstileInstance } from '@marsidev/react-turnstile';
+import LazyTurnstile from './LazyTurnstile';
 import { trackEvent } from '../analytics';
 import { EmailIcon, WhatsAppIcon, InstagramIcon, BehanceIcon } from './icons/SocialIcons';
 
@@ -28,6 +29,8 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
     const [formData, setFormData] = useState({ name: '', email: '', message: '', honeypot: '' });
     const [formState, setFormState] = useState({ submitting: false, success: false, error: '' });
     const [turnstileToken, setTurnstileToken] = useState('');
+    const [captchaFailed, setCaptchaFailed] = useState(false);
+    const [captchaInteractive, setCaptchaInteractive] = useState(false);
     const turnstileRef = useRef<TurnstileInstance>(null);
 
     const sectionRef = useRef<HTMLElement>(null);
@@ -187,21 +190,28 @@ const Contact: React.FC<ContactProps> = ({ selectedPackage, clearSelectedPackage
                         />
 
                         {turnstileSiteKey && (
-                            <Turnstile
+                            <LazyTurnstile
                                 ref={turnstileRef}
                                 siteKey={turnstileSiteKey}
-                                onSuccess={(token) => setTurnstileToken(token)}
-                                onExpire={() => setTurnstileToken('')}
-                                onError={() => setTurnstileToken('')}
+                                onToken={(token) => { setTurnstileToken(token); setCaptchaFailed(false); setCaptchaInteractive(false); }}
+                                onNeedsInteraction={() => setCaptchaInteractive(true)}
+                                onClear={(failed) => { setTurnstileToken(''); setCaptchaFailed(failed); }}
                             />
                         )}
 
-                        <div className="h-14 pt-1">
+                        <p className="text-sm text-deep-200">{t('nextStep')}</p>
+
+                        <div className="min-h-14 pt-1">
                             <button type="submit" disabled={formState.submitting || (!!turnstileSiteKey && !turnstileToken)} className="w-full bg-symbolic-600 hover:bg-symbolic-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:bg-deep-600 disabled:cursor-not-allowed">
                                 {formState.submitting ? t('submitting') : t('submit')}
                             </button>
                             {formState.success && <p className="text-center text-sm text-creative-300 pt-2">{t('successMessage')}</p>}
                             {formState.error && <p className="text-center text-sm text-symbolic-400 pt-2">{formState.error}</p>}
+                            {!!turnstileSiteKey && !turnstileToken && !formState.success && !formState.error && (
+                                <p role="status" className="text-center text-sm text-deep-200 pt-2">
+                                    {captchaFailed ? t('captchaError') : captchaInteractive ? t('captchaInteract') : t('captchaPending')}
+                                </p>
+                            )}
                         </div>
                     </form>
 

@@ -6,9 +6,8 @@ export const arem4nProject: PortfolioProject = {
     altText: "Logo arem4n freelance",
     title: "AREM4N",
     slug: "arem4n-professional-brand",
-    testimonial: "La marca que define mi carrera.",
     clientName: "Sergio Arellano",
-    clientRole: "Fundador",
+    clientRole: "Proyecto propio",
     link: "javascript:void(0);",
     galleryImages: [
             { src: "/images/arem4n-logo.webp", alt: "Logo arem4n Profesional" }

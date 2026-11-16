@@ -11,19 +11,22 @@ import { portfolioProjects } from '../../constants';
 import Header from '../Header';
 import ElegantMenu from '../ElegantMenu';
 
+// La pestaña que se abre sin hash es el primer proyecto de la lista.
+const DEFAULT_SLUG = portfolioProjects[0].slug;
+
 const LogoCodexClient: React.FC = () => {
     const router = useRouter();
     const { customNavigate } = useLoading();
     const { isMenuOpen, toggleMenu } = useMenu();
 
     // SAFE STATE INITIALIZATION: Start with a default, non-window-dependent value.
-    const [selectedSlug, setSelectedSlug] = useState('areman-escudo-heraldico');
+    const [selectedSlug, setSelectedSlug] = useState(DEFAULT_SLUG);
 
     // This effect runs ONLY on the client, preventing hydration errors.
     useEffect(() => {
         const getSlugFromHash = () => {
             const hash = window.location.hash.substring(1);
-            return portfolioProjects.some(p => p.slug === hash) ? hash : 'areman-escudo-heraldico';
+            return portfolioProjects.some(p => p.slug === hash) ? hash : DEFAULT_SLUG;
         };
 
         const initialSlug = getSlugFromHash();

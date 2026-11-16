@@ -5,18 +5,17 @@
     "servicios": "Servicios",
     "portafolio": "Portafolio",
     "proceso": "Proceso",
-    "logocodex": "LogoCodex",
     "contacto": "Contacto"
   },
   "Header": {
-    "audit": "Auditar",
+    "audit": "Hablemos",
     "logoAlt": "Logotipo de AREM4N",
     "openMenu": "Abrir Menú",
     "closeMenu": "Cerrar Menú"
   },
   "ElegantMenu": {
-    "prompt": "¿Hablemos de tu marca?",
-    "cta": "Iniciar Auditoría",
+    "prompt": "¿Tienes un proyecto en mente?",
+    "cta": "Hablemos de tu marca",
     "navLabel": "Navegación principal"
   },
   "HomePage": {
@@ -25,9 +24,9 @@
   "Hero": {
     "headline": "Tu competencia también tiene un logo...",
     "subheadline": "Probablemente se parece al tuyo.",
-    "description": "no parte del diseño. Parte de entender qué hace única a tu empresa, y después lo hace visible.",
-    "ctaPrimary": "Solicitar Auditoría",
-    "ctaSecondary": "Descubrir LogoCodeX™",
+    "description": "es mi método: primero entiendo qué hace única a tu empresa, después lo convierto en una identidad visual.",
+    "ctaPrimary": "Hablemos de tu marca",
+    "ctaSecondary": "Ver el portafolio",
     "logoAlt": "Logotipo AREM4N"
   },
   "About": {
@@ -47,7 +46,7 @@
     "recommended": "RECOMENDADO",
     "estimatedInvestment": "Inversión estimada",
     "estimatedInvestmentScope": "Inversión estimada · según alcance",
-    "ctaCard": "Auditar con este Pack",
+    "ctaCard": "Consultar por este paquete",
     "presencia": {
       "title": "PRESENCIA",
       "subtitle": "Tu marca existe y se distingue.",
@@ -118,7 +117,7 @@
     "step1Title": "Diagnóstico",
     "step1Desc": "Entiendo qué es real y único en tu empresa antes de diseñar.",
     "step2Title": "Construcción simbólica",
-    "step2Desc": "Aplicamos LogoCodeX™ para traducir esa esencia en símbolo, paleta y narrativa.",
+    "step2Desc": "Aplico LogoCodeX™ para traducir esa esencia en símbolo, paleta y narrativa.",
     "step3Title": "Revisión conjunta",
     "step3Desc": "Iteramos hasta que sientas que lo que ves te representa de verdad.",
     "step4Title": "Entrega",
@@ -144,43 +143,46 @@
   "FAQ": {
     "tag": "Dudas Estratégicas",
     "title": "Preguntas antes de Iniciar",
-    "q1": "¿Por qué hablan de \"Soberanía Visual\" y no solo de diseño de logotipos?",
-    "a1": "Porque un logotipo aislado es solo un adorno. La Soberanía Visual es la construcción de un activo financiero intangible. Diseño sistemas completos basados en arquetipos y semiótica profunda que permiten a tu marca dejar de competir por precio y empezar a liderar por autoridad.",
-    "q2": "¿Cuál es el nivel de involucramiento requerido por parte del fundador?",
-    "a2": "Requiere una colaboración profunda durante la Fase 1 (Diagnóstico Semiótico). Mi método LogoCodex™ no funciona con formularios genéricos; necesito extraer la visión fundamental de los fundadores para codificarla en la identidad visual. Una vez superada esta fase, asumo el control técnico y arquitectónico.",
-    "q3": "¿Trabajan con cualquier tipo de empresa o rubro?",
-    "a3": "Sí. El método LogoCodeX™ no depende del rubro, depende de que haya algo real que contar. He trabajado con tecnología, servicios, gastronomía y más. Lo que sí requiero es compromiso con el proceso: si buscas un diseño rápido sin profundidad, mi forma de trabajar resultará excesiva para eso.",
-    "q4": "¿Qué incluye exactamente la entrega de la Fase 3?",
-    "a4": "No entregamos archivos sueltos. Entregamos un ecosistema funcional. Esto incluye versiones vectoriales infinitamente escalables, sistemas cromáticos exactos, motion graphics listos para implementación en código (React/Next.js), iconografía UI personalizada y un Manual de Marca exhaustivo que dicta las reglas absolutas de tu nueva identidad.",
-    "q5": "¿Cómo integran la Inteligencia Artificial en el proceso?",
+    "q1": "¿Por qué hablas de \"Soberanía Visual\" y no solo de logotipos?",
+    "a1": "Porque un logotipo solo no alcanza. Diseño el sistema completo (símbolo, colores, tipografía y reglas de uso) para que tu marca se reconozca sin tener que competir por precio.",
+    "q2": "¿Cuánto necesitas de mí durante el proceso?",
+    "a2": "Bastante al principio. El primer paso, el Diagnóstico, requiere una colaboración profunda: mi método LogoCodeX™ no funciona con formularios genéricos, necesito entender tu visión para convertirla en identidad visual. Después, el trabajo técnico corre por mi cuenta y vuelves a participar en la Revisión conjunta.",
+    "q3": "¿Trabajas con cualquier tipo de empresa o rubro?",
+    "a3": "Sí. El método LogoCodeX™ no depende del rubro, depende de que haya algo real que contar. He trabajado con software, consultoría, corretaje de propiedades, ingeniería y entrenamiento. Lo que sí requiero es compromiso con el proceso: si buscas un diseño rápido sin profundidad, mi forma de trabajar resultará excesiva para eso.",
+    "q4": "¿Qué incluye exactamente la Entrega?",
+    "a4": "No entrego archivos sueltos. Entrego un sistema listo para usar: versiones vectoriales del logo, códigos de color exactos, tipografías y un Manual de Marca que explica cómo y por qué se usa cada cosa. Según el paquete se suman aplicaciones para redes sociales, iconografía y motion graphics.",
+    "q5": "¿Cómo integras la Inteligencia Artificial en el proceso?",
     "a5": "A través de mi pilar de \"Creatividad Expandida\". Uso modelos de IA avanzados para acelerar diagnósticos, generar iteraciones complejas y testear aplicaciones en tiempo récord. Sin embargo, la dirección de arte, la estrategia semiótica y el pulido final de los vectores se mantienen estrictamente bajo control humano para garantizar originalidad absoluta."
   },
   "Contact": {
     "title": "Hablemos.",
     "p1": "Lo que más me gusta de este trabajo no es el resultado final. Es el proceso de descubrir qué historia tiene tu empresa y encontrar la forma de contarla visualmente.",
     "p2": "Cada marca es una narrativa distinta. Eso nunca se vuelve rutina.",
-    "p3": "Si llegaste hasta acá, es probable que tengas algo que vale la pena contar. Escríbeme y lo descubro juntos.",
-    "formTag": "Diagnóstico Inicial",
-    "namePlaceholder": "Nombre del Fundador",
-    "emailPlaceholder": "Email Corporativo",
-    "messagePlaceholder": "Cuéntame brevemente: ¿Cuál es el mayor desafío de identidad de tu startup hoy?",
-    "nameLabel": "Tu Nombre",
-    "emailLabel": "Tu Email",
-    "messageLabel": "Tu Mensaje",
-    "submit": "Solicitar Diagnóstico",
+    "p3": "Si llegaste hasta acá, es probable que tengas algo que vale la pena contar. Escríbeme y lo descubrimos juntos.",
+    "formTag": "Primer contacto",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "Tu correo",
+    "messagePlaceholder": "Cuéntame en dos líneas a qué se dedica tu empresa y qué te gustaría cambiar de su imagen.",
+    "nameLabel": "Tu nombre",
+    "emailLabel": "Tu correo",
+    "messageLabel": "Tu mensaje",
+    "submit": "Enviar mensaje",
+    "nextStep": "Te respondo yo mismo en 24 a 48 horas hábiles. Escribirme no te compromete a nada.",
     "submitting": "Procesando...",
-    "successMessage": "¡Solicitud recibida! Te contactaré para agendar.",
+    "successMessage": "¡Mensaje recibido! Te respondo en 24 a 48 horas hábiles.",
     "errorRequired": "Por favor, completa todos los campos.",
-    "captchaError": "No pudimos verificar que no eres un bot. Si usas un bloqueador de anuncios, desactívalo para este sitio e intenta de nuevo.",
+    "captchaError": "No se pudo verificar que no eres un bot. Si usas un bloqueador de anuncios, desactívalo para este sitio e intenta de nuevo.",
+    "captchaPending": "Verificando que no eres un bot…",
+    "captchaInteract": "Marca la casilla de verificación para poder enviar.",
     "errorConnection": "Error de conexión.",
-    "packageMessage": "Hola Sergio, quiero auditar mi marca con el paquete '{package}'. ¿Cómo funciona el proceso LogoCodex?",
+    "packageMessage": "Hola Sergio, me interesa el paquete '{package}'. ¿Cómo sería el proceso para mi marca?",
     "emailTitle": "Email Directo",
     "whatsappTitle": "WhatsApp Directo",
     "instagramTitle": "Instagram",
     "behanceTitle": "Portafolio Extendido"
   },
   "Newsletter": {
-    "tag": "Lead Magnet Exclusivo",
+    "tag": "Libro gratuito",
     "title1": "\"La máquina no tiene sombra.",
     "title2": "Tú sí.\"",
     "description1": "El dataset es un mar plano donde todo tiende al promedio. Si quieres que tu identidad sobreviva, prepárate para la",
@@ -194,7 +196,9 @@
     "submitting": "Enviando...",
     "successMessage": "¡Enviado! Revisa tu bandeja de entrada (o spam).",
     "errorEmail": "Por favor, ingresa un email válido.",
-    "captchaError": "No pudimos verificar que no eres un bot. Si usas un bloqueador de anuncios, desactívalo para este sitio e intenta de nuevo.",
+    "captchaError": "No se pudo verificar que no eres un bot. Si usas un bloqueador de anuncios, desactívalo para este sitio e intenta de nuevo.",
+    "captchaPending": "Verificando que no eres un bot…",
+    "captchaInteract": "Marca la casilla de verificación para poder enviar.",
     "errorConnection": "Algo salió mal.",
     "disclaimer": "* Al suscribirte, aceptas recibir correos sobre soberanía creativa. Cero spam."
   },
@@ -211,11 +215,11 @@
     "viewFullPortfolio": "Ver portafolio completo"
   },
   "CaseStudyLayout": {
-    "backButton": "Volver a LogoCodex",
-    "backAriaLabel": "Volver a LogoCodex",
+    "backButton": "Volver al portafolio",
+    "backAriaLabel": "Volver al portafolio",
     "ctaTitle": "¿Listo para codificar tu propia identidad?",
-    "ctaDescription": "No dejes que tu marca sea un \"average\" de la industria. Apliquemos el sistema LogoCodex™ para construir una identidad soberana.",
-    "ctaButton": "Solicitar Auditoría de Proyecto"
+    "ctaDescription": "No dejes que tu marca sea una más del montón. Apliquemos el método LogoCodeX™ para construir una identidad soberana.",
+    "ctaButton": "Hablemos de tu marca"
   },
   "NotFound": {
     "metaTitle": "Página no encontrada",
@@ -226,16 +230,16 @@
     "ctaPortfolio": "Ver el portafolio"
   },
   "Metadata": {
-    "homeTitle": "AREM4N | Soberanía Visual & Branding Estratégico",
-    "homeDescription": "LogoCodeX™: el sistema que construye identidades que justifican precios premium. Presencia, Autoridad, Legado — y las plataformas digitales donde viven.",
-    "homeOgTitle": "AREM4N | Soberanía Visual",
+    "homeTitle": "Diseño de identidad visual y branding en Puerto Montt | AREM4N",
+    "homeDescription": "Sergio Arellano diseña logotipos, identidades visuales y sitios web para empresas desde Puerto Montt, Chile, con su método LogoCodeX™. Revisa los casos y escríbeme.",
+    "homeOgTitle": "AREM4N | Identidad visual y branding desde Puerto Montt",
     "homeOgDescription": "Tu competencia también tiene un logo. Probablemente se parece al tuyo. LogoCodeX™ cambia eso.",
-    "portfolioTitle": "Portafolio de Diseño | LogoCodeX",
-    "portfolioDescription": "Explora el Codex de proyectos y la metodología LogoCodex™ para transformar logotipos en códigos visuales vivos con múltiples capas de significado.",
+    "portfolioTitle": "Portafolio de identidad visual y método LogoCodeX™",
+    "portfolioDescription": "Explora el Codex de proyectos y la metodología LogoCodeX™ para transformar logotipos en códigos visuales vivos con múltiples capas de significado.",
     "origenTitle": "Origen: la historia de Sergio Arellano",
     "origenDescription": "La evolución de Sergio Arellano / AREM4N — identidad, software y automatización construidos período por período.",
     "caseStudyNotFound": "Caso de Estudio no Encontrado | AREM4N",
-    "caseStudySuffix": "| Caso de Estudio Portafolio LogoCodeX"
+    "caseStudySuffix": ": caso de estudio de identidad visual"
   },
   "LogoCodex": {
     "homeBtn": "Volver a Inicio",
@@ -265,7 +269,7 @@
       "boxTitle": "Diferencia Fundamental",
       "traditional": "Logo Tradicional",
       "traditionalDesc": "Elemento gráfico estático que identifica.",
-      "living": "Símbolo Vivo (LogoCodeX)",
+      "living": "Símbolo Vivo (LogoCodeX™)",
       "li1Bold": "Activa memoria cultural:",
       "li1Rest": " Conecta con experiencias preexistentes.",
       "li2Bold": "Genera capas:",
@@ -277,29 +281,30 @@
       "title": "Los 3 Pilares Teóricos",
       "p1Title": "1. Semiótica Visual",
       "p1Sub": "Peirce & Barthes",
-      "p1Desc": "Entendemos cómo funcionan los signos. Usamos el modelo triádico (Ícono, Índice, Símbolo) y los niveles de Barthes (Denotación, Connotación, Mito) para asegurar que el mensaje se lea con la intención correcta.",
+      "p1Desc": "Entiendo cómo funcionan los signos. Uso el modelo triádico (Ícono, Índice, Símbolo) y los niveles de Barthes (Denotación, Connotación, Mito) para asegurar que el mensaje se lea con la intención correcta.",
       "p2Title": "2. Psicología Arquetípica",
       "p2Sub": "Jung & Pearson",
-      "p2Desc": "Conectamos con patrones universales del inconsciente colectivo. Definimos si tu marca es un \"Héroe\", un \"Creador\" o un \"Sabio\" para generar identificación inmediata y emocional.",
+      "p2Desc": "Conecto con patrones universales del inconsciente colectivo. Defino si tu marca es un \"Héroe\", un \"Creador\" o un \"Sabio\" para generar identificación inmediata y emocional.",
       "p3Title": "3. Narrativa Estratégica",
       "p3Sub": "El Mito de Marca",
-      "p3Desc": "Transformamos un signo gráfico en una historia. Aseguramos la coherencia entre el símbolo, la promesa de la marca y su contexto cultural."
+      "p3Desc": "Transformo un signo gráfico en una historia. Aseguro la coherencia entre el símbolo, la promesa de la marca y su contexto cultural."
     },
     "book": {
       "title": "El Libro de los Símbolos",
       "descPre": "El corazón operativo de LogoCodeX™. No es un banco de imágenes, es un ",
       "descEm": "repositorio vivo de significados",
       "descPost": ".",
-      "intro": "Cada entrada en nuestro sistema contiene:",
+      "intro": "Cada entrada del sistema contiene:",
       "item1": "Origen Histórico (Mitos, religiones, arte)",
       "item2": "Connotaciones Positivas (Transformación, poder)",
       "item3": "Connotaciones Negativas (Riesgos culturales)",
       "item4": "Arquetipo Asociado (¿Quién usa este símbolo?)"
     },
     "method": {
-      "title": "Metodología: El Proceso de 6 Pasos",
+      "title": "Metodología: los 4 pasos por dentro",
+      "phaseLabel": "Paso {n}",
       "step1Title": "Anclaje de Identidad",
-      "step1Desc": "Definimos la intención profunda más allá del producto.",
+      "step1Desc": "Defino la intención profunda más allá del producto.",
       "step2Title": "Definición de Arquetipo",
       "step2Desc": "Selección del rol psicológico (Héroe, Sabio, etc.)",
       "step3Title": "Mapeo de Símbolos",
@@ -318,7 +323,7 @@
     "cta": {
       "title": "¿Tu marca es soberana o genérica?",
       "body": "El Manual LogoCodeX™ es la herramienta práctica para evitar la irrelevancia. Juntos, podemos desvelar tu historia única y traducirla en un símbolo que nadie más podría reclamar.",
-      "btn": "Solicitar Auditoría de Identidad"
+      "btn": "Hablemos de tu marca"
     }
   }
 }

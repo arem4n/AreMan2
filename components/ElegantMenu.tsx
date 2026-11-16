@@ -55,9 +55,8 @@ const ElegantMenu: React.FC<ElegantMenuProps> = ({ isOpen, toggleMenu, navigateT
         { href: "#inicio", label: t('Navigation.inicio') },
         { href: "#origen", label: t('Navigation.origen') },
         { href: "#servicios", label: t('Navigation.servicios') },
-        { href: "#portafolio", label: t('Navigation.portafolio') },
+        { href: "/portafolio", label: t('Navigation.portafolio') },
         { href: "#proceso", label: t('Navigation.proceso') },
-        { href: "/portafolio", label: t('Navigation.logocodex') },
         { href: "#contacto", label: t('Navigation.contacto') },
     ];
 
