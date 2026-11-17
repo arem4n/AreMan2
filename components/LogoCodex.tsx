@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { SemioticsIcon, LayersIcon, ArchetypeIcon, BookIcon, GridIcon, HomeIcon, BackArrowIcon } from './icons/CodexIcons';
+import { SemioticsIcon, LayersIcon, ArchetypeIcon, BookIcon, GridIcon, BackArrowIcon } from './icons/CodexIcons';
 import { portfolioProjects } from '../constants';
 import { trackEvent } from '../analytics';
 import Arem4nCaseStudy from './casestudies/Arem4nCaseStudy';
@@ -77,17 +77,6 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
 
     return (
         <div className="bg-deep-50 font-body relative">
-            {/* Floating Home Button */}
-            <button
-                onClick={() => navigateTo('#inicio')}
-                className="fixed bottom-6 left-6 z-[99] flex items-center justify-center bg-gradient-to-r from-symbolic-600 to-deep-700 text-white font-semibold py-3 px-5 rounded-full shadow-xl hover:shadow-2xl [@media(hover:hover)]:hover:scale-105 active:scale-95 transition duration-200 ease-out animate-fade-in-up"
-                style={{ animationDelay: '200ms' }}
-                aria-label={t('homeBtn')}
-            >
-                <HomeIcon className="w-5 h-5" />
-                <span className="hidden sm:inline ml-2">{t('homeBtn')}</span>
-            </button>
-
             {/* Floating Back-to-Tabs Button */}
             <button
                 onClick={scrollToTabs}
@@ -116,6 +105,54 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                         </p>
                         <div className="mt-8 inline-block px-6 py-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-md">
                             <span className="font-mono text-creative-300">{t('hero.formula')}</span>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Casos de estudio: van primero, la página se llama "Portafolio" */}
+                <section id="casos-de-estudio" className="py-16 lg:py-24 bg-gradient-to-br from-deep-100 to-white">
+                    <div className="max-w-6xl mx-auto px-4">
+                        <h2 className="text-3xl lg:text-5xl font-display font-bold text-center mb-6 text-deep-800">
+                            {t('cases.title')}
+                        </h2>
+                        <p className="text-lg text-deep-700 text-center max-w-3xl mx-auto mb-12">
+                            {t('cases.subtitle')}
+                        </p>
+
+                        <div ref={tabsRef} className="flex flex-wrap justify-center gap-3 mb-12">
+                            {portfolioProjects.map(project => (
+                                <a
+                                    key={project.slug}
+                                    href={localizedHref(`/portafolio/${project.slug}`)}
+                                    aria-current={selectedSlug === project.slug ? 'true' : undefined}
+                                    onClick={(e) => {
+                                        if (!isPlainLeftClick(e)) return;
+                                        e.preventDefault();
+                                        onSelectSlug(project.slug);
+                                    }}
+                                    className={`px-5 py-2.5 font-semibold rounded-full text-sm transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-symbolic-500
+                                        ${selectedSlug === project.slug
+                                            ? 'bg-symbolic-600 text-white shadow-md'
+                                            : 'bg-white text-deep-600 hover:bg-deep-100 shadow-sm border border-deep-200'
+                                        }`}
+                                >
+                                    {project.title}
+                                </a>
+                            ))}
+                        </div>
+
+                        <div className="max-w-4xl mx-auto">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={selectedSlug}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.35, ease: 'easeInOut' }}
+                                >
+                                    {renderCaseStudy(selectedSlug)}
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
                     </div>
                 </section>
@@ -265,54 +302,6 @@ const LogoCodex: React.FC<LogoCodexProps> = ({ navigateTo, selectedSlug, onSelec
                                     </div>
                                 </div>
                             ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* SECCIÓN 7: Casos de Estudio */}
-                <section id="casos-de-estudio" className="py-16 lg:py-24 bg-gradient-to-br from-deep-100 to-white">
-                    <div className="max-w-6xl mx-auto px-4">
-                        <h2 className="text-3xl lg:text-5xl font-display font-bold text-center mb-6 text-deep-800">
-                            {t('cases.title')}
-                        </h2>
-                        <p className="text-lg text-deep-700 text-center max-w-3xl mx-auto mb-12">
-                            {t('cases.subtitle')}
-                        </p>
-
-                        <div ref={tabsRef} className="flex flex-wrap justify-center gap-3 mb-12">
-                            {portfolioProjects.map(project => (
-                                <a
-                                    key={project.slug}
-                                    href={localizedHref(`/portafolio/${project.slug}`)}
-                                    aria-current={selectedSlug === project.slug ? 'true' : undefined}
-                                    onClick={(e) => {
-                                        if (!isPlainLeftClick(e)) return;
-                                        e.preventDefault();
-                                        onSelectSlug(project.slug);
-                                    }}
-                                    className={`px-5 py-2.5 font-semibold rounded-full text-sm transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-symbolic-500
-                                        ${selectedSlug === project.slug
-                                            ? 'bg-symbolic-600 text-white shadow-md'
-                                            : 'bg-white text-deep-600 hover:bg-deep-100 shadow-sm border border-deep-200'
-                                        }`}
-                                >
-                                    {project.title}
-                                </a>
-                            ))}
-                        </div>
-
-                        <div className="max-w-4xl mx-auto">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={selectedSlug}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{ duration: 0.35, ease: 'easeInOut' }}
-                                >
-                                    {renderCaseStudy(selectedSlug)}
-                                </motion.div>
-                            </AnimatePresence>
                         </div>
                     </div>
                 </section>

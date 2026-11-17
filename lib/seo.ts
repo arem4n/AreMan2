@@ -117,3 +117,48 @@ export function buildSitemap(): MetadataRoute.Sitemap {
         }))
     );
 }
+
+/**
+ * Datos estructurados del negocio y de su autor para la portada. Solo usa
+ * datos que ya están publicados en el sitio (contacto, ciudad, redes). Sin
+ * reseñas ni rango de precios: las citas del portafolio no son reseñas
+ * verificables y los precios pueden cambiar.
+ */
+export function businessSchema(locale: string, description: string) {
+    const loc = normalizeLocale(locale);
+    const personId = `${SITE_URL}/#sergio-arellano`;
+    const sameAs = ['https://www.instagram.com/arem4n', 'https://www.behance.net/arem4n'];
+
+    return {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'ProfessionalService',
+                '@id': `${SITE_URL}/#negocio`,
+                name: SITE_NAME,
+                url: absoluteUrl(loc, '/'),
+                description,
+                image: `${SITE_URL}${OG_IMAGE[loc]}`,
+                logo: `${SITE_URL}/images/logo-white.png`,
+                email: 'contacto@arem4n.com',
+                telephone: '+56934973287',
+                address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Puerto Montt',
+                    addressRegion: 'Los Lagos',
+                    addressCountry: 'CL',
+                },
+                founder: { '@id': personId },
+                sameAs,
+            },
+            {
+                '@type': 'Person',
+                '@id': personId,
+                name: 'Sergio Arellano',
+                url: absoluteUrl(loc, '/origen'),
+                worksFor: { '@id': `${SITE_URL}/#negocio` },
+                sameAs,
+            },
+        ],
+    };
+}

@@ -385,7 +385,7 @@ export default function OrigenClient() {
         <HTimeline periods={PERIODS} active={activePeriod} onNode={scrollToPeriod} rm={rm} visible={showTimeline} />
         <VTimeline periods={PERIODS} active={activePeriod} onNode={scrollToPeriod} rm={rm} visible={showTimeline} />
 
-        <div className="max-w-screen-xl mx-auto pl-[136px] pr-6 md:px-20 lg:px-24">
+        <div className="max-w-screen-xl mx-auto px-6 md:px-20 lg:px-24">
           {PERIODS.map((p, i) => {
             if (p.isDashboard) {
               return (

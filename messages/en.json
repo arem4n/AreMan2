@@ -216,7 +216,6 @@
   },
   "CaseStudyLayout": {
     "backButton": "Back to the portfolio",
-    "backAriaLabel": "Back to the portfolio",
     "ctaTitle": "Ready to encode your own identity?",
     "ctaDescription": "Don't let your brand be just one more in the crowd. Let's apply the LogoCodeX™ method to build a sovereign identity.",
     "ctaButton": "Let's talk about your brand"
@@ -242,7 +241,6 @@
     "caseStudySuffix": ": visual identity case study"
   },
   "LogoCodex": {
-    "homeBtn": "Back to Home",
     "casesBtn": "Case Studies",
     "hero": {
       "tag": "Visual Identity Portfolio",

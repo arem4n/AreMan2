@@ -36,11 +36,11 @@ const CONTENT = {
       senales: 'Señales',
     },
     skills: [
-      { label: 'Identidad de marca', percentage: 80, body: 'No es diseñar un logo. Es definir qué es real y único en tu empresa antes de que la máquina dibuje una sola línea. Sin eso, todo lo que viene después es decoración.' },
-      { label: 'Narrativa estratégica', percentage: 90, body: 'Las empresas que no saben contar su historia dejan que otros la cuenten por ellas. Construyo el relato que hace que tu cliente entienda en segundos por qué vos y no otro.' },
-      { label: 'Desarrollo de software', percentage: 70, body: 'Identificar qué es tu empresa es la mitad. La otra mitad es construir los sistemas que lo operacionalizan. Plataformas, automatizaciones, herramientas internas — en semanas, no en meses.' },
-      { label: 'Automatización de procesos', percentage: 60, body: 'El trabajo que tu equipo hace manualmente y que consume tiempo sin agregar valor es el primer problema que resuelvo. Si se puede sistematizar, se sistematiza.' },
-      { label: 'Formación corporativa', percentage: 40, body: 'De nada sirve implementar IA en una empresa si el equipo no sabe cómo operar con ella. Capacito equipos para que el sistema funcione sin que yo tenga que estar presente.' }
+      { label: 'Identidad de marca', body: 'No es diseñar un logo. Es definir qué es real y único en tu empresa antes de que la máquina dibuje una sola línea. Sin eso, todo lo que viene después es decoración.' },
+      { label: 'Narrativa estratégica', body: 'Las empresas que no saben contar su historia dejan que otros la cuenten por ellas. Construyo el relato que hace que tu cliente entienda en segundos por qué vos y no otro.' },
+      { label: 'Desarrollo de software', body: 'Identificar qué es tu empresa es la mitad. La otra mitad es construir los sistemas que lo operacionalizan. Plataformas, automatizaciones, herramientas internas — en semanas, no en meses.' },
+      { label: 'Automatización de procesos', body: 'El trabajo que tu equipo hace manualmente y que consume tiempo sin agregar valor es el primer problema que resuelvo. Si se puede sistematizar, se sistematiza.' },
+      { label: 'Formación corporativa', body: 'De nada sirve implementar IA en una empresa si el equipo no sabe cómo operar con ella. Capacito equipos para que el sistema funcione sin que yo tenga que estar presente.' }
     ],
     sectors: [
       { label: 'Fitness / Entrenamiento funcional', body: 'Construí TommyBox — plataforma completa de gestión para un box de entrenamiento funcional. Reservas, gamificación, analítica, feedback con IA. Desde cero, en producción con atletas reales.' },
@@ -86,11 +86,11 @@ const CONTENT = {
       senales: 'Signals',
     },
     skills: [
-      { label: 'Brand identity', percentage: 80, body: "It's not about designing a logo. It's about defining what is real and unique about your company before the machine draws a single line. Without that, everything that follows is decoration." },
-      { label: 'Strategic narrative', percentage: 90, body: "Companies that don't know how to tell their story let others tell it for them. I build the narrative that makes your client understand in seconds why you and not someone else." },
-      { label: 'Software development', percentage: 70, body: "Identifying what your company is is half the battle. The other half is building the systems that operationalize it. Platforms, automations, internal tools — in weeks, not months." },
-      { label: 'Process automation', percentage: 60, body: "The work your team does manually that consumes time without adding value is the first problem I solve. If it can be systematized, it gets systematized." },
-      { label: 'Corporate training', percentage: 40, body: "Implementing AI in a company is useless if the team doesn't know how to operate with it. I train teams so the system works without me needing to be present." }
+      { label: 'Brand identity', body: "It's not about designing a logo. It's about defining what is real and unique about your company before the machine draws a single line. Without that, everything that follows is decoration." },
+      { label: 'Strategic narrative', body: "Companies that don't know how to tell their story let others tell it for them. I build the narrative that makes your client understand in seconds why you and not someone else." },
+      { label: 'Software development', body: "Identifying what your company is is half the battle. The other half is building the systems that operationalize it. Platforms, automations, internal tools — in weeks, not months." },
+      { label: 'Process automation', body: "The work your team does manually that consumes time without adding value is the first problem I solve. If it can be systematized, it gets systematized." },
+      { label: 'Corporate training', body: "Implementing AI in a company is useless if the team doesn't know how to operate with it. I train teams so the system works without me needing to be present." }
     ],
     sectors: [
       { label: 'Fitness / Functional training', body: 'Built TommyBox — complete management platform for a functional training box. Bookings, gamification, analytics, AI feedback. From scratch, in production with real athletes.' },
@@ -174,31 +174,20 @@ export const DashboardSection = React.memo(function DashboardSection({
               <h3 className="font-display text-base font-bold uppercase tracking-wider text-symbolic-600/70 mb-6">
                 {c.sections.competencias}
               </h3>
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-1">
                 {c.skills.map((skill) => (
                   <button
                     key={skill.label}
                     onClick={(e) => onOpenModal({ title: skill.label, body: skill.body }, e)}
-                    className="w-full text-left flex flex-col gap-2 group cursor-pointer focus:outline-none"
+                    className="w-full text-left flex flex-col justify-center group cursor-pointer focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-symbolic-600 rounded"
                     style={{ minHeight: '44px' }}
                   >
-                    <div className="flex justify-between items-baseline">
+                    <span className="flex justify-between items-center gap-4 py-2 border-b border-symbolic-200/40">
                       <span className="font-body text-sm font-semibold text-deep-900 group-hover:text-symbolic-600 transition-colors">
                         {skill.label}
                       </span>
-                      <span className="font-display text-sm font-bold text-symbolic-600">
-                        {skill.percentage}%
-                      </span>
-                    </div>
-                    <div className="w-full h-1.5 bg-symbolic-100/50 rounded-full overflow-hidden border border-symbolic-200/20">
-                      <motion.div
-                        className="h-full bg-gradient-to-r from-symbolic-600 to-creative-400"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.percentage}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: rm ? 0 : 0.8, ease: 'easeOut' }}
-                      />
-                    </div>
+                      <span aria-hidden="true" className="font-display text-lg font-bold text-symbolic-600 leading-none">+</span>
+                    </span>
                   </button>
                 ))}
               </div>

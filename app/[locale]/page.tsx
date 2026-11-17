@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import HomePageClient from './HomePageClient';
-import { pageMetadata } from '@/lib/seo';
+import { businessSchema, pageMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
     const { locale } = params;
@@ -37,12 +37,18 @@ export default async function HomePage({ params }: { params: { locale: string } 
         })),
     };
 
+    const tMeta = await getTranslations({ locale: params.locale, namespace: 'Metadata' });
+    const schemas = [businessSchema(params.locale, tMeta('homeDescription')), faqSchema];
+
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }}
-            />
+            {schemas.map((schema, i) => (
+                <script
+                    key={i}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
+                />
+            ))}
             <HomePageClient />
         </>
     );

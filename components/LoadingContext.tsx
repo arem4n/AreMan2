@@ -13,31 +13,26 @@ interface LoadingContextType {
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
 
 export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [isLoading, setIsLoading] = useState(true);
+    // `isLoading` solo es true mientras una navegación de `customNavigate`
+    // está en curso (muestra la barra de progreso). La carga inicial no lo
+    // activa: el HTML del servidor se ve de inmediato.
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     // usePathname from next-intl strips locale prefix — '/' for home in any locale
     const pathname = usePathname();
 
+    // La navegación terminó cuando cambia la ruta.
     useEffect(() => {
-        if (document.readyState === 'complete') {
-            setIsLoading(false);
-        } else {
-            const handleLoad = () => setIsLoading(false);
-            window.addEventListener('load', handleLoad, { once: true });
-            const fallback = setTimeout(() => setIsLoading(false), 2000);
-            return () => {
-                window.removeEventListener('load', handleLoad);
-                clearTimeout(fallback);
-            };
-        }
-    }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 500);
-        return () => clearTimeout(timer);
+        setIsLoading(false);
     }, [pathname]);
+
+    // Red de seguridad: si la ruta nunca cambia (navegación cancelada o
+    // fallida), la barra no puede quedarse encendida para siempre.
+    useEffect(() => {
+        if (!isLoading) return;
+        const fallback = setTimeout(() => setIsLoading(false), 8000);
+        return () => clearTimeout(fallback);
+    }, [isLoading]);
 
     const customNavigate = useCallback(async (url: string) => {
         if (url.startsWith('#')) {
@@ -73,11 +68,7 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
         setIsLoading(true);
 
-        await Promise.all([
-            new Promise(resolve => setTimeout(resolve, 500)),
-            Promise.resolve(router.prefetch(url as any)),
-        ]);
-
+        router.prefetch(url as any);
         router.push(url as any);
     }, [router, pathname]);
 

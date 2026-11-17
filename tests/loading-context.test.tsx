@@ -7,8 +7,8 @@ import { STORAGE_KEYS } from '@/lib/storageKeys';
 
 // customNavigate() es el corazón de "Never use <Link> or router.push
 // directly" (CLAUDE.md): decide entre 4 caminos según si el link es un hash,
-// si ya estamos en esa página, o si hay que navegar de verdad con el
-// preloader. Se mockea @/navigation (wrapper de next-intl) para controlar
+// si ya estamos en esa página, o si hay que navegar de verdad (con la
+// barra de progreso). Se mockea @/navigation (wrapper de next-intl) para controlar
 // pathname/router sin depender del App Router real.
 
 const push = vi.fn();
@@ -99,7 +99,7 @@ describe('customNavigate', () => {
     await waitFor(() => expect(ctxRef).toBeDefined());
 
     const navPromise = ctxRef.customNavigate('/portafolio');
-    // isLoading se activa de inmediato, antes de esperar el timeout/prefetch
+    // isLoading se activa de inmediato (enciende la barra de progreso)
     await waitFor(() => expect(latestLoading).toBe(true));
 
     await navPromise;

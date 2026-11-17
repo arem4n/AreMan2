@@ -216,7 +216,6 @@
   },
   "CaseStudyLayout": {
     "backButton": "Volver al portafolio",
-    "backAriaLabel": "Volver al portafolio",
     "ctaTitle": "¿Listo para codificar tu propia identidad?",
     "ctaDescription": "No dejes que tu marca sea una más del montón. Apliquemos el método LogoCodeX™ para construir una identidad soberana.",
     "ctaButton": "Hablemos de tu marca"
@@ -242,7 +241,6 @@
     "caseStudySuffix": ": caso de estudio de identidad visual"
   },
   "LogoCodex": {
-    "homeBtn": "Volver a Inicio",
     "casesBtn": "Casos de estudio",
     "hero": {
       "tag": "Portafolio de Identidad Visual",

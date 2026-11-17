@@ -102,86 +102,36 @@ html.modal-open {
     overflow: hidden;
 }
 
-/* Preloader Styles */
-#preloader {
+/* Barra de progreso de navegación (reemplaza al preloader de pantalla completa) */
+.nav-progress {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
     z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--c-surface-900);
-    transition: opacity 0.5s ease-in-out;
-}
-#preloader.preloader-hiding {
-    opacity: 0;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
 }
-.preloader-container {
-    position: relative;
-    width: 170px;
-    height: 170px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nav-progress-active {
+    opacity: 1;
 }
-.preloader-spinner {
-    position: absolute;
-    width: 100%;
+.nav-progress-bar {
     height: 100%;
-    border-radius: 50%;
-    background: conic-gradient(
-        from 90deg,
-        transparent 0%,
-        color-mix(in srgb, var(--c-primary-300) 10%, transparent) 50%,
-        var(--c-primary-500) 95%,
-        var(--c-primary-200) 100%
-    );
-    /* Make it a ring. The hole is 65% of the size */
-    -webkit-mask-image: radial-gradient(transparent 65%, black 66%);
-    mask-image: radial-gradient(transparent 65%, black 66%);
-    /* The blur is key to making it look fluid and fiery */
-    filter: blur(8px);
-    animation: spin 2s linear infinite;
+    background: var(--c-primary-500);
+    transform-origin: left center;
+    transform: scaleX(0);
 }
-#preloader .preloader-logo {
-    width: 110px;
-    height: 110px;
-    animation: preloader-pulse 2s ease-in-out infinite;
-    background-color: var(--c-primary-500);
-    -webkit-mask-image: url('/images/logo-black.webp');
-    mask-image: url('/images/logo-black.webp');
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
+.nav-progress-active .nav-progress-bar {
+    animation: nav-progress-grow 2.5s cubic-bezier(0.1, 0.7, 0.2, 1) forwards;
 }
-@keyframes preloader-pulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-        filter: drop-shadow(0 0 5px var(--c-primary-200));
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 0.9;
-        filter: drop-shadow(0 0 12px var(--c-primary-500));
-    }
+@keyframes nav-progress-grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(0.92); }
 }
 @keyframes spin {
     to { transform: rotate(360deg); }
-}
-
-/* Main content visibility */
-.main-content-wrapper {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    transition-delay: 0.2s; /* Delay to start after preloader fades */
-}
-.main-content-wrapper.visible {
-    opacity: 1;
 }
 
 /* Accessibility Improvements */

@@ -9,6 +9,7 @@ import {
     pageMetadata,
     indexablePaths,
     buildSitemap,
+    businessSchema,
 } from '@/lib/seo';
 import { portfolioProjects } from '@/constants';
 import { routing } from '@/i18n/routing';
@@ -93,6 +94,22 @@ describe('lib/seo — sitemap', () => {
             for (const locale of routing.locales) {
                 expect(languages[locale as keyof typeof languages]).toBeTruthy();
             }
+        }
+    });
+});
+
+describe('lib/seo — datos estructurados del negocio', () => {
+    it('describe el negocio y a su autor con la URL del idioma, sin reseñas ni precios', () => {
+        const schema = businessSchema('en', 'Desc');
+        const [business, person] = schema['@graph'];
+        expect(business['@type']).toBe('ProfessionalService');
+        expect(business.url).toBe(`${SITE_URL}/en`);
+        expect(business.address?.addressLocality).toBe('Puerto Montt');
+        expect(person['@type']).toBe('Person');
+        expect(person.url).toBe(`${SITE_URL}/en/origen`);
+        const json = JSON.stringify(schema);
+        for (const banned of ['aggregateRating', 'review', 'priceRange']) {
+            expect(json).not.toContain(banned);
         }
     });
 });
