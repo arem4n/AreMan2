@@ -4,6 +4,7 @@ import { PortfolioProject } from '../../types';
 export const aremanProject: PortfolioProject = {
     mainImg: "/images/areman-main.webp",
     altText: "Escudo Heráldico AreMan",
+    coverImg: { src: "/images/areman-wood.webp", alt: "Aplicación Física: Timbre y Stickers" },
     title: "AREMAN",
     slug: "areman-escudo-heraldico",
     testimonial: "Un legado visual que une dos mundos.",

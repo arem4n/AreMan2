@@ -284,7 +284,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, navigateT
                         {/* Testimonial text */}
                         {project.testimonial && (
                             <div className="relative z-10 text-white/90 text-[11px] lg:text-sm italic leading-relaxed font-body">
-                               <p>&ldquo;{project.testimonial}&rdquo;</p>
+                               <p>&ldquo;{project.testimonial.replace(/<[^>]+>/g, '')}&rdquo;</p>
                             </div>
                         )}
                     </div>

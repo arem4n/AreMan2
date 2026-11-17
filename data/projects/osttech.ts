@@ -4,6 +4,7 @@ import { PortfolioProject } from '../../types';
 export const ostTechProject: PortfolioProject = {
     mainImg: "/images/ost-tech-hero.webp",
     altText: "Logo OstTech",
+    coverImg: { src: "/images/osttech-desktop.webp", alt: "Interfaz de Escritorio: Dashboard de Control" },
     title: "OST TECH",
     slug: "osttech-software",
     testimonial: "Fusión perfecta de industria y naturaleza.",

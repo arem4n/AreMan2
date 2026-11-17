@@ -4,6 +4,7 @@ import { PortfolioProject } from '../../types';
 export const southSoftProject: PortfolioProject = {
     mainImg: "/images/southsoft-logo.webp",
     altText: "Logo SouthSoft",
+    coverImg: { src: "/images/southsoft-signature.webp", alt: "Aplicación Corporativa: Pie de Firma" },
     title: "SOUTHSOFT",
     slug: "southsoft-consultoria",
     testimonial: "Son mucho más que un logo, una historia sintetizada.",

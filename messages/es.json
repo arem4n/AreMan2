@@ -27,7 +27,8 @@
     "description": "es mi método: primero entiendo qué hace única a tu empresa, después lo convierto en una identidad visual.",
     "ctaPrimary": "Hablemos de tu marca",
     "ctaSecondary": "Ver el portafolio",
-    "logoAlt": "Logotipo AREM4N"
+    "logoAlt": "Logotipo AREM4N",
+    "workLabel": "Trabajos destacados"
   },
   "About": {
     "tag": "Origen",
@@ -208,9 +209,7 @@
   },
   "Portfolio": {
     "title": "Portafolio",
-    "swipeHint": "Desliza o usa las flechas para girar",
-    "prevAriaLabel": "Proyecto anterior",
-    "nextAriaLabel": "Proyecto siguiente",
+    "subtitle": "Identidades construidas con LogoCodeX™. Abre cualquiera para ver el proceso completo.",
     "viewProject": "Ver Proyecto",
     "viewFullPortfolio": "Ver portafolio completo"
   },

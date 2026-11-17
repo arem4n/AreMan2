@@ -30,6 +30,8 @@ export interface PortfolioProject {
     title: string;
     /** Cita del cliente. Se omite en los proyectos propios: no hay cliente que citar. */
     testimonial?: string;
+    /** Foto de la marca aplicada para la grilla de la portada; si falta se usa `mainImg` (el logotipo). */
+    coverImg?: { src: string; alt: string };
     clientName: string;
     clientRole: string;
     clientAvatar?: string;

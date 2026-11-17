@@ -4,6 +4,7 @@ import { PortfolioProject } from '../../types';
 export const tommyBoxProject: PortfolioProject = {
     mainImg: "/images/tommybox-logo-final.webp",
     altText: "Logo de TommyBox Training con tipografía bold.",
+    coverImg: { src: "/images/tommybox-merch.webp", alt: "Merchandising Oficial: Poleras TommyBox" },
     title: "TOMMYBOX",
     slug: "tommybox-training",
     testimonial: "Tiene fuerza, tiene impacto. Se ve increíble en la pared del gimnasio. <strong>Es una marca que motiva a entrenar.</strong>",

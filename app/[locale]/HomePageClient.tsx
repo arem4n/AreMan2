@@ -61,10 +61,10 @@ export default function HomePageClient() {
             <ElegantMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} navigateTo={customNavigate} />
             <main>
                 <Hero navigateTo={customNavigate} />
+                <Portfolio onRequestProject={handleContactIntent} navigateTo={customNavigate} />
                 <About />
                 <Services onPackageSelect={handleContactIntent} />
                 <LogoCodexTeaser navigateTo={customNavigate} />
-                <Portfolio onRequestProject={handleContactIntent} navigateTo={customNavigate} />
                 <WhyChooseMe />
                 <Process />
                 <Deliverables />

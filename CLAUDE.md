@@ -24,8 +24,8 @@ Run a single test file: `npx vitest run tests/loading-context.test.tsx`. See `te
 
 | Route | Description |
 |---|---|
-| `/` | Homepage — Hero, Services, Portfolio grid, FAQ, Contact |
-| `/portafolio` | LogoCodeX portfolio viewer (tab-based, hash-driven) |
+| `/` | Homepage — Hero (with three real pieces of work), Portfolio grid, About, Services, method teaser, Process, FAQ, Contact |
+| `/portafolio` | Portfolio: case tabs first (hash-driven), then the LogoCodeX™ method |
 | `/portafolio/[slug]` | Individual case study full page |
 | `/origen` | Long-form interactive narrative about the brand's origin |
 
@@ -38,11 +38,11 @@ app/[locale]/origen/page.tsx      →  OrigenClient
 app/[locale]/page.tsx             →  HomePageClient
 ```
 
-`app/layout.tsx` wraps everything in `ClientWrapper` → `LoadingProvider` + `Preloader`.
+`app/layout.tsx` wraps everything in `ClientWrapper` → `LoadingProvider` + `NavigationProgress` (a thin top bar shown while `customNavigate` changes page). There is no full-screen preloader any more (removed 2026-11): content must never be hidden behind `opacity: 0` waiting for JS, and the hero has no entrance animation so it renders without JavaScript.
 
 ### Navigation
 
-**Never use `<Link>` or `router.push` directly.** All navigation goes through `customNavigate` from `useLoading()` (`components/LoadingContext.tsx`). This triggers the full-screen preloader transition. Hash links (`/#contacto`) auto-handle: smooth-scroll if already on `/`, otherwise navigate home first, using the `sessionStorage` key from `lib/storageKeys.ts`. If the hash target doesn't exist in the DOM, `customNavigate` returns without navigating anywhere (it used to fall through to `router.push('#hash')` — a pathless URL — before this was fixed; see `tests/loading-context.test.tsx`).
+**Never use `<Link>` or `router.push` directly.** All navigation goes through `customNavigate` from `useLoading()` (`components/LoadingContext.tsx`). It sets `isLoading` (the top progress bar) and prefetches the route; it adds no artificial delay. Hash links (`/#contacto`) auto-handle: smooth-scroll if already on `/`, otherwise navigate home first, using the `sessionStorage` key from `lib/storageKeys.ts`. If the hash target doesn't exist in the DOM, `customNavigate` returns without navigating anywhere (it used to fall through to `router.push('#hash')` — a pathless URL — before this was fixed; see `tests/loading-context.test.tsx`).
 
 Every internal destination must still be a real `<a href>` so crawlers can follow it (before 2026-11 `/origen`, the case studies and `/en` were only reachable through `onClick` buttons). The pattern: `href={localizedHref('/origen')}` from `useLocalizedHref()` plus an `onClick` that returns early unless `isPlainLeftClick(e)`, then `preventDefault()` and `customNavigate(...)` (both helpers in `hooks/useLocalizedHref.ts`). Ctrl/Cmd-click keeps working, and `customNavigate` always receives the path **without** locale prefix.
 
@@ -111,6 +111,10 @@ Both no-op gracefully (simulate success) if `RESEND_API_KEY` is absent. Both tre
 - **Process:** four steps everywhere (`Process` namespace). `/portafolio` groups the six method tasks inside those four steps (`phases` in `components/LogoCodex.tsx`); the FAQ refers to steps by name.
 - **Turnstile:** both forms use `components/LazyTurnstile.tsx` (dark theme, `interaction-only`, mounted when the form nears the viewport). The widget is usually invisible, so each form shows a `role="status"` line while there is no token (`captchaPending` / `captchaInteract` / `captchaError`). To test by hand, build with Cloudflare's test site keys in `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: `1x00000000000000000000AA` (always passes) and `3x00000000000000000000FF` (forces the checkbox).
 - **Naming:** the section and menu entry are "Portafolio" (one menu entry, pointing to `/portafolio`); LogoCodeX™ is only the name of the method.
+- **Home hero and grid:** the hero shows three applied-brand photos (`FEATURED` in `components/Hero.tsx`), the first one is the LCP image (`priority`). The home portfolio is a grid of every project (`components/Portfolio.tsx`, 3 + 4 on desktop); a project's card uses `coverImg` (applied-brand photo) when it has one, else the logo in `mainImg`. A normal click opens `ProjectModal`; the `href` is the case page.
+- **Case studies** use the shared `Header` + `ElegantMenu` (`CaseStudyLayout.tsx`) and an in-flow "back to portfolio" link; don't add floating buttons.
+- **`/origen` on mobile:** the timeline is a sticky horizontal strip (`VTimeline.tsx`), not a fixed left column. The skills list has no percentages.
+- **Structured data:** `businessSchema()` in `lib/seo.ts` (ProfessionalService + Person) uses only facts already published on the site; no reviews, ratings or price range.
 - **Portfolio order:** `portfolioProjects` in `constants.ts` drives the home carousel and the default tab of `/portafolio` (first item): external clients first, family projects next, own brand last. `testimonial` is optional (own projects have none).
 - **FAQ JSON-LD** in `app/[locale]/page.tsx` is built from the `FAQ` messages in the page's locale; don't hard-code a copy.
 

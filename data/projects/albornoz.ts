@@ -4,6 +4,7 @@ import { PortfolioProject } from '../../types';
 export const albornozProject: PortfolioProject = {
     mainImg: "/images/albornoz-main.webp",
     altText: "Logo Albornoz Propiedades",
+    coverImg: { src: "/images/albornoz-tarjeta.webp", alt: "Tarjeta de Presentación - Diseño Polisémico" },
     title: "ALBORNOZ",
     slug: "albornoz-propiedades",
     testimonial: "Supiste interpretar cada idea ligada a una emoción.",

@@ -27,7 +27,8 @@
     "description": "is my method: first I understand what makes your company unique, then I turn it into a visual identity.",
     "ctaPrimary": "Let's talk about your brand",
     "ctaSecondary": "See the portfolio",
-    "logoAlt": "AREM4N Logotype"
+    "logoAlt": "AREM4N Logotype",
+    "workLabel": "Featured work"
   },
   "About": {
     "tag": "Origin",
@@ -208,9 +209,7 @@
   },
   "Portfolio": {
     "title": "Portfolio",
-    "swipeHint": "Swipe or use arrows to browse",
-    "prevAriaLabel": "Previous project",
-    "nextAriaLabel": "Next project",
+    "subtitle": "Identities built with LogoCodeX™. Open any of them to see the full process.",
     "viewProject": "View Project",
     "viewFullPortfolio": "View full portfolio"
   },
